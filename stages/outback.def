@@ -1,0 +1,8585 @@
+[Info]
+name = "Australian outback"
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -224
+boundright = 224
+boundhigh = 0
+boundlow = 0
+verticalfollow = .5
+tension = 50
+
+[PlayerInfo]
+p1startx = -70
+p1starty = 0
+p1startz = 0
+p1facing = 1
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000
+rightbound =  1000
+topbound  =  0
+botbound  =  0
+
+[Scaling]
+topz = 0
+botz = 50
+topscale = 1
+botscale = 1.2
+
+[Bound]
+screenleft = 15
+screenright = 15
+
+[StageInfo]
+zoffset = 215
+autoturn = 1
+resetBG = 0
+
+[Shadow]
+
+[Music]
+bgmusic = sound/IMBACKBITCHES.mp3
+bgvolume = 255
+
+[BGdef]
+spr = stages/outback.sff
+
+[BG 0.1]
+type = anim
+actionno = 1
+start = -256,48
+delta = .352,1
+tile = 1,0
+tilespacing = 512
+velocity = .125
+
+[BG 0.2]
+type = anim
+actionno = 2
+ID = 2
+start = -256,48
+delta = .352,1
+tile = 1,0
+tilespacing = 512
+velocity = .125
+
+[BG 0.3]
+type = anim
+actionno = 3
+ID = 3
+start = -256,48
+delta = .352,1
+tile = 1,0
+tilespacing = 512
+velocity = .125
+
+[BG 0.4]
+type = anim
+actionno = 4
+ID = 4
+start = -256,48
+delta = .352,1
+tile = 1,0
+tilespacing = 512
+velocity = .125
+
+[BG 0.5]
+type = anim
+actionno = 5
+ID = 5
+start = -256,48
+delta = .352,1
+tile = 1,0
+tilespacing = 512
+velocity = .125
+
+[BG 1.1]
+type = anim
+actionno = 11
+start = -128,0
+delta = .46,1
+tile = 1,0
+tilespacing = 256
+velocity = .25
+
+[BG 1.2]
+type = anim
+actionno = 12
+ID = 2
+start = -128,0
+delta = .46,1
+tile = 1,0
+tilespacing = 256
+velocity = .25
+
+[BG 1.3]
+type = anim
+actionno = 13
+ID = 3
+start = -128,0
+delta = .46,1
+tile = 1,0
+tilespacing = 256
+velocity = .25
+
+[BG 1.4]
+type = anim
+actionno = 14
+ID = 4
+start = -128,0
+delta = .46,1
+tile = 1,0
+tilespacing = 256
+velocity = .25
+
+[BG 1.5]
+type = anim
+actionno = 15
+ID = 5
+start = -128,0
+delta = .46,1
+tile = 1,0
+tilespacing = 256
+velocity = .25
+
+[BG 2]
+type = anim
+actionno = 20
+start = 0,240
+delta = 0,1
+
+[BG 3.1]
+type = anim
+actionno = 31
+start = -256,0
+delta = .57,1
+tile = 1,0
+tilespacing = 512
+velocity = .375,0
+
+[BG 3.2]
+type = anim
+actionno = 32
+ID = 2
+start = -256,0
+delta = .57,1
+tile = 1,0
+tilespacing = 512
+velocity = .375,0
+
+[BG 3.3]
+type = anim
+actionno = 33
+ID = 3
+start = -256,0
+delta = .57,1
+tile = 1,0
+tilespacing = 512
+velocity = .375,0
+
+[BG 3.4]
+type = anim
+actionno = 34
+ID = 4
+start = -256,0
+delta = .57,1
+tile = 1,0
+tilespacing = 512
+velocity = .375,0
+
+[BG 3.5]
+type = anim
+actionno = 35
+ID = 5
+start = -256,0
+delta = .57,1
+tile = 1,0
+tilespacing = 512
+velocity = .375,0
+
+[BG 4]
+type = anim
+actionno = 40
+start = 0,240
+delta = 0,1
+
+[BG 5.1]
+type = anim
+actionno = 51
+start = -32,169
+delta = .785,1
+tile = 1,0
+tilespacing = 64
+
+[BG 5.2]
+type = anim
+actionno = 52
+ID = 2
+start = -32,169
+delta = .785,1
+tile = 1,0
+tilespacing = 64
+
+[BG 5.3]
+type = anim
+actionno = 53
+ID = 3
+start = -32,169
+delta = .785,1
+tile = 1,0
+tilespacing = 64
+
+[BG 5.4]
+type = anim
+actionno = 54
+ID = 4
+start = -32,169
+delta = .785,1
+tile = 1,0
+tilespacing = 64
+
+[BG 5.5]
+type = anim
+actionno = 55
+ID = 5
+start = -32,169
+delta = .785,1
+tile = 1,0
+tilespacing = 64
+
+[BG 6.1]
+type = anim
+actionno = 61
+start = -64,176
+delta = 1,1
+tile = 1,0
+tilespacing = 128
+
+[BG 6.2]
+type = anim
+actionno = 62
+ID = 2
+start = -64,176
+delta = 1,1
+tile = 1,0
+tilespacing = 128
+
+[BG 6.3]
+type = anim
+actionno = 63
+ID = 3
+start = -64,176
+delta = 1,1
+tile = 1,0
+tilespacing = 128
+
+[BG 6.4]
+type = anim
+actionno = 64
+ID = 4
+start = -64,176
+delta = 1,1
+tile = 1,0
+tilespacing = 128
+
+[BG 6.5]
+type = anim
+actionno = 65
+ID = 5
+start = -64,176
+delta = 1,1
+tile = 1,0
+tilespacing = 128
+
+[BG 7.1]
+type = anim
+actionno = 71
+layerno = 1
+start = -64,191
+delta = 1,1
+tile = 1,0
+tilespacing = 128
+
+[BG 7.2]
+type = anim
+actionno = 72
+ID = 3
+layerno = 1
+start = -64,191
+delta = 1,1
+tile = 1,0
+tilespacing = 128
+
+[BG 7.3]
+type = anim
+actionno = 73
+ID = 4
+layerno = 1
+start = -64,191
+delta = 1,1
+tile = 1,0
+tilespacing = 128
+
+[BG 7.4]
+type = anim
+actionno = 74
+ID = 5
+layerno = 1
+start = -64,191
+delta = 1,1
+tile = 1,0
+tilespacing = 128
+
+[BGCtrldef 2]
+CtrlID = 2
+looptime = 2347
+
+[BGCtrl 2.1]
+type = visible
+time = 0
+value = 0
+
+[BGCtrl 2.2]
+type = visible
+time = 7
+value = 1
+
+[BGCtrl 2.3]
+type = visible
+time = 8
+value = 0
+
+[BGCtrl 2.4]
+type = visible
+time = 14
+value = 1
+
+[BGCtrl 2.5]
+type = visible
+time = 15
+value = 0
+
+[BGCtrl 2.6]
+type = visible
+time = 16
+value = 1
+
+[BGCtrl 2.7]
+type = visible
+time = 17
+value = 0
+
+[BGCtrl 2.8]
+type = visible
+time = 22
+value = 1
+
+[BGCtrl 2.9]
+type = visible
+time = 23
+value = 0
+
+[BGCtrl 2.10]
+type = visible
+time = 24
+value = 1
+
+[BGCtrl 2.11]
+type = visible
+time = 25
+value = 0
+
+[BGCtrl 2.12]
+type = visible
+time = 26
+value = 1
+
+[BGCtrl 2.13]
+type = visible
+time = 27
+value = 0
+
+[BGCtrl 2.14]
+type = visible
+time = 33
+value = 1
+
+[BGCtrl 2.15]
+type = visible
+time = 34
+value = 0
+
+[BGCtrl 2.16]
+type = visible
+time = 42
+value = 1
+
+[BGCtrl 2.17]
+type = visible
+time = 43
+value = 0
+
+[BGCtrl 2.18]
+type = visible
+time = 49
+value = 1
+
+[BGCtrl 2.19]
+type = visible
+time = 50
+value = 0
+
+[BGCtrl 2.20]
+type = visible
+time = 51
+value = 1
+
+[BGCtrl 2.21]
+type = visible
+time = 52
+value = 0
+
+[BGCtrl 2.22]
+type = visible
+time = 57
+value = 1
+
+[BGCtrl 2.23]
+type = visible
+time = 58
+value = 0
+
+[BGCtrl 2.24]
+type = visible
+time = 59
+value = 1
+
+[BGCtrl 2.25]
+type = visible
+time = 60
+value = 0
+
+[BGCtrl 2.26]
+type = visible
+time = 61
+value = 1
+
+[BGCtrl 2.27]
+type = visible
+time = 62
+value = 0
+
+[BGCtrl 2.28]
+type = visible
+time = 68
+value = 1
+
+[BGCtrl 2.29]
+type = visible
+time = 69
+value = 0
+
+[BGCtrl 2.30]
+type = visible
+time = 77
+value = 1
+
+[BGCtrl 2.31]
+type = visible
+time = 78
+value = 0
+
+[BGCtrl 2.32]
+type = visible
+time = 84
+value = 1
+
+[BGCtrl 2.33]
+type = visible
+time = 85
+value = 0
+
+[BGCtrl 2.34]
+type = visible
+time = 86
+value = 1
+
+[BGCtrl 2.35]
+type = visible
+time = 87
+value = 0
+
+[BGCtrl 2.36]
+type = visible
+time = 92
+value = 1
+
+[BGCtrl 2.37]
+type = visible
+time = 93
+value = 0
+
+[BGCtrl 2.38]
+type = visible
+time = 94
+value = 1
+
+[BGCtrl 2.39]
+type = visible
+time = 95
+value = 0
+
+[BGCtrl 2.40]
+type = visible
+time = 96
+value = 1
+
+[BGCtrl 2.41]
+type = visible
+time = 97
+value = 0
+
+[BGCtrl 2.42]
+type = visible
+time = 103
+value = 1
+
+[BGCtrl 2.43]
+type = visible
+time = 104
+value = 0
+
+[BGCtrl 2.44]
+type = visible
+time = 110
+value = 1
+
+[BGCtrl 2.45]
+type = visible
+time = 111
+value = 0
+
+[BGCtrl 2.46]
+type = visible
+time = 114
+value = 1
+
+[BGCtrl 2.47]
+type = visible
+time = 115
+value = 0
+
+[BGCtrl 2.48]
+type = visible
+time = 118
+value = 1
+
+[BGCtrl 2.49]
+type = visible
+time = 119
+value = 0
+
+[BGCtrl 2.50]
+type = visible
+time = 122
+value = 1
+
+[BGCtrl 2.51]
+type = visible
+time = 123
+value = 0
+
+[BGCtrl 2.52]
+type = visible
+time = 124
+value = 1
+
+[BGCtrl 2.53]
+type = visible
+time = 125
+value = 0
+
+[BGCtrl 2.54]
+type = visible
+time = 126
+value = 1
+
+[BGCtrl 2.55]
+type = visible
+time = 127
+value = 0
+
+[BGCtrl 2.56]
+type = visible
+time = 132
+value = 1
+
+[BGCtrl 2.57]
+type = visible
+time = 133
+value = 0
+
+[BGCtrl 2.58]
+type = visible
+time = 139
+value = 1
+
+[BGCtrl 2.59]
+type = visible
+time = 140
+value = 0
+
+[BGCtrl 2.60]
+type = visible
+time = 141
+value = 1
+
+[BGCtrl 2.61]
+type = visible
+time = 142
+value = 0
+
+[BGCtrl 2.62]
+type = visible
+time = 145
+value = 1
+
+[BGCtrl 2.63]
+type = visible
+time = 146
+value = 0
+
+[BGCtrl 2.64]
+type = visible
+time = 147
+value = 1
+
+[BGCtrl 2.65]
+type = visible
+time = 148
+value = 0
+
+[BGCtrl 2.66]
+type = visible
+time = 149
+value = 1
+
+[BGCtrl 2.67]
+type = visible
+time = 150
+value = 0
+
+[BGCtrl 2.68]
+type = visible
+time = 151
+value = 1
+
+[BGCtrl 2.69]
+type = visible
+time = 152
+value = 0
+
+[BGCtrl 2.70]
+type = visible
+time = 153
+value = 1
+
+[BGCtrl 2.71]
+type = visible
+time = 154
+value = 0
+
+[BGCtrl 2.72]
+type = visible
+time = 160
+value = 1
+
+[BGCtrl 2.73]
+type = visible
+time = 161
+value = 0
+
+[BGCtrl 2.74]
+type = visible
+time = 167
+value = 1
+
+[BGCtrl 2.75]
+type = visible
+time = 168
+value = 0
+
+[BGCtrl 2.76]
+type = visible
+time = 176
+value = 1
+
+[BGCtrl 2.77]
+type = visible
+time = 177
+value = 0
+
+[BGCtrl 2.78]
+type = visible
+time = 183
+value = 1
+
+[BGCtrl 2.79]
+type = visible
+time = 184
+value = 0
+
+[BGCtrl 2.80]
+type = visible
+time = 185
+value = 1
+
+[BGCtrl 2.81]
+type = visible
+time = 186
+value = 0
+
+[BGCtrl 2.82]
+type = visible
+time = 191
+value = 1
+
+[BGCtrl 2.83]
+type = visible
+time = 192
+value = 0
+
+[BGCtrl 2.84]
+type = visible
+time = 193
+value = 1
+
+[BGCtrl 2.85]
+type = visible
+time = 194
+value = 0
+
+[BGCtrl 2.86]
+type = visible
+time = 195
+value = 1
+
+[BGCtrl 2.87]
+type = visible
+time = 196
+value = 0
+
+[BGCtrl 2.88]
+type = visible
+time = 202
+value = 1
+
+[BGCtrl 2.89]
+type = visible
+time = 203
+value = 0
+
+[BGCtrl 2.90]
+type = visible
+time = 211
+value = 1
+
+[BGCtrl 2.91]
+type = visible
+time = 212
+value = 0
+
+[BGCtrl 2.92]
+type = visible
+time = 218
+value = 1
+
+[BGCtrl 2.93]
+type = visible
+time = 219
+value = 0
+
+[BGCtrl 2.94]
+type = visible
+time = 220
+value = 1
+
+[BGCtrl 2.95]
+type = visible
+time = 221
+value = 0
+
+[BGCtrl 2.96]
+type = visible
+time = 226
+value = 1
+
+[BGCtrl 2.97]
+type = visible
+time = 227
+value = 0
+
+[BGCtrl 2.98]
+type = visible
+time = 228
+value = 1
+
+[BGCtrl 2.99]
+type = visible
+time = 229
+value = 0
+
+[BGCtrl 2.100]
+type = visible
+time = 230
+value = 1
+
+[BGCtrl 2.101]
+type = visible
+time = 231
+value = 0
+
+[BGCtrl 2.102]
+type = visible
+time = 237
+value = 1
+
+[BGCtrl 2.103]
+type = visible
+time = 238
+value = 0
+
+[BGCtrl 2.104]
+type = visible
+time = 246
+value = 1
+
+[BGCtrl 2.105]
+type = visible
+time = 247
+value = 0
+
+[BGCtrl 2.106]
+type = visible
+time = 253
+value = 1
+
+[BGCtrl 2.107]
+type = visible
+time = 254
+value = 0
+
+[BGCtrl 2.108]
+type = visible
+time = 255
+value = 1
+
+[BGCtrl 2.109]
+type = visible
+time = 256
+value = 0
+
+[BGCtrl 2.110]
+type = visible
+time = 261
+value = 1
+
+[BGCtrl 2.111]
+type = visible
+time = 262
+value = 0
+
+[BGCtrl 2.112]
+type = visible
+time = 263
+value = 1
+
+[BGCtrl 2.113]
+type = visible
+time = 264
+value = 0
+
+[BGCtrl 2.114]
+type = visible
+time = 265
+value = 1
+
+[BGCtrl 2.115]
+type = visible
+time = 266
+value = 0
+
+[BGCtrl 2.116]
+type = visible
+time = 272
+value = 1
+
+[BGCtrl 2.117]
+type = visible
+time = 273
+value = 0
+
+[BGCtrl 2.118]
+type = visible
+time = 281
+value = 1
+
+[BGCtrl 2.119]
+type = visible
+time = 282
+value = 0
+
+[BGCtrl 2.120]
+type = visible
+time = 288
+value = 1
+
+[BGCtrl 2.121]
+type = visible
+time = 289
+value = 0
+
+[BGCtrl 2.122]
+type = visible
+time = 290
+value = 1
+
+[BGCtrl 2.123]
+type = visible
+time = 291
+value = 0
+
+[BGCtrl 2.124]
+type = visible
+time = 296
+value = 1
+
+[BGCtrl 2.125]
+type = visible
+time = 297
+value = 0
+
+[BGCtrl 2.126]
+type = visible
+time = 298
+value = 1
+
+[BGCtrl 2.127]
+type = visible
+time = 299
+value = 0
+
+[BGCtrl 2.128]
+type = visible
+time = 300
+value = 1
+
+[BGCtrl 2.129]
+type = visible
+time = 301
+value = 0
+
+[BGCtrl 2.130]
+type = visible
+time = 307
+value = 1
+
+[BGCtrl 2.131]
+type = visible
+time = 308
+value = 0
+
+[BGCtrl 2.132]
+type = visible
+time = 316
+value = 1
+
+[BGCtrl 2.133]
+type = visible
+time = 317
+value = 0
+
+[BGCtrl 2.134]
+type = visible
+time = 323
+value = 1
+
+[BGCtrl 2.135]
+type = visible
+time = 324
+value = 0
+
+[BGCtrl 2.136]
+type = visible
+time = 325
+value = 1
+
+[BGCtrl 2.137]
+type = visible
+time = 326
+value = 0
+
+[BGCtrl 2.138]
+type = visible
+time = 331
+value = 1
+
+[BGCtrl 2.139]
+type = visible
+time = 332
+value = 0
+
+[BGCtrl 2.140]
+type = visible
+time = 333
+value = 1
+
+[BGCtrl 2.141]
+type = visible
+time = 334
+value = 0
+
+[BGCtrl 2.142]
+type = visible
+time = 335
+value = 1
+
+[BGCtrl 2.143]
+type = visible
+time = 336
+value = 0
+
+[BGCtrl 2.144]
+type = visible
+time = 342
+value = 1
+
+[BGCtrl 2.145]
+type = visible
+time = 343
+value = 0
+
+[BGCtrl 2.146]
+type = visible
+time = 351
+value = 1
+
+[BGCtrl 2.147]
+type = visible
+time = 352
+value = 0
+
+[BGCtrl 2.148]
+type = visible
+time = 358
+value = 1
+
+[BGCtrl 2.149]
+type = visible
+time = 359
+value = 0
+
+[BGCtrl 2.150]
+type = visible
+time = 360
+value = 1
+
+[BGCtrl 2.151]
+type = visible
+time = 361
+value = 0
+
+[BGCtrl 2.152]
+type = visible
+time = 366
+value = 1
+
+[BGCtrl 2.153]
+type = visible
+time = 367
+value = 0
+
+[BGCtrl 2.154]
+type = visible
+time = 368
+value = 1
+
+[BGCtrl 2.155]
+type = visible
+time = 369
+value = 0
+
+[BGCtrl 2.156]
+type = visible
+time = 370
+value = 1
+
+[BGCtrl 2.157]
+type = visible
+time = 371
+value = 0
+
+[BGCtrl 2.158]
+type = visible
+time = 377
+value = 1
+
+[BGCtrl 2.159]
+type = visible
+time = 378
+value = 0
+
+[BGCtrl 2.160]
+type = visible
+time = 386
+value = 1
+
+[BGCtrl 2.161]
+type = visible
+time = 387
+value = 0
+
+[BGCtrl 2.162]
+type = visible
+time = 393
+value = 1
+
+[BGCtrl 2.163]
+type = visible
+time = 394
+value = 0
+
+[BGCtrl 2.164]
+type = visible
+time = 395
+value = 1
+
+[BGCtrl 2.165]
+type = visible
+time = 396
+value = 0
+
+[BGCtrl 2.166]
+type = visible
+time = 401
+value = 1
+
+[BGCtrl 2.167]
+type = visible
+time = 402
+value = 0
+
+[BGCtrl 2.168]
+type = visible
+time = 403
+value = 1
+
+[BGCtrl 2.169]
+type = visible
+time = 404
+value = 0
+
+[BGCtrl 2.170]
+type = visible
+time = 405
+value = 1
+
+[BGCtrl 2.171]
+type = visible
+time = 406
+value = 0
+
+[BGCtrl 2.172]
+type = visible
+time = 412
+value = 1
+
+[BGCtrl 2.173]
+type = visible
+time = 413
+value = 0
+
+[BGCtrl 2.174]
+type = visible
+time = 421
+value = 1
+
+[BGCtrl 2.175]
+type = visible
+time = 422
+value = 0
+
+[BGCtrl 2.176]
+type = visible
+time = 428
+value = 1
+
+[BGCtrl 2.177]
+type = visible
+time = 429
+value = 0
+
+[BGCtrl 2.178]
+type = visible
+time = 430
+value = 1
+
+[BGCtrl 2.179]
+type = visible
+time = 431
+value = 0
+
+[BGCtrl 2.180]
+type = visible
+time = 436
+value = 1
+
+[BGCtrl 2.181]
+type = visible
+time = 437
+value = 0
+
+[BGCtrl 2.182]
+type = visible
+time = 438
+value = 1
+
+[BGCtrl 2.183]
+type = visible
+time = 439
+value = 0
+
+[BGCtrl 2.184]
+type = visible
+time = 440
+value = 1
+
+[BGCtrl 2.185]
+type = visible
+time = 441
+value = 0
+
+[BGCtrl 2.186]
+type = visible
+time = 447
+value = 1
+
+[BGCtrl 2.187]
+type = visible
+time = 448
+value = 0
+
+[BGCtrl 2.188]
+type = visible
+time = 456
+value = 1
+
+[BGCtrl 2.189]
+type = visible
+time = 457
+value = 0
+
+[BGCtrl 2.190]
+type = visible
+time = 463
+value = 1
+
+[BGCtrl 2.191]
+type = visible
+time = 464
+value = 0
+
+[BGCtrl 2.192]
+type = visible
+time = 465
+value = 1
+
+[BGCtrl 2.193]
+type = visible
+time = 466
+value = 0
+
+[BGCtrl 2.194]
+type = visible
+time = 471
+value = 1
+
+[BGCtrl 2.195]
+type = visible
+time = 472
+value = 0
+
+[BGCtrl 2.196]
+type = visible
+time = 473
+value = 1
+
+[BGCtrl 2.197]
+type = visible
+time = 474
+value = 0
+
+[BGCtrl 2.198]
+type = visible
+time = 475
+value = 1
+
+[BGCtrl 2.199]
+type = visible
+time = 476
+value = 0
+
+[BGCtrl 2.200]
+type = visible
+time = 482
+value = 1
+
+[BGCtrl 2.201]
+type = visible
+time = 483
+value = 0
+
+[BGCtrl 2.202]
+type = visible
+time = 491
+value = 1
+
+[BGCtrl 2.203]
+type = visible
+time = 492
+value = 0
+
+[BGCtrl 2.204]
+type = visible
+time = 498
+value = 1
+
+[BGCtrl 2.205]
+type = visible
+time = 499
+value = 0
+
+[BGCtrl 2.206]
+type = visible
+time = 500
+value = 1
+
+[BGCtrl 2.207]
+type = visible
+time = 501
+value = 0
+
+[BGCtrl 2.208]
+type = visible
+time = 506
+value = 1
+
+[BGCtrl 2.209]
+type = visible
+time = 507
+value = 0
+
+[BGCtrl 2.210]
+type = visible
+time = 508
+value = 1
+
+[BGCtrl 2.211]
+type = visible
+time = 509
+value = 0
+
+[BGCtrl 2.212]
+type = visible
+time = 510
+value = 1
+
+[BGCtrl 2.213]
+type = visible
+time = 511
+value = 0
+
+[BGCtrl 2.214]
+type = visible
+time = 517
+value = 1
+
+[BGCtrl 2.215]
+type = visible
+time = 518
+value = 0
+
+[BGCtrl 2.216]
+type = visible
+time = 526
+value = 1
+
+[BGCtrl 2.217]
+type = visible
+time = 527
+value = 0
+
+[BGCtrl 2.218]
+type = visible
+time = 533
+value = 1
+
+[BGCtrl 2.219]
+type = visible
+time = 534
+value = 0
+
+[BGCtrl 2.220]
+type = visible
+time = 535
+value = 1
+
+[BGCtrl 2.221]
+type = visible
+time = 536
+value = 0
+
+[BGCtrl 2.222]
+type = visible
+time = 541
+value = 1
+
+[BGCtrl 2.223]
+type = visible
+time = 542
+value = 0
+
+[BGCtrl 2.224]
+type = visible
+time = 543
+value = 1
+
+[BGCtrl 2.225]
+type = visible
+time = 544
+value = 0
+
+[BGCtrl 2.226]
+type = visible
+time = 545
+value = 1
+
+[BGCtrl 2.227]
+type = visible
+time = 546
+value = 0
+
+[BGCtrl 2.228]
+type = visible
+time = 552
+value = 1
+
+[BGCtrl 2.229]
+type = visible
+time = 553
+value = 0
+
+[BGCtrl 2.230]
+type = visible
+time = 561
+value = 1
+
+[BGCtrl 2.231]
+type = visible
+time = 562
+value = 0
+
+[BGCtrl 2.232]
+type = visible
+time = 568
+value = 1
+
+[BGCtrl 2.233]
+type = visible
+time = 569
+value = 0
+
+[BGCtrl 2.234]
+type = visible
+time = 570
+value = 1
+
+[BGCtrl 2.235]
+type = visible
+time = 571
+value = 0
+
+[BGCtrl 2.236]
+type = visible
+time = 576
+value = 1
+
+[BGCtrl 2.237]
+type = visible
+time = 577
+value = 0
+
+[BGCtrl 2.238]
+type = visible
+time = 578
+value = 1
+
+[BGCtrl 2.239]
+type = visible
+time = 579
+value = 0
+
+[BGCtrl 2.240]
+type = visible
+time = 580
+value = 1
+
+[BGCtrl 2.241]
+type = visible
+time = 581
+value = 0
+
+[BGCtrl 2.242]
+type = visible
+time = 587
+value = 1
+
+[BGCtrl 2.243]
+type = visible
+time = 588
+value = 0
+
+[BGCtrl 2.244]
+type = visible
+time = 596
+value = 1
+
+[BGCtrl 2.245]
+type = visible
+time = 597
+value = 0
+
+[BGCtrl 2.246]
+type = visible
+time = 603
+value = 1
+
+[BGCtrl 2.247]
+type = visible
+time = 604
+value = 0
+
+[BGCtrl 2.248]
+type = visible
+time = 605
+value = 1
+
+[BGCtrl 2.249]
+type = visible
+time = 606
+value = 0
+
+[BGCtrl 2.250]
+type = visible
+time = 611
+value = 1
+
+[BGCtrl 2.251]
+type = visible
+time = 612
+value = 0
+
+[BGCtrl 2.252]
+type = visible
+time = 613
+value = 1
+
+[BGCtrl 2.253]
+type = visible
+time = 614
+value = 0
+
+[BGCtrl 2.254]
+type = visible
+time = 615
+value = 1
+
+[BGCtrl 2.255]
+type = visible
+time = 616
+value = 0
+
+[BGCtrl 2.256]
+type = visible
+time = 622
+value = 1
+
+[BGCtrl 2.257]
+type = visible
+time = 623
+value = 0
+
+[BGCtrl 2.258]
+type = visible
+time = 631
+value = 1
+
+[BGCtrl 2.259]
+type = visible
+time = 632
+value = 0
+
+[BGCtrl 2.260]
+type = visible
+time = 638
+value = 1
+
+[BGCtrl 2.261]
+type = visible
+time = 639
+value = 0
+
+[BGCtrl 2.262]
+type = visible
+time = 640
+value = 1
+
+[BGCtrl 2.263]
+type = visible
+time = 641
+value = 0
+
+[BGCtrl 2.264]
+type = visible
+time = 646
+value = 1
+
+[BGCtrl 2.265]
+type = visible
+time = 647
+value = 0
+
+[BGCtrl 2.266]
+type = visible
+time = 648
+value = 1
+
+[BGCtrl 2.267]
+type = visible
+time = 649
+value = 0
+
+[BGCtrl 2.268]
+type = visible
+time = 650
+value = 1
+
+[BGCtrl 2.269]
+type = visible
+time = 651
+value = 0
+
+[BGCtrl 2.270]
+type = visible
+time = 657
+value = 1
+
+[BGCtrl 2.271]
+type = visible
+time = 658
+value = 0
+
+[BGCtrl 2.272]
+type = visible
+time = 666
+value = 1
+
+[BGCtrl 2.273]
+type = visible
+time = 667
+value = 0
+
+[BGCtrl 2.274]
+type = visible
+time = 673
+value = 1
+
+[BGCtrl 2.275]
+type = visible
+time = 674
+value = 0
+
+[BGCtrl 2.276]
+type = visible
+time = 675
+value = 1
+
+[BGCtrl 2.277]
+type = visible
+time = 676
+value = 0
+
+[BGCtrl 2.278]
+type = visible
+time = 681
+value = 1
+
+[BGCtrl 2.279]
+type = visible
+time = 682
+value = 0
+
+[BGCtrl 2.280]
+type = visible
+time = 683
+value = 1
+
+[BGCtrl 2.281]
+type = visible
+time = 684
+value = 0
+
+[BGCtrl 2.282]
+type = visible
+time = 685
+value = 1
+
+[BGCtrl 2.283]
+type = visible
+time = 686
+value = 0
+
+[BGCtrl 2.284]
+type = visible
+time = 692
+value = 1
+
+[BGCtrl 2.285]
+type = visible
+time = 693
+value = 0
+
+[BGCtrl 2.286]
+type = visible
+time = 701
+value = 1
+
+[BGCtrl 2.287]
+type = visible
+time = 702
+value = 0
+
+[BGCtrl 2.288]
+type = visible
+time = 708
+value = 1
+
+[BGCtrl 2.289]
+type = visible
+time = 709
+value = 0
+
+[BGCtrl 2.290]
+type = visible
+time = 710
+value = 1
+
+[BGCtrl 2.291]
+type = visible
+time = 711
+value = 0
+
+[BGCtrl 2.292]
+type = visible
+time = 716
+value = 1
+
+[BGCtrl 2.293]
+type = visible
+time = 717
+value = 0
+
+[BGCtrl 2.294]
+type = visible
+time = 718
+value = 1
+
+[BGCtrl 2.295]
+type = visible
+time = 719
+value = 0
+
+[BGCtrl 2.296]
+type = visible
+time = 720
+value = 1
+
+[BGCtrl 2.297]
+type = visible
+time = 721
+value = 0
+
+[BGCtrl 2.298]
+type = visible
+time = 727
+value = 1
+
+[BGCtrl 2.299]
+type = visible
+time = 728
+value = 0
+
+[BGCtrl 2.300]
+type = visible
+time = 736
+value = 1
+
+[BGCtrl 2.301]
+type = visible
+time = 737
+value = 0
+
+[BGCtrl 2.302]
+type = visible
+time = 743
+value = 1
+
+[BGCtrl 2.303]
+type = visible
+time = 744
+value = 0
+
+[BGCtrl 2.304]
+type = visible
+time = 745
+value = 1
+
+[BGCtrl 2.305]
+type = visible
+time = 746
+value = 0
+
+[BGCtrl 2.306]
+type = visible
+time = 751
+value = 1
+
+[BGCtrl 2.307]
+type = visible
+time = 752
+value = 0
+
+[BGCtrl 2.308]
+type = visible
+time = 753
+value = 1
+
+[BGCtrl 2.309]
+type = visible
+time = 754
+value = 0
+
+[BGCtrl 2.310]
+type = visible
+time = 755
+value = 1
+
+[BGCtrl 2.311]
+type = visible
+time = 756
+value = 0
+
+[BGCtrl 2.312]
+type = visible
+time = 762
+value = 1
+
+[BGCtrl 2.313]
+type = visible
+time = 763
+value = 0
+
+[BGCtrl 2.314]
+type = visible
+time = 771
+value = 1
+
+[BGCtrl 2.315]
+type = visible
+time = 772
+value = 0
+
+[BGCtrl 2.316]
+type = visible
+time = 778
+value = 1
+
+[BGCtrl 2.317]
+type = visible
+time = 779
+value = 0
+
+[BGCtrl 2.318]
+type = visible
+time = 780
+value = 1
+
+[BGCtrl 2.319]
+type = visible
+time = 781
+value = 0
+
+[BGCtrl 2.320]
+type = visible
+time = 786
+value = 1
+
+[BGCtrl 2.321]
+type = visible
+time = 787
+value = 0
+
+[BGCtrl 2.322]
+type = visible
+time = 788
+value = 1
+
+[BGCtrl 2.323]
+type = visible
+time = 789
+value = 0
+
+[BGCtrl 2.324]
+type = visible
+time = 790
+value = 1
+
+[BGCtrl 2.325]
+type = visible
+time = 791
+value = 0
+
+[BGCtrl 2.326]
+type = visible
+time = 797
+value = 1
+
+[BGCtrl 2.327]
+type = visible
+time = 798
+value = 0
+
+[BGCtrl 2.328]
+type = visible
+time = 806
+value = 1
+
+[BGCtrl 2.329]
+type = visible
+time = 807
+value = 0
+
+[BGCtrl 2.330]
+type = visible
+time = 813
+value = 1
+
+[BGCtrl 2.331]
+type = visible
+time = 814
+value = 0
+
+[BGCtrl 2.332]
+type = visible
+time = 815
+value = 1
+
+[BGCtrl 2.333]
+type = visible
+time = 816
+value = 0
+
+[BGCtrl 2.334]
+type = visible
+time = 821
+value = 1
+
+[BGCtrl 2.335]
+type = visible
+time = 822
+value = 0
+
+[BGCtrl 2.336]
+type = visible
+time = 823
+value = 1
+
+[BGCtrl 2.337]
+type = visible
+time = 824
+value = 0
+
+[BGCtrl 2.338]
+type = visible
+time = 825
+value = 1
+
+[BGCtrl 2.339]
+type = visible
+time = 826
+value = 0
+
+[BGCtrl 2.340]
+type = visible
+time = 832
+value = 1
+
+[BGCtrl 2.341]
+type = visible
+time = 833
+value = 0
+
+[BGCtrl 2.342]
+type = visible
+time = 841
+value = 1
+
+[BGCtrl 2.343]
+type = visible
+time = 842
+value = 0
+
+[BGCtrl 2.344]
+type = visible
+time = 848
+value = 1
+
+[BGCtrl 2.345]
+type = visible
+time = 849
+value = 0
+
+[BGCtrl 2.346]
+type = visible
+time = 850
+value = 1
+
+[BGCtrl 2.347]
+type = visible
+time = 851
+value = 0
+
+[BGCtrl 2.348]
+type = visible
+time = 856
+value = 1
+
+[BGCtrl 2.349]
+type = visible
+time = 857
+value = 0
+
+[BGCtrl 2.350]
+type = visible
+time = 858
+value = 1
+
+[BGCtrl 2.351]
+type = visible
+time = 859
+value = 0
+
+[BGCtrl 2.352]
+type = visible
+time = 860
+value = 1
+
+[BGCtrl 2.353]
+type = visible
+time = 861
+value = 0
+
+[BGCtrl 2.354]
+type = visible
+time = 867
+value = 1
+
+[BGCtrl 2.355]
+type = visible
+time = 868
+value = 0
+
+[BGCtrl 2.356]
+type = visible
+time = 874
+value = 1
+
+[BGCtrl 2.357]
+type = visible
+time = 875
+value = 0
+
+[BGCtrl 2.358]
+type = visible
+time = 878
+value = 1
+
+[BGCtrl 2.359]
+type = visible
+time = 879
+value = 0
+
+[BGCtrl 2.360]
+type = visible
+time = 882
+value = 1
+
+[BGCtrl 2.361]
+type = visible
+time = 883
+value = 0
+
+[BGCtrl 2.362]
+type = visible
+time = 886
+value = 1
+
+[BGCtrl 2.363]
+type = visible
+time = 887
+value = 0
+
+[BGCtrl 2.364]
+type = visible
+time = 888
+value = 1
+
+[BGCtrl 2.365]
+type = visible
+time = 889
+value = 0
+
+[BGCtrl 2.366]
+type = visible
+time = 890
+value = 1
+
+[BGCtrl 2.367]
+type = visible
+time = 891
+value = 0
+
+[BGCtrl 2.368]
+type = visible
+time = 896
+value = 1
+
+[BGCtrl 2.369]
+type = visible
+time = 897
+value = 0
+
+[BGCtrl 2.370]
+type = visible
+time = 903
+value = 1
+
+[BGCtrl 2.371]
+type = visible
+time = 904
+value = 0
+
+[BGCtrl 2.372]
+type = visible
+time = 905
+value = 1
+
+[BGCtrl 2.373]
+type = visible
+time = 906
+value = 0
+
+[BGCtrl 2.374]
+type = visible
+time = 909
+value = 1
+
+[BGCtrl 2.375]
+type = visible
+time = 910
+value = 0
+
+[BGCtrl 2.376]
+type = visible
+time = 911
+value = 1
+
+[BGCtrl 2.377]
+type = visible
+time = 912
+value = 0
+
+[BGCtrl 2.378]
+type = visible
+time = 913
+value = 1
+
+[BGCtrl 2.379]
+type = visible
+time = 914
+value = 0
+
+[BGCtrl 2.380]
+type = visible
+time = 915
+value = 1
+
+[BGCtrl 2.381]
+type = visible
+time = 916
+value = 0
+
+[BGCtrl 2.382]
+type = visible
+time = 917
+value = 1
+
+[BGCtrl 2.383]
+type = visible
+time = 918
+value = 0
+
+[BGCtrl 2.384]
+type = visible
+time = 924
+value = 1
+
+[BGCtrl 2.385]
+type = visible
+time = 925
+value = 0
+
+[BGCtrl 2.386]
+type = visible
+time = 931
+value = 1
+
+[BGCtrl 2.387]
+type = visible
+time = 932
+value = 0
+
+[BGCtrl 2.388]
+type = visible
+time = 940
+value = 1
+
+[BGCtrl 2.389]
+type = visible
+time = 941
+value = 0
+
+[BGCtrl 2.390]
+type = visible
+time = 947
+value = 1
+
+[BGCtrl 2.391]
+type = visible
+time = 948
+value = 0
+
+[BGCtrl 2.392]
+type = visible
+time = 949
+value = 1
+
+[BGCtrl 2.393]
+type = visible
+time = 950
+value = 0
+
+[BGCtrl 2.394]
+type = visible
+time = 955
+value = 1
+
+[BGCtrl 2.395]
+type = visible
+time = 956
+value = 0
+
+[BGCtrl 2.396]
+type = visible
+time = 957
+value = 1
+
+[BGCtrl 2.397]
+type = visible
+time = 958
+value = 0
+
+[BGCtrl 2.398]
+type = visible
+time = 959
+value = 1
+
+[BGCtrl 2.399]
+type = visible
+time = 960
+value = 0
+
+[BGCtrl 2.400]
+type = visible
+time = 966
+value = 1
+
+[BGCtrl 2.401]
+type = visible
+time = 967
+value = 0
+
+[BGCtrl 2.402]
+type = visible
+time = 975
+value = 1
+
+[BGCtrl 2.403]
+type = visible
+time = 976
+value = 0
+
+[BGCtrl 2.404]
+type = visible
+time = 982
+value = 1
+
+[BGCtrl 2.405]
+type = visible
+time = 983
+value = 0
+
+[BGCtrl 2.406]
+type = visible
+time = 984
+value = 1
+
+[BGCtrl 2.407]
+type = visible
+time = 985
+value = 0
+
+[BGCtrl 2.408]
+type = visible
+time = 990
+value = 1
+
+[BGCtrl 2.409]
+type = visible
+time = 991
+value = 0
+
+[BGCtrl 2.410]
+type = visible
+time = 992
+value = 1
+
+[BGCtrl 2.411]
+type = visible
+time = 993
+value = 0
+
+[BGCtrl 2.412]
+type = visible
+time = 994
+value = 1
+
+[BGCtrl 2.413]
+type = visible
+time = 995
+value = 0
+
+[BGCtrl 2.414]
+type = visible
+time = 1001
+value = 1
+
+[BGCtrl 2.415]
+type = visible
+time = 1002
+value = 0
+
+[BGCtrl 2.416]
+type = visible
+time = 1010
+value = 1
+
+[BGCtrl 2.417]
+type = visible
+time = 1011
+value = 0
+
+[BGCtrl 2.418]
+type = visible
+time = 1017
+value = 1
+
+[BGCtrl 2.419]
+type = visible
+time = 1018
+value = 0
+
+[BGCtrl 2.420]
+type = visible
+time = 1019
+value = 1
+
+[BGCtrl 2.421]
+type = visible
+time = 1020
+value = 0
+
+[BGCtrl 2.422]
+type = visible
+time = 1025
+value = 1
+
+[BGCtrl 2.423]
+type = visible
+time = 1026
+value = 0
+
+[BGCtrl 2.424]
+type = visible
+time = 1027
+value = 1
+
+[BGCtrl 2.425]
+type = visible
+time = 1028
+value = 0
+
+[BGCtrl 2.426]
+type = visible
+time = 1029
+value = 1
+
+[BGCtrl 2.427]
+type = visible
+time = 1030
+value = 0
+
+[BGCtrl 2.428]
+type = visible
+time = 1036
+value = 1
+
+[BGCtrl 2.429]
+type = visible
+time = 1037
+value = 0
+
+[BGCtrl 2.430]
+type = visible
+time = 1045
+value = 1
+
+[BGCtrl 2.431]
+type = visible
+time = 1046
+value = 0
+
+[BGCtrl 2.432]
+type = visible
+time = 1052
+value = 1
+
+[BGCtrl 2.433]
+type = visible
+time = 1053
+value = 0
+
+[BGCtrl 2.434]
+type = visible
+time = 1054
+value = 1
+
+[BGCtrl 2.435]
+type = visible
+time = 1055
+value = 0
+
+[BGCtrl 2.436]
+type = visible
+time = 1060
+value = 1
+
+[BGCtrl 2.437]
+type = visible
+time = 1061
+value = 0
+
+[BGCtrl 2.438]
+type = visible
+time = 1062
+value = 1
+
+[BGCtrl 2.439]
+type = visible
+time = 1063
+value = 0
+
+[BGCtrl 2.440]
+type = visible
+time = 1064
+value = 1
+
+[BGCtrl 2.441]
+type = visible
+time = 1065
+value = 0
+
+[BGCtrl 2.442]
+type = visible
+time = 1071
+value = 1
+
+[BGCtrl 2.443]
+type = visible
+time = 1072
+value = 0
+
+[BGCtrl 2.444]
+type = visible
+time = 1080
+value = 1
+
+[BGCtrl 2.445]
+type = visible
+time = 1081
+value = 0
+
+[BGCtrl 2.446]
+type = visible
+time = 1087
+value = 1
+
+[BGCtrl 2.447]
+type = visible
+time = 1088
+value = 0
+
+[BGCtrl 2.448]
+type = visible
+time = 1089
+value = 1
+
+[BGCtrl 2.449]
+type = visible
+time = 1090
+value = 0
+
+[BGCtrl 2.450]
+type = visible
+time = 1095
+value = 1
+
+[BGCtrl 2.451]
+type = visible
+time = 1096
+value = 0
+
+[BGCtrl 2.452]
+type = visible
+time = 1097
+value = 1
+
+[BGCtrl 2.453]
+type = visible
+time = 1098
+value = 0
+
+[BGCtrl 2.454]
+type = visible
+time = 1099
+value = 1
+
+[BGCtrl 2.455]
+type = visible
+time = 1100
+value = 0
+
+[BGCtrl 2.456]
+type = visible
+time = 1106
+value = 1
+
+[BGCtrl 2.457]
+type = visible
+time = 1107
+value = 0
+
+[BGCtrl 2.458]
+type = visible
+time = 1115
+value = 1
+
+[BGCtrl 2.459]
+type = visible
+time = 1116
+value = 0
+
+[BGCtrl 2.460]
+type = visible
+time = 1122
+value = 1
+
+[BGCtrl 2.461]
+type = visible
+time = 1123
+value = 0
+
+[BGCtrl 2.462]
+type = visible
+time = 1124
+value = 1
+
+[BGCtrl 2.463]
+type = visible
+time = 1125
+value = 0
+
+[BGCtrl 2.464]
+type = visible
+time = 1130
+value = 1
+
+[BGCtrl 2.465]
+type = visible
+time = 1131
+value = 0
+
+[BGCtrl 2.466]
+type = visible
+time = 1132
+value = 1
+
+[BGCtrl 2.467]
+type = visible
+time = 1133
+value = 0
+
+[BGCtrl 2.468]
+type = visible
+time = 1134
+value = 1
+
+[BGCtrl 2.469]
+type = visible
+time = 1135
+value = 0
+
+[BGCtrl 2.470]
+type = visible
+time = 1141
+value = 1
+
+[BGCtrl 2.471]
+type = visible
+time = 1142
+value = 0
+
+[BGCtrl 2.472]
+type = visible
+time = 1150
+value = 1
+
+[BGCtrl 2.473]
+type = visible
+time = 1151
+value = 0
+
+[BGCtrl 2.474]
+type = visible
+time = 1157
+value = 1
+
+[BGCtrl 2.475]
+type = visible
+time = 1158
+value = 0
+
+[BGCtrl 2.476]
+type = visible
+time = 1159
+value = 1
+
+[BGCtrl 2.477]
+type = visible
+time = 1160
+value = 0
+
+[BGCtrl 2.478]
+type = visible
+time = 1165
+value = 1
+
+[BGCtrl 2.479]
+type = visible
+time = 1166
+value = 0
+
+[BGCtrl 2.480]
+type = visible
+time = 1167
+value = 1
+
+[BGCtrl 2.481]
+type = visible
+time = 1168
+value = 0
+
+[BGCtrl 2.482]
+type = visible
+time = 1169
+value = 1
+
+[BGCtrl 2.483]
+type = visible
+time = 1170
+value = 0
+
+[BGCtrl 2.484]
+type = visible
+time = 1176
+value = 1
+
+[BGCtrl 2.485]
+type = visible
+time = 1177
+value = 0
+
+[BGCtrl 2.486]
+type = visible
+time = 1185
+value = 1
+
+[BGCtrl 2.487]
+type = visible
+time = 1186
+value = 0
+
+[BGCtrl 2.488]
+type = visible
+time = 1192
+value = 1
+
+[BGCtrl 2.489]
+type = visible
+time = 1193
+value = 0
+
+[BGCtrl 2.490]
+type = visible
+time = 1194
+value = 1
+
+[BGCtrl 2.491]
+type = visible
+time = 1195
+value = 0
+
+[BGCtrl 2.492]
+type = visible
+time = 1200
+value = 1
+
+[BGCtrl 2.493]
+type = visible
+time = 1201
+value = 0
+
+[BGCtrl 2.494]
+type = visible
+time = 1202
+value = 1
+
+[BGCtrl 2.495]
+type = visible
+time = 1203
+value = 0
+
+[BGCtrl 2.496]
+type = visible
+time = 1204
+value = 1
+
+[BGCtrl 2.497]
+type = visible
+time = 1205
+value = 0
+
+[BGCtrl 2.498]
+type = visible
+time = 1211
+value = 1
+
+[BGCtrl 2.499]
+type = visible
+time = 1212
+value = 0
+
+[BGCtrl 2.500]
+type = visible
+time = 1218
+value = 1
+
+[BGCtrl 2.501]
+type = visible
+time = 1219
+value = 0
+
+[BGCtrl 2.502]
+type = visible
+time = 1222
+value = 1
+
+[BGCtrl 2.503]
+type = visible
+time = 1223
+value = 0
+
+[BGCtrl 2.504]
+type = visible
+time = 1226
+value = 1
+
+[BGCtrl 2.505]
+type = visible
+time = 1227
+value = 0
+
+[BGCtrl 2.506]
+type = visible
+time = 1230
+value = 1
+
+[BGCtrl 2.507]
+type = visible
+time = 1231
+value = 0
+
+[BGCtrl 2.508]
+type = visible
+time = 1232
+value = 1
+
+[BGCtrl 2.509]
+type = visible
+time = 1233
+value = 0
+
+[BGCtrl 2.510]
+type = visible
+time = 1234
+value = 1
+
+[BGCtrl 2.511]
+type = visible
+time = 1235
+value = 0
+
+[BGCtrl 2.512]
+type = visible
+time = 1240
+value = 1
+
+[BGCtrl 2.513]
+type = visible
+time = 1241
+value = 0
+
+[BGCtrl 2.514]
+type = visible
+time = 1247
+value = 1
+
+[BGCtrl 2.515]
+type = visible
+time = 1248
+value = 0
+
+[BGCtrl 2.516]
+type = visible
+time = 1249
+value = 1
+
+[BGCtrl 2.517]
+type = visible
+time = 1250
+value = 0
+
+[BGCtrl 2.518]
+type = visible
+time = 1253
+value = 1
+
+[BGCtrl 2.519]
+type = visible
+time = 1254
+value = 0
+
+[BGCtrl 2.520]
+type = visible
+time = 1255
+value = 1
+
+[BGCtrl 2.521]
+type = visible
+time = 1256
+value = 0
+
+[BGCtrl 2.522]
+type = visible
+time = 1257
+value = 1
+
+[BGCtrl 2.523]
+type = visible
+time = 1258
+value = 0
+
+[BGCtrl 2.524]
+type = visible
+time = 1259
+value = 1
+
+[BGCtrl 2.525]
+type = visible
+time = 1260
+value = 0
+
+[BGCtrl 2.526]
+type = visible
+time = 1261
+value = 1
+
+[BGCtrl 2.527]
+type = visible
+time = 1262
+value = 0
+
+[BGCtrl 2.528]
+type = visible
+time = 1268
+value = 1
+
+[BGCtrl 2.529]
+type = visible
+time = 1269
+value = 0
+
+[BGCtrl 2.530]
+type = visible
+time = 1275
+value = 1
+
+[BGCtrl 2.531]
+type = visible
+time = 1276
+value = 0
+
+[BGCtrl 2.532]
+type = visible
+time = 1284
+value = 1
+
+[BGCtrl 2.533]
+type = visible
+time = 1285
+value = 0
+
+[BGCtrl 2.534]
+type = visible
+time = 1291
+value = 1
+
+[BGCtrl 2.535]
+type = visible
+time = 1292
+value = 0
+
+[BGCtrl 2.536]
+type = visible
+time = 1293
+value = 1
+
+[BGCtrl 2.537]
+type = visible
+time = 1294
+value = 0
+
+[BGCtrl 2.538]
+type = visible
+time = 1299
+value = 1
+
+[BGCtrl 2.539]
+type = visible
+time = 1300
+value = 0
+
+[BGCtrl 2.540]
+type = visible
+time = 1301
+value = 1
+
+[BGCtrl 2.541]
+type = visible
+time = 1302
+value = 0
+
+[BGCtrl 2.542]
+type = visible
+time = 1303
+value = 1
+
+[BGCtrl 2.543]
+type = visible
+time = 1304
+value = 0
+
+[BGCtrl 2.544]
+type = visible
+time = 1310
+value = 1
+
+[BGCtrl 2.545]
+type = visible
+time = 1311
+value = 0
+
+[BGCtrl 2.546]
+type = visible
+time = 1319
+value = 1
+
+[BGCtrl 2.547]
+type = visible
+time = 1320
+value = 0
+
+[BGCtrl 2.548]
+type = visible
+time = 1326
+value = 1
+
+[BGCtrl 2.549]
+type = visible
+time = 1327
+value = 0
+
+[BGCtrl 2.550]
+type = visible
+time = 1328
+value = 1
+
+[BGCtrl 2.551]
+type = visible
+time = 1329
+value = 0
+
+[BGCtrl 2.552]
+type = visible
+time = 1334
+value = 1
+
+[BGCtrl 2.553]
+type = visible
+time = 1335
+value = 0
+
+[BGCtrl 2.554]
+type = visible
+time = 1336
+value = 1
+
+[BGCtrl 2.555]
+type = visible
+time = 1337
+value = 0
+
+[BGCtrl 2.556]
+type = visible
+time = 1338
+value = 1
+
+[BGCtrl 2.557]
+type = visible
+time = 1339
+value = 0
+
+[BGCtrl 2.558]
+type = visible
+time = 1345
+value = 1
+
+[BGCtrl 2.559]
+type = visible
+time = 1346
+value = 0
+
+[BGCtrl 2.560]
+type = visible
+time = 1354
+value = 1
+
+[BGCtrl 2.561]
+type = visible
+time = 1355
+value = 0
+
+[BGCtrl 2.562]
+type = visible
+time = 1361
+value = 1
+
+[BGCtrl 2.563]
+type = visible
+time = 1362
+value = 0
+
+[BGCtrl 2.564]
+type = visible
+time = 1363
+value = 1
+
+[BGCtrl 2.565]
+type = visible
+time = 1364
+value = 0
+
+[BGCtrl 2.566]
+type = visible
+time = 1369
+value = 1
+
+[BGCtrl 2.567]
+type = visible
+time = 1370
+value = 0
+
+[BGCtrl 2.568]
+type = visible
+time = 1371
+value = 1
+
+[BGCtrl 2.569]
+type = visible
+time = 1372
+value = 0
+
+[BGCtrl 2.570]
+type = visible
+time = 1373
+value = 1
+
+[BGCtrl 2.571]
+type = visible
+time = 1374
+value = 0
+
+[BGCtrl 2.572]
+type = visible
+time = 1380
+value = 1
+
+[BGCtrl 2.573]
+type = visible
+time = 1381
+value = 0
+
+[BGCtrl 2.574]
+type = visible
+time = 1389
+value = 1
+
+[BGCtrl 2.575]
+type = visible
+time = 1390
+value = 0
+
+[BGCtrl 2.576]
+type = visible
+time = 1396
+value = 1
+
+[BGCtrl 2.577]
+type = visible
+time = 1397
+value = 0
+
+[BGCtrl 2.578]
+type = visible
+time = 1398
+value = 1
+
+[BGCtrl 2.579]
+type = visible
+time = 1399
+value = 0
+
+[BGCtrl 2.580]
+type = visible
+time = 1404
+value = 1
+
+[BGCtrl 2.581]
+type = visible
+time = 1405
+value = 0
+
+[BGCtrl 2.582]
+type = visible
+time = 1406
+value = 1
+
+[BGCtrl 2.583]
+type = visible
+time = 1407
+value = 0
+
+[BGCtrl 2.584]
+type = visible
+time = 1408
+value = 1
+
+[BGCtrl 2.585]
+type = visible
+time = 1409
+value = 0
+
+[BGCtrl 2.586]
+type = visible
+time = 1415
+value = 1
+
+[BGCtrl 2.587]
+type = visible
+time = 1416
+value = 0
+
+[BGCtrl 2.588]
+type = visible
+time = 1424
+value = 1
+
+[BGCtrl 2.589]
+type = visible
+time = 1425
+value = 0
+
+[BGCtrl 2.590]
+type = visible
+time = 1431
+value = 1
+
+[BGCtrl 2.591]
+type = visible
+time = 1432
+value = 0
+
+[BGCtrl 2.592]
+type = visible
+time = 1433
+value = 1
+
+[BGCtrl 2.593]
+type = visible
+time = 1434
+value = 0
+
+[BGCtrl 2.594]
+type = visible
+time = 1439
+value = 1
+
+[BGCtrl 2.595]
+type = visible
+time = 1440
+value = 0
+
+[BGCtrl 2.596]
+type = visible
+time = 1441
+value = 1
+
+[BGCtrl 2.597]
+type = visible
+time = 1442
+value = 0
+
+[BGCtrl 2.598]
+type = visible
+time = 1443
+value = 1
+
+[BGCtrl 2.599]
+type = visible
+time = 1444
+value = 0
+
+[BGCtrl 2.600]
+type = visible
+time = 1450
+value = 1
+
+[BGCtrl 2.601]
+type = visible
+time = 1451
+value = 0
+
+[BGCtrl 2.602]
+type = visible
+time = 1459
+value = 1
+
+[BGCtrl 2.603]
+type = visible
+time = 1460
+value = 0
+
+[BGCtrl 2.604]
+type = visible
+time = 1466
+value = 1
+
+[BGCtrl 2.605]
+type = visible
+time = 1467
+value = 0
+
+[BGCtrl 2.606]
+type = visible
+time = 1468
+value = 1
+
+[BGCtrl 2.607]
+type = visible
+time = 1469
+value = 0
+
+[BGCtrl 2.608]
+type = visible
+time = 1474
+value = 1
+
+[BGCtrl 2.609]
+type = visible
+time = 1475
+value = 0
+
+[BGCtrl 2.610]
+type = visible
+time = 1476
+value = 1
+
+[BGCtrl 2.611]
+type = visible
+time = 1477
+value = 0
+
+[BGCtrl 2.612]
+type = visible
+time = 1478
+value = 1
+
+[BGCtrl 2.613]
+type = visible
+time = 1479
+value = 0
+
+[BGCtrl 2.614]
+type = visible
+time = 1485
+value = 1
+
+[BGCtrl 2.615]
+type = visible
+time = 1486
+value = 0
+
+[BGCtrl 2.616]
+type = visible
+time = 1494
+value = 1
+
+[BGCtrl 2.617]
+type = visible
+time = 1495
+value = 0
+
+[BGCtrl 2.618]
+type = visible
+time = 1501
+value = 1
+
+[BGCtrl 2.619]
+type = visible
+time = 1502
+value = 0
+
+[BGCtrl 2.620]
+type = visible
+time = 1503
+value = 1
+
+[BGCtrl 2.621]
+type = visible
+time = 1504
+value = 0
+
+[BGCtrl 2.622]
+type = visible
+time = 1509
+value = 1
+
+[BGCtrl 2.623]
+type = visible
+time = 1510
+value = 0
+
+[BGCtrl 2.624]
+type = visible
+time = 1511
+value = 1
+
+[BGCtrl 2.625]
+type = visible
+time = 1512
+value = 0
+
+[BGCtrl 2.626]
+type = visible
+time = 1513
+value = 1
+
+[BGCtrl 2.627]
+type = visible
+time = 1514
+value = 0
+
+[BGCtrl 2.628]
+type = visible
+time = 1520
+value = 1
+
+[BGCtrl 2.629]
+type = visible
+time = 1521
+value = 0
+
+[BGCtrl 2.630]
+type = visible
+time = 1529
+value = 1
+
+[BGCtrl 2.631]
+type = visible
+time = 1530
+value = 0
+
+[BGCtrl 2.632]
+type = visible
+time = 1536
+value = 1
+
+[BGCtrl 2.633]
+type = visible
+time = 1537
+value = 0
+
+[BGCtrl 2.634]
+type = visible
+time = 1538
+value = 1
+
+[BGCtrl 2.635]
+type = visible
+time = 1539
+value = 0
+
+[BGCtrl 2.636]
+type = visible
+time = 1544
+value = 1
+
+[BGCtrl 2.637]
+type = visible
+time = 1545
+value = 0
+
+[BGCtrl 2.638]
+type = visible
+time = 1546
+value = 1
+
+[BGCtrl 2.639]
+type = visible
+time = 1547
+value = 0
+
+[BGCtrl 2.640]
+type = visible
+time = 1548
+value = 1
+
+[BGCtrl 2.641]
+type = visible
+time = 1549
+value = 0
+
+[BGCtrl 2.642]
+type = visible
+time = 1555
+value = 1
+
+[BGCtrl 2.643]
+type = visible
+time = 1556
+value = 0
+
+[BGCtrl 2.644]
+type = visible
+time = 1564
+value = 1
+
+[BGCtrl 2.645]
+type = visible
+time = 1565
+value = 0
+
+[BGCtrl 2.646]
+type = visible
+time = 1571
+value = 1
+
+[BGCtrl 2.647]
+type = visible
+time = 1572
+value = 0
+
+[BGCtrl 2.648]
+type = visible
+time = 1573
+value = 1
+
+[BGCtrl 2.649]
+type = visible
+time = 1574
+value = 0
+
+[BGCtrl 2.650]
+type = visible
+time = 1579
+value = 1
+
+[BGCtrl 2.651]
+type = visible
+time = 1580
+value = 0
+
+[BGCtrl 2.652]
+type = visible
+time = 1581
+value = 1
+
+[BGCtrl 2.653]
+type = visible
+time = 1582
+value = 0
+
+[BGCtrl 2.654]
+type = visible
+time = 1583
+value = 1
+
+[BGCtrl 2.655]
+type = visible
+time = 1584
+value = 0
+
+[BGCtrl 2.656]
+type = visible
+time = 1590
+value = 1
+
+[BGCtrl 2.657]
+type = visible
+time = 1591
+value = 0
+
+[BGCtrl 2.658]
+type = visible
+time = 1599
+value = 1
+
+[BGCtrl 2.659]
+type = visible
+time = 1600
+value = 0
+
+[BGCtrl 2.660]
+type = visible
+time = 1606
+value = 1
+
+[BGCtrl 2.661]
+type = visible
+time = 1607
+value = 0
+
+[BGCtrl 2.662]
+type = visible
+time = 1608
+value = 1
+
+[BGCtrl 2.663]
+type = visible
+time = 1609
+value = 0
+
+[BGCtrl 2.664]
+type = visible
+time = 1614
+value = 1
+
+[BGCtrl 2.665]
+type = visible
+time = 1615
+value = 0
+
+[BGCtrl 2.666]
+type = visible
+time = 1616
+value = 1
+
+[BGCtrl 2.667]
+type = visible
+time = 1617
+value = 0
+
+[BGCtrl 2.668]
+type = visible
+time = 1618
+value = 1
+
+[BGCtrl 2.669]
+type = visible
+time = 1619
+value = 0
+
+[BGCtrl 2.670]
+type = visible
+time = 1625
+value = 1
+
+[BGCtrl 2.671]
+type = visible
+time = 1626
+value = 0
+
+[BGCtrl 2.672]
+type = visible
+time = 1634
+value = 1
+
+[BGCtrl 2.673]
+type = visible
+time = 1635
+value = 0
+
+[BGCtrl 2.674]
+type = visible
+time = 1641
+value = 1
+
+[BGCtrl 2.675]
+type = visible
+time = 1642
+value = 0
+
+[BGCtrl 2.676]
+type = visible
+time = 1643
+value = 1
+
+[BGCtrl 2.677]
+type = visible
+time = 1644
+value = 0
+
+[BGCtrl 2.678]
+type = visible
+time = 1649
+value = 1
+
+[BGCtrl 2.679]
+type = visible
+time = 1650
+value = 0
+
+[BGCtrl 2.680]
+type = visible
+time = 1651
+value = 1
+
+[BGCtrl 2.681]
+type = visible
+time = 1652
+value = 0
+
+[BGCtrl 2.682]
+type = visible
+time = 1653
+value = 1
+
+[BGCtrl 2.683]
+type = visible
+time = 1654
+value = 0
+
+[BGCtrl 2.684]
+type = visible
+time = 1660
+value = 1
+
+[BGCtrl 2.685]
+type = visible
+time = 1661
+value = 0
+
+[BGCtrl 2.686]
+type = visible
+time = 1669
+value = 1
+
+[BGCtrl 2.687]
+type = visible
+time = 1670
+value = 0
+
+[BGCtrl 2.688]
+type = visible
+time = 1676
+value = 1
+
+[BGCtrl 2.689]
+type = visible
+time = 1677
+value = 0
+
+[BGCtrl 2.690]
+type = visible
+time = 1678
+value = 1
+
+[BGCtrl 2.691]
+type = visible
+time = 1679
+value = 0
+
+[BGCtrl 2.692]
+type = visible
+time = 1684
+value = 1
+
+[BGCtrl 2.693]
+type = visible
+time = 1685
+value = 0
+
+[BGCtrl 2.694]
+type = visible
+time = 1686
+value = 1
+
+[BGCtrl 2.695]
+type = visible
+time = 1687
+value = 0
+
+[BGCtrl 2.696]
+type = visible
+time = 1688
+value = 1
+
+[BGCtrl 2.697]
+type = visible
+time = 1689
+value = 0
+
+[BGCtrl 2.698]
+type = visible
+time = 1695
+value = 1
+
+[BGCtrl 2.699]
+type = visible
+time = 1696
+value = 0
+
+[BGCtrl 2.700]
+type = visible
+time = 1702
+value = 1
+
+[BGCtrl 2.701]
+type = visible
+time = 1703
+value = 0
+
+[BGCtrl 2.702]
+type = visible
+time = 1706
+value = 1
+
+[BGCtrl 2.703]
+type = visible
+time = 1707
+value = 0
+
+[BGCtrl 2.704]
+type = visible
+time = 1710
+value = 1
+
+[BGCtrl 2.705]
+type = visible
+time = 1711
+value = 0
+
+[BGCtrl 2.706]
+type = visible
+time = 1714
+value = 1
+
+[BGCtrl 2.707]
+type = visible
+time = 1715
+value = 0
+
+[BGCtrl 2.708]
+type = visible
+time = 1716
+value = 1
+
+[BGCtrl 2.709]
+type = visible
+time = 1717
+value = 0
+
+[BGCtrl 2.710]
+type = visible
+time = 1718
+value = 1
+
+[BGCtrl 2.711]
+type = visible
+time = 1719
+value = 0
+
+[BGCtrl 2.712]
+type = visible
+time = 1724
+value = 1
+
+[BGCtrl 2.713]
+type = visible
+time = 1725
+value = 0
+
+[BGCtrl 2.714]
+type = visible
+time = 1731
+value = 1
+
+[BGCtrl 2.715]
+type = visible
+time = 1732
+value = 0
+
+[BGCtrl 2.716]
+type = visible
+time = 1733
+value = 1
+
+[BGCtrl 2.717]
+type = visible
+time = 1734
+value = 0
+
+[BGCtrl 2.718]
+type = visible
+time = 1737
+value = 1
+
+[BGCtrl 2.719]
+type = visible
+time = 1738
+value = 0
+
+[BGCtrl 2.720]
+type = visible
+time = 1739
+value = 1
+
+[BGCtrl 2.721]
+type = visible
+time = 1740
+value = 0
+
+[BGCtrl 2.722]
+type = visible
+time = 1741
+value = 1
+
+[BGCtrl 2.723]
+type = visible
+time = 1742
+value = 0
+
+[BGCtrl 2.724]
+type = visible
+time = 1743
+value = 1
+
+[BGCtrl 2.725]
+type = visible
+time = 1744
+value = 0
+
+[BGCtrl 2.726]
+type = visible
+time = 1745
+value = 1
+
+[BGCtrl 2.727]
+type = visible
+time = 1746
+value = 0
+
+[BGCtrl 2.728]
+type = visible
+time = 1752
+value = 1
+
+[BGCtrl 2.729]
+type = visible
+time = 1753
+value = 0
+
+[BGCtrl 2.730]
+type = visible
+time = 1759
+value = 1
+
+[BGCtrl 2.731]
+type = visible
+time = 1760
+value = 0
+
+[BGCtrl 2.732]
+type = visible
+time = 1768
+value = 1
+
+[BGCtrl 2.733]
+type = visible
+time = 1769
+value = 0
+
+[BGCtrl 2.734]
+type = visible
+time = 1775
+value = 1
+
+[BGCtrl 2.735]
+type = visible
+time = 1776
+value = 0
+
+[BGCtrl 2.736]
+type = visible
+time = 1777
+value = 1
+
+[BGCtrl 2.737]
+type = visible
+time = 1778
+value = 0
+
+[BGCtrl 2.738]
+type = visible
+time = 1783
+value = 1
+
+[BGCtrl 2.739]
+type = visible
+time = 1784
+value = 0
+
+[BGCtrl 2.740]
+type = visible
+time = 1785
+value = 1
+
+[BGCtrl 2.741]
+type = visible
+time = 1786
+value = 0
+
+[BGCtrl 2.742]
+type = visible
+time = 1787
+value = 1
+
+[BGCtrl 2.743]
+type = visible
+time = 1788
+value = 0
+
+[BGCtrl 2.744]
+type = visible
+time = 1794
+value = 1
+
+[BGCtrl 2.745]
+type = visible
+time = 1795
+value = 0
+
+[BGCtrl 2.746]
+type = visible
+time = 1803
+value = 1
+
+[BGCtrl 2.747]
+type = visible
+time = 1804
+value = 0
+
+[BGCtrl 2.748]
+type = visible
+time = 1810
+value = 1
+
+[BGCtrl 2.749]
+type = visible
+time = 1811
+value = 0
+
+[BGCtrl 2.750]
+type = visible
+time = 1812
+value = 1
+
+[BGCtrl 2.751]
+type = visible
+time = 1813
+value = 0
+
+[BGCtrl 2.752]
+type = visible
+time = 1818
+value = 1
+
+[BGCtrl 2.753]
+type = visible
+time = 1819
+value = 0
+
+[BGCtrl 2.754]
+type = visible
+time = 1820
+value = 1
+
+[BGCtrl 2.755]
+type = visible
+time = 1821
+value = 0
+
+[BGCtrl 2.756]
+type = visible
+time = 1822
+value = 1
+
+[BGCtrl 2.757]
+type = visible
+time = 1823
+value = 0
+
+[BGCtrl 2.758]
+type = visible
+time = 1829
+value = 1
+
+[BGCtrl 2.759]
+type = visible
+time = 1830
+value = 0
+
+[BGCtrl 2.760]
+type = visible
+time = 1838
+value = 1
+
+[BGCtrl 2.761]
+type = visible
+time = 1839
+value = 0
+
+[BGCtrl 2.762]
+type = visible
+time = 1845
+value = 1
+
+[BGCtrl 2.763]
+type = visible
+time = 1846
+value = 0
+
+[BGCtrl 2.764]
+type = visible
+time = 1847
+value = 1
+
+[BGCtrl 2.765]
+type = visible
+time = 1848
+value = 0
+
+[BGCtrl 2.766]
+type = visible
+time = 1853
+value = 1
+
+[BGCtrl 2.767]
+type = visible
+time = 1854
+value = 0
+
+[BGCtrl 2.768]
+type = visible
+time = 1855
+value = 1
+
+[BGCtrl 2.769]
+type = visible
+time = 1856
+value = 0
+
+[BGCtrl 2.770]
+type = visible
+time = 1857
+value = 1
+
+[BGCtrl 2.771]
+type = visible
+time = 1858
+value = 0
+
+[BGCtrl 2.772]
+type = visible
+time = 1864
+value = 1
+
+[BGCtrl 2.773]
+type = visible
+time = 1865
+value = 0
+
+[BGCtrl 2.774]
+type = visible
+time = 1873
+value = 1
+
+[BGCtrl 2.775]
+type = visible
+time = 1874
+value = 0
+
+[BGCtrl 2.776]
+type = visible
+time = 1880
+value = 1
+
+[BGCtrl 2.777]
+type = visible
+time = 1881
+value = 0
+
+[BGCtrl 2.778]
+type = visible
+time = 1882
+value = 1
+
+[BGCtrl 2.779]
+type = visible
+time = 1883
+value = 0
+
+[BGCtrl 2.780]
+type = visible
+time = 1888
+value = 1
+
+[BGCtrl 2.781]
+type = visible
+time = 1889
+value = 0
+
+[BGCtrl 2.782]
+type = visible
+time = 1890
+value = 1
+
+[BGCtrl 2.783]
+type = visible
+time = 1891
+value = 0
+
+[BGCtrl 2.784]
+type = visible
+time = 1892
+value = 1
+
+[BGCtrl 2.785]
+type = visible
+time = 1893
+value = 0
+
+[BGCtrl 2.786]
+type = visible
+time = 1899
+value = 1
+
+[BGCtrl 2.787]
+type = visible
+time = 1900
+value = 0
+
+[BGCtrl 2.788]
+type = visible
+time = 1908
+value = 1
+
+[BGCtrl 2.789]
+type = visible
+time = 1909
+value = 0
+
+[BGCtrl 2.790]
+type = visible
+time = 1915
+value = 1
+
+[BGCtrl 2.791]
+type = visible
+time = 1916
+value = 0
+
+[BGCtrl 2.792]
+type = visible
+time = 1917
+value = 1
+
+[BGCtrl 2.793]
+type = visible
+time = 1918
+value = 0
+
+[BGCtrl 2.794]
+type = visible
+time = 1923
+value = 1
+
+[BGCtrl 2.795]
+type = visible
+time = 1924
+value = 0
+
+[BGCtrl 2.796]
+type = visible
+time = 1925
+value = 1
+
+[BGCtrl 2.797]
+type = visible
+time = 1926
+value = 0
+
+[BGCtrl 2.798]
+type = visible
+time = 1927
+value = 1
+
+[BGCtrl 2.799]
+type = visible
+time = 1928
+value = 0
+
+[BGCtrl 2.800]
+type = visible
+time = 1934
+value = 1
+
+[BGCtrl 2.801]
+type = visible
+time = 1935
+value = 0
+
+[BGCtrl 2.802]
+type = visible
+time = 1943
+value = 1
+
+[BGCtrl 2.803]
+type = visible
+time = 1944
+value = 0
+
+[BGCtrl 2.804]
+type = visible
+time = 1950
+value = 1
+
+[BGCtrl 2.805]
+type = visible
+time = 1951
+value = 0
+
+[BGCtrl 2.806]
+type = visible
+time = 1952
+value = 1
+
+[BGCtrl 2.807]
+type = visible
+time = 1953
+value = 0
+
+[BGCtrl 2.808]
+type = visible
+time = 1958
+value = 1
+
+[BGCtrl 2.809]
+type = visible
+time = 1959
+value = 0
+
+[BGCtrl 2.810]
+type = visible
+time = 1960
+value = 1
+
+[BGCtrl 2.811]
+type = visible
+time = 1961
+value = 0
+
+[BGCtrl 2.812]
+type = visible
+time = 1962
+value = 1
+
+[BGCtrl 2.813]
+type = visible
+time = 1963
+value = 0
+
+[BGCtrl 2.814]
+type = visible
+time = 1969
+value = 1
+
+[BGCtrl 2.815]
+type = visible
+time = 1970
+value = 0
+
+[BGCtrl 2.816]
+type = visible
+time = 1978
+value = 1
+
+[BGCtrl 2.817]
+type = visible
+time = 1979
+value = 0
+
+[BGCtrl 2.818]
+type = visible
+time = 1985
+value = 1
+
+[BGCtrl 2.819]
+type = visible
+time = 1986
+value = 0
+
+[BGCtrl 2.820]
+type = visible
+time = 1987
+value = 1
+
+[BGCtrl 2.821]
+type = visible
+time = 1988
+value = 0
+
+[BGCtrl 2.822]
+type = visible
+time = 1993
+value = 1
+
+[BGCtrl 2.823]
+type = visible
+time = 1994
+value = 0
+
+[BGCtrl 2.824]
+type = visible
+time = 1995
+value = 1
+
+[BGCtrl 2.825]
+type = visible
+time = 1996
+value = 0
+
+[BGCtrl 2.826]
+type = visible
+time = 1997
+value = 1
+
+[BGCtrl 2.827]
+type = visible
+time = 1998
+value = 0
+
+[BGCtrl 2.828]
+type = visible
+time = 2004
+value = 1
+
+[BGCtrl 2.829]
+type = visible
+time = 2005
+value = 0
+
+[BGCtrl 2.830]
+type = visible
+time = 2013
+value = 1
+
+[BGCtrl 2.831]
+type = visible
+time = 2014
+value = 0
+
+[BGCtrl 2.832]
+type = visible
+time = 2020
+value = 1
+
+[BGCtrl 2.833]
+type = visible
+time = 2021
+value = 0
+
+[BGCtrl 2.834]
+type = visible
+time = 2022
+value = 1
+
+[BGCtrl 2.835]
+type = visible
+time = 2023
+value = 0
+
+[BGCtrl 2.836]
+type = visible
+time = 2028
+value = 1
+
+[BGCtrl 2.837]
+type = visible
+time = 2029
+value = 0
+
+[BGCtrl 2.838]
+type = visible
+time = 2030
+value = 1
+
+[BGCtrl 2.839]
+type = visible
+time = 2031
+value = 0
+
+[BGCtrl 2.840]
+type = visible
+time = 2032
+value = 1
+
+[BGCtrl 2.841]
+type = visible
+time = 2033
+value = 0
+
+[BGCtrl 2.842]
+type = visible
+time = 2039
+value = 1
+
+[BGCtrl 2.843]
+type = visible
+time = 2040
+value = 0
+
+[BGCtrl 2.844]
+type = visible
+time = 2048
+value = 1
+
+[BGCtrl 2.845]
+type = visible
+time = 2049
+value = 0
+
+[BGCtrl 2.846]
+type = visible
+time = 2055
+value = 1
+
+[BGCtrl 2.847]
+type = visible
+time = 2056
+value = 0
+
+[BGCtrl 2.848]
+type = visible
+time = 2057
+value = 1
+
+[BGCtrl 2.849]
+type = visible
+time = 2058
+value = 0
+
+[BGCtrl 2.850]
+type = visible
+time = 2063
+value = 1
+
+[BGCtrl 2.851]
+type = visible
+time = 2064
+value = 0
+
+[BGCtrl 2.852]
+type = visible
+time = 2065
+value = 1
+
+[BGCtrl 2.853]
+type = visible
+time = 2066
+value = 0
+
+[BGCtrl 2.854]
+type = visible
+time = 2067
+value = 1
+
+[BGCtrl 2.855]
+type = visible
+time = 2068
+value = 0
+
+[BGCtrl 2.856]
+type = visible
+time = 2074
+value = 1
+
+[BGCtrl 2.857]
+type = visible
+time = 2075
+value = 0
+
+[BGCtrl 2.858]
+type = visible
+time = 2083
+value = 1
+
+[BGCtrl 2.859]
+type = visible
+time = 2084
+value = 0
+
+[BGCtrl 2.860]
+type = visible
+time = 2090
+value = 1
+
+[BGCtrl 2.861]
+type = visible
+time = 2091
+value = 0
+
+[BGCtrl 2.862]
+type = visible
+time = 2092
+value = 1
+
+[BGCtrl 2.863]
+type = visible
+time = 2093
+value = 0
+
+[BGCtrl 2.864]
+type = visible
+time = 2098
+value = 1
+
+[BGCtrl 2.865]
+type = visible
+time = 2099
+value = 0
+
+[BGCtrl 2.866]
+type = visible
+time = 2100
+value = 1
+
+[BGCtrl 2.867]
+type = visible
+time = 2101
+value = 0
+
+[BGCtrl 2.868]
+type = visible
+time = 2102
+value = 1
+
+[BGCtrl 2.869]
+type = visible
+time = 2103
+value = 0
+
+[BGCtrl 2.870]
+type = visible
+time = 2109
+value = 1
+
+[BGCtrl 2.871]
+type = visible
+time = 2110
+value = 0
+
+[BGCtrl 2.872]
+type = visible
+time = 2118
+value = 1
+
+[BGCtrl 2.873]
+type = visible
+time = 2119
+value = 0
+
+[BGCtrl 2.874]
+type = visible
+time = 2125
+value = 1
+
+[BGCtrl 2.875]
+type = visible
+time = 2126
+value = 0
+
+[BGCtrl 2.876]
+type = visible
+time = 2127
+value = 1
+
+[BGCtrl 2.877]
+type = visible
+time = 2128
+value = 0
+
+[BGCtrl 2.878]
+type = visible
+time = 2133
+value = 1
+
+[BGCtrl 2.879]
+type = visible
+time = 2134
+value = 0
+
+[BGCtrl 2.880]
+type = visible
+time = 2135
+value = 1
+
+[BGCtrl 2.881]
+type = visible
+time = 2136
+value = 0
+
+[BGCtrl 2.882]
+type = visible
+time = 2137
+value = 1
+
+[BGCtrl 2.883]
+type = visible
+time = 2138
+value = 0
+
+[BGCtrl 2.884]
+type = visible
+time = 2144
+value = 1
+
+[BGCtrl 2.885]
+type = visible
+time = 2145
+value = 0
+
+[BGCtrl 2.886]
+type = visible
+time = 2153
+value = 1
+
+[BGCtrl 2.887]
+type = visible
+time = 2154
+value = 0
+
+[BGCtrl 2.888]
+type = visible
+time = 2160
+value = 1
+
+[BGCtrl 2.889]
+type = visible
+time = 2161
+value = 0
+
+[BGCtrl 2.890]
+type = visible
+time = 2162
+value = 1
+
+[BGCtrl 2.891]
+type = visible
+time = 2163
+value = 0
+
+[BGCtrl 2.892]
+type = visible
+time = 2168
+value = 1
+
+[BGCtrl 2.893]
+type = visible
+time = 2169
+value = 0
+
+[BGCtrl 2.894]
+type = visible
+time = 2170
+value = 1
+
+[BGCtrl 2.895]
+type = visible
+time = 2171
+value = 0
+
+[BGCtrl 2.896]
+type = visible
+time = 2172
+value = 1
+
+[BGCtrl 2.897]
+type = visible
+time = 2173
+value = 0
+
+[BGCtrl 2.898]
+type = visible
+time = 2179
+value = 1
+
+[BGCtrl 2.899]
+type = visible
+time = 2180
+value = 0
+
+[BGCtrl 2.900]
+type = visible
+time = 2188
+value = 1
+
+[BGCtrl 2.901]
+type = visible
+time = 2189
+value = 0
+
+[BGCtrl 2.902]
+type = visible
+time = 2195
+value = 1
+
+[BGCtrl 2.903]
+type = visible
+time = 2196
+value = 0
+
+[BGCtrl 2.904]
+type = visible
+time = 2197
+value = 1
+
+[BGCtrl 2.905]
+type = visible
+time = 2198
+value = 0
+
+[BGCtrl 2.906]
+type = visible
+time = 2203
+value = 1
+
+[BGCtrl 2.907]
+type = visible
+time = 2204
+value = 0
+
+[BGCtrl 2.908]
+type = visible
+time = 2205
+value = 1
+
+[BGCtrl 2.909]
+type = visible
+time = 2206
+value = 0
+
+[BGCtrl 2.910]
+type = visible
+time = 2207
+value = 1
+
+[BGCtrl 2.911]
+type = visible
+time = 2208
+value = 0
+
+[BGCtrl 2.912]
+type = visible
+time = 2214
+value = 1
+
+[BGCtrl 2.913]
+type = visible
+time = 2215
+value = 0
+
+[BGCtrl 2.914]
+type = visible
+time = 2223
+value = 1
+
+[BGCtrl 2.915]
+type = visible
+time = 2224
+value = 0
+
+[BGCtrl 2.916]
+type = visible
+time = 2230
+value = 1
+
+[BGCtrl 2.917]
+type = visible
+time = 2231
+value = 0
+
+[BGCtrl 2.918]
+type = visible
+time = 2232
+value = 1
+
+[BGCtrl 2.919]
+type = visible
+time = 2233
+value = 0
+
+[BGCtrl 2.920]
+type = visible
+time = 2238
+value = 1
+
+[BGCtrl 2.921]
+type = visible
+time = 2239
+value = 0
+
+[BGCtrl 2.922]
+type = visible
+time = 2240
+value = 1
+
+[BGCtrl 2.923]
+type = visible
+time = 2241
+value = 0
+
+[BGCtrl 2.924]
+type = visible
+time = 2242
+value = 1
+
+[BGCtrl 2.925]
+type = visible
+time = 2243
+value = 0
+
+[BGCtrl 2.926]
+type = visible
+time = 2249
+value = 1
+
+[BGCtrl 2.927]
+type = visible
+time = 2250
+value = 0
+
+[BGCtrl 2.928]
+type = visible
+time = 2258
+value = 1
+
+[BGCtrl 2.929]
+type = visible
+time = 2259
+value = 0
+
+[BGCtrl 2.930]
+type = visible
+time = 2265
+value = 1
+
+[BGCtrl 2.931]
+type = visible
+time = 2266
+value = 0
+
+[BGCtrl 2.932]
+type = visible
+time = 2267
+value = 1
+
+[BGCtrl 2.933]
+type = visible
+time = 2268
+value = 0
+
+[BGCtrl 2.934]
+type = visible
+time = 2273
+value = 1
+
+[BGCtrl 2.935]
+type = visible
+time = 2274
+value = 0
+
+[BGCtrl 2.936]
+type = visible
+time = 2275
+value = 1
+
+[BGCtrl 2.937]
+type = visible
+time = 2276
+value = 0
+
+[BGCtrl 2.938]
+type = visible
+time = 2277
+value = 1
+
+[BGCtrl 2.939]
+type = visible
+time = 2278
+value = 0
+
+[BGCtrl 2.940]
+type = visible
+time = 2284
+value = 1
+
+[BGCtrl 2.941]
+type = visible
+time = 2285
+value = 0
+
+[BGCtrl 2.942]
+type = visible
+time = 2293
+value = 1
+
+[BGCtrl 2.943]
+type = visible
+time = 2294
+value = 0
+
+[BGCtrl 2.944]
+type = visible
+time = 2300
+value = 1
+
+[BGCtrl 2.945]
+type = visible
+time = 2301
+value = 0
+
+[BGCtrl 2.946]
+type = visible
+time = 2302
+value = 1
+
+[BGCtrl 2.947]
+type = visible
+time = 2303
+value = 0
+
+[BGCtrl 2.948]
+type = visible
+time = 2308
+value = 1
+
+[BGCtrl 2.949]
+type = visible
+time = 2309
+value = 0
+
+[BGCtrl 2.950]
+type = visible
+time = 2310
+value = 1
+
+[BGCtrl 2.951]
+type = visible
+time = 2311
+value = 0
+
+[BGCtrl 2.952]
+type = visible
+time = 2312
+value = 1
+
+[BGCtrl 2.953]
+type = visible
+time = 2313
+value = 0
+
+[BGCtrl 2.954]
+type = visible
+time = 2319
+value = 1
+
+[BGCtrl 2.955]
+type = visible
+time = 2320
+value = 0
+
+[BGCtrl 2.956]
+type = visible
+time = 2326
+value = 1
+
+[BGCtrl 2.957]
+type = visible
+time = 2327
+value = 0
+
+[BGCtrl 2.958]
+type = visible
+time = 2338
+value = 1
+
+[BGCtrl 2.959]
+type = visible
+time = 2339
+value = 0
+
+[BGCtrl 2.960]
+type = visible
+time = 2345
+value = 1
+
+[BGCtrl 2.961]
+type = visible
+time = 2346
+value = 0
+
+[BGCtrldef 3]
+CtrlID = 3
+looptime = 2347
+
+[BGCtrl 3.1]
+type = visible
+time = 0
+value = 0
+
+[BGCtrl 3.2]
+type = visible
+time = 15
+value = 1
+
+[BGCtrl 3.3]
+type = visible
+time = 16
+value = 0
+
+[BGCtrl 3.4]
+type = visible
+time = 23
+value = 1
+
+[BGCtrl 3.5]
+type = visible
+time = 24
+value = 0
+
+[BGCtrl 3.6]
+type = visible
+time = 25
+value = 1
+
+[BGCtrl 3.7]
+type = visible
+time = 26
+value = 0
+
+[BGCtrl 3.8]
+type = visible
+time = 50
+value = 1
+
+[BGCtrl 3.9]
+type = visible
+time = 51
+value = 0
+
+[BGCtrl 3.10]
+type = visible
+time = 58
+value = 1
+
+[BGCtrl 3.11]
+type = visible
+time = 59
+value = 0
+
+[BGCtrl 3.12]
+type = visible
+time = 60
+value = 1
+
+[BGCtrl 3.13]
+type = visible
+time = 61
+value = 0
+
+[BGCtrl 3.14]
+type = visible
+time = 85
+value = 1
+
+[BGCtrl 3.15]
+type = visible
+time = 86
+value = 0
+
+[BGCtrl 3.16]
+type = visible
+time = 93
+value = 1
+
+[BGCtrl 3.17]
+type = visible
+time = 94
+value = 0
+
+[BGCtrl 3.18]
+type = visible
+time = 95
+value = 1
+
+[BGCtrl 3.19]
+type = visible
+time = 96
+value = 0
+
+[BGCtrl 3.20]
+type = visible
+time = 111
+value = 1
+
+[BGCtrl 3.21]
+type = visible
+time = 112
+value = 0
+
+[BGCtrl 3.22]
+type = visible
+time = 113
+value = 1
+
+[BGCtrl 3.23]
+type = visible
+time = 114
+value = 0
+
+[BGCtrl 3.24]
+type = visible
+time = 123
+value = 1
+
+[BGCtrl 3.25]
+type = visible
+time = 124
+value = 0
+
+[BGCtrl 3.26]
+type = visible
+time = 125
+value = 1
+
+[BGCtrl 3.27]
+type = visible
+time = 126
+value = 0
+
+[BGCtrl 3.28]
+type = visible
+time = 127
+value = 1
+
+[BGCtrl 3.29]
+type = visible
+time = 128
+value = 0
+
+[BGCtrl 3.30]
+type = visible
+time = 131
+value = 1
+
+[BGCtrl 3.31]
+type = visible
+time = 132
+value = 0
+
+[BGCtrl 3.32]
+type = visible
+time = 140
+value = 1
+
+[BGCtrl 3.33]
+type = visible
+time = 141
+value = 0
+
+[BGCtrl 3.34]
+type = visible
+time = 142
+value = 1
+
+[BGCtrl 3.35]
+type = visible
+time = 143
+value = 0
+
+[BGCtrl 3.36]
+type = visible
+time = 144
+value = 1
+
+[BGCtrl 3.37]
+type = visible
+time = 145
+value = 0
+
+[BGCtrl 3.38]
+type = visible
+time = 146
+value = 1
+
+[BGCtrl 3.39]
+type = visible
+time = 147
+value = 0
+
+[BGCtrl 3.40]
+type = visible
+time = 148
+value = 1
+
+[BGCtrl 3.41]
+type = visible
+time = 149
+value = 0
+
+[BGCtrl 3.42]
+type = visible
+time = 150
+value = 1
+
+[BGCtrl 3.43]
+type = visible
+time = 151
+value = 0
+
+[BGCtrl 3.44]
+type = visible
+time = 152
+value = 1
+
+[BGCtrl 3.45]
+type = visible
+time = 153
+value = 0
+
+[BGCtrl 3.46]
+type = visible
+time = 184
+value = 1
+
+[BGCtrl 3.47]
+type = visible
+time = 185
+value = 0
+
+[BGCtrl 3.48]
+type = visible
+time = 192
+value = 1
+
+[BGCtrl 3.49]
+type = visible
+time = 193
+value = 0
+
+[BGCtrl 3.50]
+type = visible
+time = 194
+value = 1
+
+[BGCtrl 3.51]
+type = visible
+time = 195
+value = 0
+
+[BGCtrl 3.52]
+type = visible
+time = 219
+value = 1
+
+[BGCtrl 3.53]
+type = visible
+time = 220
+value = 0
+
+[BGCtrl 3.54]
+type = visible
+time = 227
+value = 1
+
+[BGCtrl 3.55]
+type = visible
+time = 228
+value = 0
+
+[BGCtrl 3.56]
+type = visible
+time = 229
+value = 1
+
+[BGCtrl 3.57]
+type = visible
+time = 230
+value = 0
+
+[BGCtrl 3.58]
+type = visible
+time = 254
+value = 1
+
+[BGCtrl 3.59]
+type = visible
+time = 255
+value = 0
+
+[BGCtrl 3.60]
+type = visible
+time = 262
+value = 1
+
+[BGCtrl 3.61]
+type = visible
+time = 263
+value = 0
+
+[BGCtrl 3.62]
+type = visible
+time = 264
+value = 1
+
+[BGCtrl 3.63]
+type = visible
+time = 265
+value = 0
+
+[BGCtrl 3.64]
+type = visible
+time = 289
+value = 1
+
+[BGCtrl 3.65]
+type = visible
+time = 290
+value = 0
+
+[BGCtrl 3.66]
+type = visible
+time = 297
+value = 1
+
+[BGCtrl 3.67]
+type = visible
+time = 298
+value = 0
+
+[BGCtrl 3.68]
+type = visible
+time = 299
+value = 1
+
+[BGCtrl 3.69]
+type = visible
+time = 300
+value = 0
+
+[BGCtrl 3.70]
+type = visible
+time = 324
+value = 1
+
+[BGCtrl 3.71]
+type = visible
+time = 325
+value = 0
+
+[BGCtrl 3.72]
+type = visible
+time = 332
+value = 1
+
+[BGCtrl 3.73]
+type = visible
+time = 333
+value = 0
+
+[BGCtrl 3.74]
+type = visible
+time = 334
+value = 1
+
+[BGCtrl 3.75]
+type = visible
+time = 335
+value = 0
+
+[BGCtrl 3.76]
+type = visible
+time = 359
+value = 1
+
+[BGCtrl 3.77]
+type = visible
+time = 360
+value = 0
+
+[BGCtrl 3.78]
+type = visible
+time = 367
+value = 1
+
+[BGCtrl 3.79]
+type = visible
+time = 368
+value = 0
+
+[BGCtrl 3.80]
+type = visible
+time = 369
+value = 1
+
+[BGCtrl 3.81]
+type = visible
+time = 370
+value = 0
+
+[BGCtrl 3.82]
+type = visible
+time = 394
+value = 1
+
+[BGCtrl 3.83]
+type = visible
+time = 395
+value = 0
+
+[BGCtrl 3.84]
+type = visible
+time = 402
+value = 1
+
+[BGCtrl 3.85]
+type = visible
+time = 403
+value = 0
+
+[BGCtrl 3.86]
+type = visible
+time = 404
+value = 1
+
+[BGCtrl 3.87]
+type = visible
+time = 405
+value = 0
+
+[BGCtrl 3.88]
+type = visible
+time = 429
+value = 1
+
+[BGCtrl 3.89]
+type = visible
+time = 430
+value = 0
+
+[BGCtrl 3.90]
+type = visible
+time = 437
+value = 1
+
+[BGCtrl 3.91]
+type = visible
+time = 438
+value = 0
+
+[BGCtrl 3.92]
+type = visible
+time = 439
+value = 1
+
+[BGCtrl 3.93]
+type = visible
+time = 440
+value = 0
+
+[BGCtrl 3.94]
+type = visible
+time = 464
+value = 1
+
+[BGCtrl 3.95]
+type = visible
+time = 465
+value = 0
+
+[BGCtrl 3.96]
+type = visible
+time = 472
+value = 1
+
+[BGCtrl 3.97]
+type = visible
+time = 473
+value = 0
+
+[BGCtrl 3.98]
+type = visible
+time = 474
+value = 1
+
+[BGCtrl 3.99]
+type = visible
+time = 475
+value = 0
+
+[BGCtrl 3.100]
+type = visible
+time = 499
+value = 1
+
+[BGCtrl 3.101]
+type = visible
+time = 500
+value = 0
+
+[BGCtrl 3.102]
+type = visible
+time = 507
+value = 1
+
+[BGCtrl 3.103]
+type = visible
+time = 508
+value = 0
+
+[BGCtrl 3.104]
+type = visible
+time = 509
+value = 1
+
+[BGCtrl 3.105]
+type = visible
+time = 510
+value = 0
+
+[BGCtrl 3.106]
+type = visible
+time = 534
+value = 1
+
+[BGCtrl 3.107]
+type = visible
+time = 535
+value = 0
+
+[BGCtrl 3.108]
+type = visible
+time = 542
+value = 1
+
+[BGCtrl 3.109]
+type = visible
+time = 543
+value = 0
+
+[BGCtrl 3.110]
+type = visible
+time = 544
+value = 1
+
+[BGCtrl 3.111]
+type = visible
+time = 545
+value = 0
+
+[BGCtrl 3.112]
+type = visible
+time = 569
+value = 1
+
+[BGCtrl 3.113]
+type = visible
+time = 570
+value = 0
+
+[BGCtrl 3.114]
+type = visible
+time = 577
+value = 1
+
+[BGCtrl 3.115]
+type = visible
+time = 578
+value = 0
+
+[BGCtrl 3.116]
+type = visible
+time = 579
+value = 1
+
+[BGCtrl 3.117]
+type = visible
+time = 580
+value = 0
+
+[BGCtrl 3.118]
+type = visible
+time = 604
+value = 1
+
+[BGCtrl 3.119]
+type = visible
+time = 605
+value = 0
+
+[BGCtrl 3.120]
+type = visible
+time = 612
+value = 1
+
+[BGCtrl 3.121]
+type = visible
+time = 613
+value = 0
+
+[BGCtrl 3.122]
+type = visible
+time = 614
+value = 1
+
+[BGCtrl 3.123]
+type = visible
+time = 615
+value = 0
+
+[BGCtrl 3.124]
+type = visible
+time = 639
+value = 1
+
+[BGCtrl 3.125]
+type = visible
+time = 640
+value = 0
+
+[BGCtrl 3.126]
+type = visible
+time = 647
+value = 1
+
+[BGCtrl 3.127]
+type = visible
+time = 648
+value = 0
+
+[BGCtrl 3.128]
+type = visible
+time = 649
+value = 1
+
+[BGCtrl 3.129]
+type = visible
+time = 650
+value = 0
+
+[BGCtrl 3.130]
+type = visible
+time = 674
+value = 1
+
+[BGCtrl 3.131]
+type = visible
+time = 675
+value = 0
+
+[BGCtrl 3.132]
+type = visible
+time = 682
+value = 1
+
+[BGCtrl 3.133]
+type = visible
+time = 683
+value = 0
+
+[BGCtrl 3.134]
+type = visible
+time = 684
+value = 1
+
+[BGCtrl 3.135]
+type = visible
+time = 685
+value = 0
+
+[BGCtrl 3.136]
+type = visible
+time = 709
+value = 1
+
+[BGCtrl 3.137]
+type = visible
+time = 710
+value = 0
+
+[BGCtrl 3.138]
+type = visible
+time = 717
+value = 1
+
+[BGCtrl 3.139]
+type = visible
+time = 718
+value = 0
+
+[BGCtrl 3.140]
+type = visible
+time = 719
+value = 1
+
+[BGCtrl 3.141]
+type = visible
+time = 720
+value = 0
+
+[BGCtrl 3.142]
+type = visible
+time = 744
+value = 1
+
+[BGCtrl 3.143]
+type = visible
+time = 745
+value = 0
+
+[BGCtrl 3.144]
+type = visible
+time = 752
+value = 1
+
+[BGCtrl 3.145]
+type = visible
+time = 753
+value = 0
+
+[BGCtrl 3.146]
+type = visible
+time = 754
+value = 1
+
+[BGCtrl 3.147]
+type = visible
+time = 755
+value = 0
+
+[BGCtrl 3.148]
+type = visible
+time = 779
+value = 1
+
+[BGCtrl 3.149]
+type = visible
+time = 780
+value = 0
+
+[BGCtrl 3.150]
+type = visible
+time = 787
+value = 1
+
+[BGCtrl 3.151]
+type = visible
+time = 788
+value = 0
+
+[BGCtrl 3.152]
+type = visible
+time = 789
+value = 1
+
+[BGCtrl 3.153]
+type = visible
+time = 790
+value = 0
+
+[BGCtrl 3.154]
+type = visible
+time = 814
+value = 1
+
+[BGCtrl 3.155]
+type = visible
+time = 815
+value = 0
+
+[BGCtrl 3.156]
+type = visible
+time = 822
+value = 1
+
+[BGCtrl 3.157]
+type = visible
+time = 823
+value = 0
+
+[BGCtrl 3.158]
+type = visible
+time = 824
+value = 1
+
+[BGCtrl 3.159]
+type = visible
+time = 825
+value = 0
+
+[BGCtrl 3.160]
+type = visible
+time = 849
+value = 1
+
+[BGCtrl 3.161]
+type = visible
+time = 850
+value = 0
+
+[BGCtrl 3.162]
+type = visible
+time = 857
+value = 1
+
+[BGCtrl 3.163]
+type = visible
+time = 858
+value = 0
+
+[BGCtrl 3.164]
+type = visible
+time = 859
+value = 1
+
+[BGCtrl 3.165]
+type = visible
+time = 860
+value = 0
+
+[BGCtrl 3.166]
+type = visible
+time = 875
+value = 1
+
+[BGCtrl 3.167]
+type = visible
+time = 876
+value = 0
+
+[BGCtrl 3.168]
+type = visible
+time = 877
+value = 1
+
+[BGCtrl 3.169]
+type = visible
+time = 878
+value = 0
+
+[BGCtrl 3.170]
+type = visible
+time = 887
+value = 1
+
+[BGCtrl 3.171]
+type = visible
+time = 888
+value = 0
+
+[BGCtrl 3.172]
+type = visible
+time = 889
+value = 1
+
+[BGCtrl 3.173]
+type = visible
+time = 890
+value = 0
+
+[BGCtrl 3.174]
+type = visible
+time = 891
+value = 1
+
+[BGCtrl 3.175]
+type = visible
+time = 892
+value = 0
+
+[BGCtrl 3.176]
+type = visible
+time = 895
+value = 1
+
+[BGCtrl 3.177]
+type = visible
+time = 896
+value = 0
+
+[BGCtrl 3.178]
+type = visible
+time = 904
+value = 1
+
+[BGCtrl 3.179]
+type = visible
+time = 905
+value = 0
+
+[BGCtrl 3.180]
+type = visible
+time = 906
+value = 1
+
+[BGCtrl 3.181]
+type = visible
+time = 907
+value = 0
+
+[BGCtrl 3.182]
+type = visible
+time = 908
+value = 1
+
+[BGCtrl 3.183]
+type = visible
+time = 909
+value = 0
+
+[BGCtrl 3.184]
+type = visible
+time = 910
+value = 1
+
+[BGCtrl 3.185]
+type = visible
+time = 911
+value = 0
+
+[BGCtrl 3.186]
+type = visible
+time = 912
+value = 1
+
+[BGCtrl 3.187]
+type = visible
+time = 913
+value = 0
+
+[BGCtrl 3.188]
+type = visible
+time = 914
+value = 1
+
+[BGCtrl 3.189]
+type = visible
+time = 915
+value = 0
+
+[BGCtrl 3.190]
+type = visible
+time = 916
+value = 1
+
+[BGCtrl 3.191]
+type = visible
+time = 917
+value = 0
+
+[BGCtrl 3.192]
+type = visible
+time = 948
+value = 1
+
+[BGCtrl 3.193]
+type = visible
+time = 949
+value = 0
+
+[BGCtrl 3.194]
+type = visible
+time = 956
+value = 1
+
+[BGCtrl 3.195]
+type = visible
+time = 957
+value = 0
+
+[BGCtrl 3.196]
+type = visible
+time = 958
+value = 1
+
+[BGCtrl 3.197]
+type = visible
+time = 959
+value = 0
+
+[BGCtrl 3.198]
+type = visible
+time = 983
+value = 1
+
+[BGCtrl 3.199]
+type = visible
+time = 984
+value = 0
+
+[BGCtrl 3.200]
+type = visible
+time = 991
+value = 1
+
+[BGCtrl 3.201]
+type = visible
+time = 992
+value = 0
+
+[BGCtrl 3.202]
+type = visible
+time = 993
+value = 1
+
+[BGCtrl 3.203]
+type = visible
+time = 994
+value = 0
+
+[BGCtrl 3.204]
+type = visible
+time = 1018
+value = 1
+
+[BGCtrl 3.205]
+type = visible
+time = 1019
+value = 0
+
+[BGCtrl 3.206]
+type = visible
+time = 1026
+value = 1
+
+[BGCtrl 3.207]
+type = visible
+time = 1027
+value = 0
+
+[BGCtrl 3.208]
+type = visible
+time = 1028
+value = 1
+
+[BGCtrl 3.209]
+type = visible
+time = 1029
+value = 0
+
+[BGCtrl 3.210]
+type = visible
+time = 1053
+value = 1
+
+[BGCtrl 3.211]
+type = visible
+time = 1054
+value = 0
+
+[BGCtrl 3.212]
+type = visible
+time = 1061
+value = 1
+
+[BGCtrl 3.213]
+type = visible
+time = 1062
+value = 0
+
+[BGCtrl 3.214]
+type = visible
+time = 1063
+value = 1
+
+[BGCtrl 3.215]
+type = visible
+time = 1064
+value = 0
+
+[BGCtrl 3.216]
+type = visible
+time = 1088
+value = 1
+
+[BGCtrl 3.217]
+type = visible
+time = 1089
+value = 0
+
+[BGCtrl 3.218]
+type = visible
+time = 1096
+value = 1
+
+[BGCtrl 3.219]
+type = visible
+time = 1097
+value = 0
+
+[BGCtrl 3.220]
+type = visible
+time = 1098
+value = 1
+
+[BGCtrl 3.221]
+type = visible
+time = 1099
+value = 0
+
+[BGCtrl 3.222]
+type = visible
+time = 1123
+value = 1
+
+[BGCtrl 3.223]
+type = visible
+time = 1124
+value = 0
+
+[BGCtrl 3.224]
+type = visible
+time = 1131
+value = 1
+
+[BGCtrl 3.225]
+type = visible
+time = 1132
+value = 0
+
+[BGCtrl 3.226]
+type = visible
+time = 1133
+value = 1
+
+[BGCtrl 3.227]
+type = visible
+time = 1134
+value = 0
+
+[BGCtrl 3.228]
+type = visible
+time = 1158
+value = 1
+
+[BGCtrl 3.229]
+type = visible
+time = 1159
+value = 0
+
+[BGCtrl 3.230]
+type = visible
+time = 1166
+value = 1
+
+[BGCtrl 3.231]
+type = visible
+time = 1167
+value = 0
+
+[BGCtrl 3.232]
+type = visible
+time = 1168
+value = 1
+
+[BGCtrl 3.233]
+type = visible
+time = 1169
+value = 0
+
+[BGCtrl 3.234]
+type = visible
+time = 1193
+value = 1
+
+[BGCtrl 3.235]
+type = visible
+time = 1194
+value = 0
+
+[BGCtrl 3.236]
+type = visible
+time = 1201
+value = 1
+
+[BGCtrl 3.237]
+type = visible
+time = 1202
+value = 0
+
+[BGCtrl 3.238]
+type = visible
+time = 1203
+value = 1
+
+[BGCtrl 3.239]
+type = visible
+time = 1204
+value = 0
+
+[BGCtrl 3.240]
+type = visible
+time = 1219
+value = 1
+
+[BGCtrl 3.241]
+type = visible
+time = 1220
+value = 0
+
+[BGCtrl 3.242]
+type = visible
+time = 1221
+value = 1
+
+[BGCtrl 3.243]
+type = visible
+time = 1222
+value = 0
+
+[BGCtrl 3.244]
+type = visible
+time = 1231
+value = 1
+
+[BGCtrl 3.245]
+type = visible
+time = 1232
+value = 0
+
+[BGCtrl 3.246]
+type = visible
+time = 1233
+value = 1
+
+[BGCtrl 3.247]
+type = visible
+time = 1234
+value = 0
+
+[BGCtrl 3.248]
+type = visible
+time = 1235
+value = 1
+
+[BGCtrl 3.249]
+type = visible
+time = 1236
+value = 0
+
+[BGCtrl 3.250]
+type = visible
+time = 1239
+value = 1
+
+[BGCtrl 3.251]
+type = visible
+time = 1240
+value = 0
+
+[BGCtrl 3.252]
+type = visible
+time = 1248
+value = 1
+
+[BGCtrl 3.253]
+type = visible
+time = 1249
+value = 0
+
+[BGCtrl 3.254]
+type = visible
+time = 1250
+value = 1
+
+[BGCtrl 3.255]
+type = visible
+time = 1251
+value = 0
+
+[BGCtrl 3.256]
+type = visible
+time = 1252
+value = 1
+
+[BGCtrl 3.257]
+type = visible
+time = 1253
+value = 0
+
+[BGCtrl 3.258]
+type = visible
+time = 1254
+value = 1
+
+[BGCtrl 3.259]
+type = visible
+time = 1255
+value = 0
+
+[BGCtrl 3.260]
+type = visible
+time = 1256
+value = 1
+
+[BGCtrl 3.261]
+type = visible
+time = 1257
+value = 0
+
+[BGCtrl 3.262]
+type = visible
+time = 1258
+value = 1
+
+[BGCtrl 3.263]
+type = visible
+time = 1259
+value = 0
+
+[BGCtrl 3.264]
+type = visible
+time = 1260
+value = 1
+
+[BGCtrl 3.265]
+type = visible
+time = 1261
+value = 0
+
+[BGCtrl 3.266]
+type = visible
+time = 1292
+value = 1
+
+[BGCtrl 3.267]
+type = visible
+time = 1293
+value = 0
+
+[BGCtrl 3.268]
+type = visible
+time = 1300
+value = 1
+
+[BGCtrl 3.269]
+type = visible
+time = 1301
+value = 0
+
+[BGCtrl 3.270]
+type = visible
+time = 1302
+value = 1
+
+[BGCtrl 3.271]
+type = visible
+time = 1303
+value = 0
+
+[BGCtrl 3.272]
+type = visible
+time = 1327
+value = 1
+
+[BGCtrl 3.273]
+type = visible
+time = 1328
+value = 0
+
+[BGCtrl 3.274]
+type = visible
+time = 1335
+value = 1
+
+[BGCtrl 3.275]
+type = visible
+time = 1336
+value = 0
+
+[BGCtrl 3.276]
+type = visible
+time = 1337
+value = 1
+
+[BGCtrl 3.277]
+type = visible
+time = 1338
+value = 0
+
+[BGCtrl 3.278]
+type = visible
+time = 1362
+value = 1
+
+[BGCtrl 3.279]
+type = visible
+time = 1363
+value = 0
+
+[BGCtrl 3.280]
+type = visible
+time = 1370
+value = 1
+
+[BGCtrl 3.281]
+type = visible
+time = 1371
+value = 0
+
+[BGCtrl 3.282]
+type = visible
+time = 1372
+value = 1
+
+[BGCtrl 3.283]
+type = visible
+time = 1373
+value = 0
+
+[BGCtrl 3.284]
+type = visible
+time = 1397
+value = 1
+
+[BGCtrl 3.285]
+type = visible
+time = 1398
+value = 0
+
+[BGCtrl 3.286]
+type = visible
+time = 1405
+value = 1
+
+[BGCtrl 3.287]
+type = visible
+time = 1406
+value = 0
+
+[BGCtrl 3.288]
+type = visible
+time = 1407
+value = 1
+
+[BGCtrl 3.289]
+type = visible
+time = 1408
+value = 0
+
+[BGCtrl 3.290]
+type = visible
+time = 1432
+value = 1
+
+[BGCtrl 3.291]
+type = visible
+time = 1433
+value = 0
+
+[BGCtrl 3.292]
+type = visible
+time = 1440
+value = 1
+
+[BGCtrl 3.293]
+type = visible
+time = 1441
+value = 0
+
+[BGCtrl 3.294]
+type = visible
+time = 1442
+value = 1
+
+[BGCtrl 3.295]
+type = visible
+time = 1443
+value = 0
+
+[BGCtrl 3.296]
+type = visible
+time = 1467
+value = 1
+
+[BGCtrl 3.297]
+type = visible
+time = 1468
+value = 0
+
+[BGCtrl 3.298]
+type = visible
+time = 1475
+value = 1
+
+[BGCtrl 3.299]
+type = visible
+time = 1476
+value = 0
+
+[BGCtrl 3.300]
+type = visible
+time = 1477
+value = 1
+
+[BGCtrl 3.301]
+type = visible
+time = 1478
+value = 0
+
+[BGCtrl 3.302]
+type = visible
+time = 1502
+value = 1
+
+[BGCtrl 3.303]
+type = visible
+time = 1503
+value = 0
+
+[BGCtrl 3.304]
+type = visible
+time = 1510
+value = 1
+
+[BGCtrl 3.305]
+type = visible
+time = 1511
+value = 0
+
+[BGCtrl 3.306]
+type = visible
+time = 1512
+value = 1
+
+[BGCtrl 3.307]
+type = visible
+time = 1513
+value = 0
+
+[BGCtrl 3.308]
+type = visible
+time = 1537
+value = 1
+
+[BGCtrl 3.309]
+type = visible
+time = 1538
+value = 0
+
+[BGCtrl 3.310]
+type = visible
+time = 1545
+value = 1
+
+[BGCtrl 3.311]
+type = visible
+time = 1546
+value = 0
+
+[BGCtrl 3.312]
+type = visible
+time = 1547
+value = 1
+
+[BGCtrl 3.313]
+type = visible
+time = 1548
+value = 0
+
+[BGCtrl 3.314]
+type = visible
+time = 1572
+value = 1
+
+[BGCtrl 3.315]
+type = visible
+time = 1573
+value = 0
+
+[BGCtrl 3.316]
+type = visible
+time = 1580
+value = 1
+
+[BGCtrl 3.317]
+type = visible
+time = 1581
+value = 0
+
+[BGCtrl 3.318]
+type = visible
+time = 1582
+value = 1
+
+[BGCtrl 3.319]
+type = visible
+time = 1583
+value = 0
+
+[BGCtrl 3.320]
+type = visible
+time = 1607
+value = 1
+
+[BGCtrl 3.321]
+type = visible
+time = 1608
+value = 0
+
+[BGCtrl 3.322]
+type = visible
+time = 1615
+value = 1
+
+[BGCtrl 3.323]
+type = visible
+time = 1616
+value = 0
+
+[BGCtrl 3.324]
+type = visible
+time = 1617
+value = 1
+
+[BGCtrl 3.325]
+type = visible
+time = 1618
+value = 0
+
+[BGCtrl 3.326]
+type = visible
+time = 1642
+value = 1
+
+[BGCtrl 3.327]
+type = visible
+time = 1643
+value = 0
+
+[BGCtrl 3.328]
+type = visible
+time = 1650
+value = 1
+
+[BGCtrl 3.329]
+type = visible
+time = 1651
+value = 0
+
+[BGCtrl 3.330]
+type = visible
+time = 1652
+value = 1
+
+[BGCtrl 3.331]
+type = visible
+time = 1653
+value = 0
+
+[BGCtrl 3.332]
+type = visible
+time = 1677
+value = 1
+
+[BGCtrl 3.333]
+type = visible
+time = 1678
+value = 0
+
+[BGCtrl 3.334]
+type = visible
+time = 1685
+value = 1
+
+[BGCtrl 3.335]
+type = visible
+time = 1686
+value = 0
+
+[BGCtrl 3.336]
+type = visible
+time = 1687
+value = 1
+
+[BGCtrl 3.337]
+type = visible
+time = 1688
+value = 0
+
+[BGCtrl 3.338]
+type = visible
+time = 1703
+value = 1
+
+[BGCtrl 3.339]
+type = visible
+time = 1704
+value = 0
+
+[BGCtrl 3.340]
+type = visible
+time = 1705
+value = 1
+
+[BGCtrl 3.341]
+type = visible
+time = 1706
+value = 0
+
+[BGCtrl 3.342]
+type = visible
+time = 1715
+value = 1
+
+[BGCtrl 3.343]
+type = visible
+time = 1716
+value = 0
+
+[BGCtrl 3.344]
+type = visible
+time = 1717
+value = 1
+
+[BGCtrl 3.345]
+type = visible
+time = 1718
+value = 0
+
+[BGCtrl 3.346]
+type = visible
+time = 1719
+value = 1
+
+[BGCtrl 3.347]
+type = visible
+time = 1720
+value = 0
+
+[BGCtrl 3.348]
+type = visible
+time = 1723
+value = 1
+
+[BGCtrl 3.349]
+type = visible
+time = 1724
+value = 0
+
+[BGCtrl 3.350]
+type = visible
+time = 1732
+value = 1
+
+[BGCtrl 3.351]
+type = visible
+time = 1733
+value = 0
+
+[BGCtrl 3.352]
+type = visible
+time = 1734
+value = 1
+
+[BGCtrl 3.353]
+type = visible
+time = 1735
+value = 0
+
+[BGCtrl 3.354]
+type = visible
+time = 1736
+value = 1
+
+[BGCtrl 3.355]
+type = visible
+time = 1737
+value = 0
+
+[BGCtrl 3.356]
+type = visible
+time = 1738
+value = 1
+
+[BGCtrl 3.357]
+type = visible
+time = 1739
+value = 0
+
+[BGCtrl 3.358]
+type = visible
+time = 1740
+value = 1
+
+[BGCtrl 3.359]
+type = visible
+time = 1741
+value = 0
+
+[BGCtrl 3.360]
+type = visible
+time = 1742
+value = 1
+
+[BGCtrl 3.361]
+type = visible
+time = 1743
+value = 0
+
+[BGCtrl 3.362]
+type = visible
+time = 1744
+value = 1
+
+[BGCtrl 3.363]
+type = visible
+time = 1745
+value = 0
+
+[BGCtrl 3.364]
+type = visible
+time = 1776
+value = 1
+
+[BGCtrl 3.365]
+type = visible
+time = 1777
+value = 0
+
+[BGCtrl 3.366]
+type = visible
+time = 1784
+value = 1
+
+[BGCtrl 3.367]
+type = visible
+time = 1785
+value = 0
+
+[BGCtrl 3.368]
+type = visible
+time = 1786
+value = 1
+
+[BGCtrl 3.369]
+type = visible
+time = 1787
+value = 0
+
+[BGCtrl 3.370]
+type = visible
+time = 1811
+value = 1
+
+[BGCtrl 3.371]
+type = visible
+time = 1812
+value = 0
+
+[BGCtrl 3.372]
+type = visible
+time = 1819
+value = 1
+
+[BGCtrl 3.373]
+type = visible
+time = 1820
+value = 0
+
+[BGCtrl 3.374]
+type = visible
+time = 1821
+value = 1
+
+[BGCtrl 3.375]
+type = visible
+time = 1822
+value = 0
+
+[BGCtrl 3.376]
+type = visible
+time = 1846
+value = 1
+
+[BGCtrl 3.377]
+type = visible
+time = 1847
+value = 0
+
+[BGCtrl 3.378]
+type = visible
+time = 1854
+value = 1
+
+[BGCtrl 3.379]
+type = visible
+time = 1855
+value = 0
+
+[BGCtrl 3.380]
+type = visible
+time = 1856
+value = 1
+
+[BGCtrl 3.381]
+type = visible
+time = 1857
+value = 0
+
+[BGCtrl 3.382]
+type = visible
+time = 1881
+value = 1
+
+[BGCtrl 3.383]
+type = visible
+time = 1882
+value = 0
+
+[BGCtrl 3.384]
+type = visible
+time = 1889
+value = 1
+
+[BGCtrl 3.385]
+type = visible
+time = 1890
+value = 0
+
+[BGCtrl 3.386]
+type = visible
+time = 1891
+value = 1
+
+[BGCtrl 3.387]
+type = visible
+time = 1892
+value = 0
+
+[BGCtrl 3.388]
+type = visible
+time = 1916
+value = 1
+
+[BGCtrl 3.389]
+type = visible
+time = 1917
+value = 0
+
+[BGCtrl 3.390]
+type = visible
+time = 1924
+value = 1
+
+[BGCtrl 3.391]
+type = visible
+time = 1925
+value = 0
+
+[BGCtrl 3.392]
+type = visible
+time = 1926
+value = 1
+
+[BGCtrl 3.393]
+type = visible
+time = 1927
+value = 0
+
+[BGCtrl 3.394]
+type = visible
+time = 1951
+value = 1
+
+[BGCtrl 3.395]
+type = visible
+time = 1952
+value = 0
+
+[BGCtrl 3.396]
+type = visible
+time = 1959
+value = 1
+
+[BGCtrl 3.397]
+type = visible
+time = 1960
+value = 0
+
+[BGCtrl 3.398]
+type = visible
+time = 1961
+value = 1
+
+[BGCtrl 3.399]
+type = visible
+time = 1962
+value = 0
+
+[BGCtrl 3.400]
+type = visible
+time = 1986
+value = 1
+
+[BGCtrl 3.401]
+type = visible
+time = 1987
+value = 0
+
+[BGCtrl 3.402]
+type = visible
+time = 1994
+value = 1
+
+[BGCtrl 3.403]
+type = visible
+time = 1995
+value = 0
+
+[BGCtrl 3.404]
+type = visible
+time = 1996
+value = 1
+
+[BGCtrl 3.405]
+type = visible
+time = 1997
+value = 0
+
+[BGCtrl 3.406]
+type = visible
+time = 2021
+value = 1
+
+[BGCtrl 3.407]
+type = visible
+time = 2022
+value = 0
+
+[BGCtrl 3.408]
+type = visible
+time = 2029
+value = 1
+
+[BGCtrl 3.409]
+type = visible
+time = 2030
+value = 0
+
+[BGCtrl 3.410]
+type = visible
+time = 2031
+value = 1
+
+[BGCtrl 3.411]
+type = visible
+time = 2032
+value = 0
+
+[BGCtrl 3.412]
+type = visible
+time = 2056
+value = 1
+
+[BGCtrl 3.413]
+type = visible
+time = 2057
+value = 0
+
+[BGCtrl 3.414]
+type = visible
+time = 2064
+value = 1
+
+[BGCtrl 3.415]
+type = visible
+time = 2065
+value = 0
+
+[BGCtrl 3.416]
+type = visible
+time = 2066
+value = 1
+
+[BGCtrl 3.417]
+type = visible
+time = 2067
+value = 0
+
+[BGCtrl 3.418]
+type = visible
+time = 2091
+value = 1
+
+[BGCtrl 3.419]
+type = visible
+time = 2092
+value = 0
+
+[BGCtrl 3.420]
+type = visible
+time = 2099
+value = 1
+
+[BGCtrl 3.421]
+type = visible
+time = 2100
+value = 0
+
+[BGCtrl 3.422]
+type = visible
+time = 2101
+value = 1
+
+[BGCtrl 3.423]
+type = visible
+time = 2102
+value = 0
+
+[BGCtrl 3.424]
+type = visible
+time = 2126
+value = 1
+
+[BGCtrl 3.425]
+type = visible
+time = 2127
+value = 0
+
+[BGCtrl 3.426]
+type = visible
+time = 2134
+value = 1
+
+[BGCtrl 3.427]
+type = visible
+time = 2135
+value = 0
+
+[BGCtrl 3.428]
+type = visible
+time = 2136
+value = 1
+
+[BGCtrl 3.429]
+type = visible
+time = 2137
+value = 0
+
+[BGCtrl 3.430]
+type = visible
+time = 2161
+value = 1
+
+[BGCtrl 3.431]
+type = visible
+time = 2162
+value = 0
+
+[BGCtrl 3.432]
+type = visible
+time = 2169
+value = 1
+
+[BGCtrl 3.433]
+type = visible
+time = 2170
+value = 0
+
+[BGCtrl 3.434]
+type = visible
+time = 2171
+value = 1
+
+[BGCtrl 3.435]
+type = visible
+time = 2172
+value = 0
+
+[BGCtrl 3.436]
+type = visible
+time = 2196
+value = 1
+
+[BGCtrl 3.437]
+type = visible
+time = 2197
+value = 0
+
+[BGCtrl 3.438]
+type = visible
+time = 2204
+value = 1
+
+[BGCtrl 3.439]
+type = visible
+time = 2205
+value = 0
+
+[BGCtrl 3.440]
+type = visible
+time = 2206
+value = 1
+
+[BGCtrl 3.441]
+type = visible
+time = 2207
+value = 0
+
+[BGCtrl 3.442]
+type = visible
+time = 2231
+value = 1
+
+[BGCtrl 3.443]
+type = visible
+time = 2232
+value = 0
+
+[BGCtrl 3.444]
+type = visible
+time = 2239
+value = 1
+
+[BGCtrl 3.445]
+type = visible
+time = 2240
+value = 0
+
+[BGCtrl 3.446]
+type = visible
+time = 2241
+value = 1
+
+[BGCtrl 3.447]
+type = visible
+time = 2242
+value = 0
+
+[BGCtrl 3.448]
+type = visible
+time = 2266
+value = 1
+
+[BGCtrl 3.449]
+type = visible
+time = 2267
+value = 0
+
+[BGCtrl 3.450]
+type = visible
+time = 2274
+value = 1
+
+[BGCtrl 3.451]
+type = visible
+time = 2275
+value = 0
+
+[BGCtrl 3.452]
+type = visible
+time = 2276
+value = 1
+
+[BGCtrl 3.453]
+type = visible
+time = 2277
+value = 0
+
+[BGCtrl 3.454]
+type = visible
+time = 2301
+value = 1
+
+[BGCtrl 3.455]
+type = visible
+time = 2302
+value = 0
+
+[BGCtrl 3.456]
+type = visible
+time = 2309
+value = 1
+
+[BGCtrl 3.457]
+type = visible
+time = 2310
+value = 0
+
+[BGCtrl 3.458]
+type = visible
+time = 2311
+value = 1
+
+[BGCtrl 3.459]
+type = visible
+time = 2312
+value = 0
+
+[BGCtrl 3.460]
+type = visible
+time = 2327
+value = 1
+
+[BGCtrl 3.461]
+type = visible
+time = 2328
+value = 0
+
+[BGCtrl 3.462]
+type = visible
+time = 2335
+value = 1
+
+[BGCtrl 3.463]
+type = visible
+time = 2336
+value = 0
+
+[BGCtrl 3.464]
+type = visible
+time = 2337
+value = 1
+
+[BGCtrl 3.465]
+type = visible
+time = 2338
+value = 0
+
+[BGCtrl 3.466]
+type = visible
+time = 2339
+value = 1
+
+[BGCtrl 3.467]
+type = visible
+time = 2340
+value = 0
+
+[BGCtrl 3.468]
+type = visible
+time = 2344
+value = 1
+
+[BGCtrl 3.469]
+type = visible
+time = 2345
+value = 0
+
+[BGCtrldef 4]
+CtrlID = 4
+looptime = 2347
+
+[BGCtrl 4.1]
+type = visible
+time = 0
+value = 0
+
+[BGCtrl 4.2]
+type = visible
+time = 112
+value = 1
+
+[BGCtrl 4.3]
+type = visible
+time = 113
+value = 0
+
+[BGCtrl 4.4]
+type = visible
+time = 128
+value = 1
+
+[BGCtrl 4.5]
+type = visible
+time = 129
+value = 0
+
+[BGCtrl 4.6]
+type = visible
+time = 130
+value = 1
+
+[BGCtrl 4.7]
+type = visible
+time = 131
+value = 0
+
+[BGCtrl 4.8]
+type = visible
+time = 143
+value = 1
+
+[BGCtrl 4.9]
+type = visible
+time = 144
+value = 0
+
+[BGCtrl 4.10]
+type = visible
+time = 876
+value = 1
+
+[BGCtrl 4.11]
+type = visible
+time = 877
+value = 0
+
+[BGCtrl 4.12]
+type = visible
+time = 892
+value = 1
+
+[BGCtrl 4.13]
+type = visible
+time = 893
+value = 0
+
+[BGCtrl 4.14]
+type = visible
+time = 894
+value = 1
+
+[BGCtrl 4.15]
+type = visible
+time = 895
+value = 0
+
+[BGCtrl 4.16]
+type = visible
+time = 907
+value = 1
+
+[BGCtrl 4.17]
+type = visible
+time = 908
+value = 0
+
+[BGCtrl 4.18]
+type = visible
+time = 1220
+value = 1
+
+[BGCtrl 4.19]
+type = visible
+time = 1221
+value = 0
+
+[BGCtrl 4.20]
+type = visible
+time = 1236
+value = 1
+
+[BGCtrl 4.21]
+type = visible
+time = 1237
+value = 0
+
+[BGCtrl 4.22]
+type = visible
+time = 1238
+value = 1
+
+[BGCtrl 4.23]
+type = visible
+time = 1239
+value = 0
+
+[BGCtrl 4.24]
+type = visible
+time = 1251
+value = 1
+
+[BGCtrl 4.25]
+type = visible
+time = 1252
+value = 0
+
+[BGCtrl 4.26]
+type = visible
+time = 1704
+value = 1
+
+[BGCtrl 4.27]
+type = visible
+time = 1705
+value = 0
+
+[BGCtrl 4.28]
+type = visible
+time = 1720
+value = 1
+
+[BGCtrl 4.29]
+type = visible
+time = 1721
+value = 0
+
+[BGCtrl 4.30]
+type = visible
+time = 1722
+value = 1
+
+[BGCtrl 4.31]
+type = visible
+time = 1723
+value = 0
+
+[BGCtrl 4.32]
+type = visible
+time = 1735
+value = 1
+
+[BGCtrl 4.33]
+type = visible
+time = 1736
+value = 0
+
+[BGCtrl 4.34]
+type = visible
+time = 2328
+value = 1
+
+[BGCtrl 4.35]
+type = visible
+time = 2329
+value = 0
+
+[BGCtrl 4.36]
+type = visible
+time = 2331
+value = 1
+
+[BGCtrl 4.37]
+type = visible
+time = 2332
+value = 0
+
+[BGCtrl 4.38]
+type = visible
+time = 2334
+value = 1
+
+[BGCtrl 4.39]
+type = visible
+time = 2335
+value = 0
+
+[BGCtrl 4.40]
+type = visible
+time = 2336
+value = 1
+
+[BGCtrl 4.41]
+type = visible
+time = 2337
+value = 0
+
+[BGCtrl 4.42]
+type = visible
+time = 2340
+value = 1
+
+[BGCtrl 4.43]
+type = visible
+time = 2341
+value = 0
+
+[BGCtrl 4.44]
+type = visible
+time = 2343
+value = 1
+
+[BGCtrl 4.45]
+type = visible
+time = 2344
+value = 0
+
+[BGCtrldef 5]
+CtrlID = 5
+looptime = 2347
+
+[BGCtrl 5.1]
+type = visible
+time = 0
+value = 0
+
+[BGCtrl 5.2]
+type = visible
+time = 129
+value = 1
+
+[BGCtrl 5.3]
+type = visible
+time = 130
+value = 0
+
+[BGCtrl 5.4]
+type = visible
+time = 893
+value = 1
+
+[BGCtrl 5.5]
+type = visible
+time = 894
+value = 0
+
+[BGCtrl 5.6]
+type = visible
+time = 1237
+value = 1
+
+[BGCtrl 5.7]
+type = visible
+time = 1238
+value = 0
+
+[BGCtrl 5.8]
+type = visible
+time = 1721
+value = 1
+
+[BGCtrl 5.9]
+type = visible
+time = 1722
+value = 0
+
+[BGCtrl 5.10]
+type = visible
+time = 2329
+value = 1
+
+[BGCtrl 5.11]
+type = visible
+time = 2331
+value = 0
+
+[BGCtrl 5.12]
+type = visible
+time = 2332
+value = 1
+
+[BGCtrl 5.13]
+type = visible
+time = 2334
+value = 0
+
+[BGCtrl 5.14]
+type = visible
+time = 2341
+value = 1
+
+[BGCtrl 5.15]
+type = visible
+time = 2343
+value = 0
+
+[Begin action 1]
+
+0, 0, 0,0, 1
+0, 1, 0,0, 2
+0, 2, 0,0, 3
+0,12, 0,0, 15
+0, 3, 0,0, 1
+0, 4, 0,0, 2
+0, 5, 0,0, 3
+0,12, 0,0, 15
+0, 6, 0,0, 1
+0,12, 0,0, 15
+0, 7, 0,0, 1
+0, 8, 0,0, 2
+0, 9, 0,0, 3
+0,12, 0,0, 17
+0,10, 0,0, 1
+0,11, 0,0, 2
+0,12, 0,0, 19
+
+[Begin action 2]
+
+0,13, 0,0, 1
+0,14, 0,0, 2
+0,15, 0,0, 3
+0,25, 0,0, 15
+0,16, 0,0, 1
+0,17, 0,0, 2
+0,18, 0,0, 3
+0,25, 0,0, 15
+0,19, 0,0, 1
+0,25, 0,0, 15
+0,20, 0,0, 1
+0,21, 0,0, 2
+0,22, 0,0, 3
+0,25, 0,0, 17
+0,13, 0,0, 1
+0,24, 0,0, 2
+0,25, 0,0, 19
+
+[Begin action 3]
+
+0,26, 0,0, 1
+0,27, 0,0, 2
+0,28, 0,0, 3
+0,38, 0,0, 15
+0,29, 0,0, 1
+0,30, 0,0, 2
+0,31, 0,0, 3
+0,38, 0,0, 15
+0,32, 0,0, 1
+0,38, 0,0, 15
+0,33, 0,0, 1
+0,34, 0,0, 2
+0,35, 0,0, 3
+0,38, 0,0, 17
+0,36, 0,0, 1
+0,37, 0,0, 2
+0,38, 0,0, 19
+
+[Begin action 4]
+
+0,39, 0,0, 1
+0,40, 0,0, 2
+0,41, 0,0, 3
+0,51, 0,0, 15
+0,42, 0,0, 1
+0,43, 0,0, 2
+0,44, 0,0, 3
+0,51, 0,0, 15
+0,45, 0,0, 1
+0,51, 0,0, 15
+0,46, 0,0, 1
+0,47, 0,0, 2
+0,48, 0,0, 3
+0,51, 0,0, 17
+0,49, 0,0, 1
+0,50, 0,0, 2
+0,51, 0,0, 19
+
+[Begin action 5]
+
+0,52, 0,0, -1
+
+[Begin action 11]
+
+1,0, 0,0, -1
+
+[Begin action 12]
+
+1,1, 0,0, -1
+
+[Begin action 13]
+
+1,2, 0,0, -1
+
+[Begin action 14]
+
+1,3, 0,0, -1
+
+[Begin action 15]
+
+1,4, 0,0, -1
+
+[Begin action 20]
+
+0,-1,    0,0, 16
+2, 0,    0,0, 1
+2, 1,    0,0, 1
+2, 2,    0,0, 1
+0,-1,    0,0, 7
+2, 3,    0,0, 2
+2, 4,    0,0, 2
+2, 5,    0,0, 2
+0,-1,    0,0, 19
+2, 2,  -61,0, 1
+2, 1,  -53,0, 1
+2, 0,  -45,0, 1
+0,-1,    0,0, 7
+2, 3,  -30,0, 2
+2, 4,  -30,0, 2
+2, 5,  -30,0, 2
+0,-1,    0,0, 19
+2, 0, -180,0, 1
+2, 1, -180,0, 1
+2, 2, -180,0, 1
+0,-1,    0,0, 7
+2, 3,   71,0, 2
+2, 4,   71,0, 2
+2, 5,   71,0, 2
+0,-1,    0,0, 12
+2, 2, -149,0, 1
+2, 1, -141,0, 1
+2, 0, -133,0, 1
+0,-1,    0,0, 26
+2, 1, -215,0, 1
+2, 2, -223,0, 1
+2, 0, -207,0, 1
+0,-1,    0,0, 7
+2, 3,   71,0, 2
+2, 4,   71,0, 2
+2, 5,   71,0, 2
+0,-1,    0,0, 26
+2, 2,  -45,0, 1
+2, 1,  -37,0, 1
+2, 0,  -29,0, 1
+0,-1,    0,0, 7
+2, 3,   -9,0, 2
+2, 4,   -9,0, 2
+2, 5,   -9,0, 2
+0,-1,    0,0, 19
+2, 0,  -24,0, 1
+2, 1,  -24,0, 1
+2, 2,  -24,0, 1
+0,-1,    0,0, 7
+2, 3,  -98,0, 2
+2, 4,  -98,0, 2
+2, 5,  -98,0, 2
+0,-1,    0,0, 19
+2, 2,  -73,0, 1
+2, 1,  -65,0, 1
+2, 0,  -57,0, 1
+0,-1,    0,0, 7
+2, 3,  -38,0, 2
+2, 4,  -38,0, 2
+2, 5,  -38,0, 2
+0,-1,    0,0, 19
+2, 0,  -20,0, 1
+2, 1,  -20,0, 1
+2, 2,  -20,0, 1
+0,-1,    0,0, 7
+2, 3, -171,0, 2
+2, 4, -171,0, 2
+2, 5, -171,0, 2
+0,-1,    0,0, 19
+2, 2, -153,0, 1
+2, 1, -145,0, 1
+2, 0, -137,0, 1
+0,-1,    0,0, 7
+2, 3, -34,0, 2
+2, 4, -34,0, 2
+2, 5, -34,0, 2
+0,-1,    0,0, 19
+2, 2,  -34,0, 1
+2, 0,  -26,0, 1
+2, 1,  -18,0, 1
+0,-1,    0,0, 7
+2, 3,  -15,0, 2
+2, 4,  -15,0, 2
+2, 5,  -15,0, 2
+0,-1,    0,0, 19
+2, 1,  -15,0, 1
+2, 2,  -23,0, 1
+2, 0,   -7,0, 1
+0,-1,    0,0, 7
+2, 3, -104,0, 2
+2, 4, -104,0, 2
+2, 5, -104,0, 2
+0,-1,    0,0, 19
+2, 0,  -12,0, 1
+2, 1,  -12,0, 1
+2, 2,  -12,0, 1
+0,-1,    0,0, 7
+2, 3,   47,0, 2
+2, 4,   47,0, 2
+2, 5,   47,0, 2
+0,-1,    0,0, 19
+2, 2,  -14,0, 1
+2, 0,   -6,0, 1
+2, 1,    2,0, 1
+0,-1,    0,0, 7
+2, 3,  -58,0, 2
+2, 4,  -58,0, 2
+2, 5,  -58,0, 2
+0,-1,    0,0, 19
+2, 0, -172,0, 1
+2, 1, -172,0, 1
+2, 2, -172,0, 1
+0,-1,    0,0, 7
+2, 3, -162,0, 2
+2, 4, -162,0, 2
+2, 5, -162,0, 2
+0,-1,    0,0, 19
+2, 2, -213,0, 1
+2, 1, -205,0, 1
+2, 0, -197,0, 1
+0,-1,    0,0, 7
+2, 3,   59,0, 2
+2, 4,   59,0, 2
+2, 5,   59,0, 2
+0,-1,    0,0, 19
+2, 2,  -74,0, 1
+2, 0,  -66,0, 1
+2, 1,  -58,0, 1
+0,-1,    0,0, 7
+2, 3, -169,0, 2
+2, 4, -169,0, 2
+2, 5, -169,0, 2
+0,-1,    0,0, 19
+2, 2,  -78,0, 1
+2, 0,  -70,0, 1
+2, 1,  -62,0, 1
+0,-1,    0,0, 7
+2, 3,   24,0, 2
+2, 4,   24,0, 2
+2, 5,   24,0, 2
+0,-1,    0,0, 19
+2, 0, -244,0, 1
+2, 1, -244,0, 1
+2, 2, -244,0, 1
+0,-1,    0,0, 7
+2, 3, -143,0, 2
+2, 4, -143,0, 2
+2, 5, -143,0, 2
+0,-1,    0,0, 19
+2, 0,  -56,0, 1
+2, 1,  -56,0, 1
+2, 2,  -56,0, 1
+0,-1,    0,0, 7
+2, 3,  -26,0, 2
+2, 4,  -26,0, 2
+2, 5,  -26,0, 2
+0,-1,    0,0, 19
+2, 2, -169,0, 1
+2, 1, -161,0, 1
+2, 0, -153,0, 1
+0,-1,    0,0, 7
+2, 3, -100,0, 2
+2, 4, -100,0, 2
+2, 5, -100,0, 2
+0,-1,    0,0, 19
+2, 2, -249,0, 1
+2, 1, -241,0, 1
+2, 0, -233,0, 1
+0,-1,    0,0, 7
+2, 3,   54,0, 2
+2, 4,   54,0, 2
+2, 5,   54,0, 2
+0,-1,    0,0, 19
+2, 2, -258,0, 1
+2, 0, -250,0, 1
+2, 1, -242,0, 1
+0,-1,    0,0, 7
+2, 3, -144,0, 2
+2, 4, -144,0, 2
+2, 5, -144,0, 2
+0,-1,    0,0, 19
+2, 1, -231,0, 1
+2, 2, -239,0, 1
+2, 0, -223,0, 1
+0,-1,    0,0, 7
+2, 3,  -54,0, 2
+2, 4,  -54,0, 2
+2, 5,  -54,0, 2
+0,-1,    0,0, 19
+2, 2,  -33,0, 1
+2, 1,  -25,0, 1
+2, 0,  -17,0, 1
+0,-1,    0,0, 7
+2, 3, -171,0, 2
+2, 4, -171,0, 2
+2, 5, -171,0, 2
+0,-1,    0,0, 12
+2, 2,  -14,0, 1
+2, 0,   -6,0, 1
+2, 1,    2,0, 1
+0,-1,    0,0, 26
+2, 2,  -13,0, 1
+2, 1,   -5,0, 1
+2, 0,    3,0, 1
+0,-1,    0,0, 7
+2, 3,   51,0, 2
+2, 4,   51,0, 2
+2, 5,   51,0, 2
+0,-1,    0,0, 26
+2, 1, -243,0, 1
+2, 2, -251,0, 1
+2, 0, -235,0, 1
+0,-1,    0,0, 7
+2, 3, -131,0, 2
+2, 4, -131,0, 2
+2, 5, -131,0, 2
+0,-1,    0,0, 19
+2, 2, -157,0, 1
+2, 1, -149,0, 1
+2, 0, -141,0, 1
+0,-1,    0,0, 7
+2, 3,  -32,0, 2
+2, 4,  -32,0, 2
+2, 5,  -32,0, 2
+0,-1,    0,0, 19
+2, 2, -145,0, 1
+2, 1, -137,0, 1
+2, 0, -129,0, 1
+0,-1,    0,0, 7
+2, 3,  -95,0, 2
+2, 4,  -95,0, 2
+2, 5,  -95,0, 2
+0,-1,    0,0, 19
+2, 1, -199,0, 1
+2, 2, -207,0, 1
+2, 0, -191,0, 1
+0,-1,    0,0, 7
+2, 3,  -40,0, 2
+2, 4,  -40,0, 2
+2, 5,  -40,0, 2
+0,-1,    0,0, 19
+2, 2, -165,0, 1
+2, 1, -157,0, 1
+2, 0, -149,0, 1
+0,-1,    0,0, 7
+2, 3, -151,0, 2
+2, 4, -151,0, 2
+2, 5, -151,0, 2
+0,-1,    0,0, 19
+2, 1,  -99,0, 1
+2, 2, -107,0, 1
+2, 0,  -91,0, 1
+0,-1,    0,0, 7
+2, 3,   13,0, 2
+2, 4,   13,0, 2
+2, 5,   13,0, 2
+0,-1,    0,0, 19
+2, 2,  -85,0, 1
+2, 1,  -77,0, 1
+2, 0,  -69,0, 1
+0,-1,    0,0, 7
+2, 3,   55,0, 2
+2, 4,   55,0, 2
+2, 5,   55,0, 2
+0,-1,    0,0, 19
+2, 1,  -31,0, 1
+2, 2,  -39,0, 1
+2, 0,  -23,0, 1
+0,-1,    0,0, 7
+2, 3,   -8,0, 2
+2, 4,   -8,0, 2
+2, 5,   -8,0, 2
+0,-1,    0,0, 12
+2, 0, -112,0, 1
+2, 1, -112,0, 1
+2, 2, -112,0, 1
+0,-1,    0,0, 26
+2, 2, -182,0, 1
+2, 0, -174,0, 1
+2, 1, -166,0, 1
+0,-1,    0,0, 7
+2, 3, -126,0, 2
+2, 4, -126,0, 2
+2, 5, -126,0, 2
+0,-1,    0,0, 26
+2, 2, -181,0, 1
+2, 1, -173,0, 1
+2, 0, -165,0, 1
+0,-1,    0,0, 7
+2, 3,  -14,0, 2
+2, 4,  -14,0, 2
+2, 5,  -14,0, 2
+0,-1,    0,0, 19
+2, 1,  -35,0, 1
+2, 2,  -43,0, 1
+2, 0,  -27,0, 1
+0,-1,    0,0, 7
+2, 3,   28,0, 2
+2, 4,   28,0, 2
+2, 5,   28,0, 2
+0,-1,    0,0, 19
+2, 0, -164,0, 1
+2, 1, -164,0, 1
+2, 2, -164,0, 1
+0,-1,    0,0, 7
+2, 3, -150,0, 2
+2, 4, -150,0, 2
+2, 5, -150,0, 2
+0,-1,    0,0, 19
+2, 2, -138,0, 1
+2, 0, -130,0, 1
+2, 1, -122,0, 1
+0,-1,    0,0, 7
+2, 3,  -48,0, 2
+2, 4,  -48,0, 2
+2, 5,  -48,0, 2
+0,-1,    0,0, 19
+2, 2, -141,0, 1
+2, 1, -133,0, 1
+2, 0, -125,0, 1
+0,-1,    0,0, 7
+2, 3, -123,0, 2
+2, 4, -123,0, 2
+2, 5, -123,0, 2
+0,-1,    0,0, 19
+2, 1, -155,0, 1
+2, 2, -163,0, 1
+2, 0, -147,0, 1
+0,-1,    0,0, 7
+2, 3, -116,0, 2
+2, 4, -116,0, 2
+2, 5, -116,0, 2
+0,-1,    0,0, 19
+2, 2,  -42,0, 1
+2, 0,  -34,0, 1
+2, 1,  -26,0, 1
+0,-1,    0,0, 7
+2, 3, -139,0, 2
+2, 4, -139,0, 2
+2, 5, -139,0, 2
+0,-1,    0,0, 19
+2, 0, -160,0, 1
+2, 1, -160,0, 1
+2, 2, -160,0, 1
+0,-1,    0,0, 7
+2, 3,  -98,0, 2
+2, 4,  -98,0, 2
+2, 5,  -98,0, 2
+0,-1,    0,0, 19
+2, 2, -257,0, 1
+2, 1, -249,0, 1
+2, 0, -241,0, 1
+0,-1,    0,0, 7
+2, 3,   62,0, 2
+2, 4,   62,0, 2
+2, 5,   62,0, 2
+0,-1,    0,0, 19
+2, 2, -133,0, 1
+2, 1, -125,0, 1
+2, 0, -117,0, 1
+0,-1,    0,0, 7
+2, 3,   11,0, 2
+2, 4,   11,0, 2
+2, 5,   11,0, 2
+0,-1,    0,0, 19
+2, 1, -203,0, 1
+2, 2, -211,0, 1
+2, 0, -195,0, 1
+0,-1,    0,0, 7
+2, 3,    65,0, 2
+2, 4,    65,0, 2
+2, 5,    65,0, 2
+0,-1,     0,0, 19
+2, 2, -137,0, 1
+2, 1, -129,0, 1
+2, 0, -121,0, 1
+0,-1,    0,0, 7
+2, 3,   18,0, 2
+2, 4,   18,0, 2
+2, 5,   18,0, 2
+0,-1,    0,0, 12
+2, 2, -110,0, 1
+2, 0, -102,0, 1
+2, 1,  -94,0, 1
+0,-1,    0,0, 26
+2, 0,  -84,0, 1
+2, 1,  -84,0, 1
+2, 2,  -84,0, 1
+0,-1,    0,0, 7
+2, 3,  -33,0, 2
+2, 4,  -33,0, 2
+2, 5,  -33,0, 2
+0,-1,    0,0, 26
+2, 0, -232,0, 1
+2, 1, -232,0, 1
+2, 2, -232,0, 1
+0,-1,    0,0, 7
+2, 3,  -20,0, 2
+2, 4,  -20,0, 2
+2, 5,  -20,0, 2
+0,-1,    0,0, 19
+2, 1,  -31,0, 1
+2, 2,  -39,0, 1
+2, 0,  -23,0, 1
+0,-1,    0,0, 7
+2, 3,  -94,0, 2
+2, 4,  -94,0, 2
+2, 5,  -94,0, 2
+0,-1,    0,0, 19
+2, 1,  -95,0, 1
+2, 2, -103,0, 1
+2, 0,  -87,0, 1
+0,-1,    0,0, 7
+2, 3,    9,0, 2
+2, 4,    9,0, 2
+2, 5,    9,0, 2
+0,-1,    0,0, 19
+2, 2,  -97,0, 1
+2, 1,  -89,0, 1
+2, 0,  -81,0, 1
+0,-1,    0,0, 7
+2, 3,  -96,0, 2
+2, 4,  -96,0, 2
+2, 5,  -96,0, 2
+0,-1,    0,0, 19
+2, 2, -173,0, 1
+2, 1, -165,0, 1
+2, 0, -157,0, 1
+0,-1,    0,0, 7
+2, 3, -124,0, 2
+2, 4, -124,0, 2
+2, 5, -124,0, 2
+0,-1,    0,0, 19
+2, 0, -196,0, 1
+2, 1, -196,0, 1
+2, 2, -196,0, 1
+0,-1,    0,0, 7
+2, 3,  -75,0, 2
+2, 4,  -75,0, 2
+2, 5,  -75,0, 2
+0,-1,    0,0, 19
+2, 2,  -70,0, 1
+2, 0,  -62,0, 1
+2, 1,  -54,0, 1
+0,-1,    0,0, 7
+2, 3,  -11,0, 2
+2, 4,  -11,0, 2
+2, 5,  -11,0, 2
+0,-1,    0,0, 19
+2, 1, -111,0, 1
+2, 2, -119,0, 1
+2, 0, -103,0, 1
+0,-1,    0,0, 7
+2, 3, -116,0, 2
+2, 4, -116,0, 2
+2, 5, -116,0, 2
+0,-1,    0,0, 19
+2, 1, -163,0, 1
+2, 2, -171,0, 1
+2, 0, -155,0, 1
+0,-1,    0,0, 7
+2, 3,    9,0, 2
+2, 4,    9,0, 2
+2, 5,    9,0, 2
+0,-1,    0,0, 19
+2, 2, -153,0, 1
+2, 1, -145,0, 1
+2, 0, -137,0, 1
+0,-1,    0,0, 7
+2, 3, -116,0, 2
+2, 4, -116,0, 2
+2, 5, -116,0, 2
+0,-1,    0,0, 19
+2, 1,  -63,0, 1
+2, 2,  -71,0, 1
+2, 0,  -55,0, 1
+0,-1,    0,0, 7
+2, 3,  -57,0, 2
+2, 4,  -57,0, 2
+2, 5,  -57,0, 2
+0,-1,    0,0, 19
+2, 2, -129,0, 1
+2, 1, -121,0, 1
+2, 0, -113,0, 1
+0,-1,    0,0, 7
+2, 3, -140,0, 2
+2, 4, -140,0, 2
+2, 5, -140,0, 2
+0,-1,    0,0, 19
+2, 1,  -67,0, 1
+2, 2,  -75,0, 1
+2, 0,  -59,0, 1
+0,-1,    0,0, 7
+2, 3,  -20,0, 2
+2, 4,  -20,0, 2
+2, 5,  -20,0, 2
+0,-1,    0,0, 19
+2, 2, -241,0, 1
+2, 1, -233,0, 1
+2, 0, -225,0, 1
+0,-1,    0,0, 7
+2, 3, -167,0, 2
+2, 4, -167,0, 2
+2, 5, -167,0, 2
+0,-1,    0,0, 19
+2, 2, -201,0, 1
+2, 1, -193,0, 1
+2, 0, -185,0, 1
+0,-1,    0,0, 7
+2, 3,  -91,0, 2
+2, 4,  -91,0, 2
+2, 5,  -91,0, 2
+0,-1,    0,0, 19
+2, 0, -188,0, 1
+2, 1, -188,0, 1
+2, 2, -188,0, 1
+0,-1,    0,0, 7
+2, 3,   50,0, 2
+2, 4,   50,0, 2
+2, 5,   50,0, 2
+0,-1,    0,0, 29
+
+[Begin action 31]
+
+3,0, 0,0, -1
+
+[Begin action 32]
+
+3,1, 0,0, -1
+
+[Begin action 33]
+
+3,2, 0,0, -1
+
+[Begin action 34]
+
+3,3, 0,0, -1
+
+[Begin action 35]
+
+3,4, 0,0, -1
+
+[Begin action 40]
+
+0,-1, 0,0, 133
+4, 0, 0,0, 1
+4, 1, 0,0, 1
+0,-1, 0,0, 762
+4, 0, 0,0, 1
+4, 1, 0,0, 1
+0,-1, 0,0, 342
+4, 0, 0,0, 1
+4, 1, 0,0, 1
+0,-1, 0,0, 482
+4, 0, 0,0, 1
+4, 1, 0,0, 1
+0,-1, 0,0, 609
+4, 0, 0,0, 1
+4, 1, 0,0, 1
+0,-1, 0,0, 7
+4, 0, 0,0, 1
+4, 1, 0,0, 1
+
+[Begin action 51]
+
+5,0, 0,0, 5
+5,1, 0,0, 5
+5,2, 0,0, 5
+5,3, 0,0, 5
+5,4, 0,0, 5
+
+[Begin action 52]
+
+5,5, 0,0, 5
+5,6, 0,0, 5
+5,7, 0,0, 5
+5,8, 0,0, 5
+5,9, 0,0, 5
+
+[Begin action 53]
+
+5,10, 0,0, 5
+5,11, 0,0, 5
+5,12, 0,0, 5
+5,13, 0,0, 5
+5,14, 0,0, 5
+
+[Begin action 54]
+
+5,15, 0,0, 5
+5,16, 0,0, 5
+5,17, 0,0, 5
+5,18, 0,0, 5
+5,19, 0,0, 5
+
+[Begin action 55]
+
+5,20, 0,0, 5
+5,21, 0,0, 5
+5,22, 0,0, 5
+5,23, 0,0, 5
+5,24, 0,0, 5
+
+[Begin action 61]
+
+6,0, 0,0, 5
+6,1, 0,0, 5
+6,2, 0,0, 5
+6,3, 0,0, 5
+6,4, 0,0, 5
+
+[Begin action 62]
+
+6,5, 0,0, 5
+6,6, 0,0, 5
+6,7, 0,0, 5
+6,8, 0,0, 5
+6,9, 0,0, 5
+
+[Begin action 63]
+
+6,10, 0,0, 5
+6,11, 0,0, 5
+6,12, 0,0, 5
+6,13, 0,0, 5
+6,14, 0,0, 5
+
+[Begin action 64]
+
+6,15, 0,0, 5
+6,16, 0,0, 5
+6,17, 0,0, 5
+6,18, 0,0, 5
+6,19, 0,0, 5
+
+[Begin action 65]
+
+6,20, 0,0, 5
+6,21, 0,0, 5
+6,22, 0,0, 5
+6,23, 0,0, 5
+6,24, 0,0, 5
+
+[Begin action 71]
+
+7,0, 0,0, 5
+7,1, 0,0, 5
+7,2, 0,0, 5
+7,3, 0,0, 5
+7,4, 0,0, 5
+
+[Begin action 72]
+
+7,5, 0,0, 5
+7,6, 0,0, 5
+7,7, 0,0, 5
+7,8, 0,0, 5
+7,9, 0,0, 5
+
+[Begin action 73]
+
+7,10, 0,0, 5
+7,11, 0,0, 5
+7,12, 0,0, 5
+7,13, 0,0, 5
+7,14, 0,0, 5
+
+[Begin action 74]
+
+7,15, 0,0, 5
+7,16, 0,0, 5
+7,17, 0,0, 5
+7,18, 0,0, 5
+7,19, 0,0, 5

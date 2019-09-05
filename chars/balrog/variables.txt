@@ -1,0 +1,38 @@
+Balrog (M.Bison)
+Hyper Street Fighter Alpha (Zero)
+-----------------------
+Notes on Variables
+-----------------------
+
+Character Variables
+-------------------
+Var(0)	-	Randomizer: Used for various things.
+Var(1)	-	Sp/hyp Move + weak/strong/fierce checker.
+Var(2)	-	V-ism custom combo activator.
+Var(3)	-	Power boost on first round indicator.
+Var(4)	-	Blue S-ism parry activator.
+var(5)  -	Taunt restricter for X/A/V-ism.
+var(6)  -	Recovery Roll indicator.
+var(7)	-	Dizziness hit counter.
+var(8)	-	Hits requierd before dizziness.
+var(9)	-	Actually dizzy falling indicator.
+var(10) - 	Turn Punch Charge activator.
+var(11) - 	Turn Punch Charge activator.
+var(12) - 	Turn Punch Strike activator.
+var(13) -	Crazy Buffalo X-ism start attack type.
+Var(15)	-	Move Contact Indicator.
+Var(16)	-	Move Hit Indicator.
+Var(17)	-	Move Guarded Indicator.
+Var(18) -	Opponent is dizzy falling indicator.
+Var(20)	-	Ground combo checker.
+Var(21)	-	Air combo checker.
+Var(25)	-	Super/Hyper KO flash screen indicator.
+Var(30) -	Max power charge sound indicator.
+Var(40)	-	Player/CPU trigger [> 0 = Player] [< 0 = CPU].
+Var(45) -	Direction character is facing at start of the round.
+Var(50) -	-ism modifier [0=X-ism, 1=A-ism, 2=V-ism, 3=EX-ism]
+Var(51) -	-ism select activator on first match only.
+Var(55)	-	Shadaloo-ism modifier [1=Red, 2=Green, 3=Blue].
+Var(56) - 	Classic Balrog activator.
+Var(59) -	Max power charge sound indicator.
+

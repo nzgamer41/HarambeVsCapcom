@@ -1,0 +1,30 @@
+; Definition file for Gorila Grodd
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="Harambe"
+displayname ="Harambe"
+versiondate =09,30,2009 ;updated on 2015-12-31
+mugenversion =1.0
+author ="Cravd & Jhonny-DC, updated by Pilgrim and borewood2013"
+pal.defaults=1,2
+
+; Files for the player
+[Files]
+cmd     =GorilaGrodd.cmd
+cns     =GorilaGrodd.cns
+st      =GorilaGrodd.cns
+stcommon =GG_common1.cns 
+sprite  =GorilaGrodd.sff
+anim    =GorilaGrodd.air
+sound   =GorilaGrodd.snd
+ai      =                   ;AI hints data (not used)
+pal1=GGrodd.act
+pal2=GGrodd.act;GGroddIII.act
+st1=GorilaGrodd_AI_states.cns
+
+; Arcade mode
+[Arcade]
+intro.storyboard =intro.def
+ending.storyboard =ending.def

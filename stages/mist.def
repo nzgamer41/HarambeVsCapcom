@@ -1,0 +1,159 @@
+[Info]
+name = "Misty clearing"
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -232
+boundright = 232
+boundhigh = -77
+boundlow = 0
+verticalfollow = .3
+tension = 50
+
+[PlayerInfo]
+p1startx = -70
+p1starty = 0
+p1startz = 0
+p1facing = 1
+
+p2startx = 70
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000
+rightbound =  1000
+topbound  =  0
+botbound  =  0
+
+[Scaling]
+topz     = 0
+botz     = 50
+topscale = 1
+botscale = 1.2
+
+[Bound]
+screenleft = 15
+screenright = 15
+
+[StageInfo]
+zoffset = 220
+autoturn = 1
+resetBG = 0
+
+[Shadow]
+color = 128,128,128
+yscale = .3
+
+[Music]
+bgmusic = sound/capcom12.mp3
+bgvolume = 0
+
+[BGdef]
+spr = stages/mist.sff
+
+[BG 1]
+type = anim
+actionno = 1
+start = 0,240
+delta = 1,1
+mask = 0
+
+[BG bird A]
+type = anim
+actionno = 2
+start = -137,190
+delta = 1,1
+
+[BG bird B]
+type = anim
+actionno = 3
+start = -106,182
+delta = 1,1
+
+[BG stump A]
+type = normal
+spriteno = 3,0
+layerno = 1
+start = -392,240
+delta = 1,1
+mask = 1
+
+[BG plant]
+type = normal
+spriteno = 4,0
+layerno = 1
+start = 112,236
+delta = 1,1
+mask = 1
+
+[BG stump B]
+type = anim
+actionno = 4
+layerno = 1
+start = 392,240
+delta = 1,1
+
+[Begin action 1]
+
+0,0, 0,0, 8
+0,1, 0,0, 8
+0,2, 0,0, 8
+0,3, 0,0, 8
+0,4, 0,0, 8
+0,5, 0,0, 8
+0,6, 0,0, 8
+0,7, 0,0, 8
+
+[Begin action 2]
+
+1,0, 0,0, 128
+1,1, 0,0, 5
+1,2, 0,0, 5
+1,3, 0,0, 5
+1,4, 0,0, 5
+1,3, 0,0, 5
+1,4, 0,0, 5
+1,3, 0,0, 5
+1,4, 0,0, 5
+1,2, 0,0, 5
+1,1, 0,0, 5
+
+[Begin action 3]
+
+2,0, 0,0, 172
+2,1, 0,0, 5
+2,2, 0,0, 5
+2,3, 0,0, 10
+2,4, 0,0, 20
+2,3, 0,0, 10
+2,4, 0,0, 20
+2,3, 0,0, 10
+2,4, 0,0, 20
+2,3, 0,0, 10
+2,4, 0,0, 20
+2,3, 0,0, 10
+2,2, 0,0, 5
+2,1, 0,0, 5
+2,0, 0,0, 204
+2,1, 0,0, 5
+2,2, 0,0, 5
+2,5, 0,0, 5
+2,6, 0,0, 5
+2,7, 0,0, 20
+2,6, 0,0, 5
+2,5, 0,0, 5
+2,2, 0,0, 5
+2,1, 0,0, 5
+
+[Begin action 4]
+
+5,0, 0,0, 8
+5,1, 0,0, 8
+5,2, 0,0, 8
+5,3, 0,0, 8
+5,4, 0,0, 8
+5,5, 0,0, 8
+5,6, 0,0, 8
+5,7, 0,0, 8

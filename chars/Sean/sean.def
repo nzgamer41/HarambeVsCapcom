@@ -1,0 +1,48 @@
+
+
+[Info]
+name ="Sean 07"
+displayname ="Sean"
+versiondate =09/03/2013 
+mugenversion =1.0
+author ="Misterr07"
+pal.defaults =1,2,3,4,5,6,7,8,9,10
+localcoord=320,240
+
+[Files]
+sprite =sean.sff
+anim =sean.air
+sound =sound/sean.snd
+cmd =sean.cmd
+cns =states/sean.cns
+stcommon =common1.cns
+st =states/sean.cns
+pal1=palettes/player.act
+pal2=palettes/ken.act
+pal3=palettes/dan.act
+pal4=palettes/ryu.act
+pal5=palettes/sean05.act
+pal6=palettes/sean06.act
+pal7=palettes/Green.act
+pal8=palettes/sean08.act
+pal9=palettes/sean09.act
+pal10=palettes/sean10.act
+st1=states/basics.cns
+st2=states/specials.cns
+st3=states/supers.cns
+st4=states/hypers.cns
+st5=states/strikers.cns
+st6=states/helpers.cns
+st7=states/negatives.cns
+
+
+
+
+
+
+
+[Arcade]
+intro.storyboard=
+ending.storyboard=
+;intro.storyboard = 
+;ending.storyboard = 

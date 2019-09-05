@@ -1,0 +1,7 @@
+[Statedef -3]
+
+[State -3]
+type = SprPriority
+trigger1 = StateNo = 0
+value = 2
+

@@ -1,0 +1,560 @@
+;---------------------------------------------------------------------------
+[Statedef -3]
+
+;--------------------------X軸移動(ジャンプ、ハイジャンプ、空中ジャンプ、空中基本技)--------------------------
+[State -2]
+type = varAdd
+trigger1 = StateNo = 50 || StateNo = 70 || StateNo = 90
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 611 || StateNo = 614
+trigger4 = StateNo = 621 || StateNo = 624
+trigger5 = StateNo = 631 || StateNo = 634
+trigger6 = StateNo = 641 || StateNo = 644
+trigger7 = StateNo = 651 || StateNo = 654
+trigger8 = StateNo = 655 || StateNo = 658
+trigger9 = StateNo = 661 || StateNo = 664
+trigger10 = StateNo = 671 || StateNo = 674
+trigger11 = StateNo = 681 || StateNo = 684
+trigger12 = StateNo = 691 || StateNo = 694
+trigger13 = StateNo = 701 || StateNo = 704
+trigger14 = StateNo = 711 || StateNo = 714
+trigger15 = StateNo = 931 || StateNo = 933
+trigger16 = StateNo = 2101 || StateNo = 2111
+trigger17 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger18 = (StateNo = 1610 && time >= 4) || (StateNo = 1620 && time >= 1) || (StateNo = 1630 && time >= 1) || StateNo = 1680
+var(43) = 1
+
+[State -2]
+type = PosAdd
+triggerall = var(14) = -2 || var(14) = 0 || var(14) = 2
+trigger1 = StateNo = 50
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 611 || StateNo = 614
+trigger4 = StateNo = 621 || StateNo = 624
+trigger5 = StateNo = 631 || StateNo = 634
+trigger6 = StateNo = 641 || StateNo = 644
+trigger7 = StateNo = 651 || StateNo = 654
+trigger8 = StateNo = 655 || StateNo = 658
+trigger9 = StateNo = 661 || StateNo = 664
+trigger10 = StateNo = 671 || StateNo = 674
+trigger11 = StateNo = 681 || StateNo = 684
+trigger12 = StateNo = 691 || StateNo = 694
+trigger13 = StateNo = 701 || StateNo = 704
+trigger14 = StateNo = 711 || StateNo = 714
+trigger15 = StateNo = 931 || StateNo = 933
+trigger16 = StateNo = 2101 || StateNo = 2111
+trigger17 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger18 = (StateNo = 1610 && time >= 4) || (StateNo = 1620 && time >= 1) || (StateNo = 1630 && time >= 1) || StateNo = 1680
+X = ifelse(var(14)=0, Const(Velocity.Jump.Neu.x), ifelse(var(14)=2, Const(Velocity.Jump.Fwd.x), Const(Velocity.Jump.Back.x))) * Const(Size.XScale)
+
+[State -2]
+type = PosAdd
+triggerall = var(14) = -1 || var(14) = 1 || var(14) = 3
+trigger1 = StateNo = 70
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 611 || StateNo = 614
+trigger4 = StateNo = 621 || StateNo = 624
+trigger5 = StateNo = 631 || StateNo = 634
+trigger6 = StateNo = 641 || StateNo = 644
+trigger7 = StateNo = 651 || StateNo = 654
+trigger8 = StateNo = 655 || StateNo = 658
+trigger9 = StateNo = 661 || StateNo = 664
+trigger10 = StateNo = 671 || StateNo = 674
+trigger11 = StateNo = 681 || StateNo = 684
+trigger12 = StateNo = 691 || StateNo = 694
+trigger13 = StateNo = 701 || StateNo = 704
+trigger14 = StateNo = 711 || StateNo = 714
+trigger15 = StateNo = 931 || StateNo = 933
+trigger16 = StateNo = 2101 || StateNo = 2111
+trigger17 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger18 = (StateNo = 1610 && time >= 4) || (StateNo = 1620 && time >= 1) || (StateNo = 1630 && time >= 1) || StateNo = 1680
+X = ifelse(var(14)=1, 0, ifelse(var(14)=3, 6, -5.75)) * Const(Size.XScale)
+
+[State -2]
+type = PosAdd
+triggerall = var(14) = -1
+trigger1 = StateNo = 70
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 611 || StateNo = 614
+trigger4 = StateNo = 621 || StateNo = 624
+trigger5 = StateNo = 631 || StateNo = 634
+trigger6 = StateNo = 641 || StateNo = 644
+trigger7 = StateNo = 651 || StateNo = 654
+trigger8 = StateNo = 655 || StateNo = 658
+trigger9 = StateNo = 661 || StateNo = 664
+trigger10 = StateNo = 671 || StateNo = 674
+trigger11 = StateNo = 681 || StateNo = 684
+trigger12 = StateNo = 691 || StateNo = 694
+trigger13 = StateNo = 701 || StateNo = 704
+trigger14 = StateNo = 711 || StateNo = 714
+trigger15 = StateNo = 931 || StateNo = 933
+trigger16 = StateNo = 2101 || StateNo = 2111
+trigger17 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger18 = (StateNo = 1610 && time >= 4) || (StateNo = 1620 && time >= 1) || (StateNo = 1630 && time >= 1) || StateNo = 1680
+X = ifelse(var(43)<=1, 0, var(43)-2) * 0.09375 * Const(Size.XScale)
+
+[State -2]
+type = PosAdd
+triggerall = var(14) = 8 || var(14) = 10 || var(14) = 12
+trigger1 = StateNo = 90
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 611 || StateNo = 614
+trigger4 = StateNo = 621 || StateNo = 624
+trigger5 = StateNo = 631 || StateNo = 634
+trigger6 = StateNo = 641 || StateNo = 644
+trigger7 = StateNo = 651 || StateNo = 654
+trigger8 = StateNo = 655 || StateNo = 658
+trigger9 = StateNo = 661 || StateNo = 664
+trigger10 = StateNo = 671 || StateNo = 674
+trigger11 = StateNo = 681 || StateNo = 684
+trigger12 = StateNo = 691 || StateNo = 694
+trigger13 = StateNo = 701 || StateNo = 704
+trigger14 = StateNo = 711 || StateNo = 714
+trigger15 = StateNo = 931 || StateNo = 933
+trigger16 = StateNo = 2101 || StateNo = 2111
+trigger17 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger18 = (StateNo = 1610 && time >= 4) || (StateNo = 1620 && time >= 1) || (StateNo = 1630 && time >= 1) || StateNo = 1680
+X = ifelse(var(14)=10, 0, ifelse(var(14)=12, 2.375, -1.125)) * Const(Size.XScale)
+
+;--------------------------Y軸加速(ジャンプ、ハイジャンプ、空中ジャンプ、空中基本技)--------------------------
+[State -2]
+type = VelAdd
+triggerall = var(14) = -2 || var(14) = 0 || var(14) = 2
+trigger1 = StateNo = 50 && time > 1
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 611 || StateNo = 614
+trigger4 = StateNo = 621 || StateNo = 624
+trigger5 = StateNo = 631 || StateNo = 634
+trigger6 = StateNo = 641 || StateNo = 644
+trigger7 = StateNo = 651 || StateNo = 654
+trigger8 = StateNo = 655 || StateNo = 658
+trigger9 = StateNo = 661 || StateNo = 664
+trigger10 = StateNo = 671 || StateNo = 674
+trigger11 = StateNo = 681 || StateNo = 684
+trigger12 = StateNo = 691 || StateNo = 694
+trigger13 = StateNo = 701 || StateNo = 704
+trigger14 = StateNo = 711 || StateNo = 714
+trigger15 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger16 = (StateNo = 1610 && time >= 4) || (StateNo = 1620 && time > 1) || (StateNo = 1630 && time > 1) || StateNo = 1680
+Y = Const(Movement.YAccel) * Const(Size.YScale)
+
+[State -2]
+type = VelAdd
+triggerall = var(14) = -1 || var(14) = 1 || var(14) = 3
+trigger1 = StateNo = 70 && time > 1
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 611 || StateNo = 614
+trigger4 = StateNo = 621 || StateNo = 624
+trigger5 = StateNo = 631 || StateNo = 634
+trigger6 = StateNo = 641 || StateNo = 644
+trigger7 = StateNo = 651 || StateNo = 654
+trigger8 = StateNo = 655 || StateNo = 658
+trigger9 = StateNo = 661 || StateNo = 664
+trigger10 = StateNo = 671 || StateNo = 674
+trigger11 = StateNo = 681 || StateNo = 684
+trigger12 = StateNo = 691 || StateNo = 694
+trigger13 = StateNo = 701 || StateNo = 704
+trigger14 = StateNo = 711 || StateNo = 714
+trigger15 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger16 = (StateNo = 1610 && time >= 4) || (StateNo = 1620 && time > 1) || (StateNo = 1630 && time > 1) || StateNo = 1680
+Y = 0.546875 * Const(Size.YScale)
+
+[State -2]
+type = VelAdd
+triggerall = var(14) = 8 || var(14) = 10 || var(14) = 12
+trigger1 = StateNo = 90 && time > 1
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 611 || StateNo = 614
+trigger4 = StateNo = 621 || StateNo = 624
+trigger5 = StateNo = 631 || StateNo = 634
+trigger6 = StateNo = 641 || StateNo = 644
+trigger7 = StateNo = 651 || StateNo = 654
+trigger8 = StateNo = 655 || StateNo = 658
+trigger9 = StateNo = 661 || StateNo = 664
+trigger10 = StateNo = 671 || StateNo = 674
+trigger11 = StateNo = 681 || StateNo = 684
+trigger12 = StateNo = 691 || StateNo = 694
+trigger13 = StateNo = 701 || StateNo = 704
+trigger14 = StateNo = 711 || StateNo = 714
+trigger15 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger16 = (StateNo = 1610 && time >= 4) || (StateNo = 1620 && time > 1) || (StateNo = 1630 && time > 1) || StateNo = 1680
+Y = Const(Movement.YAccel) * Const(Size.YScale)
+
+[State -2]
+type = ChangeState
+triggerall = var(14) = -2 || var(14) = 0 || var(14) = 2
+triggerall = Pos Y + Vel Y + Const(Movement.YAccel) * Const(Size.YScale) >= 0
+trigger1 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+value = 720
+
+[State -2]
+type = ChangeState
+triggerall = var(14) = -1 || var(14) = 1 || var(14) = 3
+triggerall = Pos Y + Vel Y + 0.546875 * Const(Size.YScale) >= 0
+trigger1 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+value = 721
+
+[State -2]
+type = ChangeState
+triggerall = var(14) = 8 || var(14) = 10 || var(14) = 12
+triggerall = Pos Y + Vel Y + Const(Movement.YAccel) * Const(Size.YScale) >= 0
+trigger1 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+value = 721
+
+;----------------------------------------------------
+[State -2]
+type = VelMul
+triggerall = StateType = A
+trigger1 = MoveType != H
+trigger1 = StateNo != [945, 949]
+trigger1 = StateNo != [5000, 5299]
+X = .8
+
+;--------------------------負けグラ呼び出し--------------------------
+[State 191, 6]
+type = Helper
+trigger1 = var(16) >= 4
+trigger1 = !NumHelper(4250)
+trigger1 = Enemy,NumHelper(4100) + Enemy,NumHelper(4200)
+StateNo = 4000
+ID = 4250
+
+;------------------------------ガードブロッキング------------------------------
+;地上基本技を前ブロ
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 0
+StateNo = 3005
+attr = S, NA
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [0, 1]
+trigger1 = var(33) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 0
+StateNo = 3005
+attr = SC, NA
+time = 1
+;------------------------------------
+;地上必殺技（飛び道具除く）を前ブロ
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 1
+StateNo = 3005
+attr = S, SA, HA
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [0, 1]
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 1
+StateNo = 3005
+attr = SC, SA, HA
+time = 1
+;------------------------------------
+;地上基本技を下ブロ
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(35) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 2
+StateNo = 3015
+attr = C, NA
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [1, 2]
+trigger1 = var(35) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 2
+StateNo = 3015
+attr = SC, NA
+time = 1
+;------------------------------------
+;地上必殺技（飛び道具除く）を下ブロ
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(35) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 3
+StateNo = 3015
+attr = C, SA, HA
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [1, 2]
+trigger1 = var(35) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 3
+StateNo = 3015
+attr = SC, SA, HA
+time = 1
+;------------------------------------
+;空中基本技を前ブロ
+[State -2, Blocking-3]
+type = HitOverride
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 4
+StateNo = 3005
+attr = A, NA
+time = 1
+;------------------------------------
+;空中必殺技（飛び道具除く）を前ブロ
+[State -2, Blocking-3]
+type = HitOverride
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 5
+StateNo = 3005
+attr = A, SA, HA
+time = 1
+;------------------------------------
+;空中・上段飛び道具を前ブロ
+[State -2, Blocking]
+type = HitOverride
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 6
+StateNo = 3005
+attr = SA, AP
+time = 1
+;------------------------------------
+;下段飛び道具を下ブロ
+[State -2, Blocking]
+type = HitOverride
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(35) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 7
+StateNo = 3015
+attr = C, AP
+time = 1
+
+;--------------------------人柱登り--------------------------
+[State 1100, 102]
+type = varAdd
+triggerall = StateNo = [1600, 1799]
+triggerall = Time > 0
+trigger1 = Command = "x"
+trigger2 = Command = "y"
+trigger3 = Command = "z"
+trigger4 = Command = "a"
+trigger5 = Command = "b"
+trigger6 = Command = "c"
+fVar(21) = 1
+
+;--------------------------屈強P--------------------------
+[State 221]
+type = TargetState
+triggerall = NumTarget(420) = 1
+triggerall = Target(420),time = 2
+;trigger1 = Target(420),StateType != A
+trigger1 = Target(420),StateNo = 5000
+trigger2 = Target(420),StateNo = 5010
+value = ifelse(fvar(12) < 48 + 8 * (var(16)%4), 426, 428)
+persistent = 0
+ignorehitpause = 1
+
+;--------------------------N投げ--------------------------
+[State 922]
+type = TargetState
+triggerall = var(16) >= 4
+trigger1 = NumTarget(900)
+trigger1 = Target(900),StateNo = 915
+trigger1 = Target(900),time > 2
+trigger1 = Target(900),Pos Y + Target(900),Vel Y + Target(900),GetHitvar(YAccel) >= 0
+value = 916
+
+[State 922]
+type = TargetState
+triggerall = var(16) < 4
+trigger1 = NumTarget(900)
+trigger1 = Target(900),StateNo = 915
+trigger1 = Target(900),time > 2
+trigger1 = Target(900),Pos Y + Target(900),Vel Y + Target(900),GetHitvar(YAccel) >= 0
+value = ifelse(fVar(12) < 48 + (var(16)%4) * 8, 916, 917)
+
+;--------------------------投げ（後ろ）--------------------------
+[State 801, Hurt 11]
+type = varAdd
+trigger1 = NumTarget(920)
+trigger1 = Target(920),StateNo = 927
+trigger1 = Target(920),time > 1
+trigger1 = Target(920),Pos Y + Target(920),Vel Y + Target(920),GetHitvar(YAccel) >= 0
+fVar(12) = ifelse(48 + 8 * (var(16)%4) - fVar(12) > 15, 15, 48 + 8 * (var(16)%4) - fVar(12))
+
+[State 801, Hurt 11]
+type = TargetLifeAdd
+trigger1 = NumTarget(920)
+trigger1 = Target(920),StateNo = 927
+trigger1 = Target(920),time > 1
+trigger1 = Target(920),Pos Y + Target(920),Vel Y + Target(920),GetHitvar(YAccel) >= 0
+value = Ceil(-120 * 0.87 * ifelse(32 - var(29) < 7, 7, 32 - var(29))/32)
+
+[State 1904]
+type = PowerAdd
+trigger1 = NumTarget(920)
+trigger1 = Target(920),StateNo = 927
+trigger1 = Target(920),time > 1
+trigger1 = Target(920),Pos Y + Target(920),Vel Y + Target(920),GetHitvar(YAccel) >= 0
+value = 80
+
+[State 1904]
+type = TargetPowerAdd
+trigger1 = NumTarget(920)
+trigger1 = Target(920),StateNo = 927
+trigger1 = Target(920),time > 1
+trigger1 = Target(920),Pos Y + Target(920),Vel Y + Target(920),GetHitvar(YAccel) >= 0
+value = 20
+
+[State 801, 4]
+type = EnvShake
+trigger1 = NumTarget(920)
+trigger1 = Target(920),StateNo = 927
+trigger1 = Target(920),time > 1
+trigger1 = Target(920),Pos Y + Target(920),Vel Y + Target(920),GetHitvar(YAccel) >= 0
+time = 10
+
+[State 922]
+type = PlaySnd
+trigger1 = NumTarget(920)
+trigger1 = Target(920),StateNo = 927
+trigger1 = Target(920),time > 1
+trigger1 = Target(920),Pos Y + Target(920),Vel Y + Target(920),GetHitvar(YAccel) >= 0
+value = 0, 38
+
+[State 922]
+type = TargetState
+triggerall = var(16) >= 4
+trigger1 = NumTarget(920)
+trigger1 = Target(920),StateNo = 927
+trigger1 = Target(920),time > 1
+trigger1 = Target(920),Pos Y + Target(920),Vel Y + Target(920),GetHitvar(YAccel) >= 0
+value = 928
+
+[State 922]
+type = TargetState
+triggerall = var(16) < 4
+trigger1 = NumTarget(920)
+trigger1 = Target(920),StateNo = 927
+trigger1 = Target(920),time > 1
+trigger1 = Target(920),Pos Y + Target(920),Vel Y + Target(920),GetHitvar(YAccel) >= 0
+value = ifelse(fVar(12) < 48 + (var(16)%4) * 8, 928, 929)
+
+;--------------------------投げ（前）--------------------------
+[State 801, Hurt 11]
+type = varAdd
+trigger1 = NumTarget(10920)
+trigger1 = Target(10920),StateNo = 10927
+trigger1 = Target(10920),time > 1
+trigger1 = Target(10920),Pos Y + Target(10920),Vel Y + Target(10920),GetHitvar(YAccel) >= 0
+fVar(12) = ifelse(48 + 8 * (var(16)%4) - fVar(12) > 15, 15, 48 + 8 * (var(16)%4) - fVar(12))
+
+[State 801, Hurt 11]
+type = TargetLifeAdd
+trigger1 = NumTarget(10920)
+trigger1 = Target(10920),StateNo = 10927
+trigger1 = Target(10920),time > 1
+trigger1 = Target(10920),Pos Y + Target(10920),Vel Y + Target(10920),GetHitvar(YAccel) >= 0
+value = Ceil(-120 * 0.87 * ifelse(32 - var(29) < 7, 7, 32 - var(29))/32)
+
+[State 1904]
+type = PowerAdd
+trigger1 = NumTarget(10920)
+trigger1 = Target(10920),StateNo = 10927
+trigger1 = Target(10920),time > 1
+trigger1 = Target(10920),Pos Y + Target(10920),Vel Y + Target(10920),GetHitvar(YAccel) >= 0
+value = 80
+
+[State 1904]
+type = TargetPowerAdd
+trigger1 = NumTarget(10920)
+trigger1 = Target(10920),StateNo = 10927
+trigger1 = Target(10920),time > 1
+trigger1 = Target(10920),Pos Y + Target(10920),Vel Y + Target(10920),GetHitvar(YAccel) >= 0
+value = 20
+
+[State 801, 4]
+type = EnvShake
+trigger1 = NumTarget(10920)
+trigger1 = Target(10920),StateNo = 10927
+trigger1 = Target(10920),time > 1
+trigger1 = Target(10920),Pos Y + Target(10920),Vel Y + Target(10920),GetHitvar(YAccel) >= 0
+time = 10
+
+[State 922]
+type = PlaySnd
+trigger1 = NumTarget(10920)
+trigger1 = Target(10920),StateNo = 10927
+trigger1 = Target(10920),time > 1
+trigger1 = Target(10920),Pos Y + Target(10920),Vel Y + Target(10920),GetHitvar(YAccel) >= 0
+value = 0, 38
+
+[State 922]
+type = TargetState
+triggerall = var(16) >= 4
+trigger1 = NumTarget(10920)
+trigger1 = Target(10920),StateNo = 10927
+trigger1 = Target(10920),time > 1
+trigger1 = Target(10920),Pos Y + Target(10920),Vel Y + Target(10920),GetHitvar(YAccel) >= 0
+value = 10928
+
+[State 922]
+type = TargetState
+triggerall = var(16) < 4
+trigger1 = NumTarget(10920)
+trigger1 = Target(10920),StateNo = 10927
+trigger1 = Target(10920),time > 1
+trigger1 = Target(10920),Pos Y + Target(10920),Vel Y + Target(10920),GetHitvar(YAccel) >= 0
+value = ifelse(fVar(12) < 48 + (var(16)%4) * 8, 10928, 10929)
+
+[State 221] 
+type = TargetState 
+triggerall = NumTarget(420) = 1 
+triggerall = Target(420),time = 4 
+trigger1 = Target(420),StateNo = 5000 
+trigger2 = Target(420),StateNo = 5010 
+value = ifelse(fVar(12) < 48 + 8 * (var(16)%4), 426, 428) 
+persistent = 0 
+ignorehitpause = 1 
+
+
+

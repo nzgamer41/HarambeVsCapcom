@@ -1,0 +1,43 @@
+;Player information
+[Info]
+name = "Oro"
+displayname = "Oro"
+versiondate = 04,14,2001
+mugenversion = 04,14,2001
+author = "Umihei"
+pal.defaults = 1, 2, 3, 4, 5, 6
+
+[Files]
+StCommon = OroSystem.cns
+Cmd = CODE/OroCmd.txt
+Anim = CODE/Oro.air
+Cns = CODE/OroCns.txt
+St = CODE/OroCns.txt
+St1 = CODE/Oro-2Cns.txt
+St2 = CODE/Oro-3Cns.txt
+St3 = CODE/Oro4000Cns.txt
+St4 = CODE/Oro5000Cns.txt
+St5 = CODE/Oro6000Cns.txt
+St6 = CODE/Oro7000Cns.txt
+St7 = CODE/Oro8000Cns.txt
+
+sprite = Oro.sff   ;Sprite
+sound = Oro.snd   ;Sound
+
+pal1 = Act/LK.act
+pal2 = Act/MK.act
+pal3 = Act/HK.act
+pal4 = Act/LP.act
+pal5 = Act/MP.act
+pal6 = Act/HP.act
+pal7 = Act/SLK.act
+pal8 = Act/SMK.act
+pal9 = Act/SHK.act
+pal10 = Act/SLP.act
+pal11 = Act/SMP.act
+pal12 = Act/SHP.act
+
+;Arcade mode
+[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def

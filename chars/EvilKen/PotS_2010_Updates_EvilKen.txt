@@ -1,0 +1,81 @@
+Character change logs for Mugen 1.0 January 2010 revision.
+
+===============================================================================================
+)                                          EVIL KEN                                           (
+-----------------------------------------------------------------------------------------------
+
+GAMEPLAY:
+- Lowered life and defense values
+- Revised damage output
+- Revised a lot of collision boxes and invulnerability times
+- Can charge power beyond three bars, just in case maximum power is changed or Simul mode is used
+- Increased liedown.time
+- Can throw with A+C and X+Z as well
+- Power Charge can now be initiated by holding B+Y, not just pressing them
+- Medium and strong Hadoukens can no longer eat other projectiles
+- Fireballs are no longer drawn behind the player after hitting
+- There are no longer normal attacks that deal guard damage
+- Tatsumaki Senpuu Kyaku has a bit more startup and, as such, isn't unblockable at point blank
+- Can't guard during dashes
+- Shakunetsu Hadou Ken can no longer be made safe on block by mashing
+- Aerial fireballs can be blocked low
+- Revised fall recovery states
+- Alpha Counters cost 2000 power and suffer from damage scaling
+- Can cancel dash recovery with a second dash
+- Senpuu Kyaku is no longer an overhead
+- Attacking from a forward dash is now less insane, more like Darkstalkers dashes
+- Weak Ryuujin Kyaku is now the one able to cancel to more aerial attacks, while strong one is the most damaging. This way all versions have a purpose
+- Normal air throws have slightly different ranges from each other
+- Can Rage Burst (custom combo) with only one power level
+- Can't combo into Shun Goku Satsu
+- Added Negative Edge
+- Alternate Shun Goku Satsu finisher only happens on KO, but always does so
+- Skuhachi's flames disappear if Ken is hurt or uses Tameiki Wari
+- Normal attacks that allowed aerial fall recovery now just make P2 automatically land on his feet, less button mashing for him
+- In the event of locking down a character in an infinite between his air chains and aerial Tatsumaki, those attacks will start knocking down after a certain time
+- Kyouja Renbu now keeps going even if blocked, to make it more different from the other Lv2
+- The punch in the Kyouja Renbu combo does a lot of hit stun now, meaning it is the best point to cancel the move with a roll
+- Rolls are considered grounded and vulnerable to anything but throws
+- The penultimate hit of MSSM Skuhachi is no longer randomly unblockable
+- Normal throws can now be "teched"
+- Attacks are flagged as idle during recovery
+- Fixed high jumps getting off the ground before their animation start, and removed near high jump variation
+- All specials and supers and specific normals force P2 to stand when they hit
+- Teleports have slightly more recovery and don't build power
+- Can no longer use Zenpou Tenshin with A+X, just to prevent the illusion that it's a KOF roll
+- Fresh set of palettes. Many thanks to Hoshi and Anjel
+- High jump cancels need down, up input
+- Back + Y now uses the SFA3 headbutt
+- Most specials now allow ground fall recovery
+- Commands are more forgiving
+- Taunts can raise defense up to three times, but raise it slower than before and the bonus is reset every round
+- Cancelling a teleport into a super makes it have less invulnerability
+- First hit of Shoryu Reppa can now reach downed opponents
+
+OTHERS:
+- Removed old AI activation methods, obsolete in Mugen 1.0
+- AI is now scaled according to the Options setting
+- Effects no longer share colors with Ken
+- Fixed camera errors caused by some intros
+- Cleaned leftover animations from the AIR file
+- Special intros trigger against more characters
+- Special intros are disabled in Simul mode to prevent errors
+- Added Throw Escape and Electrocuted special animations
+- Resynched Shun Goku Satsu
+- Now uses SuperPause instead of Pause for compatibility purposes
+- Can select win poses by holding buttons
+- Intros are played in Turns and Survival modes, except for a few
+- Shun Goku Satsu uses the "cheap KO" animation when available
+- Now using common guard sparks (this is easy to revert using text replacement)
+- Overwrote guarding states to prevent some AI spasms
+- Tidied up his intro storyboard
+- Idle stances now change according to more factors
+- Fixed palette errors in some sprites
+- Krizalid now has full color and voice samples
+- Many special effects can now have a floor reflection
+- Eliminated debug spam
+- Some effects are compatible with widescreen
+
+===============================================================================================
+
+R.I.P. Reuben, and may your work continue to entertain and inspire people as much as it did with me.

@@ -1,0 +1,613 @@
+;*******************************************************************************
+;*******************************************************************************
+;*************************    Helpers   ****************************************
+;*******************************************************************************
+;*******************************************************************************
+
+
+;===============================================================================
+;========================   Intro Ball Helper   ================================
+;===============================================================================
+;---------------------------------
+;Intro Ball Helper
+[Statedef 194]
+type    = U
+movetype= A
+physics = N
+poweradd= 0
+ctrl = 0
+anim = 194
+sprpriority = 4
+
+[State 194, VelSet]
+type = VelSet
+trigger1 = time = 0
+x = 5.2
+y = -6.4
+
+[State 194, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = 0.4
+
+[State 194, DestroySelf]
+type = DestroySelf
+triggerall = time >= 50
+trigger1 = pos y  > 0
+
+;===============================================================================
+;====================    Hadoken Beam Helper    ===============================
+;===============================================================================
+;---------------------------------
+;Hadoken Beam Helper
+[Statedef 10200]
+type    = U
+movetype= A
+physics = N
+poweradd= 0
+ctrl = 0
+anim = 10200
+velset = 0,0
+sprpriority = 6
+
+[State 10200, Bind]
+type = Bindtoparent
+trigger1 = 1
+pos = 44,-68
+
+[State 10200, 1]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 10200, 2]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+[State 10200, 5]
+type = HitAdd
+trigger1 = movehit = 1
+value = 1
+
+[State 10200, Hit]
+type = HitDef
+trigger1 =time>=0
+attr = S,HP
+hitflag = MAF
+guardflag = MA
+priority = 7,Hit
+ID = 10200
+animtype = Hard
+air.animtype = Hard
+damage = Ceil(parent, fvar(20)*21),1
+pausetime = 1,2
+sparkno = -1
+guard.sparkno = -1
+sparkxy = 0,0
+hitsound = S10000,4
+guardsound = S6,0
+ground.type = low
+ground.slidetime = 48
+guard.slidetime = 20
+ground.hittime  = 48
+guard.hittime = 20
+ground.velocity = -6,-1.2
+guard.velocity = -4
+air.animtype = low
+air.velocity = -7,-2.4
+airguard.velocity = -3,-1
+air.hittime  = 40
+fall = 1
+air.fall = 1
+fall.recover = 0
+air.fall.recover = 0
+palfx.time = 24
+palfx.add = 200,150,0
+palfx.mul = 250,224,120
+palfx.sinadd = 110,55,85,10
+Palfx.color = 0
+palfx.invertall = 1
+sprpriority = 5
+envshake.time = 20
+envshake.freq = 54
+envshake.ampl = -1
+fall.envshake.time = 40
+fall.envshake.freq = 140
+fall.envshake.ampl = -3
+
+[State 10200, DestroySelf]
+type = DestroySelf
+trigger1 = parent, stateno !=10000
+
+[State 10200, change]
+type = Changestate
+trigger1 = time = 64
+value = 10201
+
+;--------------------------------
+;hadoken Beam Finish (Helper)
+[Statedef 10201]
+type    = U
+movetype= I
+physics = N
+ctrl = 0
+anim = 10201
+velset = 0
+sprpriority = 5
+
+[State 10201, DestroySelf]
+type = DestroySelf
+trigger1 = parent, stateno !=10000
+trigger2 = animtime = 0
+
+
+;===============================================================================
+;====================    Striker Ken Helper    ===============================
+;===============================================================================
+;-------------------------------
+;Ken Helper start
+[Statedef 9990]
+type    = U
+movetype= A
+physics = N
+poweradd= 0
+ctrl = 0
+anim = 9990
+sprpriority = 4
+
+[State 9990, 1]
+type = velset
+trigger1 = 1
+x = 0
+y = 7.4
+
+[State 9990, 4]
+type = posset
+trigger1 = Pos Y >= 0
+Y = 0
+
+[State 9990, PlaySnd]
+type = PlaySnd
+trigger1 = Pos Y >= 0
+value = S52,0
+ignorehitpause = 1
+
+[state 9990,2]
+type = changestate
+triggerall = Pos Y >= 0
+trigger1 = P2bodydist x > 42
+value = 9991
+ctrl = 0
+
+[state 9990,2]
+type = changestate
+triggerall = Pos Y >= 0
+trigger1 = P2bodydist x <= 42
+value = 9993
+ctrl = 0
+
+;------------------------------------
+;Ken Attack1
+[Statedef 9991]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+poweradd= 0
+velset = 0,0
+anim = 9991
+ctrl = 0
+sprpriority = 4
+
+[State 9991, PlaySnd];Voice
+type = PlaySnd
+trigger1 = Animelem = 11
+value = S9990,0
+volume = 240
+channel = 0
+
+[State 9991, PlaySnd];Charge
+type = PlaySnd
+trigger1 = Animelem = 12
+value = S4000,4
+volume = 80
+
+[State 9991, PlaySnd];Hadouken
+type = PlaySnd
+trigger1 = Animelem = 14
+value = S9990,1
+volume = 100
+
+[State 9991, Explod];Charge1
+type = Explod
+trigger1 = AnimElem = 12
+anim = 4030
+ID = 9030
+pos = -30,-72
+postype = p1
+facing = 1
+bindtime = -1
+removetime = 10
+scale = .75,.75
+sprpriority = 4
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = 9999
+supermovetime = 9999
+
+[State 9991, Explod];Charge2
+type = Explod
+trigger1 = AnimElem = 12
+anim = 4040
+ID = 9040
+pos = -30,-72
+postype = p1
+facing = 1
+bindtime = -1
+removetime = 10
+scale = .8,.8
+sprpriority = 5
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = 9999
+supermovetime = 9999
+
+[State 9991, Explod];Charge3
+type = Explod
+trigger1 = AnimElem = 13
+anim = 4030
+ID = 9031
+pos = -27,-66
+postype = p1
+facing = 1
+bindtime = -1
+removetime = 14
+scale = .75,.75
+sprpriority = 4
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = 9999
+supermovetime = 9999
+
+[State 9991, Explod];Charge4
+type = Explod
+trigger1 = AnimElem = 13
+anim = 4040
+ID = 9041
+pos = -27,-66
+postype = p1
+facing = 1
+bindtime = -1
+removetime = 14
+scale = .8,.8
+sprpriority = 5
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = 9999
+supermovetime = 9999
+
+[State 9991, Explod];Dust
+type = Explod
+trigger1 = AnimElem = 14
+anim = 4150
+ID = 9150
+pos = -10,0
+postype = p1
+facing = 1
+bindtime = -1
+removetime = 22
+scale = .85,1
+sprpriority = 4
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 1
+pausemovetime = 9999
+supermovetime = 9999
+
+
+[State 9991, Projectile]
+type = Projectile
+trigger1 =AnimElem = 14
+ProjID = 9991
+projanim = 4100
+projhitanim = 4110
+projscale = 1.02,1.04
+velocity = 9.8 - 1.2*var(15)
+projhits = 1
+projpriority = 4
+projsprpriority = 5
+offset = 66,-68
+postype = p1
+projshadow = 0,0,0
+; HitDef
+attr = S,SP
+hitflag = MAF
+guardflag = MA
+animtype = hard
+air.animtype = med
+priority = 6,Hit
+damage = 150,30
+pausetime = 10,14
+guard.pausetime = 6,6
+sparkno = -1
+guard.sparkno = S206
+sparkxy = -6,0
+hitsound = S4000,2
+guardsound = S4000,3
+ground.type = High
+air.type = High
+ground.slidetime = 38
+guard.slidetime = 24
+ground.hittime = 38
+guard.hittime = 24
+air.hittime = 36
+ground.velocity = -8.4,-4.8
+guard.velocity = -4.6
+air.velocity = -6.8,-4.8
+airguard.velocity = -4.2,-2.6
+sprpriority = 5
+numhits = 1
+fall = 1
+air.fall = 1
+fall.recover = 1
+fall.recovertime = 50
+air.fall.recovertime = 50
+getpower = 0,0
+givepower = 0,0
+palfx.time =  38
+palfx.add = 240,50,0
+palfx.mul = 250,224,120
+palfx.sinadd = 110,55,85,10
+Palfx.color = 0
+palfx.invertall = 1
+envshake.time = 32
+envshake.freq = 90
+envshake.ampl = -2
+fall.envshake.time = 20
+fall.envshake.freq = 76
+fall.envshake.ampl =-2
+
+[State 9991, DestroySelf]
+type = DestroySelf
+trigger1 =  animtime = 0
+ignorehitpause =  1
+
+;-------------------------------
+;Ken Attack2
+[Statedef 9993]
+type    = S
+movetype= A
+physics = N
+juggle  = 4
+poweradd= 0
+velset = 0,0
+anim = 9993
+ctrl = 0
+sprpriority = 4
+
+[State 9993, PlaySnd];Voice
+type = PlaySnd
+trigger1 = Animelem = 10
+value = S9990,3
+volume = 240
+channel = 0
+
+[State 9993, PlaySnd];jump
+type = PlaySnd
+trigger1 = Animelem = 13
+value = S40,0
+volume = 80
+
+[State 9993, VelSet]
+type = VelSet
+trigger1 = animelem = 13
+x = 4.4
+y = -3.2
+
+[State 9993, VelAdd]
+type = VelAdd
+Triggerall = vel x > 0
+trigger1 = animelem = 13,>=0
+x = -.035
+y = 0.195
+
+[State 9993, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem = 13,>=0
+statetype = A
+physics = N
+
+[State 9993, Explod]
+type = Explod
+trigger1 = animelem = 12
+anim = 9992
+ID = 9992
+pos = 0,0
+postype = p1
+facing = 1
+bindtime = -1
+removetime = 28
+pausemovetime = 9999
+supermovetime = 9999
+scale = 1,1
+sprpriority = 6
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 0
+
+[State 9993, HitDef1]
+type = HitDef
+trigger1 = animelem = 14
+attr = S,SA
+hitflag = MAF
+guardflag = MA
+animtype = medium
+air.animtype = medium
+priority = 6,Hit
+damage = 60,20
+pausetime = 10,10
+guard.pausetime = 6,6
+sparkno = S203
+guard.sparkno = S206
+sparkxy = -10,-60
+hitsound = S202,0
+guardsound = S6,0
+ground.type = Low
+air.type = Low
+ground.slidetime = 24
+guard.slidetime = 12
+ground.hittime = 24
+guard.hittime = 12
+air.hittime = 20
+ground.velocity = -3.8,-6
+guard.velocity = -3
+air.velocity = -3,-4
+airguard.velocity = -2,-2
+sprpriority = 8
+fall = 0
+getpower = 0,0
+givepower = 0,0
+envshake.time = 20
+envshake.freq = 80
+envshake.ampl = -2
+palfx.time =  12
+palfx.add = 240,50,0
+palfx.mul = 250,224,120
+palfx.sinadd = 110,55,85,10
+Palfx.color = 0
+palfx.invertall = 1
+
+[State 9993, HitDef2]
+type = HitDef
+trigger1 = animelem = 15
+attr = S,SA
+hitflag = MAF
+guardflag = MA
+animtype = medium
+air.animtype = medium
+priority = 6,Hit
+damage = 80,20
+pausetime = 8,12
+guard.pausetime = 6,6
+sparkno = S203
+guard.sparkno = S206
+sparkxy = -10,-84
+hitsound = S203,0
+guardsound = S6,0
+ground.type = Low
+air.type = Low
+ground.slidetime = 24
+guard.slidetime = 12
+ground.hittime = 24
+guard.hittime = 12
+air.hittime = 20
+ground.velocity = -4.8,-6.8
+guard.velocity = -3
+air.velocity = -3,-4
+airguard.velocity = -2,-2
+sprpriority = 8
+fall = 0
+getpower = 0,0
+givepower = 0,0
+envshake.time = 20
+envshake.freq = 80
+envshake.ampl = -2
+palfx.time =  16
+palfx.add = 240,50,0
+palfx.mul = 250,224,120
+palfx.sinadd = 110,55,85,10
+Palfx.color = 0
+palfx.invertall = 1
+
+
+[State 9993, HitDef3]
+type = HitDef
+trigger1 = animelem = 16
+attr = S,SA
+hitflag = MAF
+guardflag = MA
+animtype = Hard
+air.animtype = Hard
+priority = 7,Hit
+damage = 90,30
+pausetime = 10,14
+guard.pausetime = 8,8
+sparkno = S203
+guard.sparkno = S206
+sparkxy = -10,-94
+hitsound = S203,0
+guardsound = S6,0
+ground.type = High
+air.type = High
+ground.slidetime = 42
+guard.slidetime = 20
+ground.hittime = 42
+guard.hittime = 12
+air.hittime = 40
+ground.velocity = -5.8,-10
+guard.velocity = -3
+air.velocity = -4,-6
+airguard.velocity = -2,-3
+sprpriority = 8
+fall = 1
+air.fall = 1
+fall.recover =0
+getpower = 0,0
+givepower = 0,0
+envshake.time = 30
+envshake.freq = 90
+envshake.ampl = -2
+fall.envshake.time = 40
+fall.envshake.freq = 120
+fall.envshake.ampl = -3
+palfx.time =  38
+palfx.add = 240,50,0
+palfx.mul = 250,224,120
+palfx.sinadd = 110,55,85,10
+Palfx.color = 0
+palfx.invertall = 1
+
+[State 9993, ChangeState]
+type = ChangeState
+Triggerall = animelem = 17>0
+trigger1 = pos y > -vel y
+value = 9994
+
+;-------------------------------
+;Ken Attack2 End
+[Statedef 9994]
+type    = S
+movetype= A
+physics = S
+poweradd= 0
+anim = 9994
+velset = 0,0
+ctrl = 0
+sprpriority = 4
+
+[State 9994, PosSet]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 9994, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S52,0
+ignorehitpause = 1
+
+[State 9994, DestroySelf]
+type = DestroySelf
+trigger1 =  animtime = 0
+ignorehitpause =  1

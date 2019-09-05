@@ -1,0 +1,43 @@
+[Info]
+name = "Elena"
+displayname = "Elena"
+versiondate = 04,14,2001
+mugenversion = 04,14,2001
+author = "Umihei"
+pal.defaults = 1, 2, 3, 4, 5, 6
+
+[Files]
+StCommon = ElenaSystem.cns
+Cmd = CODE/ElenaCmd.txt
+Anim = CODE/Elena.air
+Cns = CODE/ElenaCns.txt
+St = CODE/ElenaCns.txt
+St1 = CODE/Elena-2Cns.txt
+St2 = CODE/Elena-3Cns.txt
+St3 = CODE/Elena4000Cns.txt
+St4 = CODE/Elena5000Cns.txt
+St5 = CODE/Elena6000Cns.txt
+St6 = CODE/Elena7000Cns.txt
+St7 = CODE/Elena8000Cns.txt
+
+sprite = Elena.sff
+sound = Elena.snd
+
+pal1 = Act/LK.act
+pal2 = Act/MK.act
+pal3 = Act/HK.act
+pal4 = Act/LP.act
+pal5 = Act/MP.act
+pal6 = Act/HP.act
+
+pal7 = Act/SLK.act
+pal8 = Act/SMK.act
+pal9 = Act/SHK.act
+pal10 = Act/SLP.act
+pal11 = Act/SMP.act
+pal12 = Act/SHP.act
+
+;Arcade mode
+[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def

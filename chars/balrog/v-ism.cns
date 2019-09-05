@@ -1,0 +1,2640 @@
+; V-ism Variable Combo System
+;---------------------------------------------------------------------------
+; V-ism Combo Start
+[Statedef 300]
+type = S
+movetype = A
+physics = S
+sprpriority = 2
+velset = 0,0
+anim = 300
+ctrl = 0
+
+[State 300, VarSet]
+type = VarSet
+triggerall = Time <= 0
+trigger1 = Command = "x" && Command = "a"
+v = 2
+value = 1
+
+[State 300, VarSet]
+type = VarSet
+triggerall = Time <= 0
+trigger1 = Command = "y" && Command = "b"
+v = 2
+value = 2
+
+[State 300, VarSet]
+type = VarSet
+triggerall = Time <= 0
+trigger1 = Command = "z" && Command = "c"
+v = 2
+value = 3
+
+[State 300, SuperPause]
+type = SuperPause
+trigger1 = Time <= 0
+pos = 0, 0
+anim = -1
+time = 30
+movetime = 30
+sound = 20, 20
+
+[State 300, AfterImage]
+type = AfterImage
+trigger1 = Time <= 0
+trigger1 = Var(2) < 2
+palbright = 75,50,100
+palcontrast = 75,50,100
+palpostbright = 75,50,100
+palcolor = 0
+framegap = 5
+length = 15
+time = 1
+
+[State 300, AfterImage]
+type = AfterImage
+trigger1 = Time <= 0
+trigger1 = Var(2) = 2
+palbright = 75,50,100
+palcontrast = 75,50,100
+palpostbright = 75,50,100
+palcolor = 0
+framegap = 12
+length = 36
+time = 1
+
+[State 300, AfterImage]
+type = AfterImage
+trigger1 = Time <= 0
+trigger1 = Var(2) > 2
+palbright = 75,50,100
+palcontrast = 75,50,100
+palpostbright = 75,50,100
+palcolor = 0
+framegap = 20
+length = 60
+time = 1
+
+[State 300, AfterImageTime]
+type = AfterImageTime
+trigger1 = 1
+ignorehitpause = 1
+time = 0
+
+[State 300, 2]
+type = Explod
+trigger1 = AnimElem = 1,5
+id = 4020
+anim = 4020
+pos = 0,0
+postype = p1
+bindtime = -1
+supermove = 1
+persistent = 0
+sprpriority = 1
+
+[State 300, 2]
+type = Explod
+trigger1 = AnimElem = 1,5
+id = 4021
+anim = 4021
+pos = 0,0
+postype = p1
+bindtime = -1
+supermove = 1
+persistent = 0
+sprpriority = 3
+
+[State 300, SuperPause]
+type = SuperPause
+trigger1 = AnimElem = 1,5
+pos = -10, -60
+anim = S4022
+time = 30
+movetime = 30
+sound = S4, 2
+
+[State 300, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 10, 11
+channel = 0
+
+[State 300, Helper]
+type = Helper
+triggerall = NumHelper(320) = 0
+trigger1 = Time >= 30
+trigger1 = AnimTime = 0
+helpertype = normal
+name = "V-ism"
+id = 320
+pos = 0, 0
+postype = P1
+stateno = 320
+keyctrl = 0
+
+[State 300, State]
+type = ChangeState
+trigger1 = Time >= 30
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; V-ism Combo Start Air
+[Statedef 310]
+type = A
+movetype = A
+physics = N
+sprpriority = 2
+anim = 310
+ctrl = 0
+
+[State 310, PosFreeze]
+type = PosFreeze
+trigger1 = Time <= 30
+
+[State 310, VarSet]
+type = VarSet
+triggerall = Time <= 0
+trigger1 = Command = "x" && Command = "a"
+v = 2
+value = 1
+
+[State 310, VarSet]
+type = VarSet
+triggerall = Time <= 0
+trigger1 = Command = "y" && Command = "b"
+v = 2
+value = 2
+
+[State 310, VarSet]
+type = VarSet
+triggerall = Time <= 0
+trigger1 = Command = "z" && Command = "c"
+v = 2
+value = 3
+
+[State 310, AfterImage]
+type = AfterImage
+trigger1 = Time <= 0
+trigger1 = Var(2) < 2
+palbright = 75,50,100
+palcontrast = 75,50,100
+palpostbright = 75,50,100
+palcolor = 0
+framegap = 5
+length = 15
+time = 1
+
+[State 310, AfterImage]
+type = AfterImage
+trigger1 = Time <= 0
+trigger1 = Var(2) = 2
+palbright = 75,50,100
+palcontrast = 75,50,100
+palpostbright = 75,50,100
+palcolor = 0
+framegap = 12
+length = 36
+time = 1
+
+[State 310, AfterImage]
+type = AfterImage
+trigger1 = Time <= 0
+trigger1 = Var(2) > 2
+palbright = 75,50,100
+palcontrast = 75,50,100
+palpostbright = 75,50,100
+palcolor = 0
+framegap = 20
+length = 60
+time = 1
+
+[State 310, AfterImageTime]
+type = AfterImageTime
+trigger1 = Time < 30
+ignorehitpause = 1
+time = 0
+
+[State 310, SuperPause]
+type = SuperPause
+trigger1 = Time <= 0
+pos = -5, -80
+anim = S4022
+time = 30
+movetime = 30
+sound = S4, 2
+
+[State 310, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 10, 11
+channel = 0
+
+[State 310, Helper]
+type = Helper
+triggerall = NumHelper(320) = 0
+trigger1 = Time > 30
+trigger1 = Time < 35
+helpertype = normal
+name = "V-ism"
+id = 320
+pos = 0, 0
+postype = P1
+stateno = 320
+keyctrl = 0
+
+[State 310, CtrlSet]
+type = CtrlSet
+trigger1 = Time > 30
+value = 1
+
+[State 310, StateType]
+type = StateTypeSet
+trigger1 = Time > 30
+statetype = A
+movetype = A
+physics = A
+
+;---------------------------------------------------------------------------
+; V-ism Main
+[Statedef 320]
+type = S
+movetype = I
+physics = N
+velset = 0,0
+sprpriority = -5
+anim = 320
+ctrl = 0
+
+[State 320, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+ignorehitpause = 1
+value = SCA
+time = 1
+
+[State 320, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+ignorehitpause = 1
+flag = NoShadow
+flag2 = Invisible
+
+[State 320, PosSet]
+type = PosSet
+trigger1 = Time <= 0
+x = 0
+y = 1000
+
+[State 320, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(330) = 0
+helpertype = normal
+pausemovetime = Power * Power 
+supermovetime = Power * Power 
+name = "Shadow"
+id = 330
+pos = 0, 0
+postype = P1
+stateno = 330
+keyctrl = 0
+
+[State 320, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+ignorehitpause = 1
+var(0) = Root, Power
+
+[State 320, VarAdd]
+type = VarAdd
+triggerall = Time > 0
+trigger1 = TimeMod = 3,0
+ignorehitpause = 1
+var(0) = -7
+
+[State 320, PowerSet]
+type = PowerSet
+triggerall = Time > 0
+trigger1 = Root, Var(2) > 0
+trigger1 = Root, MoveType != H
+trigger1 = RoundState <= 2
+ignorehitpause = 1
+value = Var(0)
+
+[State 320, Destroy]
+type = DestroySelf
+triggerall = Time > 0
+trigger1 = Root, Var(2) <= 0
+trigger2 = Root, MoveType = H
+trigger3 = Root, Power <= 0
+trigger4 = Var(0) <= 0
+
+;---------------------------------------------------------------------------
+; Shadow - Activation
+[Statedef 330]
+movetype = I
+physics = N
+velset = 0,0
+sprpriority = -10
+anim = 320
+ctrl = 0
+
+[State 330, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+ignorehitpause = 1
+value = SCA
+time = 1
+
+[State 330, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+ignorehitpause = 1
+flag = NoShadow
+flag2 = Invisible
+
+;==============================
+;----- Record Information -----
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(340) = 0
+helpertype = normal
+pausemovetime = Power * Power 
+supermovetime = Power * Power 
+name = "Anchor"
+id = 340
+pos = 0, 0
+postype = P1
+stateno = 340
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(341) = 0
+helpertype = normal
+pausemovetime = Power * Power 
+supermovetime = Power * Power 
+name = "Record Anim"
+id = 341
+pos = 0, 0
+postype = P1
+stateno = 340
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(342) = 0
+helpertype = normal
+pausemovetime = Power * Power 
+supermovetime = Power * Power 
+name = "Record AnimElemNo"
+id = 342
+pos = 0, 0
+postype = P1
+stateno = 340
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(343) = 0
+helpertype = normal
+pausemovetime = Power * Power 
+supermovetime = Power * Power 
+name = "Record Pos X"
+id = 343
+pos = 0, 0
+postype = P1
+stateno = 340
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(344) = 0
+helpertype = normal
+pausemovetime = Power * Power 
+supermovetime = Power * Power 
+name = "Record Pos Y"
+id = 344
+pos = 0, 0
+postype = P1
+stateno = 340
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(345) = 0
+helpertype = normal
+pausemovetime = Power * Power 
+supermovetime = Power * Power 
+name = "Record Vel X"
+id = 345
+pos = 0, 0
+postype = P1
+stateno = 340
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(346) = 0
+helpertype = normal
+pausemovetime = Power * Power 
+supermovetime = Power * Power 
+name = "Record Vel Y"
+id = 346
+pos = 0, 0
+postype = P1
+stateno = 340
+keyctrl = 0
+;------------------------------
+;==============================
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Time <= 0
+trigger1 = Root, StateType = S
+StateType = S
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Time <= 0
+trigger1 = Root, StateType = C
+StateType = C
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Time <= 0
+trigger1 = Root, StateType = A
+StateType = A
+
+[State 330, State]
+type = ChangeState
+trigger1 = Root, Var(2) < 2
+trigger1 = Time >= 15
+trigger2 = Root, Var(2) = 2
+trigger2 = Time >= 36
+trigger3 = Root, Var(2) > 2
+trigger3 = Time >= 60
+value = 331
+
+[State 330, Destroy]
+type = DestroySelf
+triggerall = Time > 0
+trigger1 = Root, Var(2) <= 0
+trigger2 = Root, MoveType = H
+trigger3 = Root, Power <= 0
+trigger4 = NumHelper(320) = 0
+
+;---------------------------------------------------------------------------
+; Shadow
+[Statedef 331]
+physics = N
+sprpriority = -10
+velset = 0,0
+juggle = 0
+ctrl = 0
+
+[State 330, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+ignorehitpause = 1
+value = SCA
+time = 1
+
+[State 330, SprPriority]
+type = SprPriority
+trigger1 = 1
+ignorehitpause = 1
+value = -10
+
+[State 330, AttackMulSet]
+type = AttackMulSet
+trigger1 = 1
+ignorehitpause = 1
+value = 0.375
+
+[State 330, NoJuggle]
+type = AssertSpecial
+trigger1 = 1
+ignorehitpause = 1
+flag = NoJuggleCheck
+
+;==============================
+;----- AfterImage Effect -----
+[State 330, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+ignorehitpause = 1
+flag = NoShadow
+flag2 = Invisible
+
+[State 330, AfterImage]
+type = AfterImage
+trigger1 = 1
+ignorehitpause = 1
+time = 0
+length = 2
+timegap = 1
+framegap = 1
+palcontrast = 96, 96, 256
+
+[State 330, AfterImage]
+type = AfterImageTime
+trigger1 = 1
+ignorehitpause = 1
+time = 2
+;------------------------------
+;==============================
+
+;==============================
+;----- Record Direction -----
+[State 330, Turn]
+type = Turn
+triggerall = NumHelper(340) > 0
+trigger1 = (Helper(340), Var(StateTime%60) < 0) && (Facing = 1)
+trigger2 = (Helper(340), Var(StateTime%60) > 0) && (Facing = -1)
+;------------------------------
+
+;----- Record Animation -----
+[State 330, Anim]
+type = ChangeAnim
+trigger1 = NumHelper(341) > 0
+trigger1 = NumHelper(342) > 0
+value = Helper(341), Var(StateTime%60)
+elem = Helper(342), Var(StateTime%60)
+
+[State 330, VarAdd]	; Record AnimElem Time
+type = VarAdd
+trigger1 = Var(0) = Anim
+trigger1 = Var(1) = AnimElemNo(0)
+var(2) = 1
+
+[State 330, VarSet]	; Reset AnimElem Time
+type = VarSet
+trigger1 = Var(0) != Anim
+trigger2 = Var(1) != AnimElemNo(0)
+var(2) = 0
+
+[State 330, VarSet]	; Set AnimElem
+type = VarSet
+trigger1 = 1
+var(1) = AnimElemNo(0)
+
+[State 330, VarSet]	; Set Anim
+type = VarSet
+trigger1 = 1
+var(0) = Anim
+;------------------------------
+
+;----- Record Position -----
+[State 330, VarSet]	; Set Pos X
+type = VarSet
+trigger1 = NumHelper(340) > 0
+var(10) = ceil(Pos X) + ceil(Helper(340), Pos X + 160)
+
+[State 330, VarSet]	; Set Pos Y
+type = VarSet
+trigger1 = 1
+var(11) = ceil(Pos Y)
+
+[State 330, PosSet]
+type = PosSet
+trigger1 = NumHelper(340) > 0
+trigger1 = NumHelper(343) > 0
+trigger1 = NumHelper(344) > 0
+x = ceil(Helper(343), Var(StateTime%60)) + ceil(Helper(340), Pos X + 160)
+y = ceil(Helper(344), Var(StateTime%60))
+
+[State 330, VarSet]	; Set Pos X
+type = VarSet
+trigger1 = NumHelper(340) > 0
+trigger1 = NumHelper(343) > 0
+var(12) = ceil(Helper(343), Var(StateTime%60)) + ceil(Helper(340), Pos X + 160)
+
+[State 330, VarSet]	; Set Pos Y
+type = VarSet
+trigger1 = NumHelper(344) > 0
+var(13) = ceil(Helper(344), Var(StateTime%60))
+;------------------------------
+
+;----- Record Display Data -----
+[State 330, Display]
+type = DisplayToClipboard
+trigger1 = NumHelper(340) > 0
+trigger1 = NumHelper(341) > 0
+trigger1 = NumHelper(342) > 0
+trigger1 = NumHelper(343) > 0
+trigger1 = NumHelper(344) > 0
+ignorehitpause = 1
+text = "Anim: %d \t AnimElem: %d \t AnimElem Time: %d \nPos X: %d \t Pos Y: %d"
+params = Helper(341), Var(StateTime%60), Helper(342), Var(StateTime%60), Var(2), ceil(Helper(343), Var(StateTime%60)) + ceil(Helper(340), Pos X + 160), ceil(Helper(344), Var(StateTime%60))
+;------------------------------
+;==============================
+
+;==============================
+;---------- StateType ----------
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Anim = 0
+trigger2 = Anim >= 200
+trigger2 = Anim < 300
+trigger3 = Pos Y >= 0
+trigger3 = StateType = A
+StateType = S
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Anim >= 10
+trigger1 = Anim <= 12
+trigger2 = Anim >= 400
+trigger2 = Anim < 500
+StateType = C
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Pos Y != 0
+StateType = A
+;------------------------------
+
+;---------- MoveType ----------
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Anim < 200
+MoveType = I
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Anim >= 200
+trigger1 = Anim < 5000
+MoveType = A
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Anim >= 5000
+MoveType = H
+;------------------------------
+;==============================
+
+;===== Contact/Hit/Guard =====
+;----- MoveContact -----
+[State -2, VarSet]
+type = VarSet
+trigger1 = Var(2) <= 0
+trigger1 = AnimElem = 1
+trigger2 = MoveType != A
+ignorehitpause = 1
+v = 20
+value = 0
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = MoveContact
+ignorehitpause = 1
+v = 20
+value = 1
+;-----------------------
+
+;----- MoveHit -----
+[State -2, VarSet]
+type = VarSet
+trigger1 = Var(2) <= 0
+trigger1 = AnimElem = 1
+trigger2 = MoveType != A
+ignorehitpause = 1
+v = 21
+value = 0
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = MoveHit
+ignorehitpause = 1
+v = 21
+value = 1
+;--------------------
+
+;----- MoveGuarded -----
+[State -2, VarSet]
+type = VarSet
+trigger1 = Var(2) <= 0
+trigger1 = AnimElem = 1
+trigger2 = MoveType != A
+ignorehitpause = 1
+v = 22
+value = 0
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = MoveGuarded
+ignorehitpause = 1
+v = 22
+value = 1
+;-----------------------
+;==============================
+
+;========== HitDefs ==========
+;-----------------------------
+;PLACE ALL YOUR CHARACTER'S HITDEF & PROJECTILE CODES HERE.
+;-----------------------------
+;USE SPRPRIORITY = -10 IN THE HITDEF CODES TO FIX THE SHADOW'S SPRITE ISSUE.
+;MAKE SURE TO USE TRIGGER 'VAR(2) <= 0' IF YOU PLAN TO USE THE ANIMELEM TRIGGER.
+;USE VARIABLES #20-22 TO DETERMINE MOVETYPE ATTACK CONTACT/HIT/GUARDED TRIGGERS IF NECCESSARY.
+;BE SURE TO IDENTIFY WHICH ANIMATION THE SHADOW IS USING, SO THAT ONLY SPECIFIC HITDEFS TAKE EFFECT.
+;ALWAYS USE PAUSETIME = 0, SO THAT THE SHADOW REMAINS IN SYNCH WITH YOUR CHARACTER'S HITDEF PAUSETIMES.
+;THE OPPONENTS HIT PAUSETIME SHOULD BE SHORTER, OR HALF OF THE ORIGINAL PAUSETIME OF THE HITDEF.
+;ALL OTHER HITDEF VALUES SHOULD REMAIN THE SAME AS YOUR CHARACTER'S HITDEF VALUES.
+;-----------------------------
+
+;----- Stand Light Punch -----
+[State 330, HitDef]
+type = HitDef
+trigger1 = Var(2) <= 0
+trigger1 = Anim = 200
+trigger1 = AnimElem = 2
+attr = S, HA
+damage = 21, 0
+getpower = 7, 7
+givepower = 7, 0
+animtype = Light
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 3
+sparkno = 0
+sparkxy = -10, -80
+sprpriority = -10
+ground.type = High
+ground.slidetime = 6
+ground.hittime = 12
+ground.velocity = -6
+airguard.velocity = -2,-1
+air.type = High
+air.velocity = -2,-2
+air.hittime = 12
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 200
+ignorehitpause = 1
+value = 2, 0
+channel = 2
+;------------------------------
+
+;----- Stand Medium Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 210
+trigger1 = AnimElem = 3
+attr = S, HA
+damage = 84, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -65
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+triggerall = Var(20) <= 0
+trigger1 = Anim = 210
+trigger1 = AnimElem = 4
+attr = S, HA
+damage = 63, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -110
+sprpriority = -10
+ground.type = High
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 215
+trigger1 = AnimElem = 3
+attr = S, HA
+damage = 98, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -70
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+triggerall = Var(20) <= 0
+trigger1 = Anim = 215
+trigger1 = AnimElem = 4
+attr = S, HA
+damage = 70, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -105
+sprpriority = -10
+ground.type = High
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 210 || Anim = 215
+ignorehitpause = 1
+value = 2, 1
+channel = 2
+;------------------------------
+
+;----- Stand Strong Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 220
+trigger1 = AnimElem = 3
+attr = S, HA
+damage = 105, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -65
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 225
+trigger1 = AnimElem = 3
+attr = S, HA
+damage = 112, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -75
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 220 || Anim = 225
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;----- Stand Light Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 230
+trigger1 = AnimElem = 2
+attr = S, HA
+damage = 28, 0
+getpower = 7, 7
+givepower = 7, 0
+animtype = Light
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 3
+sparkno = 0
+sprpriority = -10
+sparkxy = -10, -85
+ground.type = High
+ground.slidetime = 6
+ground.hittime = 12
+ground.velocity = -6
+airguard.velocity = -2,-1
+air.type = High
+air.velocity = -2,-2
+air.hittime = 12
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 230
+ignorehitpause = 1
+value = 2, 0
+channel = 2
+;------------------------------
+
+;----- Stand Medium Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 240
+trigger1 = AnimElem = 3
+attr = S, HA
+damage = 91, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -50
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 245
+trigger1 = AnimElem = 3
+attr = S, HA
+damage = 98, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -55
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 240 || Anim = 245
+ignorehitpause = 1
+value = 2, 1
+channel = 2
+;------------------------------
+
+;----- Stand Strong Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 250
+trigger1 = AnimElem = 3
+attr = S, HA
+damage = 105, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -70
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 255
+trigger1 = AnimElem = 3
+attr = S, HA
+damage = 119, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -55
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 250 || Anim = 255
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;----- Crouch Light Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 400
+trigger1 = AnimElem = 2
+attr = C, HA
+damage = 28, 0
+getpower = 7, 7
+givepower = 7, 0
+animtype = Light
+guardflag = L
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 3
+sparkno = 0
+sparkxy = -10, -50
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 6
+ground.hittime = 12
+ground.velocity = -6
+airguard.velocity = -2,-1
+air.type = Low
+air.velocity = -2,-2
+air.hittime = 12
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 400
+ignorehitpause = 1
+value = 2, 0
+channel = 2
+;------------------------------
+
+;----- Crouch Medium Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 410
+trigger1 = AnimElem = 3
+attr = C, HA
+damage = 77, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = L
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -50
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 410
+ignorehitpause = 1
+value = 2, 1
+channel = 2
+;------------------------------
+
+;----- Crouch Strong Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 420
+trigger1 = AnimElem = 3
+attr = C, HA
+damage = 91, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = L
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -55
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+triggerall = Var(20) <= 0
+trigger1 = Anim = 420
+trigger1 = AnimElem = 4
+attr = C, HA
+damage = 63, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = MA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -105
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 420
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;----- Crouch Light Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 430
+trigger1 = AnimElem = 2
+attr = C, HA
+damage = 35, 0
+getpower = 7, 7
+givepower = 7, 0
+animtype = Light
+guardflag = L
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 3
+sparkno = 0
+sparkxy = -10, -40
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 6
+ground.hittime = 12
+ground.velocity = -6
+airguard.velocity = -2,-1
+air.type = Low
+air.velocity = -2,-2
+air.hittime = 12
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 430
+ignorehitpause = 1
+value = 2, 0
+channel = 2
+;------------------------------
+
+;----- Crouch Medium Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 435
+trigger1 = AnimElem = 2
+attr = C, HA
+damage = 77, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = L
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -40
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 440
+trigger1 = AnimElem = 3
+attr = C, HA
+damage = 63, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = L
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -25
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 435 || Anim = 440
+ignorehitpause = 1
+value = 2, 1
+channel = 2
+;------------------------------
+
+;----- Crouch Strong Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 450
+trigger1 = AnimElem = 3
+attr = C, HA
+damage = 98, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = L
+hitflag = M
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -25
+sprpriority = -10
+ground.type = Trip
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -2, -5
+airguard.velocity = -1,-3
+air.type = Trip
+air.velocity = -2,-5
+air.hittime = 16
+air.fall = 1
+fall = 1
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 450
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;----- Jump Light Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 600
+trigger1 = AnimElem = 2
+attr = A, HA
+damage = 63, 0
+getpower = 7, 7
+givepower = 7, 0
+animtype = Light
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 3
+sparkno = 0
+sparkxy = -10, -60
+sprpriority = -10
+ground.type = High
+ground.slidetime = 6
+ground.hittime = 12
+ground.velocity = -6
+airguard.velocity = -2,-1
+air.type = Low
+air.velocity = -2,-2
+air.hittime = 12
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 605
+trigger1 = AnimElem = 2
+attr = A, HA
+damage = 70, 0
+getpower = 7, 7
+givepower = 7, 0
+animtype = Light
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 3
+sparkno = 0
+sparkxy = -10, -85
+sprpriority = -10
+ground.type = High
+ground.slidetime = 6
+ground.hittime = 12
+ground.velocity = -6
+airguard.velocity = -2,-1
+air.type = Low
+air.velocity = -2,-2
+air.hittime = 12
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 600 || Anim = 605
+ignorehitpause = 1
+value = 2, 0
+channel = 2
+;------------------------------
+
+;----- Jump Medium Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 610
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 98, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 615
+trigger1 = AnimElem = 2
+attr = A, HA
+damage = 91, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -85
+sprpriority = -10
+ground.type = High
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 610 || Anim = 615
+ignorehitpause = 1
+value = 2, 1
+channel = 2
+;------------------------------
+
+;----- Jump Strong Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 620
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 112, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 625
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 98, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -40
+sprpriority = -10
+ground.type = High
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 620 || Anim = 625
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;----- Jump Light Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 630
+trigger1 = AnimElem = 2
+attr = A, HA
+damage = 63, 0
+getpower = 7, 7
+givepower = 7, 0
+animtype = Light
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 3
+sparkno = 0
+sparkxy = -10, -60
+sprpriority = -10
+ground.type = High
+ground.slidetime = 6
+ground.hittime = 12
+ground.velocity = -6
+airguard.velocity = -2,-1
+air.type = Low
+air.velocity = -2,-2
+air.hittime = 12
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 630
+ignorehitpause = 1
+value = 2, 0
+channel = 2
+;------------------------------
+
+;----- Jump Medium Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 640
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 84, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 645
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 77, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 640 || Anim = 645
+ignorehitpause = 1
+value = 2, 1
+channel = 2
+;------------------------------
+
+;----- Jump Strong Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 650
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 105, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -40
+sprpriority = -10
+ground.type = High
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 655
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 98, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -40
+sprpriority = -10
+ground.type = High
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 650 || Anim = 655
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;----- Jump Light Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 660
+trigger1 = AnimElem = 2
+attr = A, HA
+damage = 70, 0
+getpower = 7, 7
+givepower = 7, 0
+animtype = Light
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 3
+sparkno = 0
+sparkxy = -10, -40
+sprpriority = -10
+ground.type = High
+ground.slidetime = 6
+ground.hittime = 12
+ground.velocity = -6
+airguard.velocity = -2,-1
+air.type = Low
+air.velocity = -2,-2
+air.hittime = 12
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 660
+ignorehitpause = 1
+value = 2, 0
+channel = 2
+;------------------------------
+
+;----- Jump Medium Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 670
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 84, 0
+getpower = 21, 7
+givepower = 7, 0
+animtype = Medium
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 4
+sparkno = 1
+sparkxy = -10, -40
+sprpriority = -10
+ground.type = High
+ground.slidetime = 8
+ground.hittime = 14
+ground.velocity = -8
+airguard.velocity = -4,-2
+air.type = Low
+air.velocity = -4,-2
+air.hittime = 14
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 670
+ignorehitpause = 1
+value = 2, 1
+channel = 2
+;------------------------------
+
+;----- Jump Strong Punch -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 680
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 98, 0
+getpower = 28, 7
+givepower = 7, 0
+animtype = Heavy
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -10, -40
+sprpriority = -10
+ground.type = High
+ground.slidetime = 10
+ground.hittime = 16
+ground.velocity = -10
+airguard.velocity = -6,-3
+air.type = Low
+air.velocity = -6,-3
+air.hittime = 16
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 680
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;-------- Dash Punch --------
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1001 || Anim = 1002
+trigger1 = AnimElem = 2
+attr = S, HA
+damage = 112, 14
+givepower = 7, 0
+getpower = 28, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+forcestand = 1
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+triggerall = Root, Var(1) >= 25
+triggerall = Root, Var(50) <= 0
+trigger1 = Anim = 1001 || Anim = 1002
+trigger1 = AnimElem = 2
+attr = S, HA
+damage = 112, 14
+givepower = 7, 0
+getpower = 28, 7
+animtype = DiagUp
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+forcestand = 1
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,-2
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+fall = 1
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 1001 || Anim = 1002
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;-------- Dash Uppercut --------
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1011
+trigger1 = AnimElem = 3
+attr = S, HA
+damage = 119, 14
+givepower = 7, 0
+getpower = 28, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -90
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 1011
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;--------- Dash Trip ---------
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1020
+trigger1 = AnimElem = 3
+attr = C, HA
+damage = 84, 14
+givepower = 7, 0
+getpower = 28, 7
+animtype = Heavy
+guardflag = L
+hitflag = M
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -20
+sprpriority = -10
+ground.type = Trip
+ground.slidetime = 15
+ground.hittime  = 15
+ground.velocity = -2,-5
+airguard.velocity = -2,-3
+air.type = Trip
+air.velocity = -2,-5
+fall.recover = 0
+air.hittime = 15
+air.fall = 1
+fall = 1
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 1020
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;----- Dash Crouch Uppercut -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1030
+trigger1 = AnimElem = 3
+attr = S, HA
+damage = 70, 14
+givepower = 7, 0
+getpower = 28, 7
+animtype = DiagUp
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -90
+sprpriority = -10
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 15
+ground.velocity = -4,-6
+airguard.velocity = -3,-4
+air.type = High
+air.velocity = -4,-6
+fall.recover = 0
+air.hittime = 15
+air.fall = 1
+fall = 1
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 1030
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;-------- Turn Punch --------
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1501
+trigger1 = AnimElem = 5
+attr = S, HA
+damage = 107, 7
+givepower = 7, 0
+getpower = 7, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1502
+trigger1 = AnimElem = 5
+attr = S, HA
+damage = 126, 14
+givepower = 7, 0
+getpower = 7, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1503
+trigger1 = AnimElem = 5
+attr = S, HA
+damage = 147, 21
+givepower = 7, 0
+getpower = 7, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1504
+trigger1 = AnimElem = 5
+attr = S, HA
+damage = 189, 28
+givepower = 7, 0
+getpower = 7, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1505
+trigger1 = AnimElem = 5
+attr = S, HA
+damage = 238, 35
+givepower = 7, 0
+getpower = 7, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1506
+trigger1 = AnimElem = 5
+attr = S, HA
+damage = 294, 42
+givepower = 7, 0
+getpower = 7, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1507
+trigger1 = AnimElem = 5
+attr = S, HA
+damage = 364, 49
+givepower = 7, 0
+getpower = 7, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1508
+trigger1 = AnimElem = 5
+attr = S, HA
+damage = 448, 56
+givepower = 7, 0
+getpower = 7, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1509
+trigger1 = AnimElem = 5
+attr = S, HA
+damage = 546, 63
+givepower = 7, 0
+getpower = 7, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1510
+trigger1 = AnimElem = 5
+attr = S, HA
+damage = 672, 70
+givepower = 7, 0
+getpower = 7, 7
+animtype = Heavy
+guardflag = M
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -70
+sprpriority = -10
+ground.type = High
+ground.slidetime = 20
+ground.hittime  = 20
+ground.velocity = -10,0
+airguard.velocity = -5,-1
+air.type = High
+air.velocity = -5,-2
+air.hittime = 20
+air.fall = 1
+
+[State 330, Hit]
+type = PlaySnd
+triggerall = MoveHit
+trigger1 = Anim >= 1500
+trigger1 = Anim <= 1510
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;----- Turn Punch Strike -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1600
+trigger1 = AnimElem = 9
+attr = S, HA
+damage = 200,20
+animtype = DiagUp
+givepower = 7, 0
+getpower = 7, 7
+guardflag = M
+hitflag = MAF
+pausetime = 0,10
+sparkno = 2
+sparkxy = -10,-70
+sprpriority = -10
+forcestand = 1
+envshake.time = 20
+envshake.freq = 100
+envshake.ampl = -6
+envshake.phase = 10
+ground.type = High
+ground.slidetime = 30
+ground.hittime  = 30
+ground.velocity = -20,-6
+airguard.velocity = -10,-3
+guard.velocity = -10
+air.type = High
+fall.animtype = DiagUp
+air.velocity = -20,-6
+air.juggle = 1
+air.fall = 1
+fall = 1
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 1600
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 1600
+ignorehitpause = 1
+value = 2, 6
+channel = 3
+;------------------------------
+
+;----- Buffalo Head-Butt -----
+[State 330, HitDef]
+type = HitDef
+triggerall = Root, Var(1) <= 1
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1900
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 98, 14
+givepower = 7, 0
+getpower = 42, 21
+animtype = Heavy
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -75
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 10
+ground.hittime  = 10
+ground.velocity = -4,-6
+airguard.velocity = -2,-3
+air.type = Low
+fall.animtype = Heavy
+air.velocity = -4,-6
+fall.recover = 0
+air.hittime = 10
+air.fall = 1
+fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Root, Var(1) = 2
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1900
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 105, 14
+givepower = 7, 0
+getpower = 42, 21
+animtype = Heavy
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -75
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 10
+ground.hittime  = 10
+ground.velocity = -4,-6
+airguard.velocity = -2,-3
+air.type = Low
+fall.animtype = Heavy
+air.velocity = -4,-6
+fall.recover = 0
+air.hittime = 10
+air.fall = 1
+fall = 1
+
+[State 330, HitDef]
+type = HitDef
+triggerall = Root, Var(1) >= 3
+triggerall = Var(2) <= 0
+trigger1 = Anim = 1900
+trigger1 = AnimElem = 3
+attr = A, HA
+damage = 112, 14
+givepower = 7, 0
+getpower = 42, 21
+animtype = Heavy
+guardflag = HA
+hitflag = MAF
+priority = 3, Hit
+pausetime = 0, 5
+sparkno = 2
+sparkxy = -20, -75
+sprpriority = -10
+ground.type = Low
+ground.slidetime = 10
+ground.hittime  = 10
+ground.velocity = -4,-6
+airguard.velocity = -2,-3
+air.type = Low
+fall.animtype = Heavy
+air.velocity = -4,-6
+fall.recover = 0
+air.hittime = 10
+air.fall = 1
+fall = 1
+
+[State 330, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+trigger1 = Anim = 1900
+ignorehitpause = 1
+value = 2, 2
+channel = 2
+;------------------------------
+
+;----- Hit Guarded Sound -----
+[State 330, Guard]
+type = PlaySnd
+trigger1 = MoveGuarded
+ignorehitpause = 1
+value = 3, 0
+channel = 3
+;------------------------------
+
+;-------- HitDef Reset --------
+[State 330, Reset]
+type = HitDef
+trigger1 = Var(2) <= 0
+trigger1 = AnimElem = 1
+trigger2 = MoveType != A
+ignorehitpause = 1
+;------------------------------
+
+;----- Hit Contact Reset -----
+[State 330, Reset]
+type = MoveHitReset
+trigger1 = MoveContact
+ignorehitpause = 1
+;------------------------------
+;==============================
+
+[State 330, Destroy]
+type = DestroySelf
+triggerall = Time > 0
+trigger1 = Root, Var(2) <= 0
+trigger2 = Root, MoveType = H
+trigger3 = Root, Power <= 0
+trigger4 = NumHelper(320) = 0
+ignorehitpause = 1
+
+;---------------------------------------------------------------------------
+; Anchor - Record Information
+[Statedef 340]
+type = S
+movetype = I
+physics = N
+velset = 0,0
+anim = 320
+ctrl = 0
+
+[State 340, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 340, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = Invisible
+
+;----- Record Direction -----
+[State 340, VarSet]
+type = VarSet
+trigger1 = IsHelper(340)
+var(StateTime%60) = Root, Facing
+
+[State 340, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(340)
+text = "ScreenPos X = %f \t ScreenPos Y = %f \nPos X: %f \t \t \t Pos Y: %f"
+params = ScreenPos X, ScreenPos Y, Pos X, Pos Y
+;------------------------------
+
+;----- Record Animation -----
+[State 340, VarSet]
+type = VarSet
+trigger1 = IsHelper(341)
+var(StateTime%60) = Root, Anim
+
+[State 340, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(341)
+text = "Record Anim - Var(%d): %d"
+params = StateTime%60, Var(StateTime%60)
+;------------------------------
+
+;----- Record AnimElemNo -----
+[State 340, VarSet]
+type = VarSet
+trigger1 = IsHelper(342)
+var(StateTime%60) = Root, AnimElemNo(0)
+
+[State 340, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(342)
+text = "Record AnimElemNo - Var(%d): %d"
+params = StateTime%60, Var(StateTime%60)
+;------------------------------
+
+;----- Record Position X -----
+[State 340, VarSet]
+type = VarSet
+trigger1 = IsHelper(343)
+trigger1 = NumHelper(340) > 0
+var(StateTime%60) = ceil(Root, Pos X - Helper(340), ScreenPos X)
+
+[State 340, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(343)
+text = "Record Pos X - Var(%d): %d"
+params = StateTime%60, Var(StateTime%60)
+;------------------------------
+
+;----- Record Position Y -----
+[State 340, VarSet]
+type = VarSet
+trigger1 = IsHelper(344)
+var(StateTime%60) = ceil(Root, Pos Y)
+
+[State 340, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(344)
+text = "Record Pos Y - Var(%d): %d"
+params = StateTime%60, Var(StateTime%60)
+;------------------------------
+
+;----- Record Velocity X -----
+[State 340, VarSet]
+type = VarSet
+trigger1 = IsHelper(345)
+var(StateTime%60) = ceil(Root, Vel X)
+
+[State 340, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(345)
+text = "Record Vel X - Var(%d): %d"
+params = StateTime%60, Var(StateTime%60)
+;------------------------------
+
+;----- Record Velocity Y -----
+[State 340, VarSet]
+type = VarSet
+trigger1 = IsHelper(346)
+var(StateTime%60) = ceil(Root, Vel Y)
+
+[State 340, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(346)
+text = "Record Vel Y - Var(%d): %d"
+params = StateTime%60, Var(StateTime%60)
+;------------------------------
+
+[State 340, PosSet]
+type = PosSet
+trigger1 = Time <= 0
+x = 0
+y = 1000
+
+[State 340, Destroy]
+type = DestroySelf
+triggerall = Time > 0
+trigger1 = Root, Var(2) <= 0
+trigger2 = Root, MoveType = H
+trigger3 = Root, Power <= 0
+trigger4 = NumHelper(320) = 0
+trigger5 = NumHelper(330) = 0
+
+;---------------------------------------------------------------------------

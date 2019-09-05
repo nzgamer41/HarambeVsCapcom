@@ -1,0 +1,33 @@
+[Info]
+name        = "SHADOW AGENT"
+displayname = "SHADOW AGENT"
+versiondate = 08,21,2009
+mugenversion= 06,14,2003
+author      = "MGMURROW"
+pal.defaults= 1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+;cmd     = MVCSHADOW-AGENTEasyAI.cmd
+cmd     = MVCSHADOW-AGENTHardAI.cmd
+cns     = MVCSHADOW-AGENT.cns
+st      = MVCSHADOW-AGENT.cns
+stcommon= MVCSHADOW-AGENT1.cns
+sprite  = MVCSHADOW-AGENT.sff
+anim    = MVCSHADOW-AGENT.air
+sound   = MVCSHADOW-AGENT.snd
+pal1    = MVCSHADOW-AGENT1.act
+pal2    = MVCSHADOW-AGENT2.act
+pal3    = MVCSHADOW-AGENT3.act
+pal4    = MVCSHADOW-AGENT4.act
+pal5    = MVCSHADOW-AGENT5.act
+pal6    = MVCSHADOW-AGENT6.act
+pal7    = MVCSHADOW-AGENT7.act
+pal8    = MVCSHADOW-AGENT8.act
+pal9    = MVCSHADOW-AGENT9.act
+pal10   = MVCSHADOW-AGENT10.act
+pal11   = MVCSHADOW-AGENT11.act
+pal12   = MVCSHADOW-AGENT12.act
+
+;[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def

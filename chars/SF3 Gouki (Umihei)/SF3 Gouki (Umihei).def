@@ -1,0 +1,45 @@
+;Player information
+[Info]
+name = "Gouki"
+displayname = "Gouki"
+versiondate = 04,14,2001
+mugenversion = 04,14,2001
+author = "Umihei"
+pal.defaults = 1, 2, 3, 4, 5, 6
+
+;Files for the player
+[Files]
+StCommon = GoukiSystem.cns
+Cmd = CODE/GoukiCmd.txt
+Anim = CODE/Gouki.air
+Cns = CODE/GoukiCns.txt
+St = CODE/GoukiCns.txt
+st1 = CODE/Gouki-2Cns.txt
+st2 = CODE/Gouki-3Cns.txt
+st3 = CODE/Gouki4000Cns.txt
+st4 = CODE/Gouki5000Cns.txt
+st5 = CODE/Gouki6000Cns.txt
+st6 = CODE/Gouki7000Cns.txt
+st7 = CODE/Gouki8000Cns.txt
+st8 = CODE/S_GoukiCns.txt
+sprite = Gouki.sff
+sound = Gouki.snd
+
+pal1 = Act/LK.act
+pal2 = Act/MK.act
+pal3 = Act/HK.act
+pal4 = Act/LP.act
+pal5 = Act/MP.act
+pal6 = Act/HP.act
+
+pal7 = Act/SLK.act
+pal8 = Act/SMK.act
+pal9 = Act/SHK.act
+pal10 = Act/SLP.act
+pal11 = Act/SMP.act
+pal12 = Act/SHP.act
+
+;Arcade mode
+[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def

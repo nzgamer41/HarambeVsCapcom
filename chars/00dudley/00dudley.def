@@ -1,0 +1,37 @@
+; Player information
+[Info]
+name = "DUDLEY"
+displayname = "DUDLEY"
+versiondate = 02,12,2005
+mugenversion = 04,14,2002
+author = "Tin"
+pal.defaults = 1,3
+
+; Files for the player
+[Files]
+cmd     = 00DUDLEY.cmd
+cns     = 00DUDLEY.cns 
+st      = 00DUDLEY.cns
+st2      = 01DUDLEY.cns
+st3      = 02DUDLEY.cns
+st4      = 03DUDLEY.cns
+st5      = txt/DUDLEY_config.txt
+stcommon = common1.cns
+sprite  = 00DUDLEY.sff
+anim    = 00DUDLEY.air
+sound   = 00DUDLEY.snd
+pal1    = pal/DUDLEY00.act
+pal2    = pal/DUDLEY01.act
+pal3    = pal/DUDLEY02.act
+pal4    = pal/DUDLEY03.act
+pal5    = pal/DUDLEY04.act
+pal6    = pal/DUDLEY05.act
+pal7    = pal/DUDLEY11.act
+pal8    = pal/DUDLEY10.act
+pal9    = pal/DUDLEY09.act
+pal10    = pal/DUDLEY08.act
+pal11    = pal/DUDLEY07.act
+pal12    = pal/DUDLEY06.act
+
+
+

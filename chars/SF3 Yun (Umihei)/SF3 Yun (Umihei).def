@@ -1,0 +1,44 @@
+[Info]
+name = "Yun"
+displayname = "Yun"
+versiondate = 04,14,2001
+mugenversion = 04,14,2001
+author = "Umihei"
+pal.defaults = 1, 2, 3, 4, 5, 6
+
+[Files]
+StCommon = YunSystem.cns
+Cmd = CODE/YunCmd.txt
+Anim = CODE/Yun.air
+Cns = CODE/Yun.cns
+St = CODE/Yun.cns
+st1 = CODE/Yun(SA3).cns
+st2 = CODE/Yun-2.cns
+st3 = CODE/Yun-3.cns
+st4 = CODE/Yun4000.cns
+st5 = CODE/Yun5000.cns
+st6 = CODE/Yun6000.cns
+st7 = CODE/Yun7000.cns
+st8 = CODE/Yun8000.cns
+
+sprite = Yun.sff
+sound = Yun.snd
+
+pal1 = Act/LK.act
+pal2 = Act/MK.act
+pal3 = Act/HK.act
+pal4 = Act/LP.act
+pal5 = Act/MP.act
+pal6 = Act/HP.act
+
+pal7 = Act/SLK.act
+pal8 = Act/SMK.act
+pal9 = Act/SHK.act
+pal10 = Act/SLP.act
+pal11 = Act/SMP.act
+pal12 = Act/SHP.act
+
+;Arcade mode
+[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def

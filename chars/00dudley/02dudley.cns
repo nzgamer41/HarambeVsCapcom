@@ -1,0 +1,625 @@
+[Statedef 2250];立ちブロ 
+type = S
+movetype = I
+physics = N
+velset = 0,0
+anim = 2250
+sprpriority = -2
+ctrl = 0
+
+[State 2250]
+type = Bindtoparent
+trigger1 = 1
+pos = 0,0
+
+[State 2250]
+type = parentvarset
+trigger1 = time = 0
+var(13) = 1
+
+[State 2250]
+type = HitBy
+trigger1 = 1
+value = SCA,NP,SP,HP
+time = 1
+
+[State 2250]
+type = Changestate
+trigger1 = time = 11
+trigger2 = root,statetype != S || root,ctrl = 0
+value = 2265
+
+[State 2250]
+type = ReversalDef
+trigger1 = root,movetype = I && root,statetype = S
+trigger1 = enemynear,hitdefattr = SA,NA,SA,HA
+reversal.attr = SA,NA,SA,HA,NP,SP,HP
+pausetime = 0,8
+sparkno = -1
+p1stateno = 2270
+sparkxy = 39,-63
+hitsound = -1;S1,22
+numhits = 0
+
+[State 2250]
+type = HitOverride
+trigger1 = root,movetype = I
+;trigger1 = enemynear,hitdefattr != SA,NA,SA,HA
+attr = SCA,NP,SP,HP
+stateno = 2270
+
+[State 2250]
+type = Changestate
+trigger1 = time = 7 && root,command = "holdfwd"
+value = 2260
+
+[State 2250]
+type = DestroySelf
+trigger1 = Root,Prevstateno = 2150
+;trigger2 = Root,InGUarddist
+
+[Statedef 2251];しゃがみブロ
+type = S
+movetype = I
+physics = N
+velset = 0,0
+anim = 2251
+sprpriority = -2
+ctrl = 0
+
+[State 2251]
+type = Bindtoparent
+trigger1 = 1
+pos = 15,0
+
+[State 2251]
+type = parentvarset
+trigger1 = time = 0
+var(13) = 2
+
+[State 2251]
+type = notHitBy
+trigger1 = 1
+value = SCA;,NP,SP,HP
+time = 1
+
+[State 2251]
+type = Changestate
+trigger1 = time = 11
+trigger2 = root,ctrl = 0
+value = 2265
+
+[State 2251]
+type = ReversalDef
+trigger1 = root,movetype = I && root,statetype != A
+trigger1 = enemynear,hitdefattr = C,NA,SA,HA
+reversal.attr = C,NA,SA,HA,NP,SP,HP
+pausetime = 0,8
+sparkno = -1
+p1stateno = 2270
+sparkxy = 39,-63
+hitsound = -1;S1,22
+numhits = 0
+
+[State 2251]
+type = HitOverride
+trigger1 = root,movetype = I
+;trigger1 = enemynear,hitdefattr != SA,NA,SA,HA
+attr = SA,NP,SP,HP
+stateno = 2270
+
+[State 2251]
+type = Changestate
+trigger1 = time = 7 && root,command = "holddown"
+value = 2260
+
+[Statedef 2252];空中ブロ
+type = A
+movetype = I
+physics = N
+velset = 0,0
+anim = 2252
+sprpriority = -2
+ctrl = 0
+
+[State 2252]
+type = destroyself
+trigger1 = (root,stateno = 50 || root,stateno = 53)
+trigger1 = root,time <= 2
+
+[State 2252]
+type = Bindtoparent
+trigger1 = 1
+pos = 5,-10
+
+[State 2252]
+type = parentvarset
+trigger1 = time = 0
+var(13) = 3
+
+[State 2252]
+type = notHitBy
+trigger1 = 1
+value = SCA;,NP,SP,HP
+time = 1
+
+[State 2252]
+type = Changestate
+trigger1 = time = 11
+trigger2 = root,statetype != A || root,ctrl = 0
+value = 2265
+
+[State 2252]
+type = ReversalDef
+trigger1 = root,movetype = I && root,statetype = A
+trigger1 = enemynear,hitdefattr = SCA,NA,SA,HA
+reversal.attr = SCA,NA,SA,HA,NP,SP,HP
+pausetime = 0,8
+sparkno = -1
+p1stateno = 2270
+sparkxy = 39,-63
+hitsound = -1;S1,22
+numhits = 0
+
+[State 2252]
+type = null;HitOverride
+trigger1 = root,movetype = I
+;trigger1 = enemynear,hitdefattr != SA,NA,SA,HA
+attr = SA,NP,SP,HP
+stateno = 2270
+
+[State 2252]
+type = Changestate
+trigger1 = time = 7 && root,command = "holdfwd"
+value = 2260
+
+[Statedef 2260];ブロッキング不能
+type = S
+movetype = I
+physics = N
+velset = 0,0
+anim = 5999
+sprpriority = -2
+ctrl = 0
+
+[State 2260]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 2260]
+type = parentvarset
+trigger1 = time = 17
+var(13) = 0
+
+[State 2260]
+type = destroyself
+trigger1 = time = 17
+
+[Statedef 2265];ブロッキング不能
+type = S
+movetype = I
+physics = N
+velset = 0,0
+anim = 5999
+sprpriority = -2
+ctrl = 0
+
+[State 2265]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 2265]
+type = parentvarset
+trigger1 = time = 13
+var(13) = 0
+
+[State 2265]
+type = destroyself
+trigger1 = time = 13
+
+[Statedef 2270]
+type = S
+movetype = I
+physics = N
+velset = 0,0
+anim = 5999
+sprpriority = -2
+ctrl = 0
+
+[State 2270]
+type = Bindtoparent
+trigger1 = time = 0
+pos = 39,-63
+
+[State 2270]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 2270]
+type = Changestate
+trigger1 = time = 1
+value = 2275
+
+[Statedef 2275]
+type = S
+movetype = I
+physics = N
+velset = 0,0
+anim = 5999
+sprpriority = -2
+ctrl = 0
+
+[State 2275]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 2275]
+type = destroyself
+trigger1 = time = 16
+trigger2 = root,stateno != [2300,2320]
+;------------------------------地上ぶろ
+[Statedef 2300]
+type = S
+movetype = I
+physics = S
+velset = 0,0
+sprpriority = -2
+ctrl = 0
+poweradd = 100
+anim = 2300
+
+[State 2300]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 2300]
+type = varset
+trigger1 = animtime = 0
+var(13) = 0
+
+[State 2300]
+type = varset
+trigger1 = time = 0
+var(20) = enemynear,stateno
+
+[State 2300]
+type = varset
+trigger1 = time = 0
+var(21) = enemynear,AnimElemNo(0)
+
+[State 2300]
+type = PlaySnd
+trigger1 = time = 0
+value = 0,0
+channel = 0
+
+[State 2300]
+type = PlaySnd
+trigger1 = time = 0
+value = 1,21
+channel = 3
+
+[State 2300]
+type = Explod
+trigger1 = time = 0
+anim = 82
+pos = 68,-93
+sprpriority = 4
+ownpal = 1
+pausemovetime = 20
+
+[State 2300]
+type = Pause
+trigger1 = time = 1
+trigger1 = teammode = Single || teammode = Turns
+time = 12
+movetime = 8
+
+[State 2300]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 3
+
+[State 2300]
+type = PalFx
+trigger1 = time = 0
+add = 255,255,255
+time = 3
+
+[State 2300]
+type = Changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;------------------------------しゃがみぶろ
+[Statedef 2310]
+type = C
+movetype = I
+physics = S
+velset = 0,0
+sprpriority = -2
+ctrl = 0
+poweradd = 100
+anim = 2310
+
+[State 2310]
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 2310]
+type = varset
+trigger1 = animtime = 0
+var(13) = 0
+
+[State 2310]
+type = PlaySnd
+trigger1 = time = 0
+value = 0,0
+channel = 0
+
+[State 2310]
+type = PlaySnd
+trigger1 = time = 0
+value = 1,21
+channel = 3
+
+[State 2310]
+type = Explod
+trigger1 = time = 0
+anim = 82
+pos = 61,-9
+sprpriority = 4
+ownpal = 1
+pausemovetime = 20
+
+[State 2310]
+type = Pause
+trigger1 = time = 1
+trigger1 = teammode = Single || teammode = Turns
+time = 12
+movetime = 8
+
+[State 2310]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 3
+
+[State 2310]
+type = PalFx
+trigger1 = time = 0
+add = 255,255,255
+time = 3
+
+[State 2310]
+type = Changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;------------------------------空中ぶろ
+[Statedef 2320]
+type = A
+movetype = I
+physics = N
+sprpriority = -2
+ctrl = 0
+poweradd = 100
+anim = 2320
+
+[State 2320]
+type = varset
+trigger1 = time = 0
+var(3) = ifelse(vel X > 0,1,0)
+
+[State 2320]
+type = varset
+trigger1 = animtime = 0
+var(13) = 0
+
+[State 2320]
+type = velset
+trigger1 = time = 0
+x = 0
+y = 0
+
+[State 2320]
+type = PlaySnd
+trigger1 = time = 0
+value = 0,0
+channel = 0
+
+[State 2320]
+type = PlaySnd
+trigger1 = time = 0
+value = 1,21
+channel = 3
+
+[State 2320]
+type = Explod
+trigger1 = time = 0
+anim = 82
+pos = 35,-99
+sprpriority = 4
+ownpal = 1
+pausemovetime = 20
+
+[State 2320]
+type = Pause
+trigger1 = time = 1
+trigger1 = teammode = Single || teammode = Turns
+time = 12
+movetime = 8
+
+[State 2320]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 3
+
+[State 2320]
+type = PalFx
+trigger1 = time = 0
+add = 255,255,255
+time = 3
+
+[State 2320]
+type = velset
+trigger1 = animtime = 0
+x = ifelse(var(3)=1,3,0)
+y = -4.3
+
+[State 2320]
+type = Changestate
+trigger1 = animtime = 0
+value = 50
+ctrl = 1
+
+;------------------------------点滅演出ヘルパ
+[Statedef 2350]
+type = A
+movetype = I
+physics = N
+sprpriority = 2
+ctrl = 0
+poweradd = 0
+anim = 5999
+velset = 0,0
+pausemovetime = 999
+supermovetime = 999
+
+[State 2350]
+type = EnvColor
+trigger1 = time%2
+trigger1 = time < 5
+value = 210,20,10;10,10,20
+under = 1
+time = 1
+ignorehitpause = 1
+
+;AI抑制
+[Statedef 5997]
+anim=5999
+sprpriority=-1000
+ctrl=0
+
+[State 5998]
+type = ParentVarSet
+trigger1 = roundstate < 2
+var(26) = 0
+
+[State 5999,6]
+type=changestate
+trigger1 = roundstate >= 2
+value = 5998
+
+;AI抑制
+[Statedef 5998]
+anim=5999
+sprpriority=-1000
+ctrl=0
+
+[State 5998]
+type = ParentVarSet
+trigger1 = time >= 300
+var(26) = 1
+
+[State 5999,6]
+type=destroyself
+trigger1=time>=300
+
+ 
+[Statedef 92];カウンター演出 
+type = A
+physics = N
+movetype = I
+anim = 5999
+persistent = -999
+ctrl = 0
+
+[STate 92]
+type = EnvColor
+trigger1 = time = 0
+time = 1
+under = 0
+value = 255,255,255
+persistent = 0
+sprpriority = 9999
+ignorehitpause = 1
+
+[State 92]
+type = DestroySelf
+trigger1 = enemy,Movetype != H
+ 
+[Statedef 3995];KO演出 
+type = A
+physics = N
+movetype = I
+anim = 5999
+persistent = -999
+ctrl = 0
+
+[STate 3995]
+type = BGPALFX;EnvColor
+;trigger1 = ;time%2 = 0
+trigger1 = time = 0;< 5
+time = 1
+under = 1
+value = 255,255,255
+persistent = 0
+sprpriority = 9999
+ignorehitpause = 1
+
+[STate 3995]
+type = Explod
+trigger1 = Root,stateno >= 3000
+trigger1 = time = 0
+anim = 2200
+id = 2200
+sprpriority = 9999
+pos = -30,0
+postype = left
+ignorehitpause = 1
+ownpal = 1
+supermove = 30
+supermovetime = 30
+under = 1
+
+[State 3995]
+type = PlaySnd
+trigger1 = Time = 0
+value = S1,(ifelse(root,stateno>=3000,30,31))
+persistent = 0
+
+
+[State -2]
+type = Pause
+trigger1 = root,stateno >= 3000
+trigger1 = time = 0
+time = 25
+ignorehitpause = 1
+persistent = 0
+
+[State -2]
+type = Pause
+trigger1 = root,stateno < 3000
+time = 10
+;ignorehitpause = 1
+persistent = 0
+
+[State 3995]
+type = DestroySelf
+trigger1 = time > 1000
+ 

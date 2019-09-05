@@ -1,0 +1,43 @@
+[Info]
+Name = "Urien"
+DisplayName = "Urien"
+VersionDate = 04,14,2001
+MugenVersion = 04,14,2001
+Author = "Umihei"
+Pal.Defaults = 1
+
+[Files]
+StCommon = UrienSystemCns.txt
+Cmd = CODE/UrienCmd.txt
+Anim = CODE/Urien.air
+Cns = CODE/UrienCns.txt
+St = CODE/UrienCns.txt
+st1 = CODE/Urien(EX)Cns.txt
+st2 = CODE/Urien-2Cns.txt
+st3 = CODE/Urien-3Cns.txt
+st4 = CODE/Urien4000Cns.txt
+st5 = CODE/Urien5000Cns.txt
+st6 = CODE/Urien6000Cns.txt
+st7 = CODE/Urien7000Cns.txt
+st8 = CODE/Urien8000Cns.txt
+
+Sprite = Urien.sff
+Sound = Urien.snd
+
+Pal1 = ACT/LK.act
+Pal2 = ACT/MK.act
+Pal3 = ACT/HK.act
+Pal4 = ACT/LP.act
+Pal5 = ACT/MP.act
+Pal6 = ACT/HP.act
+
+Pal7 = ACT/SLK.act
+Pal8 = ACT/SMK.act
+Pal9 = ACT/SHK.act
+Pal10 = ACT/SLP.act
+Pal11 = ACT/SMP.act
+Pal12 = ACT/SHP.act
+
+[Arcade]
+Intro.Storyboard  = intro.def
+Ending.Storyboard = ending.def

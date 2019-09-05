@@ -1,0 +1,3691 @@
+[Statedef -2]
+;----------------------------------
+;AI用varリセット
+;MoveType = H であるかの判定
+;QS判定初期化
+;AI行動制御
+;やられボイス
+;落下判定
+;体力自然回復値
+;投げ不能時間
+;グラップ判定
+;ブロッキング入力
+;ブロッキング
+;残像消去
+;空中ガード不可
+;AI時防御
+;通常ダメージ処理
+;特殊ダウン判定リセット
+;AIリセット
+;スタンゲージ
+;スタン値管理
+;スタンからの回復
+;SAゲージの制限（Single時のみ）
+;SAの番号表示
+;削減値
+;連続技補正解除
+;ヒットバック
+;デバッグ用表示
+;バッグ
+;効果音解除（電刃溜め時）
+;ゲージ解除（電刃溜め時）
+;AI
+;SprPriority
+
+;--------------------------AI用varリセット--------------------------
+[State -2]
+type = VarSet
+triggerall = fvar(18) != -1
+trigger1 = fvar(18) = StateNo
+fvar(18) = -1
+
+;--------------------------MoveType = H であるかの判定--------------------------
+[State -2]
+type = VarSet
+triggerall = MoveType != H
+triggerall = var(22) != 0
+trigger1 = !(StateNo = 5000 && time = 0)
+trigger1 = !(StateNo = 5010 && time = 0)
+trigger1 = !(StateNo = 5020 && time = 0)
+trigger1 = !(StateNo = 5070 && time = 0)
+trigger1 = !(StateNo = 5080 && time = 0)
+var(22) = 0
+
+[State -2]
+type = VarSet
+triggerall = MoveType = H
+triggerall = var(22) != 1
+trigger1 = !(StateNo = 5000 && time = 0)
+trigger1 = !(StateNo = 5010 && time = 0)
+trigger1 = !(StateNo = 5020 && time = 0)
+trigger1 = !(StateNo = 5070 && time = 0)
+trigger1 = !(StateNo = 5080 && time = 0)
+var(22) = 1
+
+;--------------------------QS判定初期化--------------------------
+[State -2]
+type = VarSet
+triggerall = var(28) != 0
+trigger1 = StateNo = 3100
+trigger2 = StateNo = 5120
+var(28) = 0
+
+[State -2]
+type = VarAdd
+triggerall = var(28)%100 = 1
+triggerall = MoveHit
+trigger1 = StateNo = [200, 1999]
+var(28) = -1
+
+[State -2]
+type = VarAdd
+triggerall = var(28)%100 = 0
+triggerall = MoveHit
+trigger1 = StateNo = [2000, 2399]
+var(28) = 1
+
+;--------------------------AI行動制御--------------------------
+[State -2]
+type = VarSet
+triggerall = RoundState = 2
+triggerall = var(39) != 0
+trigger1 = Ctrl
+trigger2 = EnemyNear,Ctrl
+var(39) = 0
+
+[State -2]
+type = VarSet
+trigger1 = MoveHit
+var(39) = StateNo
+
+;--------------------------やられボイス--------------------------
+[State -2]
+type = PlaySnd
+triggerall = Random < 500
+triggerall = time = 0
+trigger1 = StateNo = 5000
+trigger2 = StateNo = 5010
+trigger3 = StateNo = 5020
+trigger4 = StateNo = 5070
+trigger5 = StateNo = 5080
+value = 5000, Random%5
+
+;--------------------------落下判定--------------------------
+[State -2]
+type = VarSet
+triggerall = var(5) != 0
+trigger1 = var(16) < 5
+var(5) = 0
+
+;--------------------------体力自然回復値--------------------------
+[State -2]
+type = LifeAdd
+trigger1 = ctrl
+value = var(50)
+
+;--------------------------投げ不能時間--------------------------
+[State 8986]
+type = VarSet
+triggerall = var(1) > 0
+trigger1 = P2StateNo = [150, 153]
+trigger2 = P2StateNo = [160, 163]
+trigger3 = P2StateNo = [1340, 1349]
+trigger4 = P2StateNo = [5000, 5001]
+trigger5 = P2StateNo = [5010, 5011]
+trigger6 = P2StateNo = 5040
+var(1) = 0
+
+[State 8986]
+type = VarAdd
+trigger1 = P2StateNo != [150, 153]
+trigger1 = P2StateNo != [160, 163]
+trigger1 = P2StateNo != [1340, 1349]
+trigger1 = P2StateNo != [5000, 5001]
+trigger1 = P2StateNo != [5010, 5011]
+trigger1 = P2StateNo != 5040
+var(1) = 1
+
+;--------------------------グラップ判定--------------------------
+[State 8986]
+type = VarSet
+triggerall = RoundState = 2
+triggerall = EnemyNear,ctrl = 0
+trigger1 = StateNo != 912
+trigger1 = StateNo != 922
+var(2) = 0
+
+[State 8986]
+type = VarSet
+triggerall = RoundState = 2
+triggerall = EnemyNear,ctrl = 1
+trigger1 = StateNo != 912
+trigger1 = StateNo != 922
+var(2) = 1
+
+;------------------------------ブロッキング入力------------------------------
+;前入力
+[State -2, Blocking-1]
+type = VarSet
+trigger1 = var(33) >= 20
+var(34) = 0
+ignorehitpause = 1
+
+[State -2, Blocking-2]
+type = VarSet
+trigger1 = var(33) >= 20
+var(33) = 0
+ignorehitpause = 1
+
+[State -2, Blocking-4]
+type = VarAdd
+trigger1 = var(33) != 0
+trigger1 = var(33) < 20
+var(33) = 1
+ignorehitpause = 1
+
+[State -2, Blocking-3]
+type = VarSet
+triggerall = var(33) = 0
+triggerall = command = "Fwd"
+trigger1 = ctrl
+trigger2 = StateNo = [120, 169]
+trigger3 = StateNo = [3000, 3099]
+trigger4 = StateNo = 5030
+trigger5 = StateNo = 5040
+trigger6 = StateNo = 5120
+var(33) = 1
+ignorehitpause = 1
+
+[State -2, Blocking-5]
+type = VarSet
+triggerall = var(33) = [1, 6]
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = command != "holdfwd"
+trigger1 = command != "holdback"
+var(34) = 1
+ignorehitpause = 1
+
+;--------------------
+;下入力
+[State -2, Blocking-1]
+type = VarSet
+trigger1 = var(35) >= 20
+var(36) = 0
+ignorehitpause = 1
+
+[State -2, Blocking-2]
+type = VarSet
+trigger1 = var(35) >= 20
+var(35) = 0
+ignorehitpause = 1
+
+[State -2, Blocking-3]
+type = VarAdd
+trigger1 = var(35) != 0
+trigger1 = var(35) < 20
+var(35) = 1
+ignorehitpause = 1
+
+[State -2, Blocking-4]
+type = VarSet
+triggerall = var(35) = 0
+triggerall = command = "Down"
+trigger1 = ctrl
+trigger2 = StateNo = [120, 169]
+trigger3 = StateNo = [3000, 3099]
+trigger4 = StateNo = 5030
+trigger5 = StateNo = 5040
+trigger6 = StateNo = 5120
+var(35) = 1
+ignorehitpause = 1
+
+[State -2, Blocking-5]
+type = VarSet
+triggerall = var(35) = [1, 6]
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = command != "holdfwd"
+trigger1 = command != "holdback"
+var(36) = 1
+ignorehitpause = 1
+
+;------------------------------ブロッキング------------------------------
+;地上で地上技（飛び道具除く）を前ブロ
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3039]) || (StateNo = [5120, 5122])
+triggerall = var(16) < 5
+trigger1 = var(33) = [1, 6]
+trigger2 = var(33) = [7, 10]
+trigger2 = var(34) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 0
+stateno = 3000
+attr = S, AA
+time = 1
+
+[State -2, Blocking]
+type = HitOverride
+triggerall = RoundState = 2
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3039]) || (StateNo = [5120, 5122])
+triggerall = var(16) >= 5
+triggerall = EnemyNear,var(4) = [0, 1]
+trigger1 = var(33) = [1, 6]
+trigger2 = var(33) = [7, 10]
+trigger2 = var(34) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 0
+StateNo = 3000
+attr = SC, AA
+time = 1
+
+;------------------------------------
+;地上で地上技（飛び道具除く）を下ブロ
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3039]) || (StateNo = [5120, 5122])
+triggerall = var(16) < 5
+trigger1 = var(35) = [1, 6]
+trigger2 = var(35) = [7, 10]
+trigger2 = var(36) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 1
+stateno = 3020
+attr = C, AA
+time = 1
+
+[State -2, Blocking]
+type = HitOverride
+triggerall = RoundState = 2
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3039]) || (StateNo = [5120, 5122])
+triggerall = var(16) >= 5
+triggerall = EnemyNear,var(4) = [1, 2]
+trigger1 = var(35) = [1, 6]
+trigger2 = var(35) = [7, 10]
+trigger2 = var(36) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 1
+StateNo = 3020
+attr = SC, AA
+time = 1
+
+;------------------------------------
+;地上で空中・上段飛び道具を前ブロ
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3039]) || (StateNo = [5120, 5122])
+trigger1 = var(33) = [1, 6]
+trigger2 = var(33) = [7, 10]
+trigger2 = var(34) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 2
+stateno = 3000
+attr = SA, AP
+time = 1
+
+;------------------------------------
+;地上で下段飛び道具を下ブロ
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3039]) || (StateNo = [5120, 5122])
+trigger1 = var(35) = [1, 6]
+trigger2 = var(35) = [7, 10]
+trigger2 = var(36) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 3
+stateno = 3020
+attr = C, AP
+time = 1
+
+;------------------------------------
+;地上で空中技（飛び道具除く）を前ブロ
+[State -2, Blocking-3]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3039]) || (StateNo = [5120, 5122])
+trigger1 = var(33) = [1, 5]
+trigger2 = var(15) = 0 && var(17) = 4
+slot = 4
+stateno = 3000
+attr = A, AA
+time = 1
+
+;------------------------------------
+;空中ブロ（飛び道具以外）
+[State -2, Blocking-6]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype = A && ctrl) || (StateNo = [3040, 3099]) || (StateNo = 5030 && MoveType = I) || (StateNo = 5040 && MoveType = I)
+trigger1 = var(33) = [1, 6]
+trigger2 = var(33) = 7
+trigger2 = var(34) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 5
+stateno = 3040
+attr = SCA, AA, AP
+time = 1
+
+;------------------------------残像消去------------------------------
+[State -2, RemoveAfterImage]
+type = AfterImagetime
+trigger1 = StateNo != [1150, 1199]
+trigger1 = StateNo != [1350, 1399]
+trigger1 = StateNo != [1460, 1479]
+trigger1 = StateNo != [1560, 1579]
+trigger1 = StateNo != [1660, 1679]
+trigger1 = StateNo != [2000, 2599]
+time = 0
+
+;------------------------------空中ガード不可------------------------------
+[State 190, 2]
+type = AssertSpecial
+trigger1 = 1
+flag = noairguard
+
+;------------------------------通常ダメージ処理------------------------------
+[State 152]
+type = AttackMulSet
+trigger1 = 1
+value = 0.87 * (1 + 0.313 * fvar(24))
+
+[State 152]
+type = DefenceMulSet
+trigger1 = !(StateNo = 5000 && time = 0)
+trigger1 = !(StateNo = 5010 && time = 0)
+trigger1 = !(StateNo = 5020 && time = 0)
+trigger1 = !(StateNo = 5070 && time = 0)
+trigger1 = !(StateNo = 5080 && time = 0)
+value = 1.15 * ifelse(var(15) = 0, 1, 1)
+
+[State 152]
+type = VarSet
+trigger1 = GetHitVar(Damage) != 0
+var(6) = GetHitVar(Damage)
+ignorehitpause = 1
+
+;-------------------------
+[State 5000, 5]
+type = VarSet
+trigger1 = GetHitVar(Damage) != 0
+trigger1 = Life + GetHitVar(Damage) > var(27)
+var(9) = Life + GetHitVar(Damage) - var(27)
+ignorehitpause = 1
+
+[State 5000, 5]
+type = VarSet
+trigger1 = GetHitVar(Damage) != 0
+trigger1 = Life + GetHitVar(Damage) <= var(27)
+var(9) = 0
+ignorehitpause = 1
+
+;-------------------------
+;※１番下
+[State 152]
+type = Null;LifeAdd
+trigger1 = GetHitVar(Damage) != 0
+value = GetHitVar(Damage)
+ignorehitpause = 1
+
+;------------------------------特殊ダウン判定リセット------------------------------
+[State 8986]
+type = VarSet
+triggerall = var(30) != 0
+trigger1 = StateNo != 5000
+trigger1 = StateNo != 5010
+trigger1 = StateNo != 5020
+trigger1 = StateNo != [1661, 1669]
+var(30) = 0
+
+;------------------------------AIリセット------------------------------
+[State -2]
+type = VarSet
+trigger1 = RoundState = 0
+trigger1 = RoundsExisted = 0
+var(59) = 0
+
+;------------------------------スタンゲージ------------------------------
+[State -2, Green Bar (P1)];私のキャラ同士の時
+type = Explod
+triggerall = NumEnemy > 0
+triggerall = NumExplod(3271) = 0
+triggerall = var(16) >= 5
+triggerall = Abs(var(16) - EnemyNear,var(16)) < 500
+triggerall = teamside = 1
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(11) > 0
+bindtime = -1
+anim = 3250
+ID = 3271
+facing = -1
+sprpriority = 2
+pos = 92 - 8 * (var(16)%4), 52
+postype = left
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Green Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3271) > 0
+triggerall = teamside = 1
+trigger1 = var(16) < 5
+trigger2 = RoundState = 2
+trigger2 = fvar(11) <= 0
+trigger3 = RoundState > 2
+trigger4 = Abs(var(16) - EnemyNear,var(16)) >= 500
+ID = 3271
+
+[State -2, Green Bar (P1)]
+type = ModifyExplod
+trigger1 = NumExplod(3271) > 0
+trigger1 = teamside = 1
+ID = 3271
+scale = 48 + 8 * (var(16)%4) - fvar(11), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Green Bar (P2)]
+type = Explod
+triggerall = NumEnemy > 0
+triggerall = NumExplod(3281) = 0
+triggerall = var(16) >= 5
+triggerall = Abs(var(16) - EnemyNear,var(16)) < 500
+triggerall = TeamSide = 2
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(11) > 0
+bindtime = -1
+anim = 3250
+ID = 3281
+axfacing = -1
+sprpriority = 1
+pos = -142, 52
+postype = right
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Green Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3281) > 0
+triggerall = TeamSide = 2
+trigger1 = var(16) < 5
+trigger2 = RoundState = 2
+trigger2 = fvar(11) <= 0
+trigger3 = RoundState > 2
+trigger4 = Abs(var(16) - EnemyNear,var(16)) >= 500
+ID = 3281
+
+[State -2, Green Bar (P2)]
+type = ModifyExplod
+trigger1 = NumExplod(3281) > 0
+trigger1 = TeamSide = 2
+ID = 3281
+scale = 48 + 8 * (var(16)%4), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Red Bar (P1)]
+type = Explod
+triggerall = NumEnemy > 0
+triggerall = NumExplod(3221) = 0
+triggerall = var(16) >= 5
+triggerall = Abs(var(16) - EnemyNear,var(16)) < 500
+triggerall = teamside = 1
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(11) > 0
+bindtime = -1
+anim = 3200
+ID = 3221
+facing = -1
+sprpriority = 1
+pos = 92 - 8 * (var(16)%4), 52
+postype = left
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Red Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3221) > 0
+triggerall = TeamSide = 1
+trigger1 = var(16) < 5
+trigger2 = RoundState = 2
+trigger2 = fvar(11) <= 0
+trigger3 = RoundState > 2
+trigger4 = Abs(var(16) - EnemyNear,var(16)) >= 500
+ID = 3221
+
+[State -2, Red Bar (P1)]
+type = ModifyExplod
+trigger1 = NumExplod(3221) > 0
+trigger1 = TeamSide = 1
+ID = 3221
+scale = 48 + 8 * (var(16)%4), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Red Bar (P2)]
+type = Explod
+triggerall = NumEnemy > 0
+triggerall = NumExplod(3231) = 0
+triggerall = var(16) >= 5
+triggerall = Abs(var(16) - EnemyNear,var(16)) < 500
+triggerall = TeamSide = 2
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(11) > 0
+bindtime = -1
+anim = 3200
+ID = 3231
+facing = -1
+sprpriority = 2
+pos = -142, 52
+postype = right
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Red Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3231) > 0
+triggerall = TeamSide = 2
+trigger1 = var(16) < 5
+trigger2 = RoundState = 2
+trigger2 = fvar(11) <= 0
+trigger3 = RoundState > 2
+trigger4 = Abs(var(16) - EnemyNear,var(16)) >= 500
+ID = 3231
+
+[State -2, Red Bar (P2)]
+type = ModifyExplod
+trigger1 = NumExplod(3231) > 0
+trigger1 = TeamSide = 2
+ID = 3231
+scale = fvar(11), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Green Bar (P1)];それ以外の時
+type = Explod
+triggerall = var(16) = [1, 3]
+triggerall = NumExplod(3250 + var(16)) = 0
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 1, fvar(11), fvar(12)) > 0
+bindtime = -1
+anim = 3250
+ID = 3250 + var(16)
+facing = -1
+sprpriority = 2
+pos = 92 - 8 * var(16), 52
+postype = left
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Green Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3251) > 0
+trigger1 = var(16) != 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3251
+
+[State -2, Green Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3252) > 0
+trigger1 = var(16) != 2
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3252
+
+[State -2, Green Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3253) > 0
+trigger1 = var(16) != 3
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3253
+
+[State -2, Green Bar (P1)]
+type = ModifyExplod
+triggerall = var(16) = [1, 3]
+trigger1 = NumExplod(3250 + var(16)) > 0
+ID = 3250 + var(16)
+scale = 8 * var(16) + 48 - ifelse(teamside = 1, fvar(11), fvar(12)), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Green Bar (P2)]
+type = Explod
+triggerall = var(16) = [1, 3]
+triggerall = NumExplod(3260 + var(16)) = 0
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 2, fvar(11), fvar(12)) > 0
+bindtime = -1
+anim = 3250
+ID = 3260 + var(16)
+facing = -1
+sprpriority = 1
+pos = -142, 52
+postype = right
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Green Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3261) > 0
+trigger1 = var(16) != 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3261
+
+[State -2, Green Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3262) > 0
+trigger1 = var(16) != 2
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3262
+
+[State -2, Green Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3263) > 0
+trigger1 = var(16) != 3
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3263
+
+[State -2, Green Bar (P2)]
+type = ModifyExplod
+triggerall = var(16) = [1, 3]
+trigger1 = NumExplod(3260 + var(16)) > 0
+ID = 3260 + var(16)
+scale = 8 * var(16) + 48, 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Red Bar (P1)]
+type = Explod
+triggerall = var(16) = [1, 3]
+triggerall = NumExplod(3200 + var(16)) = 0
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 1, fvar(11), fvar(12)) > 0
+bindtime = -1
+anim = 3200
+ID = 3200 + var(16)
+facing = -1
+sprpriority = 1
+pos = 92 - 8 * var(16), 52
+postype = left
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Red Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3201) > 0
+trigger1 = var(16) != 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3201
+
+[State -2, Red Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3202) > 0
+trigger1 = var(16) != 2
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3202
+
+[State -2, Red Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3203) > 0
+trigger1 = var(16) != 3
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3203
+
+[State -2, Red Bar (P1)]
+type = ModifyExplod
+triggerall = var(16) = [1, 3]
+trigger1 = NumExplod(3200 + var(16)) > 0
+ID = 3200 + var(16)
+scale = 48 + 8 * var(16), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Red Bar (P2)]
+type = Explod
+triggerall = var(16) = [1, 3]
+triggerall = NumExplod(3210 + var(16)) = 0
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 2, fvar(11), fvar(12)) > 0
+bindtime = -1
+anim = 3200
+ID = 3210 + var(16)
+facing = -1
+sprpriority = 2
+pos = -142, 52
+postype = right
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+[State -2, Red Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3211) > 0
+trigger1 = var(16) != 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3211
+
+[State -2, Red Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3212) > 0
+trigger1 = var(16) != 2
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3212
+
+[State -2, Red Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3213) > 0
+trigger1 = var(16) != 3
+trigger2 = RoundState = 2
+trigger2 = ifelse(teamside = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3213
+
+[State -2, Red Bar (P2)]
+type = ModifyExplod
+triggerall = var(16) = [1, 3]
+trigger1 = NumExplod(3210 + var(16)) > 0
+ID = 3210 + var(16)
+scale = ifelse(teamside = 2, fvar(11), fvar(12)), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+
+;------------------------------スタン値管理------------------------------
+[State -2]
+type = VarSet
+triggerall = NumEnemy > 0
+triggerall = fvar(11) > 0 && fvar(11) < 48 + 8 * (var(16)%4)
+trigger1 = var(16) = 0
+trigger2 = var(16) >= 5
+trigger2 = Abs(var(16) - enemy,var(16)) >= 500
+fvar(11) = 0
+
+[State -2]
+type = VarSet
+trigger1 = fvar(11) < 0
+trigger2 = RoundState = 0
+fvar(11) = 0
+
+[State -2]
+type = VarAdd
+triggerall = fvar(11) > 0
+trigger1 = fvar(11) < 48 + 8 * (var(16)%4)
+fvar(11) = - (0.05 + 0.0004 * fvar(11))
+ignorehitpause = 1
+
+[State -2]
+type = VarSet
+trigger1 = fvar(11) > 48 + 8 * (var(16)%4)
+fvar(11) = 48 + 8 * (var(16)%4)
+ignorehitpause = 1
+
+[State -2]
+type = VarAdd
+trigger1 = var(18) = [0, 299]
+var(18) = 100
+ignorehitpause = 1
+
+[State -2]
+type = VarAdd
+trigger1 = var(45)%100 != 0
+trigger1 = var(45)%1000 = [0, 299]
+var(45) = 100
+ignorehitpause = 1
+
+[State -2]
+type = VarAdd
+trigger1 = var(46)%100 != 0
+trigger1 = var(46)%1000 = [0, 299]
+var(46) = 100
+ignorehitpause = 1
+
+[State -2]
+type = VarAdd
+trigger1 = var(47)%100 != 0
+trigger1 = var(47)%1000 = [0, 299]
+var(47) = 100
+ignorehitpause = 1
+
+[State -2]
+type = VarSet
+triggerall = fvar(12) > 0 && fvar(12) < 48 + 8 * (var(16)%4)
+trigger1 = var(16) != [1, 3]
+fvar(12) = 0
+
+[State -2]
+type = VarAdd
+triggerall = fvar(12) > 0
+trigger1 = fvar(12) < 48 + 8 * (var(16)%4)
+fvar(12) = - (0.05 + 0.0004 * fvar(12))
+ignorehitpause = 1
+
+[State -2]
+type = VarSet
+trigger1 = fvar(12) < 0
+trigger2 = RoundState = 0
+fvar(12) = 0
+
+[State -2]
+type = VarSet
+trigger1 = fvar(12) > 48 + 8 * (var(16)%4)
+fvar(12) = 48 + 8 * (var(16)%4)
+ignorehitpause = 1
+
+;-----------------------------------------
+[State -2];2P常時気絶
+type = Null;VarSet
+;type = VarSet
+trigger1 = teamside = 2
+trigger1 = var(16) >= 5
+trigger1 = fvar(11) < 48 + 8 * (var(16)%4)
+fvar(11) = 48 + 8 * (var(16)%4)
+
+[State -2]
+type = Null;VarSet
+;type = VarSet
+trigger1 = teamside = 1
+trigger1 = var(16) < 5
+trigger1 = fvar(12) < 48 + 8 * (var(16)%4)
+fvar(12) = 48 + 8 * (var(16)%4)
+
+;------------------------------スタンからの回復------------------------------
+[State -2]
+type = VarSet
+triggerall = NumEnemy > 0
+triggerall = fvar(12) >= 48 + 8 * (var(16)%4)
+triggerall = Enemy,StateNo = 6300
+trigger1 = var(20) = 0
+var(20) = 300 - 45 * (Random%5)
+
+[State -2]
+type = VarSet
+triggerall = NumEnemy > 0
+triggerall = fvar(12) >= 48 + 8 * (var(16)%4)
+trigger1 = Enemy,StateNo = 6300
+fvar(12) = 0
+
+[State -2]
+type = VarAdd
+triggerall = NumEnemy > 0
+triggerall = Enemy,StateNo = 6300
+triggerall = var(20) > 0
+trigger1 = Enemy,command = "x"
+trigger2 = Enemy,command = "y"
+trigger3 = Enemy,command = "z"
+trigger4 = Enemy,command = "a"
+trigger5 = Enemy,command = "b"
+trigger6 = Enemy,command = "c"
+trigger7 = Enemy,command = "Up"
+trigger8 = Enemy,command = "Down"
+trigger9 = Enemy,command = "Fwd"
+trigger10 = Enemy,command = "Back"
+var(20) = -1
+
+[State -2]
+type = VarAdd
+triggerall = NumEnemy > 0
+trigger1 = Enemy,StateNo = 6300
+trigger1 = var(20) > 0
+var(20) = -1
+
+[State -2]
+type = VarSet
+triggerall = NumEnemy > 0
+trigger1 = Enemy,StateNo != 6300
+trigger1 = var(20) > 0
+var(20) = 0
+
+;------------------------------SAゲージの制限（Single時のみ）----------------------------------------
+[State 195, 3]
+type = PowerSet
+triggerall = var(15) = 0
+triggerall = var(17) = 1
+triggerall = TeamMode = Single
+trigger1 = power > 880
+value = 880
+
+[State 195, 3]
+type = PowerSet
+triggerall = var(15) = 0
+triggerall = var(17) = 2
+triggerall = TeamMode = Single
+trigger1 = power > 1040
+value = 1040
+
+[State 195, 3]
+type = PowerSet
+triggerall = var(15) = 0
+triggerall = var(17) = 3
+triggerall = TeamMode = Single
+trigger1 = power > 1440
+value = 1440
+
+;------------------------------SAの番号表示------------------------------
+;1ゲージ以上溜まっているとき
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = RoundState = [1, 2]
+triggerall = teamside = 1
+triggerall = NumExplod(3303 + (var(17) - 1) * 4) = 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 1040
+trigger3 = var(15) = 0 && var(17) = 3 && Power >= 720
+anim = 3303 + (var(17) - 1) * 4
+ID = 3303 + (var(17) - 1) * 4
+bindtime = -1
+pos = 0, ceil(fvar(30))
+postype = left
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = RoundState = [1, 2]
+triggerall = teamside = 2
+triggerall = NumExplod(3303 + (var(17) - 1) * 4) = 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 1040
+trigger3 = var(15) = 0 && var(17) = 3 && Power >= 720
+anim = 3303 + (var(17) - 1) * 4
+ID = 3303 + (var(17) - 1) * 4
+bindtime = -1
+pos = -20, ceil(fvar(30))
+postype = right
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+;------------------------------
+;EX1回分以上かつ1ゲージ未満
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = RoundState = [1, 2]
+triggerall = teamside = 1
+triggerall = GameTime%20 = 0
+triggerall = Power >= 400
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 1040
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 720
+anim = 3301 + (var(17) - 1) * 4
+ID = 3301 + (var(17) - 1) * 4
+bindtime = -1
+pos = 0, ceil(fvar(30))
+postype = left
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = RoundState = [1, 2]
+triggerall = teamside = 2
+triggerall = GameTime%20 = 0
+triggerall = Power >= 400
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 1040
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 720
+anim = 3301 + (var(17) - 1) * 4
+ID = 3301 + (var(17) - 1) * 4
+bindtime = -1
+pos = -20, ceil(fvar(30))
+postype = right
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = RoundState = [1, 2]
+triggerall = teamside = 1
+triggerall = GameTime%20 = 10
+triggerall = Power >= 400
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 1040
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 720
+anim = 3302 + (var(17) - 1) * 4
+ID = 3302 + (var(17) - 1) * 4
+bindtime = -1
+pos = 0, ceil(fvar(30))
+postype = left
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = RoundState = [1, 2]
+triggerall = teamside = 2
+triggerall = GameTime%20 = 10
+triggerall = Power >= 400
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 1040
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 720
+anim = 3302 + (var(17) - 1) * 4
+ID = 3302 + (var(17) - 1) * 4
+bindtime = -1
+pos = -20, ceil(fvar(30))
+postype = right
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+;------------------------------
+;EX1回分未満
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = RoundState = [1, 2]
+triggerall = teamside = 1
+triggerall = NumExplod(3300 + (var(17) - 1) * 4) = 0
+trigger1 = var(15) = 1 || var(17) <= 3
+trigger1 = Power < 400
+trigger2 = var(15) = 0 && var(17) > 3
+anim = 3300 + (var(17) - 1) * 4
+ID = 3300 + (var(17) - 1) * 4
+bindtime = -1
+pos = 0, ceil(fvar(30))
+postype = left
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = RoundState = [1, 2]
+triggerall = teamside = 2
+triggerall = NumExplod(3300 + (var(17) - 1) * 4) = 0
+trigger1 = var(15) = 1 || var(17) <= 3
+trigger1 = Power < 400
+trigger2 = var(15) = 0 && var(17) > 3
+anim = 3300 + (var(17) - 1) * 4
+ID = 3300 + (var(17) - 1) * 4
+bindtime = -1
+pos = -20, ceil(fvar(30))
+postype = right
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+;------------------------------
+;番号消去
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3300) > 0
+trigger1 = var(17) != 1
+trigger2 = Power >= 400
+trigger3 = RoundState > 2
+trigger4 = var(15) = 2
+ID = 3300
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3303) > 0
+trigger1 = var(17) != 1
+trigger2 = Power < 880
+trigger3 = RoundState > 2
+trigger4 = var(15) = 2
+ID = 3303
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3304) > 0
+trigger1 = var(17) != 2
+trigger2 = Power >= 400
+trigger3 = RoundState > 2
+trigger4 = var(15) = 2
+ID = 3304
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3307) > 0
+trigger1 = var(17) != 2
+trigger2 = Power < 1040
+trigger3 = RoundState > 2
+trigger4 = var(15) = 2
+ID = 3307
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3308) > 0
+trigger1 = var(17) != 3
+trigger2 = Power >= 400
+trigger3 = RoundState > 2
+trigger4 = var(15) = 2
+ID = 3308
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3311) > 0
+trigger1 = var(17) != 3
+trigger2 = Power < 720
+trigger3 = RoundState > 2
+trigger4 = var(15) = 2
+ID = 3311
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3312) > 0
+trigger1 = !(var(15) = 0 && var(17) = 4)
+trigger2 = RoundState > 2
+trigger3 = var(15) = 2
+ID = 3312
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3316) > 0
+trigger1 = !(var(15) = 0 && var(17) = 5)
+trigger2 = RoundState > 2
+trigger3 = var(15) = 2
+ID = 3316
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+
+;------------------------------SAゲージ表示（原作仕様）------------------------------
+[State -2];ストック数(0/1)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 1
+triggerall = NumExplod(3601) = 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 1040
+anim = 3601
+ID = 3601
+bindtime = -1
+pos = 37, ceil(fvar(31))
+scale = .42, .42
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(0/1)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 2
+triggerall = NumExplod(3601) = 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 1040
+anim = 3611
+ID = 3601
+bindtime = -1
+pos = -37, ceil(fvar(31))
+scale = .42, .42
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(0/1)消去
+type = RemoveExplod
+triggerall = NumExplod(3601) > 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 1040
+trigger3 = var(15) = 0 && var(17) = 3
+trigger4 = var(15) = 1 && var(17) = 1
+trigger5 = var(15) = 1 && var(17) = 2
+trigger6 = var(15) = 1 && var(17) = 3
+ID = 3601
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(1/1)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 1
+triggerall = NumExplod(3602) = 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 1040
+anim = 3602
+ID = 3602
+bindtime = -1
+pos = 37, ceil(fvar(31))
+scale = .42, .42
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(1/1)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 2
+triggerall = NumExplod(3602) = 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 1040
+anim = 3612
+ID = 3602
+bindtime = -1
+pos = -37, ceil(fvar(31))
+scale = .42, .42
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(1/1)消去
+type = RemoveExplod
+triggerall = NumExplod(3602) > 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 1040
+trigger3 = var(15) = 0 && var(17) = 3
+trigger4 = var(15) = 1 && var(17) = 1
+trigger5 = var(15) = 1 && var(17) = 2
+trigger6 = var(15) = 1 && var(17) = 3
+ID = 3602
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(0/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 1
+triggerall = NumExplod(3603) = 0
+trigger1 = var(15) = 0 && var(17) = 3 && Power < 720
+anim = 3603
+ID = 3603
+bindtime = -1
+pos = 37, ceil(fvar(31))
+scale = .42, .42
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(0/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 2
+triggerall = NumExplod(3603) = 0
+trigger1 = var(15) = 0 && var(17) = 3 && Power < 720
+anim = 3613
+ID = 3603
+bindtime = -1
+pos = -37, ceil(fvar(31))
+scale = .42, .42
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(0/2)消去
+type = RemoveExplod
+triggerall = NumExplod(3603) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+trigger2 = var(15) = 0 && var(17) = 2
+trigger3 = var(15) = 0 && var(17) = 3 && Power >= 720
+trigger4 = var(15) = 1 && var(17) = 1
+trigger5 = var(15) = 1 && var(17) = 2
+trigger6 = var(15) = 1 && var(17) = 3
+ID = 3603
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(1/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 1
+triggerall = NumExplod(3604) = 0
+trigger1 = var(15) = 0 && var(17) = 3 && (Power = [720, 1439])
+anim = 3604
+ID = 3604
+bindtime = -1
+pos = 37, ceil(fvar(31))
+scale = .42, .42
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(1/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 2
+triggerall = NumExplod(3604) = 0
+trigger1 = var(15) = 0 && var(17) = 3 && (Power = [720, 1439])
+anim = 3614
+ID = 3604
+bindtime = -1
+pos = -37, ceil(fvar(31))
+scale = .42, .42
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(1/2)消去
+type = RemoveExplod
+triggerall = NumExplod(3604) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+trigger2 = var(15) = 0 && var(17) = 2
+trigger3 = var(15) = 0 && var(17) = 3 && (Power != [720, 1439])
+trigger4 = var(15) = 1 && var(17) = 1
+trigger5 = var(15) = 1 && var(17) = 2
+trigger6 = var(15) = 1 && var(17) = 3
+ID = 3604
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(2/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 1
+triggerall = NumExplod(3605) = 0
+trigger1 = var(15) = 0 && var(17) = 3 && Power >= 1440
+anim = 3605
+ID = 3605
+bindtime = -1
+pos = 37, ceil(fvar(31))
+scale = .42, .42
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(2/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 2
+triggerall = NumExplod(3605) = 0
+trigger1 = var(15) = 0 && var(17) = 3 && Power >= 1440
+anim = 3615
+ID = 3605
+bindtime = -1
+pos = -37, ceil(fvar(31))
+scale = .42, .42
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];ストック数(2/2)消去
+type = RemoveExplod
+triggerall = NumExplod(3605) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+trigger2 = var(15) = 0 && var(17) = 2
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 1440
+trigger4 = var(15) = 1 && var(17) = 1
+trigger5 = var(15) = 1 && var(17) = 2
+trigger6 = var(15) = 1 && var(17) = 3
+ID = 3605
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+;----------------------------------------------
+[State -2];SA番号表示(1P)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 1
+trigger1 = NumExplod(3630 + 5 * var(15) + (var(17) - 1)) = 0
+anim = 3630 + 5 * var(15) + (var(17) - 1)
+ID = 3630 + 5 * var(15) + (var(17) - 1)
+bindtime = -1
+pos = 37, ceil(fvar(31))
+scale = .42, .42
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+
+[State -2];SA番号表示(2P)
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 2
+trigger1 = NumExplod(3630 + 5 * var(15) + (var(17) - 1)) = 0
+anim = 3630 + 5 * var(15) + (var(17) - 1)
+ID = 3630 + 5 * var(15) + (var(17) - 1)
+bindtime = -1
+pos = -37, ceil(fvar(31))
+scale = .42, .42
+postype = right
+facing = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3630) > 0
+trigger1 = !(var(15) = 0 && var(17) = 1)
+ID = 3630
+
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3631) > 0
+trigger1 = !(var(15) = 0 && var(17) = 2)
+ID = 3631
+
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3632) > 0
+trigger1 = !(var(15) = 0 && var(17) = 3)
+ID = 3632
+
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3635) > 0
+trigger1 = !(var(15) = 1 && var(17) = 1)
+ID = 3635
+
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3636) > 0
+trigger1 = !(var(15) = 1 && var(17) = 2)
+ID = 3636
+
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3637) > 0
+trigger1 = !(var(15) = 1 && var(17) = 3)
+ID = 3637
+
+;----------------------------------------------
+[State -2];外枠(1P)
+type = Explod
+triggerall = var(0) > 0
+trigger1 = NumExplod(3625) = 0
+anim = 3625
+ID = 3625
+bindtime = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];拡大（表SA1）
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3625) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3625
+pos = 37, ceil(fvar(31))
+scale = ceil(.42 * 16 * 11), .42
+postype = left
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];拡大（表SA1）
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3625) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3625
+pos = - 36 - floor(.43 * 16 * 11), ceil(fvar(31))
+scale = ceil(.43 * 16 * 11), .42
+postype = right
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];拡大（表SA2）
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3625) > 0
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3625
+pos = 37, ceil(fvar(31))
+scale = ceil(.42 * 16 * 13), .42
+postype = left
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];拡大（表SA2）
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3625) > 0
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3625
+pos = - 37 - floor(.42 * 16 * 13), ceil(fvar(31))
+scale = ceil(.42 * 16 * 13), .42
+postype = right
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];拡大（表SA3）
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3625) > 0
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3625
+pos = 37, ceil(fvar(31))
+scale = ceil(.42 * 16 * 9), .42
+postype = left
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];拡大（表SA3）
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3625) > 0
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3625
+pos = - 37 - floor(.42 * 16 * 9), ceil(fvar(31))
+scale = ceil(.42 * 16 * 9), .42
+postype = right
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3625) > 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 1040
+trigger3 = var(15) = 0 && var(17) = 3 && Power >= 1440
+ID = 3625
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+;----------------------------------------------
+;蓄積量
+[State -2];EX1回分未満
+type = Explod
+triggerall = var(0) > 0
+trigger1 = NumExplod(3620) = 0
+trigger1 = Power < 400
+anim = 3620
+ID = 3620
+bindtime = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3620) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3620
+postype = left
+pos = 37 + ceil((16 * 11 - Power%880 * .1 * 2) * .42), ceil(fvar(31))
+scale = ceil(Power%880 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3620) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3620
+postype = right
+pos = - 37 - floor(16 * 11 * .42), ceil(fvar(31))
+scale = ceil(Power%880 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3620) > 0
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3620
+postype = left
+pos = 37 + ceil((16 * 13 - Power%1040 * .1 * 2) * .42), ceil(fvar(31))
+scale = ceil(Power%1040 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3620) > 0
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3620
+postype = right
+pos = - 37 - floor(16 * 13 * .42), ceil(fvar(31))
+scale = ceil(Power%1040 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3620) > 0
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3620
+postype = left
+pos = 37 + ceil((16 * 9 - Power%720 * .1 * 2) * .42), ceil(fvar(31))
+scale = ceil(Power%720 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3620) > 0
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3620
+postype = right
+pos = - 37 - floor(16 * 9 * .42), ceil(fvar(31))
+scale = ceil(Power%720 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];EX1回分未満
+type = RemoveExplod
+triggerall = NumExplod(3620) > 0
+trigger1 = Power >= 400
+ID = 3620
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+;-------------
+[State -2];EX1回分以上
+type = Explod
+triggerall = var(0) > 0
+trigger1 = NumExplod(3621) = 0
+trigger1 = Power >= 400
+anim = 3621
+ID = 3621
+bindtime = -1
+RemoveTime = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3621) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3621
+postype = left
+pos = 37 + ceil((16 * 11 - Power%880 * .1 * 2) * .42), ceil(fvar(31))
+scale = ceil(Power%880 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3621) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3621
+postype = right
+pos = - 37 - floor(16 * 11 * .42), ceil(fvar(31))
+scale = ceil(Power%880 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3621) > 0
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3621
+postype = left
+pos = 37 + ceil((16 * 13 - Power%1040 * .1 * 2) * .42), ceil(fvar(31))
+scale = ceil(Power%1040 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3621) > 0
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3621
+postype = right
+pos = - 37 - floor(16 * 13 * .42), ceil(fvar(31))
+scale = ceil(Power%1040 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3621) > 0
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3621
+postype = left
+pos = 37 + ceil((16 * 9 - Power%720 * .1 * 2) * .42), ceil(fvar(31))
+scale = ceil(Power%720 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3621) > 0
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3621
+postype = right
+pos = - 37 - floor(16 * 9 * .42), ceil(fvar(31))
+scale = ceil(Power%720 * .1 * 2 * .42), .42
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3621) > 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 880
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 1040
+trigger3 = var(15) = 0 && var(17) = 3 && Power >= 1440
+trigger4 = Power < 400
+ID = 3621
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+;----------------------------------------------
+;MAX表示
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 1
+triggerall = NumExplod(3640) = 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 880
+anim = 3640
+ID = 3640
+bindtime = -1
+RemoveTime = -1
+pos = 37, ceil(fvar(31))
+scale = (1.0/(16 * 11)) * ceil(.42 * 16 * 11), .42
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 2
+triggerall = NumExplod(3640) = 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 880
+anim = 3640
+ID = 3640
+bindtime = -1
+RemoveTime = -1
+pos = - 36 - floor(16 * 11 * .43), ceil(fvar(31))
+scale = (1.0/(16 * 11)) * ceil(.43 * 16 * 11), .42
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3640) > 0
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 880
+trigger2 = var(15) = 0 && var(17) = 2
+trigger3 = var(15) = 0 && var(17) = 3
+trigger4 = var(15) = 1 && var(17) = 1
+trigger5 = var(15) = 1 && var(17) = 2
+trigger6 = var(15) = 1 && var(17) = 3
+ID = 3640
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 1
+triggerall = NumExplod(3641) = 0
+trigger1 = var(15) = 0 && var(17) = 2 && Power >= 1040
+anim = 3641
+ID = 3641
+bindtime = -1
+RemoveTime = -1
+pos = 37, ceil(fvar(31))
+scale = (1.0/(16 * 13)) * ceil(.42 * 16 * 13), .42
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 2
+triggerall = NumExplod(3641) = 0
+trigger1 = var(15) = 0 && var(17) = 2 && Power >= 1040
+anim = 3641
+ID = 3641
+bindtime = -1
+RemoveTime = -1
+pos = - 37 - floor(16 * 13 * .42), ceil(fvar(31))
+scale = (1.0/(16 * 13)) * ceil(.42 * 16 * 13), .42
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3641) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 1040
+trigger3 = var(15) = 0 && var(17) = 3
+trigger4 = var(15) = 1 && var(17) = 1
+trigger5 = var(15) = 1 && var(17) = 2
+trigger6 = var(15) = 1 && var(17) = 3
+ID = 3641
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 1
+triggerall = NumExplod(3642) = 0
+trigger1 = var(15) = 0 && var(17) = 3 && Power >= 1440
+anim = 3642
+ID = 3642
+bindtime = -1
+RemoveTime = -1
+pos = 37, ceil(fvar(31))
+scale = (1.0/(16 * 9)) * ceil(.42 * 16 * 9), .42
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = TeamSide = 2
+triggerall = NumExplod(3642) = 0
+trigger1 = var(15) = 0 && var(17) = 3 && Power >= 1440
+anim = 3642
+ID = 3642
+bindtime = -1
+RemoveTime = -1
+pos = - 37 - floor(16 * 9 * .42), ceil(fvar(31))
+scale = (1.0/(16 * 9)) * ceil(.42 * 16 * 9), .42
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3642) > 0
+trigger1 = var(15) = 0 && var(17) = 1
+trigger2 = var(15) = 0 && var(17) = 2
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 1440
+trigger4 = var(15) = 1 && var(17) = 1
+trigger5 = var(15) = 1 && var(17) = 2
+trigger6 = var(15) = 1 && var(17) = 3
+ID = 3642
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+
+;------------------------------削減値------------------------------
+[State 0, 2]
+type = VarSet
+triggerall = RoundState = 2
+triggerall = var(3) != 0
+trigger1 = EnemyNear,MoveType != H
+trigger2 = EnemyNear,StateNo = 5078
+trigger3 = EnemyNear,StateNo = 5109
+trigger4 = EnemyNear,StateNo = 5110
+trigger5 = EnemyNear,Anim = 5300
+var(3) = 0
+ignorehitpause = 1
+
+[State 0, 2]
+type = VarSet
+trigger1 = var(3) >= 36
+trigger1 = var(11) = 0
+var(11) = 10
+ignorehitpause = 1
+
+[State 0, 2]
+type = VarSet
+trigger1 = var(3) >= 36
+trigger1 = var(11) > 0
+var(3) = -1
+ignorehitpause = 1
+
+[State 0, 2]
+type = VarAdd
+trigger1 = var(11) > 0
+var(11) = -1
+ignorehitpause = 0
+
+;----------------------------------連続技補正解除----------------------------------
+[State -2]
+type = VarSet
+triggerall = RoundState = 2
+triggerall = var(29) != 0
+trigger1 = EnemyNear,ctrl
+trigger2 = EnemyNear,StateNo = 5078
+trigger3 = EnemyNear,StateNo = 5109
+trigger4 = EnemyNear,StateNo = 5110
+trigger5 = EnemyNear,Anim = 5300
+var(29) = 0
+
+;----------------------------------------ヒットバック----------------------------------------
+[State 225, 6]
+type = VarAdd
+triggerall = var(19) = 60
+trigger1 = var(32)%10 = 1
+var(32) = 1
+
+[State 225, 6]
+type = Null;VelAdd
+trigger1 = var(32)%10 = 2
+trigger1 = StateNo != 2001
+trigger1 = StateNo != 2201
+trigger1 = StateNo != 2401
+trigger1 = StateNo != 12001
+trigger1 = StateNo != 12201
+trigger1 = StateNo != 12401
+X = fvar(13)
+
+[State 225, 6]
+type = VarAdd
+trigger1 = var(32)%10 = 2
+trigger1 = StateNo != 2001
+trigger1 = StateNo != 2201
+trigger1 = StateNo != 2401
+trigger1 = StateNo != 12001
+trigger1 = StateNo != 12201
+trigger1 = StateNo != 12401
+var(32) = 1
+
+[State 225, 6]
+type = VarAdd
+trigger1 = var(32)%10 = 3
+var(32) = -3
+
+;---------------------------
+[State 225, 6]
+type = VarAdd
+triggerall = var(19) = 60
+trigger1 = var(32)/10 = 1
+var(32) = 10
+
+[State 225, 6]
+type = VelAdd
+triggerall = RoundState = 2
+trigger1 = var(32)/10 = 2
+trigger1 = EnemyNear,BackEdgeBodyDist <= 0
+trigger1 = StateNo != 2001
+trigger1 = StateNo != 2201
+trigger1 = StateNo != 2401
+trigger1 = StateNo != 12001
+trigger1 = StateNo != 12201
+trigger1 = StateNo != 12401
+X = fvar(16)
+persistent = 0
+
+[State 225, 6]
+type = VarAdd
+triggerall = RoundState = 2
+trigger1 = var(19) = 60
+trigger1 = var(32)/10 = 2
+trigger1 = EnemyNear,BackEdgeBodyDist <= 0
+trigger1 = StateNo != 2001
+trigger1 = StateNo != 2201
+trigger1 = StateNo != 2401
+trigger1 = StateNo != 12001
+trigger1 = StateNo != 12201
+trigger1 = StateNo != 12401
+var(19) = 1
+
+[State 225, 6]
+type = VarAdd
+trigger1 = var(19) = 61
+trigger1 = var(32)/10 = 2
+var(32) = -20
+
+[State 225, 6]
+type = VelAdd
+trigger1 = StateType = A
+trigger1 = var(19) = 61
+X = - 0.1 * Vel X
+
+[State 225, 6]
+type = VarSet
+triggerall = var(19) = 61
+trigger1 = StateType != A
+trigger2 = MoveType = H
+var(19) = 0
+
+[State 225, 6]
+type = VarAdd
+triggerall = RoundState = 2
+trigger1 = var(32)/10 = 2
+trigger1 = EnemyNear,BackEdgeBodyDist > 0
+var(32) = 10
+
+[State 225, 6]
+type = VarSet
+triggerall = RoundState = 2
+trigger1 = var(32)/10 = 3
+trigger1 = EnemyNear,Vel X != 0
+fvar(15) = EnemyNear,Vel X
+
+[State 225, 6]
+type = VelAdd
+triggerall = RoundState = 2
+trigger1 = fvar(15) != 0
+trigger1 = EnemyNear,BackEdgeBodyDist <= 0
+X = fvar(15)
+persistent = 0
+
+[State 225, 6]
+type = VarAdd
+triggerall = RoundState = 2
+triggerall = var(32)/10 = 3
+triggerall = fvar(15) != 0
+trigger1 = EnemyNear,BackEdgeBodyDist <= 0
+trigger2 = EnemyNear,ctrl
+var(32) = -30
+
+[State 225, 6]
+type = VarSet
+trigger1 = var(32)/10 = 0
+trigger1 = fvar(15) != 0
+fvar(15) = 0
+
+[State -2]
+type = VarSet
+triggerall = var(32) != 0
+trigger1 = ctrl || (StateNo = [13, 14]) || (StateNo = [25, 26]) || StateNo = 41
+trigger2 = MoveType = H
+trigger3 = RoundState > 2
+var(32) = 0
+
+;------------------------------デバッグ用表示------------------------------
+[State -2]
+type = DisplayToClipboard
+trigger1 = 1
+text="The Number of Target is %d.The Number of Explod is %d.Var(20) is %d.Fvar(12) is %f.RoundState is %d."
+params = NumTarget, NumExplod, var(20), fvar(12), RoundState
+
+;--------------------------電磁--------------------------
+[State 221]
+type = RemoveExplod
+trigger1 = MoveType = H
+ID = 1040
+
+[State 221]
+type = RemoveExplod
+trigger1 = MoveType = H
+ID = 1045
+
+[State 221]
+type = RemoveExplod
+trigger1 = MoveType = H
+ID = 2180
+
+[State 221]
+type = RemoveExplod
+trigger1 = MoveType = H
+ID = 2190
+
+;--------------------------電磁--------------------------
+[State 221]
+type = Explod
+triggerall = MoveHit
+triggerall = P2Dist X >= 40 * const(size.xscale)
+trigger1 = StateNo = [1000, 1149]
+trigger2 = StateNo = [2000, 2199]
+anim= 3530
+pos = ceil(64 * const(size.xscale)), ifelse(P2Dist Y < -40 * const(size.yscale), ceil(10 * const(size.yscale)), ceil(50 * const(size.yscale) + P2Dist Y))
+postype = p1
+sprpriority = 5
+scale = const(size.xscale), const(size.yscale)
+persistent = 0
+ignorehitpause = 1
+
+[State 221]
+type = Explod
+triggerall = MoveHit
+triggerall = P2Dist X > -40 * const(size.xscale)
+triggerall = P2Dist X < 40 * const(size.xscale)
+trigger1 = StateNo = [1000, 1149]
+trigger2 = StateNo = [2000, 2199]
+anim= 3530
+pos = ceil(24 * const(size.xscale) + P2Dist X), ifelse(P2Dist Y < -40 * const(size.yscale), ceil(10 * const(size.yscale)), ceil(50 * const(size.yscale) + P2Dist Y))
+postype = p1
+sprpriority = 5
+scale = const(size.xscale), const(size.yscale)
+persistent = 0
+ignorehitpause = 1
+
+[State 221]
+type = Explod
+triggerall = MoveHit
+triggerall = P2Dist X <= -40 * const(size.xscale)
+trigger1 = StateNo = [1000, 1149]
+trigger2 = StateNo = [2000, 2199]
+anim= 3530
+pos = ceil(-16 * const(size.xscale)), ifelse(P2Dist Y < -40 * const(size.yscale), ceil(10 * const(size.yscale)), ceil(50 * const(size.yscale) + P2Dist Y))
+postype = p1
+sprpriority = 5
+scale = const(size.xscale), const(size.yscale)
+persistent = 0
+ignorehitpause = 1
+
+[State 221]
+type = Explod
+triggerall = MoveGuarded
+triggerall = P2Dist X >= 40 * const(size.xscale)
+trigger1 = StateNo = [1000, 1149]
+trigger2 = StateNo = [2000, 2199]
+anim= 3570
+pos = ceil(64 * const(size.xscale)), ifelse(P2Dist Y < -40 * const(size.yscale), ceil(55 * const(size.yscale)), ceil(95 * const(size.yscale) + P2Dist Y))
+postype = p1
+sprpriority = 5
+scale = const(size.xscale), const(size.yscale)
+persistent = 0
+ignorehitpause = 1
+
+[State 221]
+type = Explod
+triggerall = MoveGuarded
+triggerall = P2Dist X > -40 * const(size.xscale)
+triggerall = P2Dist X < 40 * const(size.xscale)
+trigger1 = StateNo = [1000, 1149]
+trigger2 = StateNo = [2000, 2199]
+anim= 3570
+pos = ceil(24 * const(size.xscale) + P2Dist X), ifelse(P2Dist Y < -40 * const(size.yscale), ceil(55 * const(size.yscale)), ceil(95 * const(size.yscale) + P2Dist Y))
+postype = p1
+sprpriority = 5
+scale = const(size.xscale), const(size.yscale)
+persistent = 0
+ignorehitpause = 1
+
+[State 221]
+type = Explod
+triggerall = MoveGuarded
+triggerall = P2Dist X <= -40 * const(size.xscale)
+trigger1 = StateNo = [1000, 1149]
+trigger2 = StateNo = [2000, 2199]
+anim= 3570
+pos = ceil(-16 * const(size.xscale)), ifelse(P2Dist Y < -40 * const(size.yscale), ceil(55 * const(size.yscale)), ceil(95 * const(size.yscale) + P2Dist Y))
+postype = p1
+sprpriority = 5
+scale = const(size.xscale), const(size.yscale)
+persistent = 0
+ignorehitpause = 1
+
+;--------------------------スネークファング--------------------------
+
+[State 801, Hurt 11]
+type = VarAdd
+trigger1 = NumTarget(1801) > 0
+trigger1 = Target,StateNo = 1816
+trigger1 = Target,Pos Y >= 0 && Target,Vel Y > 0
+fvar(12) = ifelse(48 + 8 * (var(16)%4) - fvar(12) > 11, 11, 48 + 8 * (var(16)%4) - fvar(12))
+
+[State 801, Hurt 11]
+type = VarAdd
+trigger1 = NumTarget(1851) > 0
+trigger1 = Target,StateNo = 1816
+trigger1 = Target,Pos Y >= 0 && Target,Vel Y > 0
+fvar(12) = ifelse(48 + 8 * (var(16)%4) - fvar(12) > 13, 13, 48 + 8 * (var(16)%4) - fvar(12))
+
+[State 801, Hurt 11]
+type = VarAdd
+trigger1 = NumTarget(1901) > 0
+trigger1 = Target,StateNo = 1816
+trigger1 = Target,Pos Y >= 0 && Target,Vel Y > 0
+fvar(12) = ifelse(48 + 8 * (var(16)%4) - fvar(12) > 15, 15, 48 + 8 * (var(16)%4) - fvar(12))
+
+[State 801, Hurt 11]
+type = TargetLifeAdd
+trigger1 = NumTarget(1801) > 0
+trigger1 = Target,StateNo = 1816
+trigger1 = Target,Pos Y >= 0 && Target,Vel Y > 0
+value = -ceil(140 * 0.87)
+
+[State 801, Hurt 11]
+type = TargetLifeAdd
+trigger1 = NumTarget(1851) > 0
+trigger1 = Target,StateNo = 1816
+trigger1 = Target,Pos Y >= 0 && Target,Vel Y > 0
+value = -ceil(150 * 0.87)
+
+[State 801, Hurt 11]
+type = TargetLifeAdd
+trigger1 = NumTarget(1901) > 0
+trigger1 = Target,StateNo = 1816
+trigger1 = Target,Pos Y >= 0 && Target,Vel Y > 0
+value = -ceil(160 * 0.87)
+
+[State 922]
+type = PlaySnd
+trigger1 = NumTarget(1801) + NumTarget(1851) + NumTarget(1901) > 0
+trigger1 = Target,StateNo = 1816
+trigger1 = Target,Pos Y >= 0 && Target,Vel Y > 0
+value = 900, 1
+
+[State 922]
+type = TargetState
+trigger1 = NumTarget(1801) + NumTarget(1851) + NumTarget(1901) > 0
+trigger1 = Target,StateNo = 1816
+trigger1 = Target,Pos Y >= 0 && Target,Vel Y > 0
+value = ifelse(fvar(12) < 48 + 8 * (var(16)%4), 1817, 1818)
+
+;--------------------------------------------------------------------
+[State 922]
+type = VarSet
+trigger1 = fvar(24) = 1
+trigger1 = StateNo != [980, 989]
+trigger1 = MoveContact
+fvar(24) = 0
+
+;--------------------------------------------------------------------
+[State 922]
+type = VarAdd
+triggerall = StateNo = [2002, 2199]
+trigger1 = Command = "x"
+trigger2 = Command = "~x"
+trigger3 = Command = "y"
+trigger4 = Command = "~y"
+trigger5 = Command = "z"
+trigger6 = Command = "~z"
+trigger7 = var(59) = 1
+fvar(25) = 1
+
+;--------------------------------------------------------------------
+[Statedef -3]
+
+[State -3]
+type = SprPriority
+trigger1 = StateNo != 945
+value = 2
+
+;------------------------------AI時防御------------------------------
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random < 200 * var(26)
+trigger1 = ctrl && StateType != A
+trigger2 = StateNo = 13
+trigger3 = StateNo = 14
+trigger4 = StateNo = 25
+trigger5 = StateNo = 26
+trigger6 = Anim = [3002, 3003]
+trigger7 = Anim = [3007, 3008]
+trigger8 = Anim = [3022, 3023]
+trigger9 = Anim = [3027, 3028]
+slot = 0
+stateno = 3000
+attr = SA, AA, AP
+time = 1
+
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random < 200 * var(26)
+trigger1 = ctrl && StateType != A
+trigger2 = StateNo = 13
+trigger3 = StateNo = 14
+trigger4 = StateNo = 25
+trigger5 = StateNo = 26
+trigger6 = Anim = [3002, 3003]
+trigger7 = Anim = [3007, 3008]
+trigger8 = Anim = [3022, 3023]
+trigger9 = Anim = [3027, 3028]
+slot = 1
+stateno = 3020
+attr = C, AA, AP
+time = 1
+
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random < 200 * var(26)
+trigger1 = ctrl && StateType = A
+trigger2 = Anim = 3042
+trigger3 = StateNo = 3060
+slot = 2
+stateno = 3040
+attr = SCA, AA, AP
+time = 1
+
+;-------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 2400
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 2400
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(0) = 0 || var(17) = 3
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+triggerall = power >= 720
+trigger1 = StateNo = 222
+trigger1 = P2StateNo = 5000 || P2StateNo = 5010
+trigger1 = Random%3 = 1
+trigger2 = StateNo = 1262
+trigger2 = P2StateNo = 5000 || P2StateNo = 5010
+
+;-------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 2200
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 2200
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(0) = 0 || var(17) = 2
+triggerall = var(59) = 1
+triggerall = power >= 1040
+triggerall = var(1) != [0, 5]
+triggerall = P2BodyDist X <= 71
+triggerall = P2StateType = S || P2StateType = C
+trigger1 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger1 = (InGuardDist && Random%12 = 5) || (!InGuardDist && Random%3 = 1)
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 2000
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 2000
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(0) = 0 || var(17) = 1
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+triggerall = power >= 880
+trigger1 = StateNo = 222
+trigger1 = P2StateNo = 5000 || P2StateNo = 5010
+trigger2 = StateNo = 432
+trigger2 = P2StateNo = 5000 || P2StateNo = 5010
+trigger3 = StateNo = 1212
+trigger3 = P2StateNo = 5000 || P2StateNo = 5010
+trigger4 = StateNo = 1262
+trigger4 = P2StateNo = 5000 || P2StateNo = 5010
+trigger5 = StateNo = [5121, 5122]
+trigger5 = Abs(P2BodyDist X) < 30
+trigger5 = P2MoveType = A
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 1800 + 50 * (P2BodyDist X >= 60) + 50 * (P2BodyDist X >= 90)
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 1800 + 50 * (P2BodyDist X >= 60) + 50 * (P2BodyDist X >= 90)
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2StateType = S
+trigger1 = P2BodyDist X >= 30 && P2BodyDist X < 120
+trigger1 = Random%6 = 5
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 1600
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 1600
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = StateNo = 432
+trigger1 = Random%6 = 5
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 1550
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 1550
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+triggerall = Power >= 400
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X >= 30 && P2BodyDist X < 80
+trigger1 = P2StateType = C
+trigger1 = Random%10 = 6
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 1400 + 50 * (P2BodyDist X >= 40) + 50 * (P2BodyDist X >= 60)
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 1400 + 50 * (P2BodyDist X >= 40) + 50 * (P2BodyDist X >= 60)
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X >= 20 && P2BodyDist X < 80
+trigger1 = P2StateType = C
+trigger1 = Random%4 = 3
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 1350
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 1350
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+triggerall = power >= 400
+trigger1 = var(31) = 1
+trigger1 = StateNo = 272
+trigger1 = P2StateNo = 5000 || P2StateNo = 5010
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 1250
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 1250
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = StateNo = 232
+trigger1 = Random%2 = 0
+trigger2 = Power >= 600
+trigger2 = StateNo = 292
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 1200
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 1200
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = StateNo = 232
+trigger1 = Random%2 = 1
+trigger2 = StateNo = 292
+trigger3 = StateNo = 432
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 1050
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 1050
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X < 60
+trigger1 = P2BodyDist Y > -80
+trigger1 = P2StateType = A
+trigger1 = P2MoveType = A
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 950
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 950
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X >= 40 && P2BodyDist X < 70
+trigger1 = P2StateType = C
+trigger1 = Random%6 = 2
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 910 + 10 * (BackEdgeBodyDist < 100)
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 910 + 10 * (BackEdgeBodyDist < 100)
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X < 26
+trigger1 = P2StateType = S || P2StateType = C
+trigger1 = Random%7 = 3
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 830
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 830
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = (StateType = A && ctrl) || StateNo = 3042 || StateNo = 3060
+trigger1 = Pos Y <= -60
+trigger1 = P2BodyDist X < 50
+trigger1 = P2StateType = S || P2StateType = C
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 820
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 820
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = (StateType = A && ctrl) || StateNo = 3042 || StateNo = 3060
+trigger1 = Pos Y <= -60
+trigger1 = P2BodyDist X >= 50 && P2BodyDist X < 100
+trigger1 = P2StateType = S || P2StateType = C
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 810
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 810
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = (StateType = A && ctrl) || StateNo = 3042 || StateNo = 3060
+trigger1 = Pos Y <= -60
+trigger1 = P2BodyDist X >= 100
+trigger1 = P2StateType = S || P2StateType = C
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 800
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 800
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 251
+trigger1 = StateNo = [13, 14]
+trigger1 = P2BodyDist X < 60
+trigger1 = P2BodyDist Y > -90
+trigger1 = EnemyNear,Vel Y > 0
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 700
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 700
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = (StateType = A && ctrl) || StateNo = 3042 || StateNo = 3060
+trigger1 = P2BodyDist X < 90
+trigger1 = Vel Y > 0
+trigger1 = Pos Y > -80
+trigger1 = P2StateType = S || P2StateType = C
+trigger1 = (InGuardDist && Random%20 = 6) || (!InGuardDist && Random%7 = 6)
+
+;------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 640
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 640
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = (StateType = A && ctrl) || StateNo = 3042 || StateNo = 3060
+trigger1 = P2BodyDist X < 130
+trigger1 = P2BodyDist Y > -20 && P2BodyDist Y < 20
+trigger1 = P2StateType = A
+trigger1 = (InGuardDist && Random%20 = 6) || (!InGuardDist && Random%7 = 6)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 450
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 240
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X >= 40 && P2BodyDist X < 100
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = Random%13 = 4
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%19 = 5) || (!InGuardDist && Random%10 = 7)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 430
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 430
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 30
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X < 30
+trigger1 = P2StateType = S || P2StateType = C
+trigger1 = Random%5 = 3
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%13 = 6) || (!InGuardDist && Random%7 = 6)
+
+;-------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 420
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 420
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X >= 70 && P2BodyDist X < 130
+trigger1 = P2StateType = S || P2StateType = C
+trigger1 = Random%13 = 5
+trigger2 = StateNo = 14 && Time >= 20
+trigger2 = Random%21 = 4
+
+;-------------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 410
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 410
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X = [20, 69]
+trigger1 = P2BodyDist Y > -90
+trigger1 = P2StateType = A
+trigger1 = EnemyNear,Vel X > 0
+trigger1 = EnemyNear,Vel Y > 0
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 290
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 290
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 40
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = Random%10 = 5
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%20 = 5) || (!InGuardDist && Random%4 = 3)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 270
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 270
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 20
+trigger1 = !InGuardDist
+trigger1 = var(31) = 0
+trigger1 = StateNo = [272, 273]
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%20 = 5) || (!InGuardDist && Random%4 = 3)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 250
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 250
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 40
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = Random%10 = 4
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%14 = 5) || (!InGuardDist && Random%8 = 6)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 240
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 240
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X >= 40 && P2BodyDist X < 100
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = Random%10 = 4
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%14 = 5) || (!InGuardDist && Random%8 = 6)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 230
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 230
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 40
+trigger1 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger1 = (InGuardDist && Random%5 = 1) || (!InGuardDist && Random%3 = 2)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 220
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 220
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 80
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = Random%10 = 5
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%13 = 5) || (!InGuardDist && Random%9 = 6)
+trigger3 = StateNo = 914 && AnimTime = 0
+trigger3 = FrontEdgeBodyDist < 150
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 41
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 41
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = PrevStateNo = 0
+trigger1 = time = 0 && (StateNo = 40 || StateNo = 60)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 26
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 26
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = InGuardDist
+trigger1 = StateType != A && Ctrl
+trigger1 = Random%4 = 0
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 25
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 25
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = StateNo = 26
+trigger1 = time >= 20
+trigger2 = StateNo = 1214
+trigger2 = Anim = 1214 && AnimTime = 0
+trigger3 = InGuardDist
+trigger3 = StateType != A && Ctrl
+trigger3 = Random%4 != 0
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 14
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 14
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = (StateNo = 3023 || StateNo = 3028) && AnimTime = 0
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 13
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 13
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+;--------------------------------------
+;ネクロアッパーHIT時
+trigger1 = var(39) = 251
+trigger1 = StateNo = 254 && AnimTime = 0
+
+;---------------------------------------------------------------------------
+[State -1]
+type = ChangeState
+value = 0
+triggerall = Random < 200 * var(26)
+triggerall = fvar(18) != 0
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = PrevStateNo != 0
+trigger1 = time = 0 && (StateNo = 40 || StateNo = 60)
+
+;---------------------------------------------------------------------------
+;-------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 2400
+
+triggerall = fvar(18) != 2400
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(0) = 0 || var(17) = 3
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+triggerall = power >= 720
+trigger1 = StateNo = 222
+trigger1 = P2StateNo = 5000 || P2StateNo = 5010
+trigger1 = Random%3 = 1
+trigger2 = StateNo = 1262
+trigger2 = P2StateNo = 5000 || P2StateNo = 5010
+
+;-------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 2200
+
+triggerall = fvar(18) != 2200
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(0) = 0 || var(17) = 2
+triggerall = var(59) = 1
+triggerall = power >= 1040
+triggerall = var(1) != [0, 5]
+triggerall = P2BodyDist X <= 71
+triggerall = P2StateType = S || P2StateType = C
+trigger1 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger1 = (InGuardDist && Random%12 = 5) || (!InGuardDist && Random%3 = 1)
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 2000
+
+triggerall = fvar(18) != 2000
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(0) = 0 || var(17) = 1
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+triggerall = power >= 880
+trigger1 = StateNo = 222
+trigger1 = P2StateNo = 5000 || P2StateNo = 5010
+trigger2 = StateNo = 432
+trigger2 = P2StateNo = 5000 || P2StateNo = 5010
+trigger3 = StateNo = 1212
+trigger3 = P2StateNo = 5000 || P2StateNo = 5010
+trigger4 = StateNo = 1262
+trigger4 = P2StateNo = 5000 || P2StateNo = 5010
+trigger5 = StateNo = [5121, 5122]
+trigger5 = Abs(P2BodyDist X) < 30
+trigger5 = P2MoveType = A
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 1800 + 50 * (P2BodyDist X >= 60) + 50 * (P2BodyDist X >= 90)
+
+triggerall = fvar(18) != 1800 + 50 * (P2BodyDist X >= 60) + 50 * (P2BodyDist X >= 90)
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2StateType = S
+trigger1 = P2BodyDist X >= 30 && P2BodyDist X < 120
+trigger1 = Random%6 = 5
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 1600
+
+triggerall = fvar(18) != 1600
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = StateNo = 432
+trigger1 = Random%6 = 5
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 1550
+
+triggerall = fvar(18) != 1550
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+triggerall = Power >= 400
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X >= 30 && P2BodyDist X < 80
+trigger1 = P2StateType = C
+trigger1 = Random%10 = 6
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 1400 + 50 * (P2BodyDist X >= 40) + 50 * (P2BodyDist X >= 60)
+
+triggerall = fvar(18) != 1400 + 50 * (P2BodyDist X >= 40) + 50 * (P2BodyDist X >= 60)
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X >= 20 && P2BodyDist X < 80
+trigger1 = P2StateType = C
+trigger1 = Random%4 = 3
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 1350
+
+triggerall = fvar(18) != 1350
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+triggerall = power >= 400
+trigger1 = var(31) = 1
+trigger1 = StateNo = 272
+trigger1 = P2StateNo = 5000 || P2StateNo = 5010
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 1250
+
+triggerall = fvar(18) != 1250
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = StateNo = 232
+trigger1 = Random%2 = 0
+trigger2 = Power >= 600
+trigger2 = StateNo = 292
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 1200
+
+triggerall = fvar(18) != 1200
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = StateNo = 232
+trigger1 = Random%2 = 1
+trigger2 = StateNo = 292
+trigger3 = StateNo = 432
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 1050
+
+triggerall = fvar(18) != 1050
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X < 60
+trigger1 = P2BodyDist Y > -80
+trigger1 = P2StateType = A
+trigger1 = P2MoveType = A
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 950
+
+triggerall = fvar(18) != 950
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X >= 40 && P2BodyDist X < 70
+trigger1 = P2StateType = C
+trigger1 = Random%6 = 2
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 910 + 10 * (BackEdgeBodyDist < 100)
+
+triggerall = fvar(18) != 910 + 10 * (BackEdgeBodyDist < 100)
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X < 26
+trigger1 = P2StateType = S || P2StateType = C
+trigger1 = Random%7 = 3
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 830
+
+triggerall = fvar(18) != 830
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = (StateType = A && ctrl) || StateNo = 3042 || StateNo = 3060
+trigger1 = Pos Y <= -60
+trigger1 = P2BodyDist X < 50
+trigger1 = P2StateType = S || P2StateType = C
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 820
+
+triggerall = fvar(18) != 820
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = (StateType = A && ctrl) || StateNo = 3042 || StateNo = 3060
+trigger1 = Pos Y <= -60
+trigger1 = P2BodyDist X >= 50 && P2BodyDist X < 100
+trigger1 = P2StateType = S || P2StateType = C
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 810
+
+triggerall = fvar(18) != 810
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = (StateType = A && ctrl) || StateNo = 3042 || StateNo = 3060
+trigger1 = Pos Y <= -60
+trigger1 = P2BodyDist X >= 100
+trigger1 = P2StateType = S || P2StateType = C
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 800
+
+triggerall = fvar(18) != 800
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 251
+trigger1 = StateNo = [13, 14]
+trigger1 = P2BodyDist X < 60
+trigger1 = P2BodyDist Y > -90
+trigger1 = EnemyNear,Vel Y > 0
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 700
+
+triggerall = fvar(18) != 700
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = (StateType = A && ctrl) || StateNo = 3042 || StateNo = 3060
+trigger1 = P2BodyDist X < 90
+trigger1 = Vel Y > 0
+trigger1 = Pos Y > -80
+trigger1 = P2StateType = S || P2StateType = C
+trigger1 = (InGuardDist && Random%20 = 6) || (!InGuardDist && Random%7 = 6)
+
+;------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 640
+
+triggerall = fvar(18) != 640
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = (StateType = A && ctrl) || StateNo = 3042 || StateNo = 3060
+trigger1 = P2BodyDist X < 130
+trigger1 = P2BodyDist Y > -20 && P2BodyDist Y < 20
+trigger1 = P2StateType = A
+trigger1 = (InGuardDist && Random%20 = 6) || (!InGuardDist && Random%7 = 6)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 450
+
+triggerall = fvar(18) != 240
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X >= 40 && P2BodyDist X < 100
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = Random%13 = 4
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%19 = 5) || (!InGuardDist && Random%10 = 7)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 430
+
+triggerall = fvar(18) != 430
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 30
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X < 30
+trigger1 = P2StateType = S || P2StateType = C
+trigger1 = Random%5 = 3
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%13 = 6) || (!InGuardDist && Random%7 = 6)
+
+;-------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 420
+
+triggerall = fvar(18) != 420
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X >= 70 && P2BodyDist X < 130
+trigger1 = P2StateType = S || P2StateType = C
+trigger1 = Random%13 = 5
+trigger2 = StateNo = 14 && Time >= 20
+trigger2 = Random%21 = 4
+
+;-------------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 410
+
+triggerall = fvar(18) != 410
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = P2BodyDist X = [20, 69]
+trigger1 = P2BodyDist Y > -90
+trigger1 = P2StateType = A
+trigger1 = EnemyNear,Vel X > 0
+trigger1 = EnemyNear,Vel Y > 0
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 290
+
+triggerall = fvar(18) != 290
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 40
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = Random%10 = 5
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%20 = 5) || (!InGuardDist && Random%4 = 3)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 270
+
+triggerall = fvar(18) != 270
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 20
+trigger1 = !InGuardDist
+trigger1 = var(31) = 0
+trigger1 = StateNo = [272, 273]
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%20 = 5) || (!InGuardDist && Random%4 = 3)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 250
+
+triggerall = fvar(18) != 250
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 40
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = Random%10 = 4
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%14 = 5) || (!InGuardDist && Random%8 = 6)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 240
+
+triggerall = fvar(18) != 240
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X >= 40 && P2BodyDist X < 100
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = Random%10 = 4
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%14 = 5) || (!InGuardDist && Random%8 = 6)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 230
+
+triggerall = fvar(18) != 230
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 40
+trigger1 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger1 = (InGuardDist && Random%5 = 1) || (!InGuardDist && Random%3 = 2)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 220
+
+triggerall = fvar(18) != 220
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+triggerall = P2BodyDist X < 80
+trigger1 = !InGuardDist
+trigger1 = var(39) = 0
+trigger1 = (StateType != A && ctrl) || (StateNo = [13, 14]) || (StateNo = [25, 26])
+trigger1 = Random%10 = 5
+trigger2 = (StateNo = [3002, 3003]) || (StateNo = [3007, 3008]) || (StateNo = [3022, 3023]) || (StateNo = [3027, 3028])
+trigger2 = (InGuardDist && Random%13 = 5) || (!InGuardDist && Random%9 = 6)
+trigger3 = StateNo = 914 && AnimTime = 0
+trigger3 = FrontEdgeBodyDist < 150
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 41
+
+triggerall = fvar(18) != 41
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = PrevStateNo = 0
+trigger1 = time = 0 && (StateNo = 40 || StateNo = 60)
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 26
+
+triggerall = fvar(18) != 26
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = InGuardDist
+trigger1 = StateType != A && Ctrl
+trigger1 = Random%4 = 0
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 25
+
+triggerall = fvar(18) != 25
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = StateNo = 26
+trigger1 = time >= 20
+trigger2 = StateNo = 1214
+trigger2 = Anim = 1214 && AnimTime = 0
+trigger3 = InGuardDist
+trigger3 = StateType != A && Ctrl
+trigger3 = Random%4 != 0
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 14
+
+triggerall = fvar(18) != 14
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = (StateNo = 3023 || StateNo = 3028) && AnimTime = 0
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 13
+
+triggerall = fvar(18) != 13
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+;--------------------------------------
+;ネクロアッパーHIT時
+trigger1 = var(39) = 251
+trigger1 = StateNo = 254 && AnimTime = 0
+
+;---------------------------------------------------------------------------
+[State -1]
+type = VarSet
+fvar(18) = 0
+
+triggerall = fvar(18) != 0
+triggerall = fvar(11) < 48 + 8 * (var(16)%4)
+triggerall = RoundState = 2
+triggerall = var(15) = 0
+triggerall = var(59) = 1
+trigger1 = PrevStateNo != 0
+trigger1 = time = 0 && (StateNo = 40 || StateNo = 60)
+

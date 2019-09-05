@@ -1,0 +1,5750 @@
+; Power Bar System
+;---------------------------------------------------------------------------
+; Power Bar Display
+[Statedef 4300]
+type = A
+movetype = I
+physics = N
+ctrl = 0
+velset = 0,0
+anim = 6666
+
+[State 4300, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = Invisible
+
+[State 4300, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;========== EX-ism ==========
+;-------------------------
+; EX-ism Text Logo
+;-----------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4203) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4203
+id = 4203
+facing = 1
+pos = 0,217
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4203) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4203
+id = 4203
+facing = 1
+pos = -60,217
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4203) > 0
+trigger1 = Root, Var(50) != 3
+trigger2 = RoundState > 2
+ignorehitpause = 1
+id = 4203
+
+; Icon
+;-----
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4300
+id = 4300
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4301
+id = 4300
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4300) > 0
+trigger1 = Root, Var(50) != 3
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4300
+
+; Display Bar
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4302) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = left
+scale = 113, 6
+bindtime = -1
+anim = 4302
+id = 4302
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4302) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = right
+scale = 113, 6
+bindtime = -1
+anim = 4303
+id = 4302
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4302) > 0
+trigger1 = Root, Var(50) != 3
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4302
+
+; Display Meter
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4310) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4310
+id = 4310
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4310) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4311
+id = 4310
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = NumExplod(4310) > 0
+scale = Power / 9.009, 6
+ignorehitpause = 1
+id = 4310
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4310) > 0
+trigger1 = Root, Var(50) != 3
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4310
+
+; Display Meter 50% Flash
+;------------------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4312) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 53
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4312
+id = 4312
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4312) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 53
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4313
+id = 4312
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4312) > 0
+trigger1 = Root, Var(2) <= 0
+trigger2 = Power < 500
+scale = 0, 6
+ignorehitpause = 1
+id = 4312
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4312) > 0
+trigger1 = Power >= 500 || Root, Var(2) > 0
+scale = Power / 9.009, 6
+ignorehitpause = 1
+id = 4312
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4312) > 0
+trigger1 = Root, Var(50) != 3
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4312
+
+; Display Meter Flash
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4315) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 54
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4314
+id = 4315
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4315) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 54
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4315
+id = 4315
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4315) > 0
+trigger1 = Power < 333
+scale = 0, 6
+ignorehitpause = 1
+id = 4315
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4315) > 0
+trigger1 = Power >= 333
+trigger1 = Power < 666
+scale = 37, 6
+ignorehitpause = 1
+id = 4315
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4315) > 0
+trigger1 = Power >= 666
+trigger1 = Power < 1000
+scale = 74, 6
+ignorehitpause = 1
+id = 4315
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4315) > 0
+trigger1 = Power >= 1000
+scale = 111, 6
+ignorehitpause = 1
+id = 4315
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4315) > 0
+trigger1 = Root, Var(50) != 3
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4315
+
+; Display Super Flash Lvl 1
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4330) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 333
+trigger1 = Power < 333
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 37, 6
+anim = 4330
+id = 4330
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H 
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4330) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 333
+trigger1 = Power < 333
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 37, 6
+anim = 4331
+id = 4330
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4330) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 333
+trigger1 = Power < 333
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 37, 6
+anim = 4330
+id = 4330
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4330) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 333
+trigger1 = Power < 333
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 37, 6
+anim = 4331
+id = 4330
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4330) > 0
+trigger1 = Var(0) <= Power
+trigger2 = Root, Var(50) != 3
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4330
+
+; Display Super Flash Lvl 2
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4332) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 666
+trigger1 = Power < 666
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 36, 6
+anim = 4332
+id = 4332
+facing = 1
+ownpal = 1
+pos = 106,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4332) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 666
+trigger1 = Power < 666
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 36, 6
+anim = 4333
+id = 4332
+facing = 1
+ownpal = 1
+pos = -105,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4332) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 666
+trigger1 = Power < 666
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 36, 6
+anim = 4332
+id = 4332
+facing = 1
+ownpal = 1
+pos = 106,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4332) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 666
+trigger1 = Power < 666
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 36, 6
+anim = 4333
+id = 4332
+facing = 1
+ownpal = 1
+pos = -105,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4332) > 0
+trigger1 = Var(0) <= Power
+trigger2 = Root, Var(50) != 3
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4332
+
+; Display Super Flash Lvl 3
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4334) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 1000
+trigger1 = Power < 1000
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 36, 6
+anim = 4334
+id = 4334
+facing = 1
+ownpal = 1
+pos = 69,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4334) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 1000
+trigger1 = Power < 1000
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 36, 6
+anim = 4335
+id = 4334
+facing = 1
+ownpal = 1
+pos = -68,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4334) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 1000
+trigger1 = Power < 1000
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 36, 6
+anim = 4334
+id = 4334
+facing = 1
+ownpal = 1
+pos = 69,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4334) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 3
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 1000
+trigger1 = Power < 1000
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 36, 6
+anim = 4335
+id = 4334
+facing = 1
+ownpal = 1
+pos = -68,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4334) > 0
+trigger1 = Var(0) <= Power
+trigger2 = Root, Var(50) != 3
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4334
+
+; Display Bar
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4301) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4305
+id = 4301
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4301) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4305
+id = 4301
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4301) > 0
+trigger1 = Root, Var(50) != 3
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4301
+
+; Display Bar - Lv
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4320) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4320
+id = 4320
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4320) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4320
+id = 4320
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4320) > 0
+trigger1 = Power < 333
+trigger2 = Root, Var(50) != 3
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4320
+
+; Display Bar - 1
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4321) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4321
+id = 4321
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4321) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4321
+id = 4321
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4321) > 0
+trigger1 = Power < 333
+trigger2 = Power >= 666
+trigger3 = Root, Var(50) != 3
+trigger4 = Root, Var(55) > 0
+trigger5 = RoundState > 2
+ignorehitpause = 1
+id = 4321
+
+; Display Bar - 2
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 666
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4322) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4322
+id = 4322
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 666
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4322) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4322
+id = 4322
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4322) > 0
+trigger1 = Power < 666
+trigger2 = Power >= 1000
+trigger3 = Root, Var(50) != 3
+trigger4 = Root, Var(55) > 0
+trigger5 = RoundState > 2
+ignorehitpause = 1
+id = 4322
+
+; Display Bar - 3
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4323) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4323
+id = 4323
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4323) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4323
+id = 4323
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4323) > 0
+trigger1 = Power < 1000
+trigger2 = Root, Var(50) != 3
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4323
+
+; Display Bar - MAX, GO!
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4340) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4530
+id = 4340
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4300) > 0
+triggerall = NumExplod(4340) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) >= 3
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4530
+id = 4340
+facing = 1
+pos = -176,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4340) > 0
+trigger1 = Power < 1000
+trigger2 = Root, Var(50) != 3
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4340
+;-------------------------
+;=========================
+
+;========== X-ism ==========
+;-------------------------
+; X-ism Text Logo
+;----------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4200) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4200
+id = 4200
+facing = 1
+pos = 0,217
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4200) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4200
+id = 4200
+facing = 1
+pos = -60,217
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4200) > 0
+trigger1 = Root, Var(50) != 0
+trigger2 = RoundState > 2
+ignorehitpause = 1
+id = 4200
+
+; Icon
+;-----
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4400) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4400
+id = 4400
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4400) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4400
+id = 4400
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4400) > 0
+trigger1 = Root, Var(50) != 0
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4400
+
+; Display Bar
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4401) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4401
+id = 4401
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4401) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(55) <= 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4401
+id = 4401
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4401) > 0
+trigger1 = Root, Var(50) != 0
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4401
+
+; Display Super Flash
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = Root, Var(45) > 0 
+triggerall = Root, Var(50) <= 0
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4404
+id = 4403
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) <= 0
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4405
+id = 4403
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = Root, Var(45) > 0 
+triggerall = Root, Var(50) <= 0
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4404
+id = 4403
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) <= 0
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4405
+id = 4403
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4403) > 0
+trigger1 = Var(0) <= Power
+trigger2 = Root, Var(50) != 0
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4403
+
+; Display Meter
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power < 1000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4402) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4402
+id = 4402
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power < 1000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4402) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4403
+id = 4402
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = NumExplod(4402) > 0
+trigger1 = Power <= 1000
+scale = Power / 9.009, 6
+ignorehitpause = 1
+id = 4402
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4402) > 0
+trigger1 = NumExplod(4403) > 0
+trigger2 = Root, Var(50) != 0
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+trigger5 = Power >= 1000
+ignorehitpause = 1
+id = 4402
+
+; Display Max [Charge]
+;---------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = NumExplod(4420) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 53
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4420
+id = 4420
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = NumExplod(4420) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 53
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4420
+id = 4420
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4420) > 0
+trigger1 = NumExplod(4403) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(50) != 0
+trigger5 = Root, Var(55) > 0
+ignorehitpause = 1
+id = 4420
+
+; Display Max [OK]
+;-----------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = NumExplod(4430) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 54
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4430
+id = 4430
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = NumExplod(4430) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 54
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4430
+id = 4430
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4430) > 0
+trigger1 = NumExplod(4403) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(50) != 0
+trigger5 = Root, Var(55) > 0
+ignorehitpause = 1
+id = 4430
+
+; Display Max Flash
+;------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = NumExplod(4410) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4410
+id = 4410
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = NumExplod(4410) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4411
+id = 4410
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4410) > 0
+trigger1 = NumExplod(4403) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(50) != 0
+trigger5 = Root, Var(55) > 0
+ignorehitpause = 1
+id = 4410
+
+; Display Max [SUPER]
+;-----------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = NumExplod(4410) > 0
+triggerall = NumExplod(4420) > 0
+triggerall = NumExplod(4430) > 0
+triggerall = NumExplod(4440) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4440
+id = 4440
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4400) > 0
+triggerall = NumExplod(4403) <= 0
+triggerall = NumExplod(4420) > 0
+triggerall = NumExplod(4430) > 0
+triggerall = NumExplod(4440) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) <= 0
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4440
+id = 4440
+facing = 1
+pos = -176,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4440) > 0
+trigger1 = NumExplod(4403) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(50) != 0
+trigger5 = Root, Var(55) > 0
+ignorehitpause = 1
+id = 4440
+;-------------------------
+;=========================
+
+;========== A-ism ==========
+;-------------------------
+; A-ism Text Logo
+;----------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4201) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4201
+id = 4201
+facing = 1
+pos = 0,217
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4201) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1 
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4201
+id = 4201
+facing = 1
+pos = -60,217
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4201) > 0
+trigger1 = Root, Var(50) != 1
+trigger2 = RoundState > 2
+ignorehitpause = 1
+id = 4201
+
+; Icon
+;-----
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4500) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4500
+id = 4500
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4500) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4500
+id = 4500
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4500) > 0
+trigger1 = Root, Var(50) != 1
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4500
+
+; Display Bar
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4501) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4501
+id = 4501
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4501) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4501
+id = 4501
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4501) > 0
+trigger1 = Root, Var(50) != 1
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4501
+
+; Display Bar - Lv
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4520) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4520
+id = 4520
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4520) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4520
+id = 4520
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4520) > 0
+trigger1 = Power < 333
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4520
+
+; Display Bar - 1
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4521) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4521
+id = 4521
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4521) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4521
+id = 4521
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4521) > 0
+trigger1 = Power < 333
+trigger2 = Power >= 666
+trigger3 = Root, Var(50) != 1
+trigger4 = Root, Var(55) > 0
+trigger5 = RoundState > 2
+ignorehitpause = 1
+id = 4521
+
+; Display Bar - 2
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 666
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4522) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4522
+id = 4522
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 666
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4522) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4522
+id = 4522
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4522) > 0
+trigger1 = Power < 666
+trigger2 = Power >= 1000
+trigger3 = Root, Var(50) != 1
+trigger4 = Root, Var(55) > 0
+trigger5 = RoundState > 2
+ignorehitpause = 1
+id = 4522
+
+; Display Bar - 3
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4523) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4523
+id = 4523
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4523) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4523
+id = 4523
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4523) > 0
+trigger1 = Power < 1000
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4523
+
+; Display Super Flash Lvl 1
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4540) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 333
+trigger1 = Power < 333
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 37, 3
+anim = 4540
+id = 4540
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4540) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 333
+trigger1 = Power < 333
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 37, 3
+anim = 4541
+id = 4540
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4540) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 333
+trigger1 = Power < 333
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 37, 3
+anim = 4540
+id = 4540
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4540) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 333
+trigger1 = Power < 333
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 37, 3
+anim = 4541
+id = 4540
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4540) > 0
+trigger1 = Var(0) <= Power
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4540
+
+; Display Super Flash Lvl 2
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4542) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 666
+trigger1 = Power < 666
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 37, 5
+anim = 4542
+id = 4542
+facing = 1
+ownpal = 1
+pos = 107,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4542) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 666
+trigger1 = Power < 666
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 37, 5
+anim = 4543
+id = 4542
+facing = 1
+ownpal = 1
+pos = -106,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4542) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 666
+trigger1 = Power < 666
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 37, 5
+anim = 4542
+id = 4542
+facing = 1
+ownpal = 1
+pos = 107,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4542) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 666
+trigger1 = Power < 666
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 37, 5
+anim = 4543
+id = 4542
+facing = 1
+ownpal = 1
+pos = -106,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4542) > 0
+trigger1 = Var(0) <= Power
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4542
+
+; Display Super Flash Lvl 3
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4544) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 1000
+trigger1 = Power < 1000
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 37, 7
+anim = 4544
+id = 4544
+facing = 1
+ownpal = 1
+pos = 70,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4544) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 1000
+trigger1 = Power < 1000
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 37, 7
+anim = 4545
+id = 4544
+facing = 1
+ownpal = 1
+pos = -69,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4544) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 1000
+trigger1 = Power < 1000
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 37, 7
+anim = 4544
+id = 4544
+facing = 1
+ownpal = 1
+pos = 70,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4544) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(50) = 1
+triggerall = Root, Var(55) <= 0
+trigger1 = Var(0) >= 1000
+trigger1 = Power < 1000
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 37, 7
+anim = 4545
+id = 4544
+facing = 1
+ownpal = 1
+pos = -69,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4544) > 0
+trigger1 = Var(0) <= Power
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4544
+
+; Display Meter - Lvl 1-UP
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4550) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 37, 3
+anim = 4506
+id = 4550
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4550) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 37, 3
+anim = 4507
+id = 4550
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4550) > 0
+trigger1 = Root, Var(50) != 1
+trigger2 = Root, Var(55) > 0
+trigger3 = Power < 333
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4550
+
+; Display Meter - Lvl 2-UP
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 666
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4551) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+scale = 37, 5
+anim = 4506
+id = 4551
+facing = 1
+pos = 107,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 666
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4551) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+scale = 37, 5
+anim = 4507
+id = 4551
+facing = 1
+pos = -106,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4551) > 0
+trigger1 = Root, Var(50) != 1
+trigger2 = Root, Var(55) > 0
+trigger3 = Power < 666
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4551
+
+; Display Meter - Lvl 1
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power > 0
+triggerall = Power < 333
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4502) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4502
+id = 4502
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power > 0
+triggerall = Power < 333
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4502) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4503
+id = 4502
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = NumExplod(4502) > 0
+trigger1 = Power < 333
+scale = Power / 9.009, 3
+ignorehitpause = 1
+id = 4502
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4502) > 0
+trigger1 = Power >= 333
+scale = 37, 3
+ignorehitpause = 1
+id = 4502
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4502) > 0
+trigger1 = NumExplod(4540) > 0 || NumExplod(4542) > 0 || NumExplod(4544) > 0 || NumExplod(4550) > 0
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = Power <= 0
+trigger5 = Power >= 333
+trigger6 = RoundState > 2
+ignorehitpause = 1
+id = 4502
+
+; Display Meter - Lvl 2
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power > 333
+triggerall = Power < 666
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4504) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4504
+id = 4504
+facing = 1
+pos = 107,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power > 333
+triggerall = Power < 666
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4504) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4505
+id = 4504
+facing = 1
+pos = -106,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = NumExplod(4504) > 0
+trigger1 = Power < 666
+scale = (Power - 333) / 9.009, 5
+ignorehitpause = 1
+id = 4504
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4504) > 0
+trigger1 = Power >= 666
+scale = 37, 5
+ignorehitpause = 1
+id = 4504
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4504) > 0
+trigger1 = NumExplod(4540) > 0 || NumExplod(4542) > 0 || NumExplod(4544) > 0 || NumExplod(4551) > 0
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = Power <= 333
+trigger5 = Power >= 666
+trigger6 = RoundState > 2
+ignorehitpause = 1
+id = 4504
+
+; Display Meter - Lvl 3
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power > 666
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4506) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4506
+id = 4506
+facing = 1
+pos = 70,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power > 666
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4506) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4507
+id = 4506
+facing = 1
+pos = -69,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = NumExplod(4506) > 0
+trigger1 = Power < 1000
+scale = (Power - 666) / 9.009, 7
+ignorehitpause = 1
+id = 4506
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4506) > 0
+trigger1 = Power >= 1000
+scale = 37, 7
+ignorehitpause = 1
+id = 4506
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4506) > 0
+trigger1 = NumExplod(4540) > 0 || NumExplod(4542) > 0 || NumExplod(4544) > 0
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = Power <= 666
+trigger5 = RoundState > 2
+ignorehitpause = 1
+id = 4506
+
+; Display Bar - Lvl 1 Blue
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = Power < 666
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4510) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4510
+id = 4510
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 333
+triggerall = Power < 666
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4510) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4510
+id = 4510
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4510) > 0
+trigger1 = NumExplod(4550) <= 0
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = Power < 333
+trigger5 = Power > 666
+trigger6 = RoundState > 2
+ignorehitpause = 1
+id = 4510
+
+; Display Bar - Lvl 2 Yellow
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 666
+triggerall = Power < 1000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4511) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4511
+id = 4511
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 666
+triggerall = Power < 1000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4511) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4511
+id = 4511
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4511) > 0
+trigger1 = NumExplod(4551) <= 0
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = Power < 666
+trigger5 = Power >= 1000
+trigger6 = RoundState > 2
+ignorehitpause = 1
+id = 4511
+
+; Display Bar - Lvl 3 Red
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4512) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4512
+id = 4512
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4512) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4512
+id = 4512
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4512) > 0
+trigger1 = Root, Var(50) != 1
+trigger2 = Root, Var(55) > 0
+trigger3 = Power < 1000
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4512
+
+; Display Bar - MAX, GO!
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4512) > 0
+triggerall = NumExplod(4530) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4530
+id = 4530
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4500) > 0
+triggerall = NumExplod(4512) > 0
+triggerall = NumExplod(4530) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 1
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4530
+id = 4530
+facing = 1
+pos = -176,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4530) > 0
+trigger1 = Power < 1000
+trigger2 = Root, Var(50) != 1
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4530
+;-------------------------
+;=========================
+
+;========== V-ism ==========
+;-------------------------
+; V-ism Text Logo
+;----------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4202) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4202
+id = 4202
+facing = 1
+pos = 0,217
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4202) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4202
+id = 4202
+facing = 1
+pos = -60,217
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4202) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = RoundState > 2
+ignorehitpause = 1
+id = 4202
+
+; Icon
+;-----
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4600
+id = 4600
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4600
+id = 4600
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4600) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4600
+
+; Display Bar
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4601) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4601
+id = 4601
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4601) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4601
+id = 4601
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4601) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4601
+
+; Display Meter - Bottom
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4610) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4610
+id = 4610
+facing = 1
+pos = 144,232
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4610) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4611
+id = 4610
+facing = 1
+pos = -143,232
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4610) > 0
+trigger1 = Power < 410
+scale = Power / 9.009, 5
+ignorehitpause = 1
+id = 4610
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4610) > 0
+trigger1 = Power >= 410
+scale = 46, 5
+ignorehitpause = 1
+id = 4610
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4610) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4610
+
+; Display Meter - Center 1
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4611) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4610
+id = 4611
+facing = 1
+pos = 98,231
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4611) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4611
+id = 4611
+facing = 1
+pos = -97,231
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4611) > 0
+trigger1 = Power < 410
+scale = 0, 0
+ignorehitpause = 1
+id = 4611
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4611) > 0
+trigger1 = Power >= 410
+trigger1 = Power < 470
+scale = (Power - 410) / 9.009, 5
+ignorehitpause = 1
+id = 4611
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4611) > 0
+trigger1 = Power >= 470
+scale = 7, 5
+ignorehitpause = 1
+id = 4611
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4611) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4611
+
+; Display Meter - Center 2
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4612) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4610
+id = 4612
+facing = 1
+pos = 91,230
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4612) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4611
+id = 4612
+facing = 1
+pos = -90,230
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4612) > 0
+trigger1 = Power < 470
+scale = 0, 0
+ignorehitpause = 1
+id = 4612
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4612) > 0
+trigger1 = Power >= 470
+trigger1 = Power < 530
+scale = (Power - 470) / 9.009, 5
+ignorehitpause = 1
+id = 4612
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4612) > 0
+trigger1 = Power >= 530
+scale = 7, 5
+ignorehitpause = 1
+id = 4612
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4612) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4612
+
+; Display Meter - Center 3
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4613) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4610
+id = 4613
+facing = 1
+pos = 84,229
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4613) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4611
+id = 4613
+facing = 1
+pos = -83,229
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4613) > 0
+trigger1 = Power < 530
+scale = 0, 0
+ignorehitpause = 1
+id = 4613
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4613) > 0
+trigger1 = Power >= 530
+trigger1 = Power < 590
+scale = (Power - 530) / 9.009, 5
+ignorehitpause = 1
+id = 4613
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4613) > 0
+trigger1 = Power >= 590
+scale = 7, 5
+ignorehitpause = 1
+id = 4613
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4613) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4613
+
+; Display Meter - Top
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4614) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4610
+id = 4614
+facing = 1
+pos = 77,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4614) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4611
+id = 4614
+facing = 1
+pos = -76,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4614) > 0
+trigger1 = Power < 590
+scale = 0, 0
+ignorehitpause = 1
+id = 4614
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4614) > 0
+trigger1 = Power >= 590
+trigger1 = Power < 1000
+scale = (Power - 590) / 9.4, 5
+ignorehitpause = 1
+id = 4614
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4614) > 0
+trigger1 = Power >= 1000
+scale = 44, 5
+ignorehitpause = 1
+id = 4614
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4614) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4614
+
+; Display Meter Flash - Bottom
+;--------------------
+[State 4300, Explod]
+type = null ;Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4615) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4615
+id = 4615
+facing = 1
+pos = 144,232
+ontop = 1
+
+[State 4300, Explod]
+type = null ;Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4615) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4616
+id = 4615
+facing = 1
+pos = -143,232
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4615) > 0
+trigger1 = Root, Var(2) <= 0
+trigger2 = Power < 500
+scale = 0, 0
+ignorehitpause = 1
+id = 4615
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = Power >= 500 || Root, Var(2) > 0
+triggerall = NumExplod(4615) > 0
+trigger1 = Power < 410
+scale = Power / 9.009, 5
+ignorehitpause = 1
+id = 4615
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = Power >= 500 || Root, Var(2) > 0
+triggerall = NumExplod(4615) > 0
+trigger1 = Power >= 410
+scale = 46, 5
+ignorehitpause = 1
+id = 4615
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4615) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4615
+
+; Display Meter Flash - Center 1
+;--------------------
+[State 4300, Explod]
+type = null ;Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4616) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4615
+id = 4616
+facing = 1
+pos = 98,231
+ontop = 1
+
+[State 4300, Explod]
+type = null ;Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4616) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4616
+id = 4616
+facing = 1
+pos = -97,231
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4616) > 0
+trigger1 = Root, Var(2) <= 0
+trigger2 = Power < 500
+scale = 0, 0
+ignorehitpause = 1
+id = 4616
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = Power >= 500 || Root, Var(2) > 0
+triggerall = NumExplod(4616) > 0
+trigger1 = Power >= 410
+trigger1 = Power < 470
+scale = (Power - 410) / 9.009, 5
+ignorehitpause = 1
+id = 4616
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = Power >= 500 || Root, Var(2) > 0
+triggerall = NumExplod(4616) > 0
+trigger1 = Power >= 470
+scale = 7, 5
+ignorehitpause = 1
+id = 4616
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4616) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4616
+
+; Display Meter Flash - Center 2
+;--------------------
+[State 4300, Explod]
+type = null ;Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4617) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4615
+id = 4617
+facing = 1
+pos = 91,230
+ontop = 1
+
+[State 4300, Explod]
+type = null ;Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4617) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4616
+id = 4617
+facing = 1
+pos = -90,230
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4617) > 0
+trigger1 = Root, Var(2) <= 0
+trigger2 = Power < 500
+scale = 0, 0
+ignorehitpause = 1
+id = 4617
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = Power >= 500 || Root, Var(2) > 0
+triggerall = NumExplod(4617) > 0
+trigger1 = Power >= 470
+trigger1 = Power < 530
+scale = (Power - 470) / 9.009, 5
+ignorehitpause = 1
+id = 4617
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = Power >= 500 || Root, Var(2) > 0
+triggerall = NumExplod(4617) > 0
+trigger1 = Power >= 530
+scale = 7, 5
+ignorehitpause = 1
+id = 4617
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4617) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4617
+
+; Display Meter Flash - Center 3
+;--------------------
+[State 4300, Explod]
+type = null ;Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4618) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4615
+id = 4618
+facing = 1
+pos = 84,229
+ontop = 1
+
+[State 4300, Explod]
+type = null ;Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4618) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4616
+id = 4618
+facing = 1
+pos = -83,229
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4618) > 0
+trigger1 = Root, Var(2) <= 0
+trigger2 = Power < 500
+scale = 0, 0
+ignorehitpause = 1
+id = 4618
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = Power >= 500 || Root, Var(2) > 0
+triggerall = NumExplod(4618) > 0
+trigger1 = Power >= 530
+trigger1 = Power < 590
+scale = (Power - 530) / 9.009, 5
+ignorehitpause = 1
+id = 4618
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = Power >= 500 || Root, Var(2) > 0
+triggerall = NumExplod(4618) > 0
+trigger1 = Power >= 590
+scale = 7, 5
+ignorehitpause = 1
+id = 4618
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4618) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4618
+
+; Display Meter Flash - Top
+;--------------------
+[State 4300, Explod]
+type = null ;Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4619) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4615
+id = 4619
+facing = 1
+pos = 77,228
+ontop = 1
+
+[State 4300, Explod]
+type = null ;Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4619) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4616
+id = 4619
+facing = 1
+pos = -76,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(4619) > 0
+trigger1 = Root, Var(2) <= 0
+trigger2 = Power < 500
+scale = 0, 0
+ignorehitpause = 1
+id = 4619
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = Power >= 500 || Root, Var(2) > 0
+triggerall = NumExplod(4619) > 0
+trigger1 = Power >= 590
+trigger1 = Power < 1000
+scale = (Power - 590) / 9.4, 5
+ignorehitpause = 1
+id = 4619
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+triggerall = Power >= 500 || Root, Var(2) > 0
+triggerall = NumExplod(4619) > 0
+trigger1 = Power >= 1000
+scale = 44, 5
+ignorehitpause = 1
+id = 4619
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4619) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4619
+
+; Display Bar
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4602) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4602
+id = 4602
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4602) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4602
+id = 4602
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4602) > 0
+trigger1 = Root, Var(50) != 2
+trigger2 = Root, Var(55) > 0
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4602
+
+; Display Scrolling Bar
+;----------------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4641) <= 0
+triggerall = Root, NumHelper(320) > 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+trigger1 = Root, Var(2) > 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4641
+id = 4641
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4641) <= 0
+triggerall = Root, NumHelper(320) > 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+trigger1 = Root, Var(2) > 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4641
+id = 4641
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = Root, Var(45) > 0
+trigger1 = NumExplod(4641) > 0
+pos = -Power / 9, 225
+ignorehitpause = 1
+postype = left
+bindtime = -1
+id = 4641
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = Root, Var(45) < 0
+trigger1 = NumExplod(4641) > 0
+pos = Power / 9, 225
+ignorehitpause = 1
+postype = right
+bindtime = -1
+id = 4641
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4641) > 0
+trigger1 = Root, NumHelper(320) <= 0
+trigger2 = Root, Var(2) <= 0
+trigger3 = Root, Var(50) != 2
+trigger4 = Root, Var(55) > 0
+trigger5 = RoundState > 2
+trigger6 = Power <= 0
+ignorehitpause = 1
+id = 4641
+
+; Display Scrolling Bar
+;----------------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4640) <= 0
+triggerall = NumExplod(4641) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4640
+id = 4640
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4640) <= 0
+triggerall = NumExplod(4641) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4640
+id = 4640
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = Root, Var(45) > 0
+trigger1 = NumExplod(4640) > 0
+pos = -Power / 9, 225
+ignorehitpause = 1
+postype = left
+bindtime = -1
+id = 4640
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = Root, Var(45) < 0
+trigger1 = NumExplod(4640) > 0
+pos = Power / 9, 225
+ignorehitpause = 1
+postype = right
+bindtime = -1
+id = 4640
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4640) > 0
+trigger1 = NumExplod(4641) > 0
+trigger2 = Root, Var(50) != 2
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4640
+
+; Display Bar - [Over]
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 500
+triggerall = Power < 1000
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4620) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(2) <= 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4620
+id = 4620
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 500
+triggerall = Power < 1000
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4620) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(2) <= 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4620
+id = 4620
+facing = 1
+pos = -30,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4620) > 0
+trigger1 = Root, Var(2) > 0
+trigger2 = Root, Var(50) != 2
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+trigger5 = Power >= 1000
+trigger6 = Power < 500
+ignorehitpause = 1
+id = 4620
+
+; Display Bar - 50%
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 500
+triggerall = Power < 1000
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4625) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(2) <= 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4625
+id = 4625
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 500
+triggerall = Power < 1000
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4625) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(2) <= 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4625
+id = 4625
+facing = 1
+pos = -30,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4625) > 0
+trigger1 = Root, Var(2) > 0
+trigger2 = Root, Var(50) != 2
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+trigger5 = Power >= 1000
+trigger6 = Power < 500
+ignorehitpause = 1
+id = 4625
+
+; Display Bar - 100%
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4626) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(2) <= 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4626
+id = 4626
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4626) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(2) <= 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4626
+id = 4626
+facing = 1
+pos = -30,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4626) > 0
+trigger1 = Root, Var(2) > 0
+trigger2 = Root, Var(50) != 2
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+trigger5 = Power < 1000
+ignorehitpause = 1
+id = 4626
+
+; Display Bar - FULL, CHARGE
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4630) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4630
+id = 4630
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4600) > 0
+triggerall = NumExplod(4630) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(50) = 2
+trigger1 = Root, Var(55) <= 0
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 60
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4630
+id = 4630
+facing = 1
+pos = -176,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4630) > 0
+trigger1 = Power < 1000
+trigger2 = Root, Var(50) != 2
+trigger3 = Root, Var(55) > 0
+trigger4 = RoundState > 2
+ignorehitpause = 1
+id = 4630
+;-------------------------
+;=========================
+
+;====== Shadaloo-ism ======
+;-------- Red S-ism --------
+; Icon
+;-----
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4700) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4700
+id = 4700
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4700) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4700
+id = 4700
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4700) > 0
+trigger1 = Root, Var(55) != 1
+trigger2 = RoundState > 2
+ignorehitpause = 1
+id = 4700
+
+; Display Bar
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4701) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4701
+id = 4701
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4701) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4701
+id = 4701
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4701) > 0
+trigger1 = Root, Var(55) != 1
+trigger2 = RoundState > 2
+ignorehitpause = 1
+id = 4701
+
+; Display Super Flash
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(55) = 1
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4704
+id = 4703
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(55) = 1
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4705
+id = 4703
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(55) = 1
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4704
+id = 4703
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(55) = 1
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4705
+id = 4703
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4703) > 0
+trigger1 = Var(0) <= Power
+trigger2 = Root, Var(55) != 1
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4703
+
+; Display Meter
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power < 1000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4702) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4702
+id = 4702
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power < 1000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4702) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4703
+id = 4702
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = NumExplod(4702) > 0
+trigger1 = Power <= 1000
+scale = Power / 9.009, 6
+ignorehitpause = 1
+id = 4702
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4702) > 0
+trigger1 = NumExplod(4703) > 0
+trigger2 = Root, Var(55) != 1
+trigger3 = RoundState > 2
+trigger4 = Power >= 1000
+ignorehitpause = 1
+id = 4702
+
+; Display Max [Charge]
+;---------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = NumExplod(4720) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 53
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4720
+id = 4720
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = NumExplod(4720) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 53
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4720
+id = 4720
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4720) > 0
+trigger1 = NumExplod(4703) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 1
+ignorehitpause = 1
+id = 4720
+
+; Display Max [OK]
+;-----------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = NumExplod(4730) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 54
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4730
+id = 4730
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = NumExplod(4730) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 54
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4730
+id = 4730
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4730) > 0
+trigger1 = NumExplod(4703) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 1
+ignorehitpause = 1
+id = 4730
+
+; Display Max Flash
+;------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = NumExplod(4710) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4710
+id = 4710
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = NumExplod(4710) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4711
+id = 4710
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4710) > 0
+trigger1 = NumExplod(4703) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 1
+ignorehitpause = 1
+id = 4710
+
+; Display Max [SUPER]
+;-----------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = NumExplod(4710) > 0
+triggerall = NumExplod(4720) > 0
+triggerall = NumExplod(4730) > 0
+triggerall = NumExplod(4740) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4740
+id = 4740
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4700) > 0
+triggerall = NumExplod(4703) <= 0
+triggerall = NumExplod(4720) > 0
+triggerall = NumExplod(4730) > 0
+triggerall = NumExplod(4740) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 1
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4740
+id = 4740
+facing = 1
+pos = -176,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4740) > 0
+trigger1 = NumExplod(4703) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 1
+ignorehitpause = 1
+id = 4740
+;-------------------------
+
+;-------- Green S-ism --------
+; Icon
+;-----
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4800) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4800
+id = 4800
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4800) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4800
+id = 4800
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4800) > 0
+trigger1 = Root, Var(55) != 2
+trigger2 = RoundState > 2
+ignorehitpause = 1
+id = 4800
+
+; Display Bar
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4801) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4801
+id = 4801
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4801) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4801
+id = 4801
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4801) > 0
+trigger1 = Root, Var(55) != 2
+trigger2 = RoundState > 2
+ignorehitpause = 1
+id = 4801
+
+; Display Super Flash
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(55) = 2
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4804
+id = 4803
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(55) = 2
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4805
+id = 4803
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(55) = 2
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4804
+id = 4803
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(55) = 2
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4805
+id = 4803
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4803) > 0
+trigger1 = Var(0) <= Power
+trigger2 = Root, Var(55) != 2
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4803
+
+; Display Meter
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power < 1000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4802) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4802
+id = 4802
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power < 1000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4802) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4803
+id = 4802
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = NumExplod(4802) > 0
+trigger1 = Power <= 1000
+scale = Power / 9.009, 6
+ignorehitpause = 1
+id = 4802
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4802) > 0
+trigger1 = NumExplod(4803) > 0
+trigger2 = Root, Var(55) != 2
+trigger3 = RoundState > 2
+trigger4 = Power >= 1000
+ignorehitpause = 1
+id = 4802
+
+; Display Max [Charge]
+;---------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = NumExplod(4820) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 53
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4820
+id = 4820
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = NumExplod(4820) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 53
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4820
+id = 4820
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4820) > 0
+trigger1 = NumExplod(4803) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 2
+ignorehitpause = 1
+id = 4820
+
+; Display Max [OK]
+;-----------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = NumExplod(4830) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 54
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4830
+id = 4830
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = NumExplod(4830) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 54
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4830
+id = 4830
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4830) > 0
+trigger1 = NumExplod(4803) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 2
+ignorehitpause = 1
+id = 4830
+
+; Display Max Flash
+;------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = NumExplod(4810) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4810
+id = 4810
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = NumExplod(4810) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4811
+id = 4810
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4810) > 0
+trigger1 = NumExplod(4803) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 2
+ignorehitpause = 1
+id = 4810
+
+; Display Max [SUPER]
+;-----------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = NumExplod(4810) > 0
+triggerall = NumExplod(4820) > 0
+triggerall = NumExplod(4830) > 0
+triggerall = NumExplod(4840) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4840
+id = 4840
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4800) > 0
+triggerall = NumExplod(4803) <= 0
+triggerall = NumExplod(4820) > 0
+triggerall = NumExplod(4830) > 0
+triggerall = NumExplod(4840) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 2
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4840
+id = 4840
+facing = 1
+pos = -176,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4840) > 0
+trigger1 = NumExplod(4803) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 2
+ignorehitpause = 1
+id = 4840
+;-------------------------
+
+;-------- Blue S-ism --------
+; Icon
+;-----
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4900) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4900
+id = 4900
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4900) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 50
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4900
+id = 4900
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4900) > 0
+trigger1 = Root, Var(55) != 3
+trigger2 = RoundState > 2
+ignorehitpause = 1
+id = 4900
+
+; Display Bar
+;------------
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4901) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4901
+id = 4901
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4901) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 51
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4901
+id = 4901
+facing = -1
+pos = 0,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4901) > 0
+trigger1 = Root, Var(55) != 3
+trigger2 = RoundState > 2
+ignorehitpause = 1
+id = 4901
+
+; Display Super Flash
+;--------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(55) = 3
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4904
+id = 4903
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Root, MoveType != H
+triggerall = Root, StateNo >= 2000 && Root, StateNo < 5000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(55) = 3
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4905
+id = 4903
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = Root, Var(45) > 0
+triggerall = Root, Var(55) = 3
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4904
+id = 4903
+facing = 1
+ownpal = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = NumPartner > 0
+triggerall = Partner, MoveType != H
+triggerall = Partner, StateNo >= 2000 && Partner, StateNo < 5000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = Root, Var(45) < 0
+triggerall = Root, Var(55) = 3
+trigger1 = Var(0) > Power
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4905
+id = 4903
+facing = 1
+ownpal = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4903) > 0
+trigger1 = Var(0) <= Power
+trigger2 = Root, Var(55) != 3
+trigger3 = RoundState > 2
+ignorehitpause = 1
+id = 4903
+
+; Display Meter
+;--------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power < 1000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4902) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4902
+id = 4902
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power < 1000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4902) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4903
+id = 4902
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, ModifyExplod]
+type = ModifyExplod
+trigger1 = NumExplod(4902) > 0
+trigger1 = Power <= 1000
+scale = Power / 9.009, 6
+ignorehitpause = 1
+id = 4902
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4902) > 0
+trigger1 = NumExplod(4903) > 0
+trigger2 = Root, Var(55) != 3
+trigger3 = RoundState > 2
+trigger4 = Power >= 1000
+ignorehitpause = 1
+id = 4902
+
+; Display Max [Charge]
+;---------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = NumExplod(4920) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 53
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4920
+id = 4920
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = NumExplod(4920) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 53
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4920
+id = 4920
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4920) > 0
+trigger1 = NumExplod(4903) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 3
+ignorehitpause = 1
+id = 4920
+
+; Display Max [OK]
+;-----------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = NumExplod(4930) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 54
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4930
+id = 4930
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = NumExplod(4930) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 54
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4930
+id = 4930
+facing = 1
+pos = -32,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4930) > 0
+trigger1 = NumExplod(4903) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 3
+ignorehitpause = 1
+id = 4930
+
+; Display Max Flash
+;------------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = NumExplod(4910) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = left
+bindtime = -1
+scale = 111, 6
+anim = 4910
+id = 4910
+facing = 1
+pos = 144,228
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = NumExplod(4910) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 52
+removetime = -1
+postype = right
+bindtime = -1
+scale = 111, 6
+anim = 4911
+id = 4910
+facing = 1
+pos = -143,228
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4910) > 0
+trigger1 = NumExplod(4903) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 3
+ignorehitpause = 1
+id = 4910
+
+; Display Max [SUPER]
+;-----------------
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = NumExplod(4910) > 0
+triggerall = NumExplod(4920) > 0
+triggerall = NumExplod(4930) > 0
+triggerall = NumExplod(4940) <= 0
+triggerall = Root, Var(45) > 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = left
+bindtime = -1
+anim = 4940
+id = 4940
+facing = 1
+pos = 0,225
+ontop = 1
+
+[State 4300, Explod]
+type = Explod
+triggerall = Power >= 1000
+triggerall = NumExplod(4900) > 0
+triggerall = NumExplod(4903) <= 0
+triggerall = NumExplod(4920) > 0
+triggerall = NumExplod(4930) > 0
+triggerall = NumExplod(4940) <= 0
+triggerall = Root, Var(45) < 0
+trigger1 = Root, Var(55) = 3
+pausemovetime = -1
+supermovetime = -1
+ignorehitpause = 1
+sprpriority = 55
+removetime = -1
+postype = right
+bindtime = -1
+anim = 4940
+id = 4940
+facing = 1
+pos = -176,225
+ontop = 1
+
+[State 4300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(4940) > 0
+trigger1 = NumExplod(4903) > 0
+trigger2 = RoundState > 2
+trigger3 = Power < 1000
+trigger4 = Root, Var(55) != 3
+ignorehitpause = 1
+id = 4940
+;-------------------------
+;=========================
+
+;-----Super Move-----
+[State 4300, VarSet]
+type = VarSet
+trigger1 = 1
+var(0) = Root, Power
+;--------------------
+
+;----- Display -----
+[State 4300, Variables]
+type = DisplayToClipboard
+trigger1 = 1
+text = "NumExplod: %d"
+params = NumExplod
+;--------------------
+
+[State 4300, Destroy]
+type = DestroySelf
+trigger1 = RoundState > 2
+trigger2 = NumPartner > 0
+trigger2 = Root, ID > Partner, ID
+
+;---------------------------------------------------------------------------

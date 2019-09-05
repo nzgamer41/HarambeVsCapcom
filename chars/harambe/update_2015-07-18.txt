@@ -1,0 +1,40 @@
+2015-12-14 update:
+- used Franken-spriting way to add the missing turn sprites for both standing and crouching
+- the crown and jewel during Grodd's in-game intros can now fade out instead of sudden disappearance
+- removed the pterodactyl aka dinosaur bird riding in in-game intro
+- turned the pterodactyl aka dinosaur bird riding in in-game intro into a new hyper move in which Grodd calls the big bird out
+  and rides on it and commands it to spit fire (you can control the big bird and press buttons a/b/c to spit fire)
+  * to make this new hyper balanced, enemey may stop Grodd when Grodd is trying to hop on the big bird, once after Grodd
+    is riding the big bird, Grodd is invincible the whole new hyper move, until the move ends
+- removed the D,DB,B punch stun-enemy ability; it now only happens during the move's initial auto-guard
+- added a new secret hyper move in which Grodd is able to turn enemy into something really interesting....
+  .....(pending volzzilla's help and verification....)
+- some more fixes and A.I. tweaks doing and coming...........
+
+
+2015-07-18 update:
+- replaced the everybody-hate-pipe/wrench with Tam Tam's skull
+- toned down his skull throw spam-full-ness
+- fixed his walking animations choppiness
+- fixed his shout special VFX transparency issue
+- fixed the pterodactyl aka dinosaur bird intro start-up position
+- decreased the damages of all special moves
+- increased his overall defense for his big size
+- made his overall movements a bit slower
+- added button versions of the "Onda Psiquica" (may be giving it different travel distances)
+- added some jump land and being-tripped down small screen shake to show his huge size impact
+- replaced some current Blanka voices with Chimoru's provided ones
+- improved the MUGEN A.I. a bit
+- added some MUGEN1.0 victory quotes (credit:  http://www.imdb.com/character/ch0030291/quotes)
+
+
+--------------------------------------------------------------
+
+Now, I need some input for a "Bicho" aka "pterodactyl aka dinosaur bird calling helper attack" hyper improvement!
+The calling out sprites of both Gorilla Grodd of the pterodactyl aka dinosaur bird are there and limited.
+How shall I make it less cheap please? Question
+Well, I have one (1) idea:
+- how about making it a close-body throw hyper?  like, when Gorilla Grodd performs this "Bicho" hyper he has to get close to P2 then tries to grab P2 and lift P2 up with his arms, then the pterodactyl aka dinosaur bird comes in to crush P2 a few times?
+- or........some other style and way.......please give me some input thank you in advance......
+
+I think the lack of more sprites problem (i.e. no turning sprites and no intro transition sprites found by Red Hood) and the palette issue can be dealt with after this update as those sprites & palette things are something I don't know how to do by myself............ 

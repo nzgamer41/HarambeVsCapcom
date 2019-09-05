@@ -1,0 +1,125 @@
+; Definition file for Balrog
+; Contains all the filenames needed for the character
+
+;------------------------------
+;[Player Information]
+;------------------------------
+[Info]
+name = "Classic Balrog"		;Name of character
+displayname = "Balrog"		;Name of character to display
+versiondate = 2006.01.25	;Version date of character
+mugenversion = 2001.04.14	;Version of M.U.G.E.N character works on
+author = "N-Mario"		;Character author name
+pal.defaults = 5,2,6,3,4,1	;Default palettes in order of preference
+
+;------------------------------
+;[Common Files] 
+;------------------------------
+[Files]
+cmd	= command.cmd	;Command set
+cns	= Constant.cns	;Constants
+stcommon = common1.cns	;Common states
+sprite	= sprite.sff	;Sprite
+anim	= animation.air	;Animation
+sound	= sound.snd    	;Sound
+
+;------------------------------
+;[States] 
+;------------------------------
+st	= common.cns	;Common
+st2     = states.cns	;States
+st3	= states-s.cns	;Special Moves
+st4	= states-h.cns	;Hyper Moves
+st5	= v-ism.cns	;V-ism System
+st6	= helpers.cns	;Helpers
+st7	= powerbar.cns	;Power Bar System
+st8	= override.cns	;Override States
+st9	= cbalrog.def	;Initializor
+
+;------------------------------
+;[Palettes] (can have up to 12)
+;------------------------------
+pal1	= palette/X-2.act	;X-ism
+pal2	= palette/A-2.act	;A-ism
+pal3	= palette/V-2.act	;V-ism
+pal4	= palette/X-1.act	;X-ism
+pal5	= palette/A-1.act	;A-ism
+pal6	= palette/V-1.act	;V-ism
+
+;---------------------------------------------------------------------------
+; Initialize (at the start of the round)
+[Statedef 5900]
+type = S
+
+[State 5900, 1] ;Clear all int variables
+type = VarRangeSet
+triggerall = Var(51) <= 0
+trigger1 = roundno = 1
+trigger1 = matchno = 1
+value = 0
+
+[State 5900, 2] ;Clear all float variables
+type = VarRangeSet
+triggerall = Var(51) <= 0
+trigger1 = roundno = 1
+trigger1 = matchno = 1
+fvalue = 0
+
+[State 5900, 3]
+type = VarSet
+triggerall = Var(51) <= 0
+trigger1 = PalNo = 1
+trigger2 = PalNo = 4
+trigger3 = PalNo = 7
+trigger4 = PalNo = 10
+var(50) = 0
+
+[State 5900, 3]
+type = VarSet
+triggerall = Var(51) <= 0
+trigger1 = PalNo = 2
+trigger2 = PalNo = 5
+trigger3 = PalNo = 8
+trigger4 = PalNo = 11
+var(50) = 1
+
+[State 5900, 3]
+type = VarSet
+triggerall = Var(51) <= 0
+trigger1 = PalNo = 3
+trigger2 = PalNo = 6
+trigger3 = PalNo = 9
+trigger4 = PalNo = 12
+var(50) = 2
+
+[State 5900, 4]
+type = VarSet
+triggerall = IsHomeTeam = 1
+trigger1 = TeamSide = 2
+trigger2 = MatchNo > 1
+var(55) = 1
+
+[State 5900, 4]
+type = VarSet
+trigger1 = Var(55) > 0
+var(50) = 1
+
+[State 5900, 4]
+type = VarSet
+trigger1 = Var(55) > 0
+var(51) = 1
+
+[State 5900, 4]
+type = VarSet
+trigger1 = 1
+var(56) = 1
+
+[state 5900, 5] ;Intro
+type = ChangeState
+trigger1 = RoundNo = 1
+trigger2 = RoundsExisted = 0
+trigger2 = TeamMode = Turns
+trigger2 = RoundNo > 1
+value = 190
+
+;---------------------------------------------------------------------------

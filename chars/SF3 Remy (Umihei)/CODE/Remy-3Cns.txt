@@ -1,0 +1,49 @@
+[Statedef -3]
+
+;----------------------------------------------------
+[State -2]
+type = VelMul
+triggerall = StateType = A
+trigger1 = MoveType != H
+trigger1 = StateNo != [945, 949]
+trigger1 = StateNo != [5000, 5299]
+X = .8
+
+;--------------------------ëÄçÏïsî\--------------------------
+[State -2]
+type = AssertSpecial
+trigger1 = var(41) != 0
+flag = nomusic
+pausemovetime = 9999999999999999
+supermovetime = 9999999999999999
+
+[State -2]
+type = PlaySnd
+trigger1 = var(41) = 120
+value = 912, 0
+channel = 4
+
+[State -2]
+type = StopSnd
+trigger1 = var(41) = 0
+channel = 4
+
+[State -2]
+type = VarSet
+triggerall = var(41) != 0
+trigger1 = RoundState < 2
+trigger2 = P2MoveType != H
+var(41) = 0
+
+[State -2]
+type = VarSet
+trigger1 = var(16) >= 4
+trigger1 = PrevStateNo = 912
+trigger1 = MoveType = H
+var(41) = 1
+
+[State -2]
+type = VarAdd
+trigger1 = var(41) = [1, 150]
+var(41) = 1
+

@@ -1,0 +1,41 @@
+[Info]
+Name = "Q"
+DisplayName = "Q"
+VersionDate = 04,14,2001
+MugenVersion = 04,14,2001
+Author = "Umihei"
+Pal.Defaults = 6,3,4,2
+
+[Files]
+StCommon = QSystemCns.txt
+Cmd = CODE/QCmd.txt
+Anim = CODE/Q.air
+Cns = CODE/QCns.txt
+St = CODE/QCns.txt
+st1 = CODE/Q-2Cns.txt
+st2 = CODE/Q-3Cns.txt
+st3 = CODE/Q4000Cns.txt
+st4 = CODE/Q5000Cns.txt
+st5 = CODE/Q6000Cns.txt
+st6 = CODE/Q7000Cns.txt
+st7 = CODE/Q8000Cns.txt
+
+Sprite = Q.sff
+Sound = Q.snd
+
+Pal1 = ACT/LK.act
+Pal2 = ACT/MK.act
+Pal3 = ACT/HK.act
+Pal4 = ACT/LP.act
+Pal5 = ACT/MP.act
+Pal6 = ACT/HP.act
+Pal7 = ACT/SLK.act
+Pal8 = ACT/SMK.act
+Pal9 = ACT/SHK.act
+Pal10 = ACT/SLP.act
+Pal11 = ACT/SMP.act
+Pal12 = ACT/SHP.act
+
+[Arcade]
+Intro.Storyboard  = intro.def
+Ending.Storyboard = ending.def

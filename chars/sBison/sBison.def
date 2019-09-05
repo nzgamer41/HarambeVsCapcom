@@ -1,0 +1,39 @@
+[Info]
+name="Shin M. Bison/ Shin Vega by Kamekaze"
+displayname="Super M. Bison"
+versiondate=12,30,2007
+mugenversion=1.0
+author="Kamekaze"
+pal.defaults=1,2,3,4,5,6,7,8,9,10,11,12
+localcoord = 320,240 
+[Files]
+sprite=Sbison.sff
+sound=Sbison.snd
+anim=Sbison.air
+cmd=Sbison.cmd
+cns=Sbison.cns
+st=Sbison.cns
+stcommon=common.cns
+pal13=
+pal14=
+pal15=
+pal16=
+pal17=
+pal18=
+pal1=SBison1.act
+pal2=SBison2.act
+pal3=SBison3.act
+pal4=SBison4.act
+pal5=SBison5.act
+pal6=SBison6.act
+pal7=Yoshi1.act
+pal8=Yoshi2.act
+pal9=Yoshi3.act
+pal10=Yoshi4.act
+pal11=Yoshi5.act
+pal12=Yoshi6.act
+st1=helper.st
+st2=config.txt
+[Arcade]
+intro.storyboard=
+ending.storyboard=

@@ -1,0 +1,46 @@
+;Player information
+[Info]
+name = "Ryu"
+displayname = "Ryu"
+versiondate = 04,14,2001
+mugenversion = 04,14,2001
+author = "Umihei"
+pal.defaults = 1, 2, 3, 4, 5, 6
+
+;Files for the player
+[Files]
+StCommon = RyuSystemCns.txt
+Cmd = CODE/RyuCmd.txt
+Anim = CODE/Ryu.air
+Cns = CODE/RyuCns.txt
+St = CODE/RyuCns.txt
+st1 = CODE/Ryu(EX)Cns.txt
+st2 = CODE/Ryu-2Cns.txt
+st3 = CODE/Ryu-3Cns.txt
+st4 = CODE/Ryu4000Cns.txt
+st5 = CODE/Ryu5000Cns.txt
+st6 = CODE/Ryu6000Cns.txt
+st7 = CODE/Ryu7000Cns.txt
+st8 = CODE/Ryu8000Cns.txt
+
+sprite = Ryu.sff
+sound = Ryu.snd
+
+pal1 = Act/3rdRyu04.act
+pal2 = Act/3rdRyu05.act
+pal3 = Act/3rdRyu06.act
+pal4 = Act/3rdRyu01.act
+pal5 = Act/3rdRyu02.act
+pal6 = Act/3rdRyu03.act
+
+pal7 = Act/2ndGouki04.act
+pal8 = Act/2ndGouki05.act
+pal9 = Act/2ndGouki06.act
+pal10 = Act/2ndGouki01.act
+pal11 = Act/2ndGouki02.act
+pal12 = Act/2ndGouki03.act
+
+;Arcade mode
+[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def

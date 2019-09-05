@@ -1,0 +1,1413 @@
+;*******************************************************************************
+;***************************************************************************
+;*************************   States -2 & -3   **********************************
+;***************************************************************************
+;*******************************************************************************
+
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+[Statedef -2]
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno !=[2000,2020]
+v = 21
+value = 0
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno !=[2500,2520]
+v = 26
+value = 0
+ignorehitpause = 1
+
+
+;Hadouken spark
+[State -2, Explod]
+type = Explod
+triggerall = numexplod(1650) < 1
+trigger1 = projhit1600 = 1
+anim = 1650
+ID = 1650
+pos = (enemynear, const(size.mid.pos.x)) + 12,-70
+postype = p2
+bindtime = 2
+removetime = 20
+scale = .5,.5
+sprpriority = 6
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+
+;Fire Hadou Burst spark
+[State -2, Explod]
+type = Explod
+triggerall = numexplod(4120) < 1
+trigger1 = projhit4100 = 1
+anim = 4120
+ID = 4120
+pos = (enemynear, const(size.mid.pos.x)) + 12,-70
+postype = p2
+bindtime = 2
+removetime = 18
+scale = 1.05,1.05
+sprpriority = 5
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+
+;Fire Hadou Burst Fire1
+[State -2, Explod]
+type = Explod
+triggerall = numexplod(4130) < 3
+trigger1 = projhit4100 = 1
+anim = 4130
+ID = 4130
+pos = (enemynear, const(size.mid.pos.x)),-30
+random = 40,60
+postype = p2
+bindtime = -1
+removetime = -2
+scale = .85,.85
+sprpriority = 6
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+
+;Fire Hadou Burst Fire2
+[State -2, Explod]
+type = Explod
+triggerall = numexplod(4131) < 3
+trigger1 = projhit4100 = 1
+anim = 4131
+ID = 4131
+pos = (enemynear, const(size.mid.pos.x)),-80
+random = 20,20
+postype = p2
+bindtime = -1
+removetime = -2
+scale = .85,.85
+sprpriority = 6
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+
+;Fire Hadou Burst Fire2
+[State -2, Explod]
+type = Explod
+triggerall = numexplod(4132) < 3
+trigger1 = projhit4100 = 1
+anim = 4130
+ID = 4132
+pos = (enemynear, const(size.mid.pos.x)),-10
+random = 30,30
+postype = p2
+bindtime = -1
+removetime = -2
+scale = .85,.85
+sprpriority = 6
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+
+
+[State -2, StopSnd]
+type = StopSnd
+trigger1 = projhit1600 = 1
+channel = 4
+ignorehitpause = 1
+
+;End afterimage
+[State -2, AfterImageTime]
+type = AfterImageTime
+trigger1 = movetype = H
+trigger2 = prevstateno = 7000 && stateno !=7010
+trigger3 = prevstateno = 7010 && stateno !=7020
+trigger4 = Stateno = [0,900]
+time = 0
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno = 0
+v = 21
+value = 0
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno = 0
+v = 26
+value = 0
+
+;**************************************
+;*****  Remove Hyper Tornado BG  ******
+;**************************************
+
+[State -2, RemoveExplod];remove hyper portrait
+type = RemoveExplod
+trigger1 = stateno !=[8000,8002]
+id = 11000
+
+[State -2, RemoveExplod];remove hyper bg
+type = RemoveExplod
+trigger1 = stateno !=[8000,8002]
+id = 11001
+
+;**************************************
+;*****   Remove Shinku Hadoken BG   ******
+;**************************************
+
+[State -2, RemoveExplod];remove hyper portrait
+type = RemoveExplod
+trigger1 = stateno !=10000
+id = 11010
+
+[State -2, RemoveExplod];remove hyper bg
+type = RemoveExplod
+trigger1 = stateno !=10000
+id = 11011
+
+;**************************************
+;***   Remove Brazilian Fury BG  ****
+;**************************************
+
+[State -2, RemoveExplod];remove hyper portrait
+type = RemoveExplod
+trigger1 = stateno !=[12000,12040]
+id = 11020
+
+[State -2, RemoveExplod];remove hyper bg
+type = RemoveExplod
+trigger1 = stateno !=[12000,12040]
+id = 11021
+
+
+
+[State -2, Width]
+type = Width
+trigger1 =anim = 20
+trigger2 = anim = 21
+edge = 0,0
+player = -8,-8
+
+
+
+;*******************************************************************************
+;*********************       Fury Bar Concept       ****************************
+;*******************************************************************************
+; Basé sur la barre d'attack level de  Mike Werewolf...
+
+;-------------------------
+; Affichage de la barre :
+;-------------------------
+; en mode solo (ou simul avec partner != "fury char")
+
+[State -2, FuryBar_BG]; left
+type = Explod
+triggerall = !NumExplod(19000)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 19000
+ID = 19000
+postype = left
+pos = 2,44
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 2
+
+[State -2, FuryBar_BG];right
+type = Explod
+triggerall = !NumExplod(19001)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 19001
+ID = 19001
+postype = left
+pos = 223,44
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 2
+
+
+;---------------------------------
+; en mode simul avec 2 char fury !
+
+[State -2, FuryBar_BG]; left
+type = Explod
+triggerall = !NumExplod(19000)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 19000
+ID = 19000
+postype = left
+pos = 2 + 4*(ID > Partner, ID) ,44 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 2
+
+
+[State -2, FuryBar_BG];right
+type = Explod
+triggerall = !NumExplod(19001)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 19001
+ID = 19001
+postype = left
+pos = 223 - 4*(ID > Partner, ID),44 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 2
+
+
+;-------------
+; Ombre :
+;-------------
+; en mode solo (ou simul avec partner != "fury char")
+
+[State -2, FuryBar_shadow]; left
+type = Explod
+triggerall = !NumExplod(19010)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 19010
+ID = 19010
+postype = left
+pos = 2,44
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 0
+
+[State -2, FuryBar_shadow];right
+type = Explod
+triggerall = !NumExplod(19011)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 19011
+ID = 19011
+postype = left
+pos = 223,44
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 0
+
+;----------------------------------
+; en mode simul avec 2 char fury !
+
+[State -2, FuryBar_shadow]; left
+type = Explod
+triggerall = !NumExplod(19010)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 19010
+ID = 19010
+postype = left
+pos = 2 + 4*(ID > Partner, ID) ,44 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 0
+
+
+[State -2, FuryBar_shadow];right
+type = Explod
+triggerall = !NumExplod(19011)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 19011
+ID = 19011
+postype = left
+pos = 223 - 4*(ID > Partner, ID),44 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 0
+
+
+;---------------------------------------------
+; ----------- Fury :  ------------------------
+;---------------------------------------------
+; en mode solo (ou simul avec partner != "fury char")
+
+[State -2, FuryBar]; left
+type = Explod
+triggerall = !NumExplod(19020)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 19020
+ID = 19020
+postype = left
+pos = 21,57
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+removetime = -1
+;scale = .5,.5
+sprpriority = 1
+
+[State -2, FuryBar];right
+type = Explod
+triggerall = !NumExplod(19020)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 19020
+ID = 19020
+postype = left
+pos = 239,57
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+removetime = -1
+;scale = .5,.5
+sprpriority = 1
+
+;---------------------------------
+; en mode simul avec 2 char fury !
+
+[State -2, FuryBar]; left
+type = Explod
+triggerall = !NumExplod(19020)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 19020
+ID = 19020
+postype = left
+pos = 21 + 4*(ID > Partner, ID) ,57 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+;scale = .5,.5
+removetime = -1
+sprpriority = 1
+
+[State -2, FuryBar];right
+type = Explod
+triggerall = !NumExplod(19020)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 19020
+ID = 19020
+postype = left
+pos = 239 - 4*(ID > Partner, ID),57 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+;scale = .5,.5
+removetime = -1
+sprpriority = 1
+
+
+;-----------------------------------
+; evolution de la barre de fury :
+;-----------------------------------
+
+;---------------
+; variables :
+;---------------
+
+;--------------------------------------------
+; augmentation quand on touche un adversaire
+;--------------------------------------------
+; coup normal
+[State -2, VarAdd]
+type = VarAdd
+triggerall = RoundState = 2
+triggerall = movecontact
+triggerall = movehit = 1
+triggerall = var(59) <120
+trigger1 = (stateno = [200,255]) || (stateno = [400,450]) || (stateno = [600,655])
+trigger2 = (prevstateno = [200,255]) || (prevstateno = [400,450]) || (prevstateno = [600,655])
+v = 59
+value = 8
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = RoundState = 2
+triggerall = movecontact
+triggerall = moveguarded = 1
+triggerall = var(59) <120
+trigger1 = (stateno = [200,255]) || (stateno = [400,450]) || (stateno = [600,655])
+trigger2 = (prevstateno = [200,255]) || (prevstateno = [400,450]) || (prevstateno = [600,655])
+v = 59
+value =  4
+
+;--------------------------
+; coup special 1
+[State -2, VarAdd]
+type = VarAdd
+triggerall = RoundState = 2
+triggerall = movecontact
+triggerall = movehit = 1
+triggerall = var(59) <120
+trigger1 = (stateno = 1000)
+trigger2 = (stateno = 2510)
+trigger3 = (stateno = 2010)
+v = 59
+value = 14
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = RoundState = 2
+triggerall = movecontact
+triggerall = moveguarded = 1
+triggerall = var(59) <120
+trigger1 = (stateno = 1000)
+trigger2 = (stateno = 2510)
+trigger3 = (stateno = 2010)
+v = 59
+value = 6
+
+;-----------------------------
+; coup special 2
+[State -2, VarAdd]
+type = VarAdd
+triggerall = RoundState = 2
+triggerall = movecontact
+triggerall = movehit = 1
+triggerall = var(59) <120
+trigger1 = (stateno = 3010)
+v = 59
+value = 4
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = RoundState = 2
+triggerall = movecontact
+triggerall = moveguarded = 1
+triggerall = var(59) <120
+trigger1 = (stateno = 3010)
+v = 59
+value =  1
+
+;-----------------------------
+; coup special 3
+[State -2, VarAdd]
+type = VarAdd
+triggerall = RoundState = 2
+triggerall = var(59) <120
+trigger1 = (stateno = 1500) && (AnimElemNo(0) = 6)
+v = 59
+value = 6
+
+;--------------------------------------------
+; diminution continuelle
+[State -2, VarAdd]
+type = VarAdd
+triggerall = time%40 =0
+trigger1 = var(58) = 0
+trigger1 = var(59)=[1,40]
+trigger2 = var(58) = 1
+trigger2 = var(59)=[42,80]
+trigger3 = var(58) = 2
+trigger3 = var(59)=[82,119]
+v = 59
+value = - 1
+ignorehitpause = 1
+
+;-----------------
+; Stay to 120
+[State -2, VarSet]
+type = VarSet
+trigger1 = var(59)>120
+v = 59
+value = 120
+ignorehitpause = 1
+
+;Reset var(59)
+[State -2, VarSet]
+type = VarSet
+triggerall = roundstate = 2
+trigger1 = var(57) >= 898
+trigger2 = var(59)<0
+v = 59
+value = 0
+ignorehitpause = 1
+
+;------------------
+; fury level
+[State -2, VarSet]
+type = VarSet
+trigger1 = 1
+trigger1 = var(57)<900
+v = 58
+value = (var(59) = [41,80]) + 2*(var(59) = [81,119])  + 3*(var(59)>= 120)
+ignorehitpause = 1
+
+;Reset
+[State -2, VarSet]
+type = VarSet
+trigger1 = var(57) >= 900
+v = 58
+value = 0
+ignorehitpause = 1
+
+;--------------------------
+; limit 15s of Furylevel 3
+[State -2, VarSet]
+type = VarSet
+triggerall = roundstate = 2
+trigger1 = var(58) = 3
+v = 57
+value = var(57) + 1
+ignorehitpause = 1
+
+;Reset var(57)
+[State -2, VarSet]
+type = VarSet
+triggerall = roundstate = 2
+trigger1 = var(58) != 3
+v = 57
+value = 0
+ignorehitpause = 1
+
+
+;---------------
+; ModifyExplod :
+;---------------
+[State -2, ModifyExplod]
+type = ModifyExplod
+trigger1 = 1
+ID = 19020
+scale = (var(59))/240.0,.5
+edge =0,0
+sprpriority = 1
+
+
+;---------------
+; Level Fury:
+;---------------
+; en mode solo (ou simul avec partner != "fury char")
+
+[State -2, FuryBar_level]; left
+type = Explod
+triggerall = !NumExplod(19100 + var(58))
+triggerall = RoundState = 2
+triggerall = teamside = 1
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 19100 + var(58)
+ID = 19100 + var(58)
+postype = left
+pos = 2,44
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+removetime = -1
+sprpriority = 3
+
+
+[State -2, FuryBar_level];right
+type = Explod
+triggerall = !NumExplod(19200 + var(58))
+triggerall = RoundState = 2
+triggerall = teamside = 2
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 19200 + var(58)
+ID = 19200 + var(58)
+postype = left
+pos = 223,44
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+removetime = -1
+sprpriority = 3
+
+;----------------------------------
+; en mode simul avec 2 char fury !
+
+[State -2, FuryBar_level]; left
+type = Explod
+triggerall = !NumExplod(19100 + var(58))
+triggerall = RoundState = 2
+triggerall = teamside = 1
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 19100 + var(58)
+ID = 19100 + var(58)
+postype = left
+pos = 2 + 4*(ID > Partner, ID) ,44 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+removetime = -1
+sprpriority = 3
+
+[State -2, FuryBar_level];right
+type = Explod
+triggerall = !NumExplod(19200 + var(58))
+triggerall = RoundState = 2
+triggerall = teamside = 2
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 19200 + var(58)
+ID = 19200 + var(58)
+postype = left
+pos = 223 - 4*(ID > Partner, ID),44 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+removetime = -1
+sprpriority = 3
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(19101) = 1
+trigger2 = var(58) !=0
+id =  19100
+ignorehitpause = 1
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(19102) = 1
+trigger2 = var(58) !=1
+id =  19101
+ignorehitpause = 1
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(19103) = 1
+trigger2 = var(58) !=2
+id =  19102
+ignorehitpause = 1
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(58) = 0
+trigger2 = var(58) !=3
+id =  19103
+ignorehitpause = 1
+
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(19201) = 1
+id =  19200
+ignorehitpause = 1
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(19202) = 1
+id =  19201
+ignorehitpause = 1
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(19203) = 1
+id =  19202
+ignorehitpause = 1
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(58) = 0
+id =  19203
+ignorehitpause = 1
+
+
+;---------------
+; Chrono :
+;---------------
+; en mode solo (ou simul avec partner != "fury char")
+
+[State -2, Fury_chrono]; left
+type = Explod
+triggerall = !NumExplod(19300)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+triggerall = var(58) = 3
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 19300
+ID = 19300
+postype = left
+pos = 3,45
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+removetime = 900
+sprpriority = 4
+ignorehitpause = 1
+
+[State -2, Fury_chrono];right
+type = Explod
+triggerall = !NumExplod(19300)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+triggerall = var(58) = 3
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 19301
+ID = 19300
+postype = left
+pos = 300,45
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+removetime = 900
+sprpriority = 4
+ignorehitpause = 1
+
+;---------------------------------
+; en mode simul avec 2 char fury !
+
+[State -2, Fury_chrono]; left
+type = Explod
+triggerall = !NumExplod(19300)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+triggerall = var(58) = 3
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 19300
+ID = 19300
+postype = left
+pos = 3 + 4*(ID > Partner, ID) ,45 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+removetime = 900
+sprpriority = 4
+ignorehitpause = 1
+
+[State -2, Fury_chrono];right
+type = Explod
+triggerall = !NumExplod(19300)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+triggerall = var(58) = 3
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 19301
+ID = 19300
+postype = left
+pos = 300 - 4*(ID > Partner, ID),45 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+removetime = 900
+sprpriority = 4
+ignorehitpause = 1
+
+
+[State -2, RemoveExplod]
+type = RemoveExplod
+trigger1 = var(59) != 120
+id =  19300
+ignorehitpause = 1
+
+
+;---------------------------------------------
+; ----------- Striker :  ---------------------
+;---------------------------------------------
+; en mode solo (ou simul avec partner != "fury char")
+
+[State -2, StrikerBar]; left
+type = Explod
+triggerall = !NumExplod(20000)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 20000
+ID = 20000
+postype = left
+pos = 23,52
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+removetime = -1
+;scale = .5,.5
+sprpriority = 1
+
+[State -2, StrikerBar];right
+type = Explod
+triggerall = !NumExplod(20000)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 20000
+ID = 20000
+postype = left
+pos = 247,52
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+removetime = -1
+;scale = .5,.5
+sprpriority = 1
+
+;---------------------------------
+; en mode simul avec 2 char fury !
+
+[State -2, StrikerBar]; left
+type = Explod
+triggerall = !NumExplod(20000)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 20000
+ID = 20000
+postype = left
+pos = 23 + 4*(ID > Partner, ID) ,52 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+;scale = .5,.5
+removetime = -1
+sprpriority = 1
+
+[State -2, StrikerBar];right
+type = Explod
+triggerall = !NumExplod(20000)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 20000
+ID = 20000
+postype = left
+pos = 247 - 4*(ID > Partner, ID),52 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+;scale = .5,.5
+removetime = -1
+sprpriority = 1
+
+
+;---------------
+; Variables :
+;---------------
+
+;----------------------------------
+; augmentation quand on est touché
+;----------------------------------
+[State -2, VarAdd]
+type = VarAdd
+triggerall = stateno = [5000,5099]
+triggerall = prevstateno != [5000,5099]
+triggerall = movetype = H
+triggerall = gametime%10 = 0
+trigger1 = life = [751,1000]
+v = 56
+value = 5
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = stateno = [5000,5099]
+triggerall = prevstateno != [5000,5099]
+triggerall = movetype = H
+triggerall = gametime%10 = 0
+trigger1 = life = [501,750]
+v = 56
+value = 6
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = stateno = [5000,5099]
+triggerall = prevstateno != [5000,5099]
+triggerall = movetype = H
+triggerall = gametime%10 = 0
+trigger1 = life = [251,500]
+v = 56
+value = 7
+
+[State -2, VarAdd]
+type = Varadd
+triggerall = stateno = [5000,5099]
+triggerall = prevstateno != [5000,5099]
+triggerall = movetype = H
+triggerall = gametime%10 = 0
+trigger1 = life = [1,250]
+v = 56
+value = 10
+
+
+;---------------------------------------
+; augmentation quand on lance un super :
+;---------------------------------------
+[State -2, VarAdd]
+type = Varadd
+triggerall = animelem = 2
+trigger1 = anim = 4000
+trigger2 = anim = 6000
+trigger3 = anim = 7000
+trigger4 = anim = 7500
+v = 56
+value = 15
+
+[State -2, VarSet]; stay to 1000
+type = VarSet
+trigger1 = var(56)>100
+v = 56
+value = 100
+
+[State -2, VarSet]; Reset
+type = VarSet
+trigger1 = var(56)=100
+trigger1 = var(55) = 1
+v = 56
+value = 0
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = var(56)>=100
+trigger1 = var(55)=0
+v = 55
+value = 3
+
+[State -2, VarSet]; Reset
+type = VarSet
+trigger1 = var(56)!=100
+trigger1 = var(55) = 1
+v = 55
+value = 0
+
+;---------------
+; ModifyExplod :
+;---------------
+[State -2, ModifyExplod]
+type = ModifyExplod
+trigger1 = 1
+ID = 20000
+scale = (var(56))/200.0,.5
+edge =0,0
+sprpriority = 1
+
+
+;-----------------------
+; Number of Striker : 2
+;-----------------------
+; en mode solo (ou simul avec partner != "fury char")
+
+[State -2, Number_Striker]; left
+type = Explod
+triggerall = !NumExplod(20001)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+triggerall = var(56) = 100
+triggerall = var(55) = 3
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 20001
+ID = 20001
+postype = left
+pos = 2,44
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 1
+
+[State -2, Number_Striker];right
+type = Explod
+triggerall = !NumExplod(20011)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+triggerall = var(56) = 100
+triggerall = var(55) = 3
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 20011
+ID = 20011
+postype = left
+pos = 223,44
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 1
+
+
+;-------------------------
+; en mode simul avec 2 char fury !
+
+[State -2, Number_Striker]; left
+type = Explod
+triggerall = !NumExplod(20001)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+triggerall = var(56) = 100
+triggerall = var(55) = 3
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 20001
+ID = 20001
+postype = left
+pos = 2 + 4*(ID > Partner, ID) ,44 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 1
+
+
+[State -2, Number_Striker];right
+type = Explod
+triggerall = !NumExplod(20011)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+triggerall = var(56) = 100
+triggerall = var(55) = 3
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 20011
+ID = 20011
+postype = left
+pos = 223 - 4*(ID > Partner, ID),44 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 1
+
+
+;-----------------------
+; Number of Striker : 1
+;-----------------------
+; en mode solo (ou simul avec partner != "fury char")
+
+[State -2, Number_Striker]; left
+type = Explod
+triggerall = !NumExplod(20002)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+triggerall = var(56) = 100
+triggerall = var(55) = 2
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 20002
+ID = 20002
+postype = left
+pos = 2,44
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 1
+
+[State -2, Number_Striker];right
+type = Explod
+triggerall = !NumExplod(20012)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+triggerall = var(56) = 100
+triggerall = var(55) = 2
+trigger1 = !NumPartner
+trigger2 = NumPartner
+trigger2 = Partner, authorName != "misterr07"
+ignorehitpause = 1
+anim = 20012
+ID = 20012
+postype = left
+pos = 223,44
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 1
+
+
+;----------------------------------
+; en mode simul avec 2 char fury !
+
+[State -2, Number_Striker]; left
+type = Explod
+triggerall = !NumExplod(20002)
+triggerall = RoundState = 2
+triggerall = teamside = 1
+triggerall = var(56) = 100
+triggerall = var(55) = 2
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 20002
+ID = 20002
+postype = left
+pos = 2 + 4*(ID > Partner, ID) ,44 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 1
+
+
+[State -2, Number_Striker];right
+type = Explod
+triggerall = !NumExplod(20012)
+triggerall = RoundState = 2
+triggerall = teamside = 2
+triggerall = var(56) = 100
+triggerall = var(55) = 2
+trigger1 = NumPartner
+trigger1 = Partner, authorName = "misterr07"
+ignorehitpause = 1
+anim = 20012
+ID = 20012
+postype = left
+pos = 223 - 4*(ID > Partner, ID),44 + 20*(ID > Partner, ID)
+bindtime = -1
+supermovetime = 9999
+pausemovetime = 9999
+ownpal = 1
+scale = .5,.5
+sprpriority = 1
+
+
+;******************************************
+;**********    Damage Dampener    *********
+;******************************************
+
+[State -2, Damage based on hits]
+type=varset
+trigger1= numenemy
+fvar(20)= ifelse(enemynear,gethitvar(hitcount)<3, 22, ifelse(enemynear,gethitvar(hitcount)>=22, 2, 24-enemynear,gethitvar(hitcount))) / 22.0
+ignorehitpause=1
+
+[State -2, Reset var when the opponent recovers]
+type=varset
+trigger1= numenemy
+trigger1= (enemynear,movetype!=H)
+trigger2= !numenemy
+fvar(20)=1
+
+[State -2, Dampener itself]
+type=attackmulset
+trigger1= 1
+value=fvar(20)
+ignorehitpause=1
+
+
+;******************************************
+;******    Hitvoice Random Choice    ******
+;******************************************
+
+[State -2, Start]
+type = VarSet
+trigger1 = var(50)=0
+trigger1 = stateno != [120,155] ;No damage voice on block
+trigger1 = movetype=H
+trigger1 = GetHitVar(damage)!=0 ;Only on the moment you get hit
+v = 50
+value = 20 ;Timeout before damage voice can be played again
+ignorehitpause=1
+
+[State -2, PlaySnd]
+type = PlaySnd
+trigger1 = var(50)=15 ;It will be played 5 ticks after you get hit (20-15)
+trigger1 = alive ;No damage voice after KO
+value = S(5000 + ifelse(GetHitVar(animtype)=0,0,ifelse(GetHitVar(animtype)=1,10,20))),random%2
+channel=5
+ignorehitpause=1
+
+[State -2, Decrease]
+type = VarAdd
+trigger1 = var(50)>0
+v = 50
+value = -1
+ignorehitpause=1
+
+
+;---------------------------------------------------------------------------
+; States that are executed when in self's state file (use statedef -3)
+;---------------------------------------------------------------------------
+
+[Statedef -3]
+
+
+[State -3, jumpdust]
+type = explod
+triggerall = Time = 1
+trigger1 = StateNo = 40
+postype = p1
+pos = 0,1
+spacing = 1
+anim = 48
+ownpal = 1
+scale = .5, .5
+supermove = 1
+
+[State -3, landdust]
+type = explod
+trigger1 = StateNo = 52 && Time = 1
+postype = p1
+pos = 2,-2
+spacing = 1
+anim = 49
+ownpal = 1
+scale = .5,.5
+supermove = 1
+sprpriority = 0
+
+[State -3, fall Sound]
+type = PlaySnd
+trigger1 = Time = 1
+trigger1 = stateno = 5110
+value = S5110, 0
+
+[State -3, bounce Sound]
+type = PlaySnd
+trigger1 = Time = 1
+trigger1 = stateno = 5100
+value = S5100, 0
+
+[State -3, Dizzy Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = anim = 5300
+value = S5300, 0
+
+[State -3, Jumping Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 40
+value = S40, 0
+volume= 50
+
+;This controller plays a sound everytime the player lands from a jump, or
+;from a back-dash.
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Jump land
+trigger2 = stateno = 106 ;Run-back land
+value = 52, 0

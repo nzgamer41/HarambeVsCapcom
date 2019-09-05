@@ -1,0 +1,14 @@
+Ending by rugal2
+
+Evil Ken ending version 0.3 released on 14 November 2004
+I just want to thank:
+
+-mugen institute for hosting my ending;
+-Reu Tenshin and KingTigre for the evil ken and bison cape sprites;
+-Adamskie for the Ryu sprites;
+-Trial Force for the CVS Bison stage sprites.
+
+If You use this ending in any way, please give me the credit for the work.
+Thanks!
+
+Keep Mugen alive!!

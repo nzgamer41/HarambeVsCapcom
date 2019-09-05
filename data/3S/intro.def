@@ -1,0 +1,20 @@
+;----------------------------------------------------------
+[Info]
+localcoord = 640,480   ;This storyboard is made for a 640x480 size screen
+
+[SceneDef]
+spr = intro.sff       ;Filename of sprite file to use
+
+[Scene 0]
+; Layers
+layerall.pos = 319,239 ;Default position for all layers
+layer0.anim =  0       ;Anim action number to show
+; Music
+bgm = standup.mp3
+; Total time
+end.time = 1200        ;300 ticks = 5 seconds
+
+;Animation to use
+[Begin Action 0]
+0,0, 0,0, -1
+;----------------------------------------------------------

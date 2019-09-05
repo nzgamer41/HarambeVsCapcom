@@ -1,0 +1,41 @@
+;--------------------------------------------------------------------
+[Statedef -3]
+
+;--------------------------•‰‚¯ƒOƒ‰ŒÄ‚Ño‚µ--------------------------
+[State 191, 6]
+type = Helper
+trigger1 = var(16) >= 5
+trigger1 = !NumHelper(4250)
+trigger1 = Enemy,NumHelper(4100) + Enemy,NumHelper(4200)
+StateNo = 4000
+ID = 4250
+
+;---------------------------------------------------------------------
+[State -2]
+type = Width
+trigger1 = StateNo = [800, 809]
+trigger2 = StateNo = [1000, 1199]
+trigger3 = StateNo = [1200, 1399]
+trigger4 = StateNo = [20240, 20249]
+trigger5 = StateNo = [20800, 20819]
+trigger6 = StateNo = [21000, 21199]
+trigger7 = StateNo = [21200, 21399]
+trigger8 = StateNo = [21400, 21599]
+edge = Ceil(50 * Const(Size.XScale)), 0
+
+[State -2]
+type = VarSet
+trigger1 = RoundState = 0
+var(5) = 0
+
+[State -2]
+type = VarSet
+trigger1 = RoundState = 0
+var(28) = 0
+
+[State -2]
+type = VarSet
+trigger1 = RoundState = 0
+trigger2 = fvar(23) = 0
+fvar(24) = 0
+

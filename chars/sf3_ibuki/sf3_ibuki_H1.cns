@@ -1,0 +1,1351 @@
+;☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+; ここからは超必殺技のステート
+;☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+;霞朱雀（発動）
+[Statedef 3000]
+type    = A
+movetype = A
+physics = N
+anim = 3000+var(10)
+juggle = 0
+ctrl = 0
+velset = 0,0
+poweradd = -880-(!var(2))*400
+facep2 = 1
+sprpriority = 1
+
+[State -2, Varset]
+type = Varset
+triggerall = time = 0
+trigger1 = prevstateno = [1000,1030]
+trigger1 = var(16)
+fvar(27) = 0.90
+
+[State -2, Varset]
+type = Varset
+triggerall = time = 0
+triggerall = var(38)
+trigger1 = prevstateno = [1200,1230]
+trigger2 = prevstateno = [1400,1440]
+fvar(27) = 0.85
+
+[State -2, Varset]
+type = Varset
+trigger1 = time = 0
+var(16) = 0
+
+[State -2, Varset]
+type = Varset
+trigger1 = time = 0
+var(45) = 0
+
+[State -2, Varset]
+type = Varset
+trigger1 = time = 0
+var(38) = 0
+
+[State -2, Varset]
+type = Varset
+trigger1 = time = 0
+fvar(14) = 0
+
+[State -2, Varset]
+type = Varset
+trigger1 = time = 0
+var(47) = 0
+
+[State -1, varset]
+type = varset
+trigger1 = var(50) = 1
+trigger1 = time = 0
+var(10) = ifelse(P2BodyDist X<ceil(40*const(size.xscale)),0,ifelse(P2BodyDist X<ceil(80*const(size.xscale)),1,2))
+
+[State -1, varset]
+type = varset
+trigger1 = var(50) = 1
+trigger1 = var(12)
+trigger1 = time = 0
+var(10) = 2
+
+[State -2, varset]
+type = varset
+trigger1 = 1
+var(25) = ifelse(time<=56,1,0)
+
+[state 3700]
+type = NotHitby
+trigger1 = time = 0
+value = SCA
+time = 55
+
+[state 3700]
+type = SuperPause
+trigger1 = time = 0
+time = 55
+movetime = 55
+sound = s2000,1
+p2defmul = 1
+anim = -1
+
+[State 3000]
+type = explod
+trigger1 = time = 0
+anim = 7200
+pos = 0,ceil(-72*const(size.yscale))
+postype = p1
+facing = facing*facing
+bindtime = -1
+supermove = 1
+sprpriority = 5
+ownpal = 1
+removeongethit = 1
+scale = const(size.xscale),const(size.yscale)
+
+[State 3000]
+type = explod
+trigger1 = time = 32
+anim = 7300
+pos = 160,floor(screenpos y)-ceil(72*const(size.yscale))
+postype = left
+bindtime = -1
+supermove = 1
+sprpriority = 5
+ownpal = 1
+removeongethit = 1
+scale = const(size.xscale),const(size.yscale)
+
+[State 3000]
+type = explod
+trigger1 = time = 43
+anim = 7400
+pos = 0, -ceil(pos Y)
+postype = p1
+facing = facing*facing
+bindtime = 1
+supermove = 1
+sprpriority = 5
+ownpal = 1
+removeongethit = 1
+scale = const(size.xscale),const(size.yscale)
+
+[State 4000, PalFX]
+type = PalFX
+trigger1 = time = 30
+time = 4
+color = 20
+add = 10,10,100
+sinadd = -20,-20,-110,10
+
+[State 4000, PalFX]
+type = PalFX
+trigger1 = time = 36
+time = 2
+color = 20
+add = 10,10,100
+sinadd = -20,-20,-110,10
+
+[State -2, AfterImage]
+type = AfterImage
+trigger1 = Time = 0
+time = 999999999
+trans = none
+length = 5
+timegap  = 3
+framegap = 1
+palcolor = 0
+palinvertall = 0
+palbright = 50,50,255
+palcontrast = 255,255,255
+palpostbright = 50,50,255
+PalAdd = -40,-40,0
+PalMul = 1,1,1
+
+[State 1100, 音を鳴らす]
+type = playsnd
+trigger1 = animelemtime(1) = 50
+value = 0,9
+channel = 0
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = animelemtime(1) > 50
+trigger1 = command = "x"
+var(45) = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = animelemtime(1) > 50
+trigger1 = command = "y"
+var(45) = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = animelemtime(1) > 50
+trigger1 = command = "z"
+var(45) = 1
+
+[State 1000, 音を鳴らす]
+type = PlaySnd
+trigger1 = animelemtime(2) = 0
+trigger2 = animelemtime(14) = 0
+value = 1000, 0
+
+[State 1000,Super]
+type = Helper
+trigger1 = AnimElemTime(2) = 0
+id = 6200
+name = "kunai"
+pos = ceil(42*const(size.xscale)),ceil(-48*const(size.yscale))
+postype = P1
+stateno = 6200
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[State 1000,Super]
+type = Helper
+trigger1 = AnimElemTime(3) = 1
+id = 6200
+name = "kunai"
+pos = ceil(12*const(size.xscale)),ceil(-48*const(size.yscale))
+postype = P1
+stateno = 6200
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[State 1000,Super]
+type = Helper
+trigger1 = AnimElemTime(14) = 0
+id = 6201
+name = "kunai"
+pos = ceil(42*const(size.xscale)),ceil(-48*const(size.yscale))
+postype = P1
+stateno = 6200
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[State 1000,Super]
+type = Helper
+trigger1 = AnimElemTime(15) = 1
+id = 6201
+name = "kunai"
+pos = ceil(12*const(size.xscale)),ceil(-48*const(size.yscale))
+postype = P1
+stateno = 6200
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = time = 0
+var(35) = 0
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = time = 0
+var(27) = 0
+
+[State 1120, ChangeState]
+type = ChangeState
+triggerall = animtime = 0
+trigger1 = var(50) = 0
+trigger1 = var(45) >= 4
+trigger2 = var(50) = 1
+value = 3010
+
+[State 1120, ChangeState]
+type = ChangeState
+trigger1 = animtime = 0
+value = 3030
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;霞朱雀（発動）
+[Statedef 3010]
+type    = A
+movetype = A
+physics = N
+anim = 3010
+juggle = 0
+ctrl = 0
+sprpriority = 1
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = command = "x"
+var(45) = 1
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = command = "y"
+var(45) = 1
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = command = "z"
+var(45) = 1
+
+[State 1000, 音を鳴らす]
+type = PlaySnd
+trigger1 = animelemtime(1) = 0
+value = 1000, 0
+
+[State 1000,Super]
+type = Helper
+trigger1 = AnimElemTime(1) = 0
+id = 6202
+name = "kunai"
+pos = ceil(42*const(size.xscale)),ceil(-48*const(size.yscale))
+postype = P1
+stateno = 6200
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[State 1000,Super]
+type = Helper
+trigger1 = AnimElemTime(2) = 1
+id = 6202
+name = "kunai"
+pos = ceil(12*const(size.xscale)),ceil(-48*const(size.yscale))
+postype = P1
+stateno = 6200
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[State -2, velset]
+type = velset
+trigger1 = animelemtime(2) = 1
+y = (-2.0-var(10)*1.0)*const(size.yscale)
+
+[State -2, velset]
+type = velset
+trigger1 = animelemtime(6) = 0
+y = 0
+
+[State 1120, ChangeState]
+type = ChangeState
+triggerall = animtime = 0
+trigger1 = var(50) = 0
+trigger1 = var(45) >= 7
+trigger2 = var(50) = 1
+value = 3020
+
+[State 1120, ChangeState]
+type = ChangeState
+trigger1 = animtime = 0
+value = 3030
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;霞朱雀（発動）
+[Statedef 3020]
+type    = A
+movetype = A
+physics = N
+anim = 3010
+juggle = 0
+ctrl = 0
+sprpriority = 1
+
+[State 1000, 音を鳴らす]
+type = PlaySnd
+trigger1 = animelemtime(1) = 0
+value = 1000, 0
+
+[State 1000,Super]
+type = Helper
+trigger1 = AnimElemTime(1) = 0
+id = 6202
+name = "kunai"
+pos = ceil(42*const(size.xscale)),ceil(-48*const(size.yscale))
+postype = P1
+stateno = 6200
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[State 1000,Super]
+type = Helper
+trigger1 = AnimElemTime(2) = 1
+id = 6202
+name = "kunai"
+pos = ceil(12*const(size.xscale)),ceil(-48*const(size.yscale))
+postype = P1
+stateno = 6200
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[State -2, velset]
+type = velset
+trigger1 = animelemtime(2) = 1
+y = (-2.0-var(10)*1.0)*const(size.yscale)
+
+[State -2, velset]
+type = velset
+trigger1 = animelemtime(6) = 0
+y = 0
+
+[State 1120, ChangeState]
+type = ChangeState
+trigger1 = animtime = 0
+value = 3030
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;霞朱雀（発動）
+[Statedef 3030]
+type    = A
+movetype = A
+physics = N
+anim = 3030
+juggle = 0
+ctrl = 0
+sprpriority = 1
+
+[State 1000, 音を鳴らす]
+type = PlaySnd
+trigger1 = animelemtime(1) = 0
+value = 1000, 0
+
+[State 1000,Super]
+type = Helper
+trigger1 = AnimElemTime(1) = 0
+id = 6202
+name = "kunai"
+pos = ceil(42*const(size.xscale)),ceil(-48*const(size.yscale))
+postype = P1
+stateno = 6200
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[State 1000,Super]
+type = Helper
+trigger1 = AnimElemTime(2) = 1
+id = 6202
+name = "kunai"
+pos = ceil(12*const(size.xscale)),ceil(-48*const(size.yscale))
+postype = P1
+stateno = 6200
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[State -2, velset]
+type = velset
+trigger1 = animelemtime(2) = 1
+y = (-2.0-var(10)*1.0)*const(size.yscale)
+
+[State -2, velset]
+type = velset
+trigger1 = animelemtime(6) = 0
+y = 0
+
+[State 1110, Gravity]
+type = Veladd
+trigger1 = AnimElemTime(16) >= 0
+y = .50*const(size.yscale)
+
+[State 920]
+type = StateTypeSet
+trigger1 = AnimElemTime(3) >= 0
+movetype = I 
+
+[State 1120, ChangeState]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 3050
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;霞朱雀（着地）
+[Statedef 3050]
+type    = S
+movetype = I
+physics = N
+anim = 3050
+ctrl = 0
+velset = 0,0
+
+[State -3, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 0
+value = 52, 0
+
+[State 52, 1]
+type = VelSet
+trigger1 = Time = 0
+x = 0
+y = 0
+
+[State 52, 2]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State -2, AfterImage]
+type = AfterImage
+trigger1 = AnimElemTime(3) = 0
+time = 0
+
+[State 200, Ctrlset]
+type = Ctrlset
+trigger1 = AnimElemTime(5) >= 1
+value = 1
+
+[State 52, 4]
+type = ChangeState
+trigger1 = P2dist X < 0
+trigger1 = AnimElemTime(5) >= 1
+value = 0
+ctrl = 1
+
+[State -2, ステート変更]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1 
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;霞朱雀苦無（飛び道具）１段目
+[Statedef 6200]
+type = A
+movetype = A
+physics = N
+ctrl = 0
+anim = 6200
+velset = 0,0
+sprpriority = 2
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = time = 0
+var(10) = parent,var(10)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+var(5) = parent,var(5)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+var(24) = parent,var(24)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(0) = parent,fvar(0)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(3) = parent,fvar(4)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = time = 0
+fvar(4) = parent,const(size.xscale)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = time = 0
+fvar(5) = parent,const(size.yscale)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(26) = parent,fvar(26)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(27) = parent,fvar(27)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(28) = parent,fvar(28)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(29) = parent,fvar(29)
+
+[State 6000, Velocity]
+type = VelSet
+trigger1 = Ishelper(6200)
+trigger1 = time = 0
+x = (5.0+(var(10)=1)*3.0+(var(10)=2)*8.0)*fvar(4)
+y = (7.0+(var(10)=1)*3.0+(var(10)=2)*4.0)*fvar(5)
+
+[State 6000, Velocity]
+type = VelSet
+trigger1 = Ishelper(6201)
+trigger1 = time = 0
+x = (6.0+(var(10)=1)*3.0+(var(10)=2)*8.0)*fvar(4)
+y = (9.0+(var(10)=2)*1.0)*fvar(5)
+
+[State 6000, Velocity]
+type = VelSet
+trigger1 = Ishelper(6202)
+trigger1 = time = 0
+x = (7.0+(var(10)=1)*3.0+(var(10)=2)*8.0)*fvar(4)
+y = (8.0+(var(10)=1)*1.0+(var(10)=2)*2.0)*fvar(5)
+
+[state -2, HitOverRide]
+type = HitOverRide
+trigger1 = 1
+attr = SCA,AA,AP,AT
+stateno = 6230
+
+[state -2, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AA,AP
+
+[state -2, helper]
+type = helper
+trigger1 = time = 0
+pos = 0,0
+postype = p1
+stateno = 6205
+ID = 6205
+helpertype = normal
+keyctrl = 0
+name = "飛び道具破壊ヘルパー"
+size.xscale = fvar(4)
+size.yscale = fvar(5)
+
+[State 6000, Proj]
+type = Hitdef
+triggerall = !var(24) && (!var(5)||(var(5)&&fvar(3)))
+trigger1 = 1
+attr = A, HP
+damage = ceil(35*fvar(0)*fvar(26)*fvar(27)*fvar(28)*fvar(29)),ceil(8*fvar(26)*fvar(29))
+getpower = 0,0
+givepower = 0,0
+animtype = hard
+air.animtype = back
+hitflag = MAF
+guardflag = M
+pausetime = 0,3
+guard.pausetime = 0,3
+sparkno = -1
+guard.sparkno = S8410
+sparkxy = -5, 0
+hitsound = -1;S2,6
+guardsound = S3,1
+ground.type = High
+ground.slidetime = 13
+ground.hittime = 17
+guard.hittime = 15
+guard.slidetime = 13
+guard.ctrltime = 15
+air.hittime = 17
+ground.velocity = -6.5*fvar(4)
+guard.velocity = -6.5*fvar(4)
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.type = Low
+air.velocity = -5.0*fvar(4),5.0*fvar(5)
+fall = 0
+fall.recover = 0
+fall.envshake.time = 12
+fall.envshake.freq = 80
+fall.envshake.ampl = -4
+fall.xvelocity = -3.0*fvar(4)
+down.bounce = 1
+air.fall = 1
+yaccel = .60*fvar(5)
+;envshake.time = 5
+;envshake.freq = 60
+;envshake.ampl = 2
+;envshake.phase = 
+P2facing = 1
+ID = 6200
+sprpriority = 2
+numhits = 0
+
+[State -2, Attack_Up]
+type = ParentVarSet
+trigger1 = moveguarded
+fvar(29) = 1.0
+
+[State -2, Attack_Up]
+type = ParentVarAdd
+trigger1 = movehit
+fvar(29) = -0.0625
+
+[State -2, playsnd]
+type = playsnd
+triggerall = movehit
+trigger1 = numtarget(6200)
+trigger1 = target(6200),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+value = S6010,0
+
+[State -2, Envshake]
+type = Envshake
+triggerall = movehit
+trigger1 = numtarget(6200)
+trigger1 = target(6200),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+time = 5
+freq = 60
+ampl = -2
+
+[State -2, hitadd]
+type = hitadd
+trigger1 = movehit
+value = 1
+
+[State -2, ParentVarSet]
+type = ParentVarSet
+triggerall = movecontact
+trigger1 = NumTarget(6200)
+var(14) = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = NumTarget(6200)
+var(14) = 1
+
+[State -2, ParentVarSet]
+type = ParentVarSet
+triggerall = var(14)
+trigger1 = Parent,NumTarget = 0
+trigger1 = !NumTarget
+var(14) = 0
+
+[State -2, CornerPush]
+type = null;ParentVarSet
+triggerall = movehit
+trigger1 = numtarget
+trigger1 = target,statetype = A
+var(5) = 1
+ignorehitpause = 1
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = movecontact
+trigger1 = numtarget(6200)
+var(15) = 3
+
+[State 6000, VarSet]
+type = ParentVarSet
+trigger1 = movecontact
+trigger1 = numtarget(6200)
+var(15) = 1
+
+[State -2, ParentVarSet]
+type = ParentVarSet
+triggerall = movehit
+trigger1 = numtarget(6200)
+trigger1 = target(6200),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+fvar(4) = 10
+
+[State -2, parentVarAdd]
+type = parentVarAdd
+triggerall = movehit
+trigger1 = numtarget(6200)
+trigger1 = target(6200),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+fvar(10) = 0.7
+
+[State 200, Juggle Check]
+type = parentVarAdd
+triggerall = movehit
+trigger1 = numtarget(6200)
+trigger1 = target(6200),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+var(41) = 4
+
+[State 6100, ヒットスパーク]
+type = Explod
+triggerall = movehit
+trigger1 = numtarget(6200)
+trigger1 = target(6200),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+anim = 8000
+pos = ceil(10*fvar(4)),ceil(10*fvar(5))
+postype = p1
+sprpriority = 10
+bindtime = 1
+ignorehitpause = 1
+ownpal = 1
+scale = root,const(size.xscale), root,const(size.yscale)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = parent,var(0) = 1
+trigger1 = !var(47)
+trigger1 = movehit
+trigger1 = numenemy
+trigger1 = enemy,stateno = [4000,4205]
+var(47) = 16
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+var(59) = 0
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = movecontact
+var(59) = 1
+
+[State 1010, changestate]
+type = changestate
+trigger1 = movecontact
+value = 6210
+
+[State 1010, changestate]
+type = changestate
+trigger1 = pos Y >= 0
+value = 6250
+
+[State -2, MoveHitReset]
+type = MoveHitReset
+trigger1 = MoveContact
+
+[State 1010, changestate]
+type = changestate
+trigger1 = !numhelper(6205)
+trigger2 = numhelper(6205)
+trigger2 = helper(6205),stateno = 6006
+value = 6230
+
+[State 6000, DestroySelf]
+type = DestroySelf
+triggerall = time > 0
+trigger1 = FrontEdgeDist <= -60*fvar(4)
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;霞朱雀苦無（飛び道具）２段目
+[Statedef 6210]
+type = A
+movetype = A
+physics = N
+ctrl = 0
+sprpriority = 2
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = var(15) > 0
+var(15) = -1
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = var(47) > 0
+var(47) = -1
+
+[State -2, posfreeze]
+type = posfreeze
+trigger1 = time < 1
+trigger2 = var(47)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+var(24) = parent,var(24)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+var(5) = parent,var(5)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(0) = parent,fvar(0)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(3) = parent,fvar(4)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(26) = parent,fvar(26)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(27) = parent,fvar(27)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(28) = parent,fvar(28)
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(29) = parent,fvar(29)
+
+[state -2, HitOverRide]
+type = HitOverRide
+trigger1 = 1
+attr = SCA,AP,AT
+stateno = 6230
+
+[state -2, HitBy]
+type = HitBy
+trigger1 = 1
+value = SCA,AP
+
+[State 6000, Proj]
+type = Hitdef
+triggerall = !var(24) && (!var(5)||(var(5)&&fvar(3)))
+trigger1 = !var(15)
+trigger1 = !var(47)
+attr = A, HP
+damage = ceil(35*fvar(0)*fvar(26)*fvar(27)*fvar(28)*fvar(29)),ceil(8*fvar(26)*fvar(29))
+getpower = 0,0
+givepower = 0,0
+animtype = hard
+air.animtype = back
+hitflag = MAF
+guardflag = M
+pausetime = 0,3
+guard.pausetime = 0,3
+sparkno = -1
+guard.sparkno = S8410
+sparkxy = -5, 0
+hitsound = -1;S2,6
+guardsound = S3,1
+ground.type = High
+ground.slidetime = 13
+ground.hittime = 17
+guard.hittime = 15
+guard.slidetime = 13
+guard.ctrltime = 15
+air.hittime = 17
+ground.velocity = -6.5*fvar(4)
+guard.velocity = -6.5*fvar(4)
+ground.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+air.type = Low
+air.velocity = -5.0*fvar(4),5.0*fvar(5)
+fall = 0
+fall.recover = 0
+fall.envshake.time = 12
+fall.envshake.freq = 80
+fall.envshake.ampl = -4
+fall.xvelocity = -3.0*fvar(4)
+down.bounce = 1
+air.fall = 1
+yaccel = .60*fvar(5)
+;envshake.time = 5
+;envshake.freq = 60
+;envshake.ampl = 2
+;envshake.phase = 
+P2facing = 1
+ID = 6210
+sprpriority = 2
+numhits = 0
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = 1
+var(59) = 0
+
+[State 6000, VarSet]
+type = VarSet
+trigger1 = movecontact
+var(59) = 1
+
+[State -2, Attack_Up]
+type = ParentVarSet
+trigger1 = moveguarded
+fvar(29) = 1.0
+
+[State -2, Attack_Up]
+type = ParentVarAdd
+trigger1 = movehit
+fvar(29) = -0.0625
+
+[State 1010, changestate]
+type = changestate
+trigger1 = movecontact
+value = 6220+(moveguarded)*10
+
+[State 1010, changestate]
+type = changestate
+trigger1 = pos Y >= 0
+value = 6250
+
+[State -2, MoveHitReset]
+type = MoveHitReset
+trigger1 = MoveContact
+
+[State 1010, changestate]
+type = changestate
+trigger1 = !numhelper(6205)
+trigger2 = numhelper(6205)
+trigger2 = helper(6205),stateno = 6006
+value = 6230
+
+[State -2, varset]
+type = parentvarset
+triggerall = numtarget
+triggerall = target,gethitvar(hittime) = 0
+trigger1 = (target,stateno = 5001) || (target,stateno =5011)
+trigger2 = (target,stateno = 5610) || (target,stateno =5630)
+trigger3 = (target,stateno = 151) || (target,stateno =153) || (target,stateno =155)
+trigger4 = (target,stateno = 6151) || (target,stateno = 6153) || (target,stateno = 6155)
+fvar(21) = 6
+
+[State 6000, DestroySelf]
+type = DestroySelf
+triggerall = time > 0
+trigger1 = FrontEdgeDist <= -60*fvar(4)
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;霞朱雀苦無（飛び道具）（消滅）
+[Statedef 6220]
+type    = A
+movetype = I
+physics = N
+ctrl = 0
+velset = 0,0
+movehitpersist = 1
+
+[State 1010, changestate]
+type = changestate
+triggerall = parent,var(0) = 1
+triggerall = movehit
+triggerall = numenemy
+trigger1 = enemy,stateno = [4000,4205]
+value = 6230
+
+[State -2, playsnd]
+type = playsnd
+triggerall = movehit
+trigger1 = numtarget(6210)
+trigger1 = target(6210),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+value = S6010,0
+
+[State -2, Envshake]
+type = Envshake
+triggerall = movehit
+trigger1 = numtarget(6210)
+trigger1 = target(6210),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+time = 5
+freq = 60
+ampl = -2
+
+[State -2, hitadd]
+type = hitadd
+trigger1 = movehit
+value = 1
+
+[State -2, ParentVarSet]
+type = ParentVarSet
+triggerall = movecontact
+trigger1 = NumTarget(6210)
+var(14) = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = NumTarget(6210)
+var(14) = 1
+
+[State -2, ParentVarSet]
+type = ParentVarSet
+triggerall = var(14)
+trigger1 = Parent,NumTarget = 0
+trigger1 = !NumTarget
+var(14) = 0
+
+[State -2, CornerPush]
+type = null;ParentVarSet
+triggerall = movehit
+trigger1 = numtarget
+trigger1 = target,statetype = A
+var(5) = 1
+ignorehitpause = 1
+
+[State -2, ParentVarSet]
+type = ParentVarSet
+triggerall = movehit
+trigger1 = numtarget(6210)
+trigger1 = target(6210),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+fvar(4) = 10
+
+[State -2, parentVarAdd]
+type = parentVarAdd
+triggerall = movehit
+trigger1 = numtarget(6210)
+trigger1 = target(6210),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+fvar(10) = 0.7
+
+[State 200, Juggle Check]
+type = parentVarAdd
+triggerall = movehit
+trigger1 = numtarget(6210)
+trigger1 = target(6210),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+var(41) = 4
+
+[State 6100, ヒットスパーク]
+type = Explod
+triggerall = movehit
+trigger1 = numtarget(6210)
+trigger1 = target(6210),stateno = [5000,5099]
+trigger2 = !numtarget
+trigger2 = numenemy
+trigger2 = enemy,movetype = H
+trigger2 = enemy,stateno = [5000,5099]
+anim = 8000
+pos = ceil(10*fvar(4)),ceil(10*fvar(5))
+postype = p1
+sprpriority = 10
+bindtime = 1
+ignorehitpause = 1
+ownpal = 1
+scale = root,const(size.xscale), root,const(size.yscale)
+
+[State -2, MoveHitReset]
+type = MoveHitReset
+trigger1 = MoveContact
+
+[State -2, ParentVarSet]
+type = ParentVarSet
+trigger1 = Parent,NumTarget = 0
+trigger1 = !NumTarget
+var(14) = 0
+
+[State -1, changeanim]
+type = changeanim
+trigger1 = time < 8
+value = 6001
+
+[State -1, changeanim]
+type = changeanim
+trigger1 = time >= 8
+value = 9999
+persistent = 0
+
+[State -2, varset]
+type = parentvarset
+triggerall = numtarget
+triggerall = target,gethitvar(hittime) = 0
+trigger1 = (target,stateno = 5001) || (target,stateno =5011)
+trigger2 = (target,stateno = 5610) || (target,stateno =5630)
+trigger3 = (target,stateno = 151) || (target,stateno =153) || (target,stateno =155)
+trigger4 = (target,stateno = 6151) || (target,stateno = 6153) || (target,stateno = 6155)
+fvar(21) = 6
+
+[State 6010, DestroySelf]
+type = DestroySelf
+triggerall = time >= 8
+trigger1 = !NumTarget
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;苦無（飛び道具）（消滅）
+[Statedef 6230]
+type    = A
+movetype = I
+physics = N
+ctrl = 0
+velset = -2.0*fvar(4),-2.4*fvar(5)
+anim = 6020
+
+[State -2, playsnd]
+type = playsnd
+trigger1 = time = 0
+value = S3,1
+
+[State -2, playsnd]
+type = playsnd
+trigger1 = time = 0
+value = S3,2
+
+[State 6000, Velocity]
+type = VelAdd
+trigger1 = 1
+y = .20*fvar(5)
+
+[State -2, varset]
+type = parentvarset
+triggerall = numtarget
+triggerall = target,gethitvar(hittime) = 0
+trigger1 = (target,stateno = 5001) || (target,stateno =5011)
+trigger2 = (target,stateno = 5610) || (target,stateno =5630)
+trigger3 = (target,stateno = 151) || (target,stateno =153) || (target,stateno =155)
+trigger4 = (target,stateno = 6151) || (target,stateno = 6153) || (target,stateno = 6155)
+fvar(21) = 6
+
+[State 6010, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;霞朱雀苦無（飛び道具）（消滅）
+[Statedef 6250]
+type    = S
+movetype = I
+physics = N
+ctrl = 0
+velset = 0,0
+anim = 6050
+
+[State -2, playsnd]
+type = playsnd
+trigger1 = time = 0
+value = S6050,0
+
+[State -2, varset]
+type = parentvarset
+triggerall = numtarget
+triggerall = target,gethitvar(hittime) = 0
+trigger1 = (target,stateno = 5001) || (target,stateno =5011)
+trigger2 = (target,stateno = 5610) || (target,stateno =5630)
+trigger3 = (target,stateno = 151) || (target,stateno =153) || (target,stateno =155)
+trigger4 = (target,stateno = 6151) || (target,stateno = 6153) || (target,stateno = 6155)
+fvar(21) = 6
+
+[State 6010, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;飛び道具破壊ヘルパー
+[Statedef 6205]
+type = A
+movetype = A
+ctrl = 0
+anim = 6205
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = time = 0
+fvar(4) = parent,fvar(4)
+
+[State -2, BindToParent]
+type = BindToParent
+trigger1 = 1
+time = 1
+pos = 0,0
+
+[State -2, HitDef]
+type = HitDef
+trigger1 = 1
+attr = A, HP
+hitflag = P
+priority = 7,Hit
+getpower = 0
+givepower = 0
+pausetime = 0,0
+sparkno = -1
+numhits = 0
+guard.dist = 0
+p1stateno = 6206
+
+[state -2, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State -2, DestroySelf]
+type = DestroySelf
+trigger1 = parent,stateno != [6200,6210]
+trigger2 = parent,stateno = 6220
+trigger3 = FrontEdgeDist <= -60*fvar(4)
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;飛び道具破壊ヘルパー(消滅)
+[Statedef 6206]
+type = A
+movetype = I
+ctrl = 0
+anim = 9999
+
+[State -2, DestroySelf]
+type = DestroySelf
+trigger1 = time = 0

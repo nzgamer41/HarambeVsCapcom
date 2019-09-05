@@ -1,0 +1,3274 @@
+[Statedef -2]
+[State -2]
+type = VarSet
+trigger1 = RoundState = 0
+var(8) = 0
+[State -2]
+type = varAdd
+trigger1 = var(8) > 0
+var(8) = -1
+[State -2]
+type = VarSet
+triggerall = MoveType != H
+triggerall = var(22) != 0
+trigger1 = !(StateNo = 5000 && time = 0)
+trigger1 = !(StateNo = 5010 && time = 0)
+trigger1 = !(StateNo = 5020 && time = 0)
+trigger1 = !(StateNo = 5070 && time = 0)
+trigger1 = !(StateNo = 5080 && time = 0)
+var(22) = 0
+[State -2]
+type = VarSet
+triggerall = MoveType = H
+triggerall = var(22) != 1
+trigger1 = !(StateNo = 5000 && time = 0)
+trigger1 = !(StateNo = 5010 && time = 0)
+trigger1 = !(StateNo = 5020 && time = 0)
+trigger1 = !(StateNo = 5070 && time = 0)
+trigger1 = !(StateNo = 5080 && time = 0)
+var(22) = 1
+[State -2, Blocking-1]
+type = VarSet
+trigger1 = var(33) >= 20
+var(34) = 0
+ignorehitpause = 1
+[State -2, Blocking-2]
+type = VarSet
+trigger1 = var(33) >= 20
+var(33) = 0
+ignorehitpause = 1
+[State -2, Blocking-4]
+type = VarAdd
+trigger1 = var(33) != 0
+trigger1 = var(33) < 20
+var(33) = 1
+ignorehitpause = 1
+[State -2, Blocking-3]
+type = VarSet
+triggerall = var(33) = 0
+triggerall = command = "Fwd"
+trigger1 = ctrl
+trigger2 = StateNo = [120, 169]
+trigger3 = StateNo = [3000, 3099]
+trigger4 = StateNo = 5030
+trigger5 = StateNo = 5040
+trigger6 = StateNo = 5120
+var(33) = 1
+ignorehitpause = 1
+[State -2, Blocking-5]
+type = VarSet
+triggerall = var(33) = [1, 6]
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = command != "holdfwd"
+trigger1 = command != "holdback"
+var(34) = 1
+ignorehitpause = 1
+[State -2, Blocking-1]
+type = VarSet
+trigger1 = var(35) >= 20
+var(36) = 0
+ignorehitpause = 1
+[State -2, Blocking-2]
+type = VarSet
+trigger1 = var(35) >= 20
+var(35) = 0
+ignorehitpause = 1
+[State -2, Blocking-3]
+type = VarAdd
+trigger1 = var(35) != 0
+trigger1 = var(35) < 20
+var(35) = 1
+ignorehitpause = 1
+[State -2, Blocking-4]
+type = VarSet
+triggerall = var(35) = 0
+triggerall = command = "Down"
+trigger1 = ctrl
+trigger2 = StateNo = [120, 169]
+trigger3 = StateNo = [3000, 3099]
+trigger4 = StateNo = 5030
+trigger5 = StateNo = 5040
+trigger6 = StateNo = 5120
+var(35) = 1
+ignorehitpause = 1
+[State -2, Blocking-5]
+type = VarSet
+triggerall = var(35) = [1, 6]
+trigger1 = command != "holdup"
+trigger1 = command != "holddown"
+trigger1 = command != "holdfwd"
+trigger1 = command != "holdback"
+var(36) = 1
+ignorehitpause = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3019]) || (StateNo = [5120, 5122])
+triggerall = var(16) < 5
+trigger1 = var(33) = [1, 6]
+trigger2 = var(33) = [7, 10]
+trigger2 = var(34) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 0
+stateno = 3000
+attr = S, AA
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = NumEnemy > 0
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3019]) || (StateNo = [5120, 5122])
+triggerall = var(16) >= 5
+triggerall = Enemy,var(4) = [0, 1]
+trigger1 = var(33) = [1, 6]
+trigger2 = var(33) = [7, 10]
+trigger2 = var(34) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 0
+StateNo = 3000
+attr = SC, AA
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3019]) || (StateNo = [5120, 5122])
+triggerall = var(16) < 5
+trigger1 = var(35) = [1, 6]
+trigger2 = var(35) = [7, 10]
+trigger2 = var(36) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 1
+stateno = 3010
+attr = C, AA
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = NumEnemy > 0
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3019]) || (StateNo = [5120, 5122])
+triggerall = var(16) >= 5
+triggerall = Enemy,var(4) = [1, 2]
+trigger1 = var(35) = [1, 6]
+trigger2 = var(35) = [7, 10]
+trigger2 = var(36) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 1
+StateNo = 3010
+attr = SC, AA
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3019]) || (StateNo = [5120, 5122])
+trigger1 = var(33) = [1, 6]
+trigger2 = var(33) = [7, 10]
+trigger2 = var(34) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 2
+stateno = 3000
+attr = SA, AP
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3019]) || (StateNo = [5120, 5122])
+trigger1 = var(35) = [1, 6]
+trigger2 = var(35) = [7, 10]
+trigger2 = var(36) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 3
+stateno = 3010
+attr = C, AP
+time = 1
+[State -2, Blocking-3]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype != A && ctrl) || (StateNo = [3000, 3019]) || (StateNo = [5120, 5122])
+trigger1 = var(33) = [1, 5]
+trigger2 = var(15) = 0 && var(17) = 4
+slot = 4
+stateno = 3000
+attr = A, AA
+time = 1
+[State -2, Blocking-6]
+type = HitOverride
+triggerall = var(59) = 0
+triggerall = (statetype = A && ctrl) || (StateNo = [3020, 3029]) || (StateNo = 5030 && MoveType = I) || (StateNo = 5040 && MoveType = I)
+trigger1 = var(33) = [1, 6]
+trigger2 = var(33) = 7
+trigger2 = var(34) = 1
+trigger3 = var(15) = 0 && var(17) = 4
+slot = 5
+stateno = 3020
+attr = SCA, AA, AP
+time = 1
+[State -2]
+type = VarSet
+trigger1 = RoundState = 0
+trigger1 = RoundsExisted = 0
+var(59) = 0
+[State -2]
+type = VarSet
+trigger1 = GameTime%60 = 0
+fvar(38) = 100 * fvar(34) + 1000 * fvar(35) + 1 * fvar(36) + 10 * fvar(37)
+[State 5000, 5]
+type = VarAdd
+triggerall = Time = 0
+trigger1 = StateNo = 3000
+trigger2 = StateNo = 3010
+trigger3 = StateNo = 3020
+fvar(34) = 1
+[State 5000, 5]
+type = VarAdd
+triggerall = Time = 0
+trigger1 = StateNo = 3005
+trigger2 = StateNo = 3015
+fvar(35) = 1
+[State 5000, 5]
+type = VarAdd
+triggerall = Time = 0
+trigger1 = StateNo = 3030
+trigger2 = StateNo = 3040
+trigger3 = StateNo = 3050
+fvar(36) = 1
+[State 5000, 5]
+type = VarAdd
+triggerall = Time = 0
+trigger1 = StateNo = 3060
+trigger2 = StateNo = 3070
+trigger3 = StateNo = 3080
+fvar(37) = 1
+[State -2]
+type = VarAdd
+trigger1 = RoundState = 2
+trigger1 = GameTime%60 = 0
+fvar(39) = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random + 2000 < 10 * var(49)
+trigger1 = !ctrl && StateType != A
+trigger1 = MoveType = H
+trigger1 = StateNo != [150, 153]
+slot = 0
+stateno = 3060
+attr = SA, AA, AP
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random + 2000 < 10 * var(49)
+trigger1 = !ctrl && StateType != A
+trigger1 = MoveType = H
+trigger1 = StateNo != [150, 153]
+slot = 1
+stateno = 3070
+attr = C, AA, AP
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random + 2000 < 10 * var(49)
+trigger1 = !ctrl && StateType = A
+trigger1 = MoveType = H
+slot = 2
+stateno = 3080
+attr = SCA, AA, AP
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random + 1000 < 10 * var(49)
+trigger1 = !ctrl && StateType != A
+trigger1 = MoveType != H
+trigger1 = StateNo != [13,15]
+trigger1 = StateNo != [25,26]
+trigger1 = StateNo != [3000, 3003]
+trigger1 = StateNo != [3010, 3013]
+trigger1 = StateNo != [3030, 3033]
+trigger1 = StateNo != [3040, 3043]
+trigger1 = StateNo != [3060, 3063]
+trigger1 = StateNo != [3070, 3073]
+slot = 0
+stateno = 3030
+attr = SA, AA, AP
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random + 1000 < 10 * var(49)
+trigger1 = !ctrl && StateType != A
+trigger1 = MoveType != H
+trigger1 = StateNo != [13,15]
+trigger1 = StateNo != [25,26]
+trigger1 = StateNo != [3000, 3003]
+trigger1 = StateNo != [3010, 3013]
+trigger1 = StateNo != [3030, 3033]
+trigger1 = StateNo != [3040, 3043]
+trigger1 = StateNo != [3060, 3063]
+trigger1 = StateNo != [3070, 3073]
+slot = 1
+stateno = 3040
+attr = C, AA, AP
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random + 1000 < 10 * var(49)
+trigger1 = !ctrl && StateType = A
+trigger1 = MoveType != H
+trigger1 = StateNo != 50
+trigger1 = StateNo != 70
+trigger1 = StateNo != [3020, 3023]
+trigger1 = StateNo != [3050, 3053]
+trigger1 = StateNo != [3080, 3083]
+slot = 2
+stateno = 3050
+attr = SCA, AA, AP
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random < 10 * var(49)
+trigger1 = ctrl && StateType != A
+trigger2 = StateNo = [13,15]
+trigger3 = StateNo = [25,26]
+trigger4 = StateNo = [3000, 3003]
+trigger5 = StateNo = [3010, 3013]
+trigger6 = StateNo = [3030, 3033]
+trigger7 = StateNo = [3040, 3043]
+trigger8 = StateNo = [3060, 3063]
+trigger9 = StateNo = [3070, 3073]
+slot = 0
+stateno = 3000
+attr = SA, AA, AP
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random < 10 * var(49)
+trigger1 = ctrl && StateType != A
+trigger2 = StateNo = [13,15]
+trigger3 = StateNo = [25,26]
+trigger4 = StateNo = [3000, 3003]
+trigger5 = StateNo = [3010, 3013]
+trigger6 = StateNo = [3030, 3033]
+trigger7 = StateNo = [3040, 3043]
+trigger8 = StateNo = [3060, 3063]
+trigger9 = StateNo = [3070, 3073]
+slot = 1
+stateno = 3010
+attr = C, AA, AP
+time = 1
+[State -2, Blocking]
+type = HitOverride
+triggerall = var(59) = 1
+triggerall = Random < 10 * var(49)
+trigger1 = ctrl && StateType = A
+trigger2 = StateNo = 50
+trigger3 = StateNo = 70
+trigger4 = StateNo = [3020, 3023]
+trigger5 = StateNo = [3050, 3053]
+trigger6 = StateNo = [3080, 3083]
+slot = 2
+stateno = 3020
+attr = SCA, AA, AP
+time = 1
+[State 190, 2]
+type = AssertSpecial
+trigger1 = 1
+flag = noairguard
+[State 8986]
+type = VarSet
+triggerall = var(1) > 0
+trigger1 = P2StateNo = [150, 153]
+trigger2 = P2StateNo = [160, 163]
+trigger3 = P2StateNo = [5000, 5001]
+trigger4 = P2StateNo = [5010, 5011]
+trigger5 = P2StateNo = 5040
+var(1) = 0
+[State 8986]
+type = VarAdd
+trigger1 = P2StateNo != [150, 153]
+trigger1 = P2StateNo != [160, 163]
+trigger1 = P2StateNo != [5000, 5001]
+trigger1 = P2StateNo != [5010, 5011]
+trigger1 = P2StateNo != 5040
+var(1) = 1
+[State -2]
+type = VarSet
+trigger1 = fvar(11) < 0
+trigger2 = RoundState = 0
+trigger3 = var(16) = -1
+fvar(11) = 0
+[State -2]
+type = VarAdd
+trigger1 = fvar(11) > 0
+trigger1 = fvar(11) < 48 + 8 * (var(16)%4)
+fvar(11) = - (0.05 + 0.0004 * fvar(11))
+ignorehitpause = 1
+[State -2]
+type = VarSet
+trigger1 = fvar(11) > 48 + 8 * (var(16)%4)
+fvar(11) = 48 + 8 * (var(16)%4)
+ignorehitpause = 1
+[State -2, スタン値付与];Targetを使うと相打ち時に不具合が生じるのでEnemyを使っています
+type = VarAdd
+triggerall = var(16) > 0
+triggerall = MoveHit
+trigger1 = Enemy,StateNo = 5000
+trigger2 = Enemy,StateNo = 5010
+trigger3 = Enemy,StateNo = 5020
+trigger4 = Enemy,StateNo = 5070
+trigger5 = Enemy,StateNo = 5080
+fvar(12) = ifelse(48 + 8 * (var(16)%4) - fvar(12) > var(42) * (1 + 0 * 0.25), var(42) * (1 + 0 * 0.25), 48 + 8 * (var(16)%4) - fvar(12))
+persistent = 0
+ignorehitpause = 1
+[State -2]
+type = VarSet
+trigger1 = fvar(12) < 0
+trigger2 = RoundState = 0
+fvar(12) = 0
+[State -2]
+type = VarAdd
+trigger1 = fvar(12) > 0
+trigger1 = fvar(12) < 48 + 8 * (var(16)%4)
+fvar(12) = - (0.05 + 0.0004 * fvar(12))
+ignorehitpause = 1
+[State -2]
+type = VarSet
+trigger1 = fvar(12) > 48 + 8 * (var(16)%4)
+fvar(12) = 48 + 8 * (var(16)%4)
+ignorehitpause = 1
+[State -2];2P常時気絶
+type = Null;VarSet
+trigger1 = teamside = 2
+trigger1 = var(16) >= 4
+trigger1 = fvar(11) < 48 + 8 * (var(16)%4)
+fvar(11) = 48 + 8 * (var(16)%4)
+[State -2]
+type = Null;VarSet
+trigger1 = teamside = 1
+trigger1 = var(16) < 4
+trigger1 = fvar(12) < 48 + 8 * (var(16)%4)
+fvar(12) = 48 + 8 * (var(16)%4)
+[State -2, 自分(1P)のスタン値(緑)];(自作キャラ対決時でない)
+type = Explod
+triggerall = var(16) > 0
+triggerall = var(16) < 4
+triggerall = !NumExplod(3250 + var(16))
+triggerall = TeamSide = 1
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(11) > 0
+bindtime = -1
+anim = 3250
+ID = 3250 + var(16)
+facing = -1
+sprpriority = 2
+pos = 92 - 8 * (var(16)%4), 52
+postype = left
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, 相手(1P)のスタン値(緑)]
+type = Explod
+triggerall = var(16) > 0
+triggerall = var(16) < 4 || Abs(var(16) - Enemy,var(16)) < 500
+triggerall = !NumExplod(3250 + var(16))
+triggerall = !NumExplod(3271)
+triggerall = TeamSide = 2
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(12) > 0
+bindtime = -1
+anim = 3250
+ID = ifelse(var(16) < 4, 3250 + var(16), 3271)
+facing = -1
+sprpriority = 2
+pos = 92 - 8 * (var(16)%4), 52
+postype = left
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Green Bar (P1)]
+type = ModifyExplod
+trigger1 = NumExplod(3250 + var(16))
+ID = 3250 + var(16)
+scale = 48 + 8 * (var(16)%4) - ifelse(TeamSide = 1, fvar(11), fvar(12)), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Green Bar (P1)]
+type = ModifyExplod
+trigger1 = NumExplod(3271)
+ID = 3271
+scale = 48 + 8 * (var(16)%4) - fvar(12), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Green Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3251)
+trigger1 = var(16) != 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3251
+[State -2, Green Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3252)
+trigger1 = var(16) != 2
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3252
+[State -2, Green Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3253)
+trigger1 = var(16) != 3
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3253
+[State -2, Green Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3271)
+trigger1 = Abs(var(16) - Enemy,var(16)) >= 500
+trigger2 = RoundState = 2
+trigger2 = fvar(12) <= 0
+trigger3 = RoundState > 2
+ID = 3271
+[State -2, 自分(2P)のスタン値(緑)];(自作キャラ対決時でない)
+type = Explod
+triggerall = var(16) > 0
+triggerall = var(16) < 4
+triggerall = !NumExplod(3260 + var(16))
+triggerall = TeamSide = 2
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(11) > 0
+bindtime = -1
+anim = 3250
+ID = 3260 + var(16)
+facing = -1
+sprpriority = 1
+pos = -142, 52
+postype = right
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, 相手(2P)のスタン値(緑)]
+type = Explod
+triggerall = var(16) > 0
+triggerall = var(16) < 4 || Abs(var(16) - Enemy,var(16)) < 500
+triggerall = !NumExplod(3260 + var(16))
+triggerall = !NumExplod(3281)
+triggerall = TeamSide = 1
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(12) > 0
+bindtime = -1
+anim = 3250
+ID = ifelse(var(16) < 4, 3260 + var(16), 3281)
+facing = -1
+sprpriority = 1
+pos = -142, 52
+postype = right
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Green Bar (P2)]
+type = ModifyExplod
+trigger1 = NumExplod(3260 + var(16))
+ID = 3260 + var(16)
+scale = 48 + 8 * (var(16)%4), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Green Bar (P2)]
+type = ModifyExplod
+trigger1 = NumExplod(3281)
+ID = 3281
+scale = 48 + 8 * (var(16)%4), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Green Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3261)
+trigger1 = var(16) != 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3261
+[State -2, Green Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3262)
+trigger1 = var(16) != 2
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3262
+[State -2, Green Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3263)
+trigger1 = var(16) != 3
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3263
+[State -2, Green Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3281)
+trigger1 = Abs(var(16) - Enemy,var(16)) >= 500
+trigger2 = RoundState = 2
+trigger2 = fvar(12) <= 0
+trigger3 = RoundState > 2
+ID = 3281
+[State -2, 自分(1P)のスタン値(赤)];(自作キャラ対決時でない)
+type = Explod
+triggerall = var(16) > 0
+triggerall = var(16) < 4
+triggerall = !NumExplod(3200 + var(16))
+triggerall = TeamSide = 1
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(11) > 0
+bindtime = -1
+anim = 3200
+ID = 3200 + var(16)
+facing = -1
+sprpriority = 1
+pos = 92 - 8 * (var(16)%4), 52
+postype = left
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, 相手(1P)のスタン値(赤)]
+type = Explod
+triggerall = var(16) > 0
+triggerall = var(16) < 4 || Abs(var(16) - Enemy,var(16)) < 500
+triggerall = !NumExplod(3200 + var(16))
+triggerall = !NumExplod(3221)
+triggerall = TeamSide = 2
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(12) > 0
+bindtime = -1
+anim = 3200
+ID = ifelse(var(16) < 4, 3200 + var(16), 3221)
+facing = -1
+sprpriority = 1
+pos = 92 - 8 * (var(16)%4), 52
+postype = left
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Red Bar (P1)]
+type = ModifyExplod
+trigger1 = NumExplod(3200 + var(16))
+ID = 3200 + var(16)
+scale = 48 + 8 * (var(16)%4), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Red Bar (P1)]
+type = ModifyExplod
+trigger1 = NumExplod(3221)
+ID = 3221
+scale = 48 + 8 * (var(16)%4), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Red Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3201)
+trigger1 = var(16) != 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3201
+[State -2, Red Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3202)
+trigger1 = var(16) != 2
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3202
+[State -2, Red Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3203)
+trigger1 = var(16) != 3
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 1, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3203
+[State -2, Red Bar (P1)]
+type = RemoveExplod
+triggerall = NumExplod(3221)
+trigger1 = Abs(var(16) - Enemy,var(16)) >= 500
+trigger2 = RoundState = 2
+trigger2 = fvar(12) <= 0
+trigger3 = RoundState > 2
+ID = 3221
+[State -2, 自分(2P)のスタン値(赤)];(自作キャラ対決時でない)
+type = Explod
+triggerall = var(16) > 0
+triggerall = var(16) < 4
+triggerall = !NumExplod(3210 + var(16))
+triggerall = TeamSide = 2
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(11) > 0
+bindtime = -1
+anim = 3200
+ID = 3210 + var(16)
+facing = -1
+sprpriority = 2
+pos = -142, 52
+postype = right
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, 相手(2P)のスタン値(赤)];(自作キャラ対決時)
+type = Explod
+triggerall = var(16) > 0
+triggerall = var(16) < 4 || Abs(var(16) - Enemy,var(16)) < 500
+triggerall = !NumExplod(3210 + var(16))
+triggerall = !NumExplod(3231)
+triggerall = TeamSide = 1
+trigger1 = RoundState = 1
+trigger2 = RoundState = 2
+trigger2 = fvar(12) > 0
+bindtime = -1
+anim = 3200
+ID = ifelse(var(16) < 4, 3210 + var(16), 3231)
+facing = -1
+sprpriority = 2
+pos = -142, 52
+postype = right
+ownpal = 1
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Red Bar (P2)]
+type = ModifyExplod
+trigger1 = NumExplod(3210 + var(16))
+ID = 3210 + var(16)
+scale = ifelse(TeamSide = 2, fvar(11), fvar(12)), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Red Bar (P2)]
+type = ModifyExplod
+trigger1 = NumExplod(3231)
+ID = 3231
+scale = fvar(12), 5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+ignorehitpause = 1
+[State -2, Red Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3211)
+trigger1 = var(16) != 1
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3211
+[State -2, Red Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3212)
+trigger1 = var(16) != 2
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3212
+[State -2, Red Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3213)
+trigger1 = var(16) != 3
+trigger2 = RoundState = 2
+trigger2 = ifelse(TeamSide = 2, fvar(11), fvar(12)) <= 0
+trigger3 = RoundState > 2
+ID = 3213
+[State -2, Red Bar (P2)]
+type = RemoveExplod
+triggerall = NumExplod(3231)
+trigger1 = Abs(var(16) - Enemy,var(16)) >= 500
+trigger2 = RoundState = 2
+trigger2 = fvar(12) <= 0
+trigger3 = RoundState > 2
+ID = 3231
+[State -2]
+type = VarSet
+trigger1 = var(16) < 4
+trigger1 = fvar(12) >= 48 + 8 * (var(16)%4)
+trigger1 = P2StateNo = 6300
+trigger1 = var(20) = 0
+var(20) = 300 - 45 * (Random%5)
+[State -2]
+type = VarSet
+trigger1 = var(16) < 4
+trigger1 = fvar(12) >= 48 + 8 * (var(16)%4)
+trigger1 = P2StateNo = 6300
+fvar(12) = 0
+[State -2]
+type = VarSet
+trigger1 = var(16) >= 4
+trigger1 = fvar(12) >= 48 + 8 * (var(16)%4)
+trigger1 = P2StateNo = 5300
+fvar(12) = 0
+[State -2]
+type = VarAdd
+triggerall = P2StateNo = 6300
+triggerall = var(20) > 0
+trigger1 = enemy,command = "x"
+trigger2 = enemy,command = "y"
+trigger3 = enemy,command = "z"
+trigger4 = enemy,command = "a"
+trigger5 = enemy,command = "b"
+trigger6 = enemy,command = "c"
+trigger7 = enemy,command = "Up"
+trigger8 = enemy,command = "Down"
+trigger9 = enemy,command = "Fwd"
+trigger10 = enemy,command = "Back"
+var(20) = -1
+[State -2]
+type = VarAdd
+trigger1 = P2StateNo = 6300
+trigger1 = var(20) > 0
+var(20) = -1
+[State -2]
+type = VarSet
+trigger1 = P2StateNo != 6300
+trigger1 = var(20) > 0
+var(20) = 0
+[State -2]
+type = Helper
+trigger1 = !NumHelper(3200)
+StateNo = 3200
+ID = 3200
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+[State -2];ステージ端検知
+type = Helper
+trigger1 = !NumHelper(3210)
+StateNo = 3210
+ID = 3210
+[State -2];ステージ端検知
+type = Helper
+trigger1 = !NumHelper(3220)
+StateNo = 3220
+ID = 3220
+[State -2]
+type = VarSet
+triggerall = RoundState = 2
+triggerall = !NumTarget
+trigger1 = var(29) != 0
+var(29) = 0
+[State -2]
+type = VarSet
+triggerall = RoundState = 2
+triggerall = NumTarget = 1
+triggerall = var(29) != 0
+trigger1 = Target,StateNo = 5120
+trigger2 = Target,Anim = 5300
+var(29) = 0
+[State 8986]
+type = VarSet
+triggerall = RoundState = 2
+triggerall = EnemyNear,ctrl = 0
+trigger1 = StateNo != 902
+trigger1 = 1
+trigger1 = StateNo != 922
+trigger1 = StateNo != 932
+var(2) = 0
+[State 8986]
+type = VarSet
+triggerall = RoundState = 2
+triggerall = EnemyNear,ctrl = 1
+trigger1 = StateNo != 902
+trigger1 = 1
+trigger1 = StateNo != 922
+trigger1 = StateNo != 932
+var(2) = 1
+[State 1903]
+type = TargetVelAdd
+triggerall = NumTarget(900) + NumTarget(920) + NumTarget(930)
+trigger1 = Target,StateNo = 946
+trigger1 = Target,time > 0
+Y = .3 * Const(Size.YScale)
+[State -2]
+type = VarSet
+trigger1 = Ctrl
+var(23) = 0
+[State -2, RemoveAfterImage]
+type = AfterImagetime
+trigger1 = StateNo != [1150, 1199]
+trigger1 = StateNo != [1350, 1399]
+trigger1 = StateNo != [1550, 1599]
+trigger1 = StateNo != [1750, 1799]
+trigger1 = 1
+trigger1 = StateNo != [2000, 2599]
+trigger1 = StateNo != [11150, 11199]
+trigger1 = StateNo != [11320, 11379]
+trigger1 = 1
+trigger1 = 1
+trigger1 = 1
+trigger1 = StateNo != [12000, 12799]
+time = 0
+[State -2]
+type = VarSet
+trigger1 = fvar(21) = 1
+trigger1 = MoveContact
+trigger1 = StateNo != [980, 999]
+fvar(21) = 2
+[State -2]
+type = VarSet
+trigger1 = RoundState = 1
+trigger2 = fvar(21) = 2
+trigger2 = !NumTarget
+fvar(21) = 0
+[State 152]
+type = AttackMulSet
+trigger1 = var(15) = 0
+value = 0.87 * ifelse(32 - var(29) < 7, 7, 32 - var(29))/32 * ifelse(fvar(21) = 0, 1, 1.25)
+[State 152]
+type = AttackMulSet
+trigger1 = var(15) = 1
+value = 0.87 * ifelse(32 - var(29) < 7, 7, 32 - var(29))/32 * ifelse(fvar(21) = 0, 1, 1.25)
+[State 152]
+type = DefenceMulSet
+trigger1 = !(StateNo = 5000 && time = 0)
+trigger1 = !(StateNo = 5010 && time = 0)
+trigger1 = !(StateNo = 5020 && time = 0)
+trigger1 = !(StateNo = 5070 && time = 0)
+trigger1 = !(StateNo = 5080 && time = 0)
+value = 1.15
+[State 152]
+type = VarSet
+trigger1 = GetHitVar(Damage) != 0
+var(6) = GetHitVar(Damage)
+ignorehitpause = 1
+[State 5000, 5]
+type = VarSet
+trigger1 = GetHitVar(Damage) != 0
+trigger1 = Life + GetHitVar(Damage) > var(27)
+var(9) = Life + GetHitVar(Damage) - var(27)
+ignorehitpause = 1
+[State 5000, 5]
+type = VarSet
+trigger1 = GetHitVar(Damage) != 0
+trigger1 = Life + GetHitVar(Damage) <= var(27)
+var(9) = 0
+ignorehitpause = 1
+[State 152]
+type = Null;LifeAdd
+trigger1 = GetHitVar(Damage) != 0
+value = GetHitVar(Damage)
+ignorehitpause = 1
+[State 225, 6]
+type = VarSet
+trigger1 = NumTarget
+fvar(15) = Target,Vel X
+[State 225, 6]
+type = VelAdd
+triggerall = NumTarget
+triggerall = var(32)/10 = 3
+trigger1 = StateNo != 2001
+trigger1 = StateNo != 2201
+trigger1 = StateNo != 2405
+trigger1 = StateNo != 2551
+trigger1 = StateNo != 12001
+trigger1 = StateNo != 12201
+trigger1 = StateNo != 12401
+X = 1.5 * fvar(15)
+[State 225, 6]
+type = VarSet
+triggerall = NumTarget
+triggerall = var(32)/10 = 3
+trigger1 = StateNo != 2001
+trigger1 = StateNo != 2201
+trigger1 = StateNo != 2405
+trigger1 = StateNo != 2551
+trigger1 = StateNo != 12001
+trigger1 = StateNo != 12201
+trigger1 = StateNo != 12401
+var(32) = 0
+[State 225, 6]
+type = VarAdd
+triggerall = NumTarget
+trigger1 = var(32)/10 = 2
+var(32) = 10
+[State 225, 6]
+type = VarAdd
+triggerall = NumTarget
+trigger1 = Target,BackEdgeBodyDist <= 0
+trigger1 = Target,GetHitVar(HitShakeTime) <= 0
+trigger1 = var(32)/10 = 1
+var(32) = 10
+[State 225, 6]
+type = VarAdd
+trigger1 = var(19) < 60
+var(19) = 1
+[State 0, 2]
+type = VarSet
+triggerall = var(3) > 0
+trigger1 = !NumTarget
+trigger2 = RoundState != 2
+var(3) = 0
+[State 0, 2]
+type = VarSet
+triggerall = var(3) > 0
+triggerall = NumTarget = 1
+triggerall = RoundState = 2
+trigger1 = Target,StateNo = 5078
+trigger2 = Target,StateNo = 5109
+trigger3 = Target,StateNo = 5110
+trigger4 = Target,Anim = 5300
+var(3) = 0
+[State 0, 2]
+type = VarAdd
+triggerall = NumTarget = 1
+triggerall = var(11) > 0
+trigger1 = target,GetHitVar(HitShakeTime) = 0
+trigger1 = StateNo != 2001
+trigger1 = StateNo != 2201
+trigger1 = StateNo != 2405
+trigger1 = StateNo != 12001
+trigger1 = StateNo != 12201
+trigger1 = StateNo != 12401
+var(11) = -1
+[State 0, 2]
+type = VarSet
+trigger1 = var(3) < 100
+trigger1 = var(11) = -1
+var(11) = ifelse(190 - var(3) * 5 < 10, 10, 190 - var(3) * 5)
+[State 0, 2]
+type = VarSet
+trigger1 = var(3) >= 100
+trigger1 = var(11) = -1
+var(11) = 3
+[State 0, 2]
+type = VarSet
+triggerall = NumTarget = 1
+trigger1 = target,GetHitVar(HitShakeTime) > 0
+trigger1 = var(11) >= 0
+var(11) = -1
+ignorehitpause = 1
+[State -2]
+type = PowerSet
+triggerall = var(15) = 0
+triggerall = var(17) = 1
+triggerall = TeamMode = Single
+trigger1 = power > 2080
+value = 2080
+[State -2]
+type = PowerSet
+triggerall = var(15) = 0
+triggerall = var(17) = 2
+triggerall = TeamMode = Single
+trigger1 = power > 1600
+value = 1600
+[State -2]
+type = PowerSet
+triggerall = var(15) = 0
+triggerall = var(17) = 3
+triggerall = TeamMode = Single
+trigger1 = power > 1760
+value = 1760
+[State -2]
+type = PowerSet
+triggerall = var(15) = 1
+triggerall = var(17) = 1
+triggerall = TeamMode = Single
+trigger1 = power > 1280
+value = 1280
+[State -2]
+type = PowerSet
+triggerall = var(15) = 1
+triggerall = var(17) = 2
+triggerall = TeamMode = Single
+trigger1 = power > 2240
+value = 2240
+[State -2]
+type = PowerSet
+triggerall = var(15) = 1
+triggerall = var(17) = 3
+triggerall = TeamMode = Single
+trigger1 = power > 1760
+value = 1760
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = !MatchOver
+triggerall = teamside = 1
+triggerall = !NumExplod(3303 + (var(17) - 1) * 4)
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 1040
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 800
+trigger3 = var(15) = 0 && var(17) = 3 && Power >= 880
+trigger4 = var(15) = 1 && var(17) = 1 && Power >= 1280
+trigger5 = var(15) = 1 && var(17) = 2 && Power >= 1120
+trigger6 = var(15) = 1 && var(17) = 3 && Power >= 880
+anim = 3303 + (var(17) - 1) * 4
+ID = 3303 + (var(17) - 1) * 4
+bindtime = -1
+scale = .5, .5
+pos = 0, Ceil(fvar(30))
+postype = left
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = !MatchOver
+triggerall = teamside = 2
+triggerall = !NumExplod(3303 + (var(17) - 1) * 4)
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 1040
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 800
+trigger3 = var(15) = 0 && var(17) = 3 && Power >= 880
+trigger4 = var(15) = 1 && var(17) = 1 && Power >= 1280
+trigger5 = var(15) = 1 && var(17) = 2 && Power >= 1120
+trigger6 = var(15) = 1 && var(17) = 3 && Power >= 880
+anim = 3303 + (var(17) - 1) * 4
+ID = 3303 + (var(17) - 1) * 4
+bindtime = -1
+scale = .5, .5
+pos = -9 - 5 * (var(17) = 2) - 6 * (var(17) = 3), Ceil(fvar(30))
+postype = right
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = !MatchOver
+triggerall = teamside = 1
+triggerall = GameTime%20 = 0
+triggerall = Power >= 400
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 1040
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 800
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 880
+trigger4 = var(15) = 1 && var(17) = 1 && Power < 1280
+trigger5 = var(15) = 1 && var(17) = 2 && Power < 1120
+trigger6 = var(15) = 1 && var(17) = 3 && Power < 880
+anim = 3301 + (var(17) - 1) * 4
+ID = 3301 + (var(17) - 1) * 4
+bindtime = -1
+scale = .5, .5
+pos = 0, Ceil(fvar(30))
+postype = left
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = !MatchOver
+triggerall = teamside = 2
+triggerall = GameTime%20 = 0
+triggerall = Power >= 400
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 1040
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 800
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 880
+trigger4 = var(15) = 1 && var(17) = 1 && Power < 1280
+trigger5 = var(15) = 1 && var(17) = 2 && Power < 1120
+trigger6 = var(15) = 1 && var(17) = 3 && Power < 880
+anim = 3301 + (var(17) - 1) * 4
+ID = 3301 + (var(17) - 1) * 4
+bindtime = -1
+scale = .5, .5
+pos = -9 - 5 * (var(17) = 2) - 6 * (var(17) = 3), Ceil(fvar(30))
+postype = right
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = !MatchOver
+triggerall = teamside = 1
+triggerall = GameTime%20 = 10
+triggerall = Power >= 400
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 1040
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 800
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 880
+trigger4 = var(15) = 1 && var(17) = 1 && Power < 1280
+trigger5 = var(15) = 1 && var(17) = 2 && Power < 1120
+trigger6 = var(15) = 1 && var(17) = 3 && Power < 880
+anim = 3302 + (var(17) - 1) * 4
+ID = 3302 + (var(17) - 1) * 4
+bindtime = -1
+scale = .5, .5
+pos = 0, Ceil(fvar(30))
+postype = left
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = !MatchOver
+triggerall = teamside = 2
+triggerall = GameTime%20 = 10
+triggerall = Power >= 400
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 1040
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 800
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 880
+trigger4 = var(15) = 1 && var(17) = 1 && Power < 1280
+trigger5 = var(15) = 1 && var(17) = 2 && Power < 1120
+trigger6 = var(15) = 1 && var(17) = 3 && Power < 880
+anim = 3302 + (var(17) - 1) * 4
+ID = 3302 + (var(17) - 1) * 4
+bindtime = -1
+scale = .5, .5
+pos = -9 - 5 * (var(17) = 2) - 6 * (var(17) = 3), Ceil(fvar(30))
+postype = right
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = !MatchOver
+triggerall = teamside = 1
+triggerall = !NumExplod(3300 + (var(17) - 1) * 4)
+trigger1 = var(15) = 1 || var(17) <= 3
+trigger1 = Power < 400
+trigger2 = var(15) = 0 && var(17) > 3
+anim = 3300 + (var(17) - 1) * 4
+ID = 3300 + (var(17) - 1) * 4
+bindtime = -1
+scale = .5, .5
+pos = 0, Ceil(fvar(30))
+postype = left
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = Explod
+triggerall = var(0) < 0
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = !MatchOver
+triggerall = teamside = 2
+triggerall = !NumExplod(3300 + (var(17) - 1) * 4)
+trigger1 = var(15) = 1 || var(17) <= 3
+trigger1 = Power < 400
+trigger2 = var(15) = 0 && var(17) > 3
+anim = 3300 + (var(17) - 1) * 4
+ID = 3300 + (var(17) - 1) * 4
+bindtime = -1
+scale = .5, .5
+pos = -9 - 5 * (var(17) = 2) - 6 * (var(17) = 3), Ceil(fvar(30))
+postype = right
+ontop = 1
+ignorehitpause = 1
+ownpal = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3300)
+trigger1 = var(17) != 1
+trigger2 = Power >= 400
+trigger3 = MatchOver
+ID = 3300
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3303)
+trigger1 = var(17) != 1
+trigger2 = Power < ifelse(var(15) = 0, 1040, 1280)
+trigger3 = MatchOver
+ID = 3303
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3304)
+trigger1 = var(17) != 2
+trigger2 = Power >= 400
+trigger3 = MatchOver
+ID = 3304
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3307)
+trigger1 = var(17) != 2
+trigger2 = Power < ifelse(var(15) = 0, 800, 1120)
+trigger3 = MatchOver
+ID = 3307
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3308)
+trigger1 = var(17) != 3
+trigger2 = Power >= 400
+trigger3 = MatchOver
+ID = 3308
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3311)
+trigger1 = var(17) != 3
+trigger2 = Power < ifelse(var(15) = 0, 880, 880)
+trigger3 = MatchOver
+ID = 3311
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3312)
+trigger1 = !(var(15) = 0 && var(17) = 4)
+trigger2 = MatchOver
+ID = 3312
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3316)
+trigger1 = !(var(15) = 0 && var(17) = 5)
+trigger2 = MatchOver
+ID = 3316
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+[State -2];ストック数(0/1)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3601)
+trigger1 = var(15) = 1 && var(17) = 1 && Power < 1280
+anim = 3601
+ID = 3601
+bindtime = -1
+pos = 48, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(0/1)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3601)
+trigger1 = var(15) = 1 && var(17) = 1 && Power < 1280
+anim = 3611
+ID = 3601
+bindtime = -1
+pos = -49, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(0/1)消去
+type = RemoveExplod
+triggerall = NumExplod(3601)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1 && Power >= 1280
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3601
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(1/1)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3602)
+trigger1 = var(15) = 1 && var(17) = 1 && Power >= 1280
+anim = 3602
+ID = 3602
+bindtime = -1
+pos = 48, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(1/1)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3602)
+trigger1 = var(15) = 1 && var(17) = 1 && Power >= 1280
+anim = 3612
+ID = 3602
+bindtime = -1
+pos = -49, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(1/1)消去
+type = RemoveExplod
+triggerall = NumExplod(3602)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1 && Power < 1280
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3602
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(0/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3603)
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 1040
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 800
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 880
+trigger4 = var(15) = 1 && var(17) = 2 && Power < 1120
+trigger5 = var(15) = 1 && var(17) = 3 && Power < 880
+anim = 3603
+ID = 3603
+bindtime = -1
+pos = 48, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(0/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3603)
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 1040
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 800
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 880
+trigger4 = var(15) = 1 && var(17) = 2 && Power < 1120
+trigger5 = var(15) = 1 && var(17) = 3 && Power < 880
+anim = 3613
+ID = 3603
+bindtime = -1
+pos = -49, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(0/2)消去
+type = RemoveExplod
+triggerall = NumExplod(3603)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1 && Power >= 1040
+trigger3 = var(15) = 0 && var(17) = 2 && Power >= 800
+trigger4 = var(15) = 0 && var(17) = 3 && Power >= 880
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2 && Power >= 1120
+trigger7 = var(15) = 1 && var(17) = 3 && Power >= 880
+ID = 3603
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(1/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3604)
+trigger1 = var(15) = 0 && var(17) = 1 && (Power = [1040, 2079])
+trigger2 = var(15) = 0 && var(17) = 2 && (Power = [800, 1599])
+trigger3 = var(15) = 0 && var(17) = 3 && (Power = [880, 1759])
+trigger4 = var(15) = 1 && var(17) = 2 && (Power = [1120, 2239])
+trigger5 = var(15) = 1 && var(17) = 3 && (Power = [880, 1759])
+anim = 3604
+ID = 3604
+bindtime = -1
+pos = 48, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(1/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3604)
+trigger1 = var(15) = 0 && var(17) = 1 && (Power = [1040, 2079])
+trigger2 = var(15) = 0 && var(17) = 2 && (Power = [800, 1599])
+trigger3 = var(15) = 0 && var(17) = 3 && (Power = [880, 1759])
+trigger4 = var(15) = 1 && var(17) = 2 && (Power = [1120, 2239])
+trigger5 = var(15) = 1 && var(17) = 3 && (Power = [880, 1759])
+anim = 3614
+ID = 3604
+bindtime = -1
+pos = -49, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(1/2)消去
+type = RemoveExplod
+triggerall = NumExplod(3604)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1 && (Power != [1040, 2079])
+trigger3 = var(15) = 0 && var(17) = 2 && (Power != [800, 1599])
+trigger4 = var(15) = 0 && var(17) = 3 && (Power != [880, 1759])
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2 && (Power != [1120, 2239])
+trigger7 = var(15) = 1 && var(17) = 3 && (Power != [880, 1759])
+ID = 3604
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(2/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3605)
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 2080
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 1600
+trigger3 = var(15) = 0 && var(17) = 3 && Power >= 1760
+trigger4 = var(15) = 1 && var(17) = 2 && Power >= 2240
+trigger5 = var(15) = 1 && var(17) = 3 && Power >= 1760
+anim = 3605
+ID = 3605
+bindtime = -1
+pos = 48, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(2/2)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3605)
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 2080
+trigger2 = var(15) = 0 && var(17) = 2 && Power >= 1600
+trigger3 = var(15) = 0 && var(17) = 3 && Power >= 1760
+trigger4 = var(15) = 1 && var(17) = 2 && Power >= 2240
+trigger5 = var(15) = 1 && var(17) = 3 && Power >= 1760
+anim = 3615
+ID = 3605
+bindtime = -1
+pos = -49, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(2/2)消去
+type = RemoveExplod
+triggerall = NumExplod(3605)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1 && Power < 2080
+trigger3 = var(15) = 0 && var(17) = 2 && Power < 1600
+trigger4 = var(15) = 0 && var(17) = 3 && Power < 1760
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2 && Power < 2240
+trigger7 = var(15) = 1 && var(17) = 3 && Power < 1760
+ID = 3605
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(0/3)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3606)
+trigger1 = 0
+anim = 3606
+ID = 3606
+bindtime = -1
+pos = 48, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(0/3)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3606)
+trigger1 = 0
+anim = 3616
+ID = 3606
+bindtime = -1
+pos = -49, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(0/3)消去
+type = RemoveExplod
+triggerall = NumExplod(3606)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3606
+[State -2];ストック数(1/3)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3607)
+trigger1 = 0
+anim = 3607
+ID = 3607
+bindtime = -1
+pos = 48, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(1/3)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3607)
+trigger1 = 0
+anim = 3617
+ID = 3607
+bindtime = -1
+pos = -49, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(1/3)消去
+type = RemoveExplod
+triggerall = NumExplod(3607)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3607
+[State -2];ストック数(2/3)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3608)
+trigger1 = 0
+anim = 3608
+ID = 3608
+bindtime = -1
+pos = 48, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(2/3)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3608)
+trigger1 = 0
+anim = 3618
+ID = 3608
+bindtime = -1
+pos = -49, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(2/3)消去
+type = RemoveExplod
+triggerall = NumExplod(3608)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3608
+[State -2];ストック数(3/3)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3609)
+trigger1 = 0
+anim = 3609
+ID = 3609
+bindtime = -1
+pos = 48, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(3/3)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3609)
+trigger1 = 0
+anim = 3619
+ID = 3609
+bindtime = -1
+pos = -49, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];ストック数(3/3)消去
+type = RemoveExplod
+triggerall = NumExplod(3609)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3609
+[State -2];SA番号表示(1P)
+type = Explod
+triggerall = var(0) > 0
+triggerall = var(15) = 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+trigger1 = !NumExplod(3630 + (var(17) - 1))
+anim = 3630 + (var(17) - 1)
+ID = 3630 + (var(17) - 1)
+bindtime = -1
+pos = 48 - (104 * (var(17) = 1) + 80 * (var(17) = 2) + 88 * (var(17) = 3))/4, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];SA番号表示(2P)
+type = Explod
+triggerall = var(0) > 0
+triggerall = var(15) = 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+trigger1 = !NumExplod(3630 + (var(17) - 1))
+anim = 3630 + (var(17) - 1)
+ID = 3630 + (var(17) - 1)
+bindtime = -1
+pos = - 48 + (104 * (var(17) = 1) + 80 * (var(17) = 2) + 88 * (var(17) = 3))/4, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+facing = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];SA番号表示(EX 1P)
+type = Explod
+triggerall = var(0) > 0
+triggerall = var(15) = 1
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+trigger1 = !NumExplod(3635 + (var(17) - 1))
+anim = 3635 + (var(17) - 1)
+ID = 3635 + (var(17) - 1)
+bindtime = -1
+pos = 48 - (128 * (var(17) = 1) + 112 * (var(17) = 2) + 88 * (var(17) = 3))/4, Ceil(fvar(31))
+scale = .5, .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];SA番号表示(EX 2P)
+type = Explod
+triggerall = var(0) > 0
+triggerall = var(15) = 1
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+trigger1 = !NumExplod(3635 + (var(17) - 1))
+anim = 3635 + (var(17) - 1)
+ID = 3635 + (var(17) - 1)
+bindtime = -1
+pos = - 48 + (128 * (var(17) = 1) + 112 * (var(17) = 2) + 88 * (var(17) = 3))/4, Ceil(fvar(31))
+scale = .5, .5
+postype = right
+facing = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3630)
+trigger1 = MatchOver
+trigger2 = !(var(15) = 0 && var(17) = 1)
+ID = 3630
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3631)
+trigger1 = MatchOver
+trigger2 = !(var(15) = 0 && var(17) = 2)
+ID = 3631
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3632)
+trigger1 = MatchOver
+trigger2 = !(var(15) = 0 && var(17) = 3)
+ID = 3632
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3635)
+trigger1 = MatchOver
+trigger2 = !(var(15) = 1 && var(17) = 1)
+ID = 3635
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3636)
+trigger1 = MatchOver
+trigger2 = !(var(15) = 1 && var(17) = 2)
+ID = 3636
+[State -2];SA番号消去
+type = RemoveExplod
+triggerall = NumExplod(3637)
+trigger1 = MatchOver
+trigger2 = !(var(15) = 1 && var(17) = 3)
+ID = 3637
+[State -2];外枠(1P)
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = !NumExplod(3625)
+trigger1 = var(15) = 0 && var(17) = 1 && Power < 2080
+trigger2 = var(15) = 0 && var(17) = 2 && Power < 1600
+trigger3 = var(15) = 0 && var(17) = 3 && Power < 1760
+trigger4 = var(15) = 1 && var(17) = 1 && Power < 1280
+trigger5 = var(15) = 1 && var(17) = 2 && Power < 2240
+trigger6 = var(15) = 1 && var(17) = 3 && Power < 1760
+anim = 3625
+ID = 3625
+bindtime = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（表SA1）
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3625
+pos = 48, Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 13), .5
+postype = left
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（表SA1）
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3625
+pos = - 48 - Ceil(.375 * 16 * 13), Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 13), .5
+postype = right
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（表SA2）
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3625
+pos = 48, Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 10), .5
+postype = left
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（表SA2）
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3625
+pos = - 48 - Ceil(.375 * 16 * 10), Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 10), .5
+postype = right
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（表SA3）
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3625
+pos = 48, Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 11), .5
+postype = left
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（表SA3）
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3625
+pos = - 48 - Ceil(.375 * 16 * 11), Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 11), .5
+postype = right
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（裏SA1）
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 1 && var(17) = 1
+ID = 3625
+pos = 48, Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 16), .5
+postype = left
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（裏SA1）
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 1 && var(17) = 1
+ID = 3625
+pos = - 48 - Ceil(.375 * 16 * 16), Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 16), .5
+postype = right
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（裏SA2）
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 1 && var(17) = 2
+ID = 3625
+pos = 48, Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 14), .5
+postype = left
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（裏SA2）
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 1 && var(17) = 2
+ID = 3625
+pos = - 48 - Ceil(.375 * 16 * 14), Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 14), .5
+postype = right
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（裏SA3）
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 1 && var(17) = 3
+ID = 3625
+pos = 48, Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 11), .5
+postype = left
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];拡大（裏SA3）
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3625)
+trigger1 = var(15) = 1 && var(17) = 3
+ID = 3625
+pos = - 48 - Ceil(.375 * 16 * 11), Ceil(fvar(31))
+scale = Ceil(.375 * 16 * 11), .5
+postype = right
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3625)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1 && Power >= 2080
+trigger3 = var(15) = 0 && var(17) = 2 && Power >= 1600
+trigger4 = var(15) = 0 && var(17) = 3 && Power >= 1760
+trigger5 = var(15) = 1 && var(17) = 1 && Power >= 1280
+trigger6 = var(15) = 1 && var(17) = 2 && Power >= 2240
+trigger7 = var(15) = 1 && var(17) = 3 && Power >= 1760
+ID = 3625
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+trigger1 = !NumExplod(3620)
+trigger1 = Power < 400
+anim = 3620
+ID = 3620
+bindtime = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3620
+postype = left
+pos = 48 + Ceil((16 * 13 - Power%1040 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%1040 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3620
+postype = right
+pos = - 48 - Ceil(16 * 13 * .375), Ceil(fvar(31))
+scale = Ceil(Power%1040 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3620
+postype = left
+pos = 48 + Ceil((16 * 10 - Power%800 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%800 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3620
+postype = right
+pos = - 48 - Ceil(16 * 10 * .375), Ceil(fvar(31))
+scale = Ceil(Power%800 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3620
+postype = left
+pos = 48 + Ceil((16 * 11 - Power%880 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%880 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3620
+postype = right
+pos = - 48 - Ceil(16 * 11 * .375), Ceil(fvar(31))
+scale = Ceil(Power%880 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 1 && var(17) = 1
+ID = 3620
+postype = left
+pos = 48 + Ceil((16 * 16 - Power%1280 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%1280 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 1 && var(17) = 1
+ID = 3620
+postype = right
+pos = - 48 - Ceil(16 * 16 * .375), Ceil(fvar(31))
+scale = Ceil(Power%1280 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 1 && var(17) = 2
+ID = 3620
+postype = left
+pos = 48 + Ceil((16 * 14 - Power%1120 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%1120 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 1 && var(17) = 2
+ID = 3620
+postype = right
+pos = - 48 - Ceil(16 * 14 * .375), Ceil(fvar(31))
+scale = Ceil(Power%1120 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 1 && var(17) = 3
+ID = 3620
+postype = left
+pos = 48 + Ceil((16 * 11 - Power%880 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%880 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3620)
+trigger1 = var(15) = 1 && var(17) = 3
+ID = 3620
+postype = right
+pos = - 48 - Ceil(16 * 11 * .375), Ceil(fvar(31))
+scale = Ceil(Power%880 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分未満
+type = RemoveExplod
+triggerall = NumExplod(3620)
+trigger1 = MatchOver
+trigger2 = Power >= 400
+ID = 3620
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = Explod
+triggerall = var(0) > 0
+trigger1 = !MatchOver
+trigger1 = !NumExplod(3621)
+trigger1 = Power >= 400
+anim = 3621
+ID = 3621
+bindtime = -1
+RemoveTime = -1
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3621
+postype = left
+pos = 48 + Ceil((16 * 13 - Power%1040 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%1040 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 0 && var(17) = 1
+ID = 3621
+postype = right
+pos = - 48 - Ceil(16 * 13 * .375), Ceil(fvar(31))
+scale = Ceil(Power%1040 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3621
+postype = left
+pos = 48 + Ceil((16 * 10 - Power%800 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%800 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 0 && var(17) = 2
+ID = 3621
+postype = right
+pos = - 48 - Ceil(16 * 10 * .375), Ceil(fvar(31))
+scale = Ceil(Power%800 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3621
+postype = left
+pos = 48 + Ceil((16 * 11 - Power%880 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%880 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 0 && var(17) = 3
+ID = 3621
+postype = right
+pos = - 48 - Ceil(16 * 11 * .375), Ceil(fvar(31))
+scale = Ceil(Power%880 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 1 && var(17) = 1
+ID = 3621
+postype = left
+pos = 48 + Ceil((16 * 16 - Power%1280 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%1280 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 1 && var(17) = 1
+ID = 3621
+postype = right
+pos = - 48 - Ceil(16 * 16 * .375), Ceil(fvar(31))
+scale = Ceil(Power%1280 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 1 && var(17) = 2
+ID = 3621
+postype = left
+pos = 48 + Ceil((16 * 14 - Power%1120 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%1120 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 1 && var(17) = 2
+ID = 3621
+postype = right
+pos = - 48 - Ceil(16 * 14 * .375), Ceil(fvar(31))
+scale = Ceil(Power%1120 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 1
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 1 && var(17) = 3
+ID = 3621
+postype = left
+pos = 48 + Ceil((16 * 11 - Power%880 * .1 * 2) * .375), Ceil(fvar(31))
+scale = Ceil(Power%880 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2];EX1回分以上
+type = ModifyExplod
+triggerall = TeamSide = 2
+triggerall = NumExplod(3621)
+trigger1 = var(15) = 1 && var(17) = 3
+ID = 3621
+postype = right
+pos = - 48 - Ceil(16 * 11 * .375), Ceil(fvar(31))
+scale = Ceil(Power%880 * .1 * 2 * .375), .5
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3621)
+trigger1 = MatchOver
+trigger2 = Power < 400
+trigger3 = var(15) = 0 && var(17) = 1 && Power >= 2080
+trigger4 = var(15) = 0 && var(17) = 2 && Power >= 1600
+trigger5 = var(15) = 0 && var(17) = 3 && Power >= 1760
+trigger6 = var(15) = 1 && var(17) = 1 && Power >= 1280
+trigger7 = var(15) = 1 && var(17) = 2 && Power >= 2240
+trigger8 = var(15) = 1 && var(17) = 3 && Power >= 1760
+ID = 3621
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3640)
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 2080
+anim = 3640
+ID = 3640
+bindtime = -1
+RemoveTime = -1
+pos = 48, Ceil(fvar(31))
+scale = (1.0/(16 * 13)) * Ceil(.375 * 16 * 13), .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3640)
+trigger1 = var(15) = 0 && var(17) = 1 && Power >= 2080
+anim = 3640
+ID = 3640
+bindtime = -1
+RemoveTime = -1
+pos = - 48 - Ceil(16 * 13 * .375), Ceil(fvar(31))
+scale = (1.0/(16 * 13)) * Ceil(.375 * 16 * 13), .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3640)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1 && Power < 2080
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3640
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3641)
+trigger1 = var(15) = 0 && var(17) = 2 && Power >= 1600
+anim = 3641
+ID = 3641
+bindtime = -1
+RemoveTime = -1
+pos = 48, Ceil(fvar(31))
+scale = (1.0/(16 * 10)) * Ceil(.375 * 16 * 10), .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3641)
+trigger1 = var(15) = 0 && var(17) = 2 && Power >= 1600
+anim = 3641
+ID = 3641
+bindtime = -1
+RemoveTime = -1
+pos = - 48 - Ceil(16 * 10 * .375), Ceil(fvar(31))
+scale = (1.0/(16 * 10)) * Ceil(.375 * 16 * 10), .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3641)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2 && Power < 1600
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3641
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3642)
+trigger1 = var(15) = 0 && var(17) = 3 && Power >= 1760
+anim = 3642
+ID = 3642
+bindtime = -1
+RemoveTime = -1
+pos = 48, Ceil(fvar(31))
+scale = (1.0/(16 * 11)) * Ceil(.375 * 16 * 11), .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3642)
+trigger1 = var(15) = 0 && var(17) = 3 && Power >= 1760
+anim = 3642
+ID = 3642
+bindtime = -1
+RemoveTime = -1
+pos = - 48 - Ceil(16 * 11 * .375), Ceil(fvar(31))
+scale = (1.0/(16 * 11)) * Ceil(.375 * 16 * 11), .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3642)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3 && Power < 1760
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3642
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3645)
+trigger1 = var(15) = 1 && var(17) = 1 && Power >= 1280
+anim = 3645
+ID = 3645
+bindtime = -1
+RemoveTime = -1
+pos = 48, Ceil(fvar(31))
+scale = (1.0/(16 * 16)) * Ceil(.375 * 16 * 16), .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3645)
+trigger1 = var(15) = 1 && var(17) = 1 && Power >= 1280
+anim = 3645
+ID = 3645
+bindtime = -1
+RemoveTime = -1
+pos = - 48 - Ceil(16 * 16 * .375), Ceil(fvar(31))
+scale = (1.0/(16 * 16)) * Ceil(.375 * 16 * 16), .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3645)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1 && Power < 1280
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3645
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3646)
+trigger1 = var(15) = 1 && var(17) = 2 && Power >= 2240
+anim = 3646
+ID = 3646
+bindtime = -1
+RemoveTime = -1
+pos = 48, Ceil(fvar(31))
+scale = (1.0/(16 * 14)) * Ceil(.375 * 16 * 14), .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3646)
+trigger1 = var(15) = 1 && var(17) = 2 && Power >= 2240
+anim = 3646
+ID = 3646
+bindtime = -1
+RemoveTime = -1
+pos = - 48 - Ceil(16 * 14 * .375), Ceil(fvar(31))
+scale = (1.0/(16 * 14)) * Ceil(.375 * 16 * 14), .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3646)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2 && Power < 2240
+trigger7 = var(15) = 1 && var(17) = 3
+ID = 3646
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 1
+triggerall = !NumExplod(3647)
+trigger1 = var(15) = 1 && var(17) = 3 && Power >= 1760
+anim = 3647
+ID = 3647
+bindtime = -1
+RemoveTime = -1
+pos = 48, Ceil(fvar(31))
+scale = (1.0/(16 * 11)) * Ceil(.375 * 16 * 11), .5
+postype = left
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = Explod
+triggerall = var(0) > 0
+triggerall = !MatchOver
+triggerall = TeamSide = 2
+triggerall = !NumExplod(3647)
+trigger1 = var(15) = 1 && var(17) = 3 && Power >= 1760
+anim = 3647
+ID = 3647
+bindtime = -1
+RemoveTime = -1
+pos = - 48 - Ceil(16 * 11 * .375), Ceil(fvar(31))
+scale = (1.0/(16 * 11)) * Ceil(.375 * 16 * 11), .5
+postype = right
+ontop = 1
+ownpal = 1
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = RemoveExplod
+triggerall = NumExplod(3647)
+trigger1 = MatchOver
+trigger2 = var(15) = 0 && var(17) = 1
+trigger3 = var(15) = 0 && var(17) = 2
+trigger4 = var(15) = 0 && var(17) = 3
+trigger5 = var(15) = 1 && var(17) = 1
+trigger6 = var(15) = 1 && var(17) = 2
+trigger7 = var(15) = 1 && var(17) = 3 && Power < 1760
+ID = 3647
+ignorehitpause = 1
+PauseMoveTime = 9999999999999
+SuperMoveTime = 9999999999999
+[State -2]
+type = TargetState
+triggerall = var(16) < 5
+triggerall = fvar(12) >= 48 + 8 * (var(16)%4)
+triggerall = NumTarget = 1
+triggerall = Target,HitShakeOver
+triggerall = Target,StateNo = 5000 || Target,StateNo = 5010 || Target,StateNo = 5020 || Target,StateNo = 5070 || Target,StateNo = 5080
+trigger1 = NumTarget(200)
+trigger2 = NumTarget(210)
+trigger3 = NumTarget(220) + NumTarget(225)
+trigger4 = NumTarget(230)
+trigger5 = NumTarget(240)
+trigger6 = NumTarget(250) + NumTarget(260) + NumTarget(265)
+trigger7 = NumTarget(400)
+trigger8 = NumTarget(410)
+trigger9 = NumTarget(420) + NumTarget(425)
+trigger10 = NumTarget(430)
+trigger11 = NumTarget(440)
+trigger12 = NumTarget(450)
+trigger13 = NumTarget(600) + NumTarget(605)
+trigger14 = NumTarget(610)
+trigger15 = NumTarget(620) + NumTarget(625)
+trigger16 = NumTarget(630)
+trigger17 = NumTarget(640)
+trigger18 = NumTarget(650)
+trigger19 = NumTarget(800)
+trigger20 = NumTarget(810) + NumTarget(815)
+trigger21 = NumTarget(820)
+trigger22 = NumTarget(830)
+trigger23 = NumTarget(1200)
+trigger24 = NumTarget(1250)
+trigger25 = NumTarget(1300)
+trigger26 = NumTarget(1350) + NumTarget(1370)
+trigger27 = NumTarget(1400)
+trigger28 = NumTarget(1550) + NumTarget(1560)
+trigger29 = NumTarget(1600) + NumTarget(1610)
+trigger30 = NumTarget(1650) + NumTarget(1660)
+trigger31 = NumTarget(1700) + NumTarget(1710)
+trigger32 = NumTarget(2010) + NumTarget(2015) + NumTarget(2020) + NumTarget(2025) + NumTarget(2030) + NumTarget(2035) + NumTarget(2040) + NumTarget(2045)
+trigger33 = NumTarget(2060)
+trigger34 = NumTarget(10240) + NumTarget(10245)
+trigger35 = NumTarget(10410)
+trigger36 = NumTarget(10850) + NumTarget(10855)
+trigger37 = NumTarget(10860)
+trigger38 = NumTarget(11200) + NumTarget(11210) + NumTarget(11230)
+trigger39 = NumTarget(11240) + NumTarget(11250) + NumTarget(11270)
+trigger40 = NumTarget(11280) + NumTarget(11290) + NumTarget(11310)
+trigger41 = NumTarget(11320) + NumTarget(11330) + NumTarget(11340) + NumTarget(11350) + NumTarget(11370)
+trigger42 = NumTarget(11400)
+value = Target,StateNo + 1000
+persistent = 0
+ignorehitpause = 1
+[State -2]
+type = TargetState
+triggerall = var(16) < 5
+triggerall = fvar(12) < 48 + 8 * (var(16)%4)
+triggerall = NumTarget = 1
+triggerall = Target,HitShakeOver
+triggerall = Target,StateNo = 5000 || Target,StateNo = 5010 || Target,StateNo = 5020 || Target,StateNo = 5070 || Target,StateNo = 5080
+trigger1 = 0
+trigger2 = 0
+Trigger3 = 0
+Trigger4 = 0
+Trigger5 = 0
+Trigger6 = 0
+Trigger7 = 0
+Trigger8 = 0
+trigger9 = NumTarget(425)
+Trigger10 = 0
+Trigger11 = 0
+trigger12 = NumTarget(450)
+Trigger13 = 0
+Trigger14 = 0
+Trigger15 = 0
+Trigger16 = 0
+trigger17 = 0
+Trigger18 = 0
+Trigger19 = 0
+Trigger20 = 0
+Trigger21 = 0
+Trigger22 = 0
+Trigger23 = 0
+Trigger24 = 0
+Trigger25 = 0
+Trigger26 = 0
+trigger27 = NumTarget(1400)
+Trigger28 = 0
+trigger29 = NumTarget(1600) + NumTarget(1610)
+trigger30 = NumTarget(1650) + NumTarget(1660)
+trigger31 = NumTarget(1700) + NumTarget(1710)
+trigger32 = 0
+Trigger33 = 0
+trigger34 = 0
+trigger35 = 0
+trigger36 = 0
+trigger37 = 0
+trigger38 = NumTarget(11230)
+trigger39 = NumTarget(11270)
+trigger40 = NumTarget(11310)
+trigger41 = NumTarget(11370)
+trigger42 = 0
+value = ifelse(Target,StateNo = 5070, 7071, 7030) 
+persistent = 0
+ignorehitpause = 1
+[State -2]
+type = TargetState
+triggerall = var(16) < 5
+triggerall = fvar(12) < 48 + 8 * (var(16)%4)
+triggerall = NumTarget = 1
+triggerall = Target,HitShakeOver
+triggerall = Target,StateNo = 5020
+trigger1 = NumTarget(200)
+trigger2 = NumTarget(210)
+trigger3 = NumTarget(220) + NumTarget(225)
+trigger4 = NumTarget(230)
+trigger5 = NumTarget(240)
+trigger6 = NumTarget(250) + NumTarget(260) + NumTarget(265)
+trigger7 = NumTarget(400)
+trigger8 = NumTarget(410)
+trigger9 = NumTarget(420)
+trigger10 = NumTarget(430)
+trigger11 = NumTarget(440)
+Trigger12 = 0
+trigger13 = NumTarget(600) + NumTarget(605)
+trigger14 = NumTarget(610)
+trigger15 = NumTarget(620) + NumTarget(625)
+trigger16 = NumTarget(630)
+trigger17 = NumTarget(640)
+trigger18 = NumTarget(650)
+trigger19 = NumTarget(800)
+trigger20 = NumTarget(810) + NumTarget(815)
+trigger21 = NumTarget(820)
+trigger22 = NumTarget(830)
+trigger23 = NumTarget(1200)
+trigger24 = NumTarget(1250)
+trigger25 = NumTarget(1300)
+trigger26 = NumTarget(1350) + NumTarget(1370)
+Trigger27 = 0
+trigger28 = NumTarget(1550) + NumTarget(1560)
+Trigger29 = 0
+Trigger30 = 0
+Trigger31 = 0
+trigger32 = 0
+Trigger33 = 0
+trigger34 = NumTarget(10240) + NumTarget(10245)
+trigger35 = NumTarget(10410)
+trigger36 = NumTarget(10850) + NumTarget(10855)
+trigger37 = NumTarget(10860)
+trigger38 = NumTarget(11200) + NumTarget(11210)
+trigger39 = NumTarget(11240) + NumTarget(11250)
+trigger40 = NumTarget(11280) + NumTarget(11290)
+trigger41 = NumTarget(11320) + NumTarget(11330) + NumTarget(11340) + NumTarget(11350)
+trigger42 = NumTarget(11400)
+value = 7030
+persistent = 0
+ignorehitpause = 1
+[State -2]
+type = TargetState
+triggerall = var(16) < 5
+triggerall = fvar(12) < 48 + 8 * (var(16)%4)
+triggerall = NumTarget = 1
+triggerall = Target,HitShakeOver
+triggerall = Target,StateNo = 5000 || Target,StateNo = 5010 || Target,StateNo = 5020 || Target,StateNo = 5070 || Target,StateNo = 5080
+trigger1 = 0
+trigger2 = NumTarget(2060)
+value = ifelse(Target,StateNo = 5070, 8071, 8030) 
+persistent = 0
+ignorehitpause = 1
+[State -2]
+type = TargetState
+triggerall = var(16) < 5
+triggerall = fvar(12) < 48 + 8 * (var(16)%4)
+triggerall = NumTarget = 1
+triggerall = Target,HitShakeOver
+triggerall = Target,StateNo = 5020
+trigger1 = NumTarget(2010) + NumTarget(2015) + NumTarget(2020) + NumTarget(2025) + NumTarget(2030) + NumTarget(2035) + NumTarget(2040) + NumTarget(2045)
+trigger2 = 0
+value = 8030
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) >= 5
+triggerall = NumTarget = 1
+triggerall = Target,HitShakeOver
+triggerall = Target,StateNo = 5000 || Target,StateNo = 5010 || Target,StateNo = 5020
+trigger1 = NumTarget(2010) + NumTarget(2015) + NumTarget(2020) + NumTarget(2025) + NumTarget(2030) + NumTarget(2035) + NumTarget(2040) + NumTarget(2045)
+trigger2 = NumTarget(2060)
+value = 3130 + 10 * (Target,StateType = C) + 20 * (Target,StateType = A)
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) >= 5
+triggerall = NumTarget = 1
+triggerall = Target,HitShakeOver
+triggerall = Target,StateNo = 5070 || Target,StateNo = 5080
+trigger1 = 0
+trigger2 = 0
+value = 3160 + 10 * (Target,StateType = L)
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = VarSet
+trigger1 = Ctrl
+trigger2 = StateNo = 3100 && time = 0
+trigger3 = StateNo = 5120 && time = 0
+var(28) = 1
+[State 5000, 5]
+type = VarAdd
+triggerall = Time = 0
+trigger1 = StateNo = 5000
+trigger2 = StateNo = 5010
+trigger3 = StateNo = 5020
+trigger4 = StateNo = 5070
+trigger5 = StateNo = 5080
+var(28) = 1
+[State -2]
+type = Helper
+triggerall = !NumHelper(3180)
+triggerall = !NumHelper(3190)
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = Enemy,TeamMode = Single || Enemy,TeamMode = Turns
+triggerall = WinKO
+trigger1 = NumTarget(200)
+trigger2 = NumTarget(210)
+trigger3 = NumTarget(220) + NumTarget(225)
+trigger4 = NumTarget(230)
+trigger5 = NumTarget(240)
+trigger6 = NumTarget(250) + NumTarget(260) + NumTarget(265)
+trigger7 = NumTarget(400)
+trigger8 = NumTarget(410)
+trigger9 = NumTarget(420) + NumTarget(425)
+trigger10 = NumTarget(430)
+trigger11 = NumTarget(440)
+trigger12 = NumTarget(450)
+trigger13 = NumTarget(600) + NumTarget(605)
+trigger14 = NumTarget(610)
+trigger15 = NumTarget(620) + NumTarget(625)
+trigger16 = NumTarget(630)
+trigger17 = NumTarget(640)
+trigger18 = NumTarget(650)
+trigger19 = NumTarget(800)
+trigger20 = NumTarget(810) + NumTarget(815)
+trigger21 = NumTarget(820)
+trigger22 = NumTarget(830)
+trigger23 = NumTarget(900)
+trigger24 = NumTarget(920)
+trigger25 = NumTarget(930)
+trigger26 = NumTarget(950)
+trigger27 = NumHelper(1010)
+trigger27 = Helper(1010),NumTarget
+trigger28 = NumHelper(1160)
+trigger28 = Helper(1160),NumTarget
+trigger29 = NumTarget(1200)
+trigger30 = NumTarget(1250)
+trigger31 = NumTarget(1300)
+trigger32 = NumTarget(1350) + NumTarget(1370)
+trigger33 = NumTarget(1400)
+trigger34 = NumTarget(1550) + NumTarget(1560)
+trigger35 = NumTarget(1600) + NumTarget(1610)
+trigger36 = NumTarget(1650) + NumTarget(1660)
+trigger37 = NumTarget(1700) + NumTarget(1710)
+trigger38 = NumTarget(1750) + NumTarget(1760)
+trigger39 = NumTarget(10240) + NumTarget(10245)
+trigger40 = NumTarget(10410)
+trigger41 = NumTarget(10850) + NumTarget(10855)
+trigger42 = NumTarget(10860)
+trigger43 = NumHelper(11010)
+trigger43 = Helper(11010),NumTarget
+trigger44 = NumHelper(11160)
+trigger44 = Helper(11160),NumTarget
+trigger45 = NumTarget(11200) + NumTarget(11210) + NumTarget(11220) + NumTarget(11230)
+trigger46 = NumTarget(11240) + NumTarget(11250) + NumTarget(11260) + NumTarget(11270)
+trigger47 = NumTarget(11280) + NumTarget(11290) + NumTarget(11300) + NumTarget(11310)
+trigger48 = NumTarget(11320) + NumTarget(11330) + NumTarget(11340) + NumTarget(11350) + NumTarget(11360) + NumTarget(11370)
+trigger49 = NumTarget(11400)
+trigger50 = NumTarget(11800) + NumTarget(11850) + NumTarget(11900)
+ID = 3180
+stateno = 3180
+pausemovetime = 999999999999
+supermovetime = 999999999999
+[State -2]
+type = Helper
+triggerall = !NumHelper(3180)
+triggerall = !NumHelper(3190)
+triggerall = TeamMode = Single || TeamMode = Turns
+triggerall = Enemy,TeamMode = Single || Enemy,TeamMode = Turns
+triggerall = WinKO
+trigger1 = NumTarget(2010) + NumTarget(2015) + NumTarget(2020) + NumTarget(2025) + NumTarget(2030) + NumTarget(2035) + NumTarget(2040) + NumTarget(2045)
+trigger2 = NumTarget(2050) + NumTarget(2060)
+trigger3 = NumHelper(2210)
+trigger3 = Helper(2210),NumTarget
+trigger4 = NumHelper(2410)
+trigger4 = Helper(2410),NumTarget
+trigger5 = NumHelper(2411)
+trigger5 = Helper(2411),NumTarget
+trigger6 = NumHelper(2412)
+trigger6 = Helper(2412),NumTarget
+trigger7 = NumHelper(2560)
+trigger7 = Helper(2560),NumTarget
+trigger8 = NumTarget(12000)
+trigger9 = NumHelper(12210)
+trigger9 = Helper(12210),NumTarget
+trigger10 = NumTarget(12410) + NumTarget(12420) + NumTarget(12430) + NumTarget(12440)
+ID = 3190
+stateno = 3190
+pausemovetime = 999999999999
+supermovetime = 999999999999
+[State -2]
+type = AssertSpecial
+trigger1 = TeamMode = Single || TeamMode = Turns
+trigger1 = Enemy,TeamMode = Single || Enemy,TeamMode = Turns
+trigger1 = MoveType != H
+trigger1 = P2MoveType = H
+flag = nokoslow
+[State -2]
+type = PlaySnd
+triggerall = Random%2 = 0
+triggerall = time = 0
+trigger1 = StateNo = 5000
+trigger2 = StateNo = 5010
+trigger3 = StateNo = 5020
+trigger4 = StateNo = 5070
+trigger5 = StateNo = 5080
+value = 11, 1 + Random%2
+[State 225, 6]
+type = VarAdd
+trigger1 = fvar(18) = 1
+trigger2 = fvar(18) = 2
+fvar(18) = 1
+[State 225, 6]
+type = VarSet
+triggerall = fvar(18) >= 3
+trigger1 = Ctrl
+trigger2 = MoveType = H
+trigger3 = StateNo = [13,15]
+trigger4 = StateNo = [25,26]
+fvar(18) = 0
+[State 221]
+type = TargetVelAdd
+triggerall = NumTarget(2050) = 1
+triggerall = Time > 0
+trigger1 = Target,StateNo = 2101
+trigger2 = Target,StateNo = 2111
+Y = .55 * Const(Size.YScale)
+[State 221]
+type = TargetVelAdd
+triggerall = NumTarget(11220) + NumTarget(11260) + NumTarget(11300) = 1
+triggerall = Time > 0
+trigger1 = Target,StateNo = 11381
+trigger2 = Target,StateNo = 11386
+Y = .55 * Const(Size.YScale)
+[State 221]
+type = TargetVelAdd
+triggerall = NumTarget(11360) = 1
+triggerall = Time > 0
+trigger1 = Target,StateNo = 11391
+trigger2 = Target,StateNo = 11396
+Y = .55 * Const(Size.YScale)
+[State -2]
+type = VarSet
+trigger1 = RoundState = 0
+var(40) = 0
+[State 221]
+type = TargetState
+triggerall = var(16) >= 4
+triggerall = NumTarget(1750) = 1
+triggerall = Target(1750),time = 2
+trigger1 = Target(1750),StateNo = 5000
+trigger2 = Target(1750),StateNo = 5010
+trigger3 = Target(1750),StateNo = 5020
+value = 1780
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) < 4
+triggerall = NumTarget(1750) = 1
+triggerall = Target(1750),time = 2
+trigger1 = Target(1750),StateNo = 5000
+trigger2 = Target(1750),StateNo = 5010
+trigger3 = Target(1750),StateNo = 5020
+value = ifelse(fvar(12) < 48 + 8 * (var(16)%4), 1780, 1790)
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) >= 4
+triggerall = NumTarget(1760) = 1
+triggerall = Target(1760),time = 2
+trigger1 = Target(1760),StateNo = 5000
+trigger2 = Target(1760),StateNo = 5010
+trigger3 = Target(1760),StateNo = 5020
+value = 1780
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) < 4
+triggerall = NumTarget(1760) = 1
+triggerall = Target(1760),time = 2
+trigger1 = Target(1760),StateNo = 5000
+trigger2 = Target(1760),StateNo = 5010
+trigger3 = Target(1760),StateNo = 5020
+value = ifelse(fvar(12) < 48 + 8 * (var(16)%4), 1780, 1790)
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) >= 4
+triggerall = NumTarget(12410) = 1
+triggerall = Target(12410),time = 2
+trigger1 = Target(12410),StateNo = 5000
+trigger2 = Target(12410),StateNo = 5010
+trigger3 = Target(12410),StateNo = 5020
+value = 12500
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) < 4
+triggerall = NumTarget(12410) = 1
+triggerall = Target(12410),time = 2
+trigger1 = Target(12410),StateNo = 5000
+trigger2 = Target(12410),StateNo = 5010
+trigger3 = Target(12410),StateNo = 5020
+value = ifelse(fvar(12) < 48 + 8 * (var(16)%4), 12500, 12510)
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) >= 4
+triggerall = NumTarget(12420) = 1
+triggerall = Target(12420),time = 2
+trigger1 = Target(12420),StateNo = 5000
+trigger2 = Target(12420),StateNo = 5010
+trigger3 = Target(12420),StateNo = 5020
+value = 12500
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) < 4
+triggerall = NumTarget(12420) = 1
+triggerall = Target(12420),time = 2
+trigger1 = Target(12420),StateNo = 5000
+trigger2 = Target(12420),StateNo = 5010
+trigger3 = Target(12420),StateNo = 5020
+value = ifelse(fvar(12) < 48 + 8 * (var(16)%4), 12500, 12510)
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) >= 4
+triggerall = NumTarget(12430) = 1
+triggerall = Target(12430),time = 2
+trigger1 = Target(12430),StateNo = 5000
+trigger2 = Target(12430),StateNo = 5010
+trigger3 = Target(12430),StateNo = 5020
+value = 12500
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) < 4
+triggerall = NumTarget(12430) = 1
+triggerall = Target(12430),time = 2
+trigger1 = Target(12430),StateNo = 5000
+trigger2 = Target(12430),StateNo = 5010
+trigger3 = Target(12430),StateNo = 5020
+value = ifelse(fvar(12) < 48 + 8 * (var(16)%4), 12500, 12510)
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) >= 4
+triggerall = NumTarget(12440) = 1
+triggerall = Target(12440),time = 2
+trigger1 = Target(12440),StateNo = 5000
+trigger2 = Target(12440),StateNo = 5010
+trigger3 = Target(12440),StateNo = 5020
+value = 12500
+persistent = 0
+ignorehitpause = 1
+[State 221]
+type = TargetState
+triggerall = var(16) < 4
+triggerall = NumTarget(12440) = 1
+triggerall = Target(12440),time = 2
+trigger1 = Target(12440),StateNo = 5000
+trigger2 = Target(12440),StateNo = 5010
+trigger3 = Target(12440),StateNo = 5020
+value = ifelse(fvar(12) < 48 + 8 * (var(16)%4), 12500, 12510)
+persistent = 0
+ignorehitpause = 1
+[State -2]
+type = DisplayToClipboard
+trigger1 = 1
+text="Vel X is %f.var(8) is %d.Pos X is %f.Pos Y is %f.NumTarget(920) is %d."
+params = Vel X, var(8), Pos X, Pos Y, NumTarget(920)
+displays the following to the player's 

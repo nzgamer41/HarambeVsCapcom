@@ -1,0 +1,68 @@
+;---------------------------------------------------------------------------
+; Introduction
+[Statedef 190]
+type = S
+ctrl = 0
+velset = 0,0
+
+[State 191, 2] ;Assert this until you want "round 1, fight" to begin
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+;===========================================================================
+;AIの有無
+[State config]
+type = VarSet
+trigger1 = 1
+fvar(24) = 1; 0ならoff; 1ならon
+
+;オリジナル追加技の有無
+[State config]
+type = VarSet
+trigger1 = 1
+fvar(25) = 1; 0なら無;1なら有
+
+;裏モードの有無(PalNo>=7 another Mode Setting.)
+[State config]
+type = VarSet
+trigger1 = 1
+fvar(26) = 1;      0=off    1=on
+
+
+;サンダーボルトの有無;"Thunder bolt" On Off 
+[State config]
+type = VarSet
+trigger1 = 1
+fvar(27) = 1;      0=off    1=on
+
+[State 190, 1]
+type = ChangeAnim
+trigger1 = SelfAnimExist(190)
+value = 190
+
+[State 190, 2] ;Go straight to intro.
+type = ChangeState
+trigger1 = Time = 0
+value = 191
+
+;===========================================================================
+;===========================================================================
+; Initialize (at the start of the round)
+[Statedef 5900]
+type = S
+
+[State 5900, 1] ;Clear all int variables
+type = VarRangeSet
+trigger1 = roundno = 1
+value = 0
+
+[State 5900, 2] ;Clear all float variables
+type = varRangeSet
+trigger1 = roundno = 1
+fvalue = 0
+
+[State 5900, 3] ;Intro
+type = ChangeState
+trigger1 = roundno = 1
+value = 190

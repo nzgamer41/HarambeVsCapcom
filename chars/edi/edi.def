@@ -1,0 +1,31 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Zoo Guard"
+displayname ="Zoo Guard"	
+versiondate =04,14,2001
+mugenversion =04,14,2001
+author ="Elecbyte"
+pal.defaults =6,3,4,2
+
+[Files]
+sprite =edi.sff
+anim =edi.air
+sound =edi.snd
+cmd =edi.cmd
+cns =edi.cns
+stcommon =edicommon1.cns
+st =edi.cns
+pal1=Palette.act
+pal2=Palette.act
+pal3=Palette.act
+pal4=Palette.act
+pal5=Palette.act
+pal6=Palette.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

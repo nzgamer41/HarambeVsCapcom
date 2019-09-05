@@ -1,0 +1,57 @@
+[Info]
+name = "Ken"
+displayname = "Ken"
+versiondate = 2011/3/27
+mugenversion = 1.0
+author = "GM"
+pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
+localcoord = 320,240;400,300
+
+[Files]
+sprite = sf3_ken.sff
+sound = sf3_ken.snd
+anim = sf3_ken.air
+cmd = sf3_ken.cmd
+cns = sf3_ken.cns
+st  = sf3_ken.cns
+st1 = sf3_ken_N1.cns
+st2 = sf3_ken_N2.cns
+st3 = sf3_ken_S1.cns
+st4 = sf3_ken_S2.cns
+st5 = sf3_ken_H1.cns
+st6 = sf3_ken_H2.cns
+st7 = sf3_ken_H3.cns
+st8 = sf3_ken-2-3.cns
+st9 = system_direction.cns
+stcommon = common.cns
+pal1 = act/ken01.act
+pal2 = act/ken05.act
+pal3 = act/ken06.act
+pal4 = act/ken04.act
+pal5 = act/ken02.act
+pal6 = act/ken03.act
+pal7 = act/ken10.act
+pal8 = act/ken11.act
+pal9 = act/ken12.act
+pal10 = act/ken07.act
+pal11 = act/ken08.act
+pal12 = act/ken09.act
+
+[Palette Keymap]
+a = 1
+b = 2
+c = 3
+x = 4
+y = 5
+z = 6
+a2 = 7
+b2 = 8
+c2 = 9
+x2 = 10
+y2 = 11
+z2 = 12
+
+
+[Arcade]
+intro.storyboard =
+ending.storyboard =

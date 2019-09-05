@@ -1,0 +1,941 @@
+; Helpers
+;---------------------------------------------------------------------------
+; Right Shirt Rip
+[Statedef 182]
+type = A
+movetype = I
+physics = N
+sprpriority = 5
+velset = 1,-1
+anim = 182
+ctrl = 0
+
+[State 182, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 182, 1]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 182, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = 0.15
+
+[State 182, State]
+type = ChangeState
+trigger1 = Time > 0
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 183
+
+;---------------------------------------------------------------------------
+; Right Shirt Rip Land
+[Statedef 183]
+type = S
+movetype = I
+physics = N
+sprpriority = 5
+velset = 0,0
+anim = 183
+ctrl = 0
+
+[State 183, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 183, 1]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 183, PosSet]
+type = PosSet
+trigger1 = 1
+y = 0
+
+;---------------------------------------------------------------------------
+; Left Shirt Rip
+[Statedef 184]
+type = A
+movetype = I
+physics = N
+sprpriority = 5
+velset = -1,-1
+anim = 184
+ctrl = 0
+
+[State 184, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 184, 1]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 184, VelAdd]
+type = VelAdd
+trigger1 = 1
+Y = 0.15
+
+[State 184, State]
+type = ChangeState
+trigger1 = Time > 0
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 185
+
+;---------------------------------------------------------------------------
+; Left Shirt Rip Land
+[Statedef 185]
+type = S
+movetype = I
+physics = N
+sprpriority = 5
+velset = 0,0
+anim = 185
+ctrl = 0
+
+[State 185, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 185, 1]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 185, PosSet]
+type = PosSet
+trigger1 = 1
+Y = 0
+
+;---------------------------------------------------------------------------
+; Punching Bag
+[Statedef 192]
+type = S
+movetype = I
+physics = N
+sprpriority = 0
+anim = 192
+ctrl = 0
+
+[State 192, 0]
+type = NotHitBy
+trigger1 = Time = 0
+value = CA, SA, HA, AT, AP
+time = -1
+
+[State 192, 1]
+type = HitOverride
+trigger1 = Time = 0
+time = -1
+attr = S, NA
+slot = 0
+stateno = 193
+
+[State 192, 2]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+;---------------------------------------------------------------------------
+; Punching Bag - Hit
+[Statedef 193]
+type = S
+movetype = H
+physics = N
+anim = 193
+ctrl = 0
+
+[State 193, 0]
+type = NotHitBy
+trigger1 = Time = 0
+value = SCA, AA, AT, AP
+time = -1
+
+[State 193, 1]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 193, 2]
+type = Explod
+trigger1 = AnimElem = 1
+anim = F1
+pos = 20,-140
+postype = p1
+bindtime = -1
+persistent = 5
+pausemovetime = -1
+sprpriority = 5
+ownpal = 1
+
+[State 193, 2]
+type = Explod
+trigger1 = AnimElem = 1
+anim = F2
+pos = 70,-65
+postype = p1
+bindtime = -1
+persistent = 0
+pausemovetime = -1
+sprpriority = 5
+ownpal = 1
+
+[State 193, 3]
+type = Projectile
+trigger1 = AnimElem = 2
+projid = 190
+projanim = 194
+projshadow = -1
+projsprpriority = 0
+projheightbound = -500,500
+projedgebound = 250
+projstagebound = 250
+velocity = 10, 0
+offset = 50, 0
+accel = 0, 0
+
+[state 193, 4]
+type = DestroySelf
+trigger1 = AnimTime = 0
+
+;---------------------------------------------------------------------------
+; Guard Push
+[Statedef 985]
+type = S
+movetype = I
+physics = S
+velset = -(Root, HitVel X)*5,0
+anim = 985
+ctrl = 0
+
+[State 985, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 985, PosSet]
+type = PosSet
+trigger1 = 1
+y = 0
+
+[State 985, Push]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 985, Destroy]
+type = DestroySelf
+trigger1 = Time >= 50
+trigger2 = Vel X <= 0
+trigger2 = Time > 0
+
+;---------------------------------------------------------------------------
+; Gigaton Drill
+[Statedef 3010]
+type = A
+movetype = I
+physics = N
+anim = 3010
+velset = 0,0
+sprpriority = 5
+ctrl = 0
+
+[State 3010, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 3010, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+
+[State 3010, 2]
+type = BindToRoot
+trigger1 = 1
+pos = 0, 0
+facing = 1
+
+[State 3000, ChangeAnim]
+type = ChangeAnim
+trigger1 = Time <= 0
+trigger1 = Root, Var(56) > 0
+value = 3015
+
+[State 3010, SprPriority]
+type = SprPriority
+triggerall = Anim = 3010
+trigger1 = AnimElem = 1
+trigger2 = AnimElem = 3
+trigger3 = AnimElem = 5
+trigger4 = AnimElem = 7
+trigger5 = AnimTime = 0
+value = 0
+
+[State 3010, SprPriority]
+type = SprPriority
+triggerall = Anim = 3010
+trigger1 = AnimElem = 2
+trigger2 = AnimElem = 4
+trigger3 = AnimElem = 6
+trigger4 = AnimElem = 8
+value = 5
+
+[State 3010, Destroy]
+type = DestroySelf
+trigger1 = Time > 50
+trigger1 = Anim = 3015
+trigger1 = AnimTime = 0
+trigger2 = Root, Anim = 3000
+trigger2 = Root, AnimElem = 24, >= 0
+trigger3 = Root, StateNo != 3000
+
+;---------------------------------------------------------------------------
+; Dash Wave
+[Statedef 3020]
+type = A
+movetype = I
+physics = N
+anim = 3020
+velset = 0,0
+sprpriority = 5
+ctrl = 0
+
+[State 3020, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 3020, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+
+[State 3020, 2]
+type = BindToRoot
+trigger1 = 1
+pos = 0, 0
+facing = 1
+
+[State 3020, Destroy]
+type = DestroySelf
+trigger1 = Root, Anim = 3000
+trigger1 = Root, AnimElem = 24, >= 0
+trigger2 = Root, StateNo != 3000
+
+;---------------------------------------------------------------------------
+; Root Dizzy Star/Bird
+[Statedef 6300]
+type = A
+movetype = I
+physics = N
+velset = 0,0
+anim = 6300
+ctrl = 0
+
+[State 6300, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = Invisible
+
+[State 6300, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;----- Enemy ID -----
+[State 6300, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+trigger1 = Var(10) <= 0 
+ignorhitpause = 1
+var(10) = Root, ID
+;--------------------
+
+;----- Display -----
+[State 6300, Variables]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Player ID: %d"
+params = var(10)
+;--------------------
+
+[State 6300, Bind]
+type = BindToRoot
+trigger1 = 1
+pos = 0, Const(size.head.pos.y) - 10
+facing = 1
+
+[State 6300, VarRandom]
+type = VarRandom
+trigger1 = Time <= 0
+v = 0
+range = 0,1
+
+[State 6300, PlaySnd]
+type = PlaySnd
+trigger1 = Time <= 0
+value = 2, 20
+channel = 0
+loop = 1
+
+;----- Dizzy Stars -----
+[State 6300, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) <= 0
+trigger1 = NumExplod(6300) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6300
+id = 6300
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = 10
+removetime = -1
+ownpal = 1
+
+[State 6300, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) <= 0
+trigger1 = NumExplod(6301) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6301
+id = 6301
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = -10
+removetime = -1
+ownpal = 1
+
+[State 6300, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) <= 0
+trigger1 = NumExplod(6302) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6302
+id = 6302
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = -10
+removetime = -1
+ownpal = 1
+;--------------------
+
+;----- Dizzy Birds -----
+[State 6300, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) > 0
+trigger1 = NumExplod(6300) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6310
+id = 6300
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = 10
+removetime = -1
+ownpal = 1
+
+[State 6300, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) > 0
+trigger1 = NumExplod(6301) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6311
+id = 6301
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = -10
+removetime = -1
+ownpal = 1
+
+[State 6300, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) > 0
+trigger1 = NumExplod(6302) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6312
+id = 6302
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = -10
+removetime = -1
+ownpal = 1
+;--------------------
+
+;----- Modify Stars -----
+[State 6300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6300) > 0
+trigger1 = AnimElem = 16
+ignorehitpause = 1
+sprpriority = -10
+id = 6300
+
+[State 6300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6300) > 0
+trigger1 = AnimElem = 48
+ignorehitpause = 1
+sprpriority = 10
+id = 6300
+
+[State 6300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6301) > 0
+trigger1 = AnimElem = 28
+ignorehitpause = 1
+sprpriority = 10
+id = 6301
+
+[State 6300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6301) > 0
+trigger1 = AnimElem = 60
+ignorehitpause = 1
+sprpriority = -10
+id = 6301
+
+[State 6300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6302) > 0
+trigger1 = AnimElem = 12
+ignorehitpause = 1
+sprpriority = 10
+id = 6302
+
+[State 6300, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6302) > 0
+trigger1 = AnimElem = 44
+ignorehitpause = 1
+sprpriority = -10
+id = 6302
+;--------------------
+
+;----- Remove Dizzy -----
+[State 6300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(6300) > 0
+triggerall = Root, Var(9) <= 0
+trigger1 = Root, MoveType != H
+trigger2 = Root, StateNo != 5300
+trigger2 = Root, StateNo != 5310
+trigger3 = Root, Alive = 0
+id = 6300
+
+[State 6300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(6301) > 0
+triggerall = Root, Var(9) <= 0
+trigger1 = Root, MoveType != H
+trigger2 = Root, StateNo != 5300
+trigger2 = Root, StateNo != 5310
+trigger3 = Root, Alive = 0
+id = 6301
+
+[State 6300, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(6302) > 0
+triggerall = Root, Var(9) <= 0
+trigger1 = Root, MoveType != H
+trigger2 = Root, StateNo != 5300
+trigger2 = Root, StateNo != 5310
+trigger3 = Root, Alive = 0
+id = 6302
+;--------------------
+
+[State 6300, StopSnd]
+type = StopSnd
+triggerall = Root, Var(9) <= 0
+trigger1 = Root, MoveType != H
+trigger2 = Root, StateNo != 5300
+trigger2 = Root, StateNo != 5310
+trigger3 = Root, Alive = 0
+value = 2, 20
+channel = 0
+
+[State 6300, Destroy]
+type = DestroySelf
+triggerall = Root, Var(9) <= 0
+trigger1 = Root, MoveType != H
+trigger2 = Root, StateNo != 5300
+trigger2 = Root, StateNo != 5310
+trigger3 = Root, Alive = 0
+
+;---------------------------------------------------------------------------
+; Enemy Dizzy Star/Bird
+[Statedef 6310]
+type = A
+movetype = I
+physics = N
+velset = 0,0
+sprpriority = 10
+anim = 6310
+ctrl = 0
+
+[State 6310, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = Invisible
+
+[State 6310, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+;----- Enemy ID -----
+[State 6310, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+trigger1 = Var(10) <= 0 
+ignorhitpause = 1
+var(10) = EnemyNear, ID
+;--------------------
+
+;----- Display -----
+[State 6310, Variables]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Player ID: %d"
+params = var(10)
+;--------------------
+
+[State 6310, PosSet]
+type = PosSet
+trigger1 = 1
+x = PlayerID(Var(10)), Pos X
+y = PlayerID(Var(10)), Pos Y + PlayerID(Var(10)), Const(size.head.pos.y) - 10
+
+[State 6310, VarRandom]
+type = VarRandom
+trigger1 = Time <= 0
+v = 0
+range = 0,1
+
+[State 6310, PlaySnd]
+type = PlaySnd
+trigger1 = Time <= 0
+value = 2, 20
+channel = 0
+loop = 1
+
+;----- Dizzy Stars -----
+[State 6310, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) <= 0
+trigger1 = NumExplod(6310) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6300
+id = 6310
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = 10
+removetime = -1
+ownpal = 1
+
+[State 6310, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) <= 0
+trigger1 = NumExplod(6311) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6301
+id = 6311
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = -10
+removetime = -1
+ownpal = 1
+
+[State 6310, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) <= 0
+trigger1 = NumExplod(6312) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6302
+id = 6312
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = -10
+removetime = -1
+ownpal = 1
+;--------------------
+
+;----- Dizzy Birds -----
+[State 6310, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) > 0
+trigger1 = NumExplod(6310) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6310
+id = 6310
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = 10
+removetime = -1
+ownpal = 1
+
+[State 6310, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) > 0
+trigger1 = NumExplod(6311) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6311
+id = 6311
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = -10
+removetime = -1
+ownpal = 1
+
+[State 6310, Explod]
+type = Explod
+triggerall = Time <= 0
+trigger1 = Var(0) > 0
+trigger1 = NumExplod(6312) = 0
+ignorehitpause = 1
+persistent = 0
+anim = 6312
+id = 6312
+postype = P1
+pos = 0, 0
+bindtime = -1
+sprpriority = -10
+removetime = -1
+ownpal = 1
+;--------------------
+
+;----- Modify Stars -----
+[State 6310, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6310) > 0
+trigger1 = AnimElem = 16
+ignorehitpause = 1
+sprpriority = -10
+id = 6310
+
+[State 6310, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6310) > 0
+trigger1 = AnimElem = 48
+ignorehitpause = 1
+sprpriority = 10
+id = 6310
+
+[State 6310, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6311) > 0
+trigger1 = AnimElem = 28
+ignorehitpause = 1
+sprpriority = 10
+id = 6311
+
+[State 6310, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6311) > 0
+trigger1 = AnimElem = 60
+ignorehitpause = 1
+sprpriority = -10
+id = 6311
+
+[State 6310, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6312) > 0
+trigger1 = AnimElem = 12
+ignorehitpause = 1
+sprpriority = 10
+id = 6312
+
+[State 6310, ModifyExplod]
+type = ModifyExplod
+triggerall = NumExplod(6312) > 0
+trigger1 = AnimElem = 44
+ignorehitpause = 1
+sprpriority = -10
+id = 6312
+;--------------------
+
+;----- Remove Dizzy -----
+[State 6310, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(6310) > 0
+triggerall = Root, Var(18) <= 0
+trigger1 = PlayerID(Var(10)), MoveType != H
+trigger2 = PlayerID(Var(10)), StateNo != 5300
+trigger2 = PlayerID(Var(10)), StateNo != 5310
+trigger3 = PlayerID(Var(10)), Alive = 0
+id = 6310
+
+[State 6310, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(6311) > 0
+triggerall = Root, Var(18) <= 0
+trigger1 = PlayerID(Var(10)), MoveType != H
+trigger2 = PlayerID(Var(10)), StateNo != 5300
+trigger2 = PlayerID(Var(10)), StateNo != 5310
+trigger3 = PlayerID(Var(10)), Alive = 0
+id = 6311
+
+[State 6310, RemoveExplod]
+type = RemoveExplod
+triggerall = NumExplod(6312) > 0
+triggerall = Root, Var(18) <= 0
+trigger1 = PlayerID(Var(10)), MoveType != H
+trigger2 = PlayerID(Var(10)), StateNo != 5300
+trigger2 = PlayerID(Var(10)), StateNo != 5310
+trigger3 = PlayerID(Var(10)), Alive = 0
+id = 6312
+;--------------------
+
+[State 6310, StopSnd]
+type = StopSnd
+triggerall = Root, Var(18) <= 0
+trigger1 = PlayerID(Var(10)), MoveType != H
+trigger2 = PlayerID(Var(10)), StateNo != 5300
+trigger2 = PlayerID(Var(10)), StateNo != 5310
+trigger3 = PlayerID(Var(10)), Alive = 0
+value = 2, 20
+channel = 0
+
+[State 6310, Destroy]
+type = DestroySelf
+triggerall = Root, Var(18) <= 0
+trigger1 = PlayerID(Var(10)), MoveType != H
+trigger2 = PlayerID(Var(10)), StateNo != 5300
+trigger2 = PlayerID(Var(10)), StateNo != 5310
+trigger3 = PlayerID(Var(10)), Alive = 0 
+
+;---------------------------------------------------------------------------
+; AI Trigger
+[Statedef 6666]
+velset = 0,0
+anim = 6666
+ctrl = 0
+
+[State 6666, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = Invisible
+
+[State 6666, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 6666, VarSet]
+type = VarSet
+trigger1 = 1
+var(40) = Root, Var(40)
+
+[State 6666, Turn]
+type = Turn
+trigger1 = Facing != Root, Facing
+
+[State 6666, CPU]
+type = ParentVarSet
+triggerall = Root, Ctrl
+triggerall = Root, RoundState = 2
+trigger1 = Root, Command = "fwd"
+trigger2 = Root, Command = "back"
+trigger3 = Root, Command = "down"
+trigger4 = Root, Command = "up"
+trigger5 = Root, Command = "x"
+trigger6 = Root, Command = "y"
+trigger7 = Root, Command = "z"
+trigger8 = Root, Command = "a"
+trigger9 = Root, Command = "b"
+trigger10 = Root, Command = "c"
+trigger11 = Root, Command = "s"
+var(40) = -1
+
+[State 6666, Player]
+type = ParentVarSet
+triggerall = Root, Ctrl
+triggerall = Root, RoundState = 2
+trigger1 = Command = "fwd" && Root, Command = "fwd"
+trigger2 = Command = "back" && Root, Command = "back"
+trigger3 = Command = "down" && Root, Command = "down"
+trigger4 = Command = "up" && Root, Command = "up"
+trigger5 = Command = "x" && Root, Command = "x"
+trigger6 = Command = "y" && Root, Command = "y"
+trigger7 = Command = "z" && Root, Command = "z"
+trigger8 = Command = "a" && Root, Command = "a"
+trigger9 = Command = "b" && Root, Command = "b"
+trigger10 = Command = "c" && Root, Command = "c"
+trigger11 = Command = "s" && Root, Command = "s"
+var(40) = 1
+
+[State 6666, Variables]
+type = DisplayToClipboard
+trigger1 = Var(40) = 0
+text = "AI Trigger:"
+
+[State 6666, Variables]
+type = DisplayToClipboard
+trigger1 = Var(40) > 0
+text = "AI Trigger: Player"
+
+[State 6666, Variables]
+type = DisplayToClipboard
+trigger1 = Var(40) < 0
+text = "AI Trigger: CPU"
+
+[State 6666, Destroy]
+type = DestroySelf
+trigger1 = RoundState != 2
+
+;---------------------------------------------------------------------------

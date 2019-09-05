@@ -1,0 +1,488 @@
+;---------------------------------------------------------------------------
+; i“oêj
+[Statedef 3001]
+type = S
+movetype = A
+physics = S
+anim = 4300
+sprpriority = -2
+ctrl = 0
+juggle  = 15
+poweradd = 30 
+
+[State 210, 1]
+type = statetypeset
+trigger1 = MoveContact
+movetype = I
+
+[State 3004, 4]
+type = HitDef
+trigger1 = stateno=3001
+attr = A, SA
+animtype  = Hard
+damage    = 30,2
+guardflag = H
+pausetime = 5,10
+sparkno = 1
+sparkxy = -10,-70
+hitflag = MAFD
+hitsound   = s0,4
+guardsound = s0,11
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 15
+ground.velocity = -4,-4
+air.velocity = -4,-4
+fall=1
+fall.recover=0
+
+[State 2000, Override]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AT,AP
+slot = 4
+stateno = 3083
+time = -1
+
+[State 3001, 1]
+type = VelSet
+trigger1 = stateno=3001
+y = 7
+
+[State 3001, 3]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 3001, 9]
+type = ChangeState
+trigger1 = Vel Y > 0 && Pos Y >= 0
+value = 3002
+
+;---------------------------------------------------------------------------
+[Statedef 3002]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+velset = 0,0
+sprpriority = -2
+anim = 4301
+
+[State 2000, Override]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AT,AP
+slot = 4
+stateno = 3083
+time = -1
+
+
+[State 3002, 3]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 210, 3]
+type = Turn
+trigger1 = P2Dist X < -1
+
+[State 3002, 9]
+type = ChangeState
+trigger1 = animtime=0
+value = 4000
+
+;---------------------------------------------------------------------------
+[Statedef 4000]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+velset = 0,0
+sprpriority = -2
+anim = 4000
+
+[State 2000, Override]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AT,AP
+slot = 4
+stateno = 3083
+time = -1
+
+[State 3003, 2]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 210, 3]
+type = Turn
+trigger1 = P2Dist X < -1
+
+[State 3003, 9]
+type = ChangeState
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+value = 4020
+
+[State 3003, 9]
+type = ChangeState
+trigger1 = command = "x"
+value = 4200
+
+[State 3003, 9]
+type = ChangeState
+trigger1 = command = "y"
+value = 4205
+
+[State 3003, 9]
+type = ChangeState
+trigger1 = command = "z"
+value = 4400
+
+[State 3003, 9]
+type = ChangeState
+trigger1 = root,var(10)=100
+value = 3081
+
+;---------------------------------------------------------------------------
+[Statedef 4020]
+type    = S
+physics = S
+ctrl=0
+sprpriority = 0
+anim=4001
+
+[State 4020, 2]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+
+[State 4020, 1]
+type = VelSet
+trigger1 = command = "holdfwd"
+x = 4
+
+[State 4020, 2]
+type = VelSet
+trigger1 = command = "holdback"
+x = -4
+
+
+[State 4020, 9]
+type = ChangeState
+trigger1 = vel x =0
+value = 4000
+
+;---------------------------------------------------------------------------
+[Statedef 4200]
+type = S
+movetype = A
+physics = S
+anim = 4200
+sprpriority = -2
+ctrl = 0
+juggle  = 15
+poweradd = 30
+
+[State 2000, Override]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AT,AP
+slot = 4
+stateno = 3083
+time = -1
+
+[State 3004, 1]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 3004, 1]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 0, 0
+
+[State 3004, 4]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = A, SA
+animtype  = Hard
+damage    = 20,0
+guardflag = M
+pausetime = 5,10
+sparkno = 1
+sparkxy = -10,-70
+hitflag = MAFD
+hitsound   = s0,5
+guardsound = s0,11
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 4
+ground.velocity = -7
+air.velocity = -4
+
+[State 3004, 9]
+type = ChangeState
+trigger1 = animtime=0
+value = 4000
+
+;---------------------------------------------------------------------------
+[Statedef 4205]
+type = S
+movetype = A
+physics = S
+anim = 4101
+sprpriority = -2
+ctrl = 0
+juggle  = 15
+poweradd = 40 
+
+[State 3001, 1]
+type = VelSet
+trigger1 = animelem=2
+x = 20
+
+[State 2000, Override]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AT,AP
+slot = 4
+stateno = 3083
+time = -1
+
+[State 3004, 1]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 3004, 1]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 0, 0
+
+[State 3004, 4]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = A, SA
+animtype  = Hard
+damage    = 30,0
+guardflag = l
+pausetime = 5,10
+sparkno = 1
+sparkxy = -10,-70
+hitflag = MAFD
+hitsound   = s0,4
+guardsound = s0,11
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 15
+ground.velocity = -4
+air.velocity = -4
+fall=1
+fall.recover=0
+
+[State 3004, 9]
+type = ChangeState
+trigger1 = animtime=0
+value = 4000
+;---------------------------------------------------------------------------
+[Statedef 4400]
+type    = S
+movetype= A
+physics = S
+ctrl = 0
+velset = 0,0
+sprpriority = -2
+anim = 4301
+poweradd = 40 
+
+[State 2000, Override]
+type = HitOverride
+trigger1 = 1
+attr = SCA,AA,AT,AP
+slot = 4
+stateno = 3083
+time = -1
+
+
+[State 3002, 3]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 210, 3]
+type = Turn
+trigger1 = P2Dist X < -1
+
+[State 3002, 9]
+type = ChangeState
+trigger1 = animtime=0
+value = 4450
+;---------------------------------------------------------------------------
+[Statedef 4450]
+type    = A
+movetype= A
+physics = N
+ctrl = 0
+sprpriority = -2
+anim = 4400
+
+[State 3000, NotHitby]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 1051, 1]
+type = VelAdd
+trigger1 = 1
+y = .53
+
+[State 3001, 1]
+type = VelSet
+trigger1 = animelem=1
+x = 5
+y=-5
+
+[State 3001, 1]
+type = VelSet
+trigger1 = animelem=2
+x = 6
+y=-6
+
+[State 3001, 1]
+type = VelSet
+trigger1 = animelem=3
+x = 7
+
+[State 3004, 4]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = A, SA
+animtype  = Hard
+damage    = 30,0
+guardflag = H
+pausetime = 5,10
+sparkno = 1
+sparkxy = -10,-70
+hitflag = MAFD
+hitsound   = s0,4
+guardsound = s0,11
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 15
+ground.velocity = -4
+air.velocity = -4
+fall=1
+fall.recover=0
+
+[State 3002, 3]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 3002, 9]
+type = ChangeState
+trigger1 = Vel Y > 0 && Pos Y >= 0
+value = 3002
+
+;---------------------------------------------------------------------------
+[Statedef 3083]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+velset = -2
+sprpriority = -2
+anim = 4500
+
+[State 3002, 3]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 3001, 1]
+type = velset
+trigger1 = time=6
+x=0
+
+[State 3002,2]
+type = ParentVaradd
+trigger1=time=1
+var(10) = 10
+
+[State 3002, 9]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 4000
+
+[State 3002, 9]
+type = ChangeState
+trigger1 = root,var(10)=100
+value = 3081
+
+;---------------------------------------------------------------------------
+[Statedef 3081]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+velset = -4,-5
+sprpriority = -2
+anim = 4501
+
+
+[State 3001, 1]
+type = veladd
+trigger1 = time > 1
+y = .47
+
+[State 3002, 1]
+type = Nothitby
+trigger1 = Time = 0
+value = SAC, NT, ST, HT ,NA, SA, HA ,NP, SP, HP
+time = 999
+
+[State 3002, 3]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+
+[State 3002, 1]
+type = PlaySnd
+trigger1 = Time = 1
+value = 11, 0
+
+[State 3002, 9]
+type = ChangeState
+trigger1 = Vel Y > 0 && Pos Y >= 0
+value = 3082
+
+
+;---------------------------------------------------------------------------
+[Statedef 3082]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+velset = 0,0
+sprpriority = -2
+anim = 4502
+
+[State 3003, 1]
+type = PosSet
+trigger1 = time=1
+y = 0
+
+[State 3002, 1]
+type = Nothitby
+trigger1 = Time = 0
+value = SAC, NT, ST, HT ,NA, SA, HA ,NP, SP, HP
+time = 999
+
+[State 3003, 1]
+type = PosSet
+trigger1 = time=1
+y = 0

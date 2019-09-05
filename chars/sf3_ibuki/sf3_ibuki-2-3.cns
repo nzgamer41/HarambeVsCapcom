@@ -1,0 +1,3617 @@
+;☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+; 常時監視ステート（相手に行動を制御されても関係無く常に実行される）
+;☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
+[Statedef -2]
+
+;デバック
+[State -2]
+type = DisplayToClipBoard
+trigger1 = 1
+text = "P2BodyDist X: %d | P2BodyDist Y: %d | Pos X: %d | Pos Y: %d \n"
+params	= floor(P2BodyDist X),ceil(P2BodyDist Y),ceil(Pos X),ceil(Pos Y)
+ignorehitpause = 1
+
+[State -2]
+Type = AppendToClipBoard
+Trigger1 = 1
+Text = "fvar(21): %f,var(32): %d,juggle: %d,HitShakeTime: %d,Combo: %d"
+Params = fvar(21),var(32),var(41),var(36),ceil(fvar(10))
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;どん
+[state 190, helper]
+type = helper
+trigger1 = !numhelper(2500)
+trigger1 = fvar(16)
+trigger1 = RoundsExisted = 0
+trigger1 = roundstate >= 2
+ID = 2500
+pos = 160,-10
+postype = back
+stateno = 2500
+helpertype = normal
+name = "tanuki"
+sprpriority = -999
+persistent = 0
+ownpal = 1
+keyctrl = 0
+Size.ShadowOffset = -5
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+[state 190, helper]
+type = helper
+trigger1 = !numhelper(2600)
+trigger1 = fvar(16)
+trigger1 = RoundsExisted >= 1
+trigger1 = roundstate < 4
+ID = 2600
+pos = ceil(-30*const(size.xscale)),-10
+postype = p1
+stateno = 2600
+helpertype = normal
+name = "tanuki"
+sprpriority = -999
+persistent = 0
+ownpal = 1
+keyctrl = 0
+Size.ShadowOffset = -5
+size.xscale = const(size.xscale)
+size.yscale = const(size.yscale)
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;地面衝突エフェクト
+[State -2, Explod]
+type = Explod
+triggerall = numenemy
+triggerall = enemy(0),stateno = 5100
+triggerall = enemy(0),time = 1
+trigger1 = enemy(0),prevstateno = 1561 || enemy(0),prevstateno = 3121
+anim = 6700
+postype = back
+pos = ceil(enemy(0),frontedgedist),floor(screenpos y)
+persistent = 0
+velocity = 0, 0
+accel = 0, 0
+ownpal = 1
+sprpriority = 3
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ヒットポーズ処理
+[State -2, HitPauseTime]
+type = VarAdd
+trigger1 = var(13) > 0
+var(13) = -1
+ignorehitpause = 1
+
+;小攻撃
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 200 || stateno = 205 || stateno = 230 || stateno = 400 || stateno = 430
+trigger2 = stateno = 900
+var(13) = 7
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 600 || stateno = 605 || stateno = 630 || stateno = 635
+var(13) = 7
+ignorehitpause = 1
+
+;中攻撃
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 210
+trigger2 = stateno = 440
+var(13) = 9
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 240
+trigger2 = stateno = 410
+var(13) = 13
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 610 || stateno = 615 || stateno = 640 || stateno = 645
+var(13) = 8
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 910
+var(13) = ifelse(AnimElemtime(7)<=0,6,9)
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 920 || stateno = 930
+var(13) = 9
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 940
+var(13) = 6
+ignorehitpause = 1
+
+;大攻撃
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 220 || stateno = 221 || stateno = 222 || stateno = 450
+var(13) = 11
+ignorehitpause = 1
+
+[State -2, changeanim]
+type = changeanim
+triggerall = movecontact
+trigger1 = stateno = 221
+value = 221
+elem = 4
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 450
+var(13) = 7
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 250
+var(13) = 9
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 225
+var(13) = ifelse(AnimElemtime(10)<=0,7,11)
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 255
+var(13) = ifelse(AnimElemtime(6)<=0,4,8)
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 420
+var(13) = 14
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 620 || stateno = 650
+var(13) = 9
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 950
+var(13) = 11
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 960
+var(13) = 8
+ignorehitpause = 1
+
+;必殺技
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1200
+trigger1 = animelemtime(7) > 0
+trigger2 = stateno = 1210
+trigger2 = animelemtime(7) > 0
+trigger3 = stateno = 1220
+trigger3 = animelemtime(8) > 0
+trigger4 = stateno = 1230
+trigger4 = animelemtime(8) > 0
+var(13) = 4
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+triggerall = stateno = 3300
+trigger1 = animelemtime(9) >= 0
+trigger1 = animelemtime(12) <= 0
+trigger2 = animelemtime(62) >= 0
+trigger2 = animelemtime(65) <= 0
+var(13) = 8
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+triggerall = stateno = 3300
+trigger1 = animelemtime(21) >= 0
+trigger1 = animelemtime(24) <= 0
+trigger2 = animelemtime(37) >= 0
+trigger2 = animelemtime(40) <= 0
+trigger3 = animelemtime(43) >= 0
+trigger3 = animelemtime(45) <= 0
+trigger4 = animelemtime(51) >= 0
+trigger4 = animelemtime(53) <= 0
+var(13) = 6
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarAdd
+trigger1 = var(48) > 0
+var(48) = -1
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 225
+var(48) = ifelse(AnimElemtime(10)<=0,8,11)
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 910
+var(48) = ifelse(AnimElemtime(7)<=0,7,9)
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 250
+var(48) = 12
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 450
+var(48) = 8
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 950
+var(48) = 13
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = moveguarded
+trigger1 = stateno = [1100,1130]
+var(48) = 4
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1200)
+trigger2 = numtarget(1201)
+trigger3 = numtarget(1210)
+trigger4 = numtarget(1211)
+trigger5 = numtarget(1220)
+trigger6 = numtarget(1221)
+trigger7 = numtarget(1230)
+trigger8 = numtarget(1231)
+var(48) = 2
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1202)
+var(48) = 6
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1222)
+trigger2 = numtarget(1232)
+var(48) = 1
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1212)
+trigger1 = numtarget(1223)
+trigger1 = numtarget(1233)
+var(48) = 8
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1300)
+var(48) = 6-(target,statetype=A)*4
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1301)
+var(48) = 4-(target,statetype=A)*2
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1302)
+var(48) = 10
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1310)
+var(48) = 8-(target,statetype=A)*6
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1311)
+var(48) = 3-(target,statetype=A)*1
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1312)
+var(48) = 6-(target,statetype=A)*4
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1313)
+var(48) = 10
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1320)
+var(48) = 8-(target,statetype=A)*6
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1321)
+var(48) = 6-(target,statetype=A)*4
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1322)
+var(48) = 8-(target,statetype=A)*6
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1323)
+var(48) = 10
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1330)
+trigger2 = numtarget(1332)
+trigger3 = numtarget(1333)
+var(48) = 3-(target,statetype=A)*1
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1334)
+trigger2 = numtarget(1335)
+var(48) = 3
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1331)
+var(48) = 7-(target,statetype=A)*5
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1336)
+var(48) = 8
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = [1400,1430]
+var(48) = 12-(enemynear,statetype=A)*6
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1440
+trigger1 = animelemtime(4) >= 0
+var(48) = 14
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;システムディレクション
+[State -3]
+type = helper
+trigger1 = numhelper(30000) = 0
+name = "system direction"
+id = 30000
+pos =  0,0
+postype = left
+stateno = 30000
+helpertype = normal
+sprpriority = 1
+keyctrl = 0
+
+[state 190, helper]
+type = helper
+trigger1 = numhelper(30000)
+trigger1 = numhelper(40000) = 0
+trigger1 = stateno = 191 || stateno = 192 || stateno = 193  || stateno = 100191
+trigger1 = time = 1
+trigger1 = numpartner = 0
+ID = 40000
+pos = 0,0
+postype = back
+stateno = 40000+(helper(30000),var(18)=[0,3])*helper(30000),var(18)+(helper(30000),var(18)=4)*random%4
+helpertype = normal
+name = "SA-SELECT"
+sprpriority = 0
+ownpal = 1
+keyctrl = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = movecontact
+trigger1 = stateno = 430
+var(40) = 1
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno != 430
+trigger2 = movetype != A
+var(40) = 0
+
+[State -2, Varset]
+type = Varset
+trigger1 = stateno != 900
+fvar(30) = 0
+
+[State -2, Varset]
+type = Varset
+trigger1 = stateno != [4000,4205]
+fvar(31) = 0
+
+[State -2, Varset]
+type = Varset
+trigger1 = stateno != [1000,1030]
+fvar(19) = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;パワーゲージ
+[State -2, PowerSet]
+type = PowerSet
+trigger1 = var(2) = 0
+trigger1 = power > 2560
+trigger1 = numpartner = 0
+value = 2560
+ignorehitpause = 1
+
+[State -2, PowerSet]
+type = PowerSet
+trigger1 = var(2) = 2
+trigger1 = power > 1200
+trigger1 = numpartner = 0
+value = 1200
+ignorehitpause = 1
+
+[State -2, PowerSet]
+type = PowerSet
+trigger1 = var(2) = 3
+trigger1 = power > 800
+trigger1 = numpartner = 0
+value = 800
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+triggerall = !numtarget
+trigger1 = stateno = 200
+trigger2 = stateno = 205
+trigger3 = stateno = 222
+trigger4 = stateno = 230
+trigger5 = stateno = 400
+trigger6 = stateno = 430
+trigger7 = stateno = 600
+trigger8 = stateno = 605
+trigger9 = stateno = 630
+trigger10 = stateno = 635
+trigger11 = stateno = 900
+trigger12 = stateno = 960
+value = 20
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+trigger1 = numtarget(210) || numtarget(220)
+trigger2 = numtarget(410) || numtarget(440)
+trigger4 = numtarget(910) || numtarget(911)
+value = 30
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+trigger1 = numtarget(240)
+trigger2 = numtarget(610) || numtarget(615) || numtarget(640) || numtarget(645)
+trigger3 = numtarget(910) || numtarget(920) || numtarget(930)
+value = 40
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+trigger1 = numtarget(221) || numtarget(255)
+trigger2 = numtarget(450)
+trigger3 = numtarget(650)
+trigger4 = numtarget(940)
+value = 80
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+trigger1 = numtarget(225) || numtarget(250)
+trigger2 = numtarget(420)
+trigger3 = numtarget(620)
+value = 100
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+triggerall = !numtarget
+trigger1 = stateno = 225
+trigger1 = animelemtime(10) > 0
+trigger2 = stateno = 255
+trigger2 = animelemtime(6) > 0
+trigger3 = stateno = 910
+trigger3 = animelemtime(7) > 0
+value = 20
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+trigger1 = numtarget(1200)
+trigger2 = numtarget(1210)
+trigger3 = numtarget(1220)
+value = 110
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+triggerall = !numtarget
+trigger1 = stateno = [1200,1220]
+trigger1 = animelemtime(6) > 0
+value = 20
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+trigger1 = numtarget(1300)
+trigger2 = numtarget(1310)
+trigger3 = numtarget(1320)
+value = 90
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+triggerall = !numtarget
+trigger1 = stateno = 1300
+trigger1 = anim = 1300
+trigger1 = animelemtime(10) > 0
+trigger2 = stateno = 1300
+trigger2 = anim = 1301
+trigger3 = stateno = 1310
+trigger3 = anim = 1310
+trigger3 = animelemtime(10) > 0
+trigger4 = stateno = 1310
+trigger4 = anim = 1311 || anim = 1312
+trigger5 = stateno = 1320
+trigger5 = anim = 1320
+trigger5 = animelemtime(10) > 0
+trigger6 = stateno = 1320
+trigger6 = anim = 1321
+value = 20
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+trigger1 = numtarget(1400)
+trigger2 = numtarget(1410)
+trigger3 = numtarget(1420)
+value = 90
+ignorehitpause = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+triggerall = movehit
+triggerall = !numtarget
+trigger1 = stateno = 1440
+trigger1 = animelemtime(3) > 0
+trigger1 = var(10) != 3
+value = 20
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;Hit確認
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = [200,222]
+trigger2 = stateno = [230,250]
+trigger3 = stateno = [400,450]
+trigger4 = stateno = [600,650]
+trigger5 = stateno = 900
+trigger6 = stateno = [920,960]
+trigger7 = stateno = [1100,1130]
+trigger8 = stateno = [1300,1330]
+trigger9 = stateno = [1400,1420]
+trigger10 = stateno = [1500,1520]
+trigger11 = stateno = 195
+var(35) = stateno
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1440
+trigger1 = animelemtime(4) >= 0
+var(35) = stateno
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 225
+var(35) = ifelse(AnimElemtime(10)<=0,225,226)
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 255
+var(35) = ifelse(AnimElemtime(6)<=0,255,256)
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 910
+var(35) = ifelse(AnimElemtime(7)<=0,910,911)
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1200
+trigger1 = animelemtime(7) > 0
+var(35) = 1202
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1210
+trigger1 = animelemtime(7) > 0
+var(35) = 1212
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1220
+trigger1 = animelemtime(8) > 0
+var(35) = 1223
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1230
+trigger1 = animelemtime(8) > 0
+var(35) = 1233
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1300
+trigger1 = anim = 1301
+var(35) = 1302
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1310
+trigger1 = anim = 1312
+var(35) = 1312
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1320
+trigger1 = anim = 1321
+var(35) = 1323
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1330
+trigger1 = anim = 1331
+var(35) = 1331
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1330
+trigger1 = anim = 1332
+var(35) = 1332
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact || movereversed
+trigger1 = stateno = 1330
+trigger1 = anim = 1333
+var(35) = 1333
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact || movereversed
+triggerall = stateno = 3300
+trigger1 = animelemtime(9) >= 0
+trigger1 = animelemtime(12) <= 0
+var(35) = 3300
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact || movereversed
+triggerall = stateno = 3300
+trigger1 = animelemtime(21) >= 0
+trigger1 = animelemtime(24) <= 0
+var(35) = 3301
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact || movereversed
+triggerall = stateno = 3300
+trigger1 = animelemtime(37) >= 0
+trigger1 = animelemtime(40) <= 0
+var(35) = 3302
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact || movereversed
+triggerall = stateno = 3300
+trigger1 = animelemtime(43) >= 0
+trigger1 = animelemtime(45) <= 0
+var(35) = 3303
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact || movereversed
+triggerall = stateno = 3300
+trigger1 = animelemtime(51) >= 0
+trigger1 = animelemtime(53) <= 0
+var(35) = 3304
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact || movereversed
+triggerall = stateno = 3300
+trigger1 = animelemtime(62) >= 0
+trigger1 = animelemtime(65) <= 0
+var(35) = 3305
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = movetype != A
+var(35) = 0
+
+[State -2, TargetState]
+type = TargetState
+triggerall = movehit
+triggerall = numtarget
+triggerall = target,statetype != A
+trigger1 = NumTarget(3210) || NumTarget(3220) || NumTarget(3230) || NumTarget(3240)
+value = 5621
+ignorehitpause = 1
+
+[State -2, TargetState]
+type = TargetState
+triggerall = movehit
+triggerall = numtarget
+triggerall = target,statetype != A
+triggerall = target,authorname = "GM"
+triggerall = target,name="Alex"||target,name="Hugo"||target,name="Ryu"||target,name="Ken"||target,name="Gouki"||target,name="Sean"||target,name="Ibuki"||target,name="Gill"
+trigger1 = NumTarget(3210) || NumTarget(3220) || NumTarget(3230) || NumTarget(3240)
+value = 5601
+ignorehitpause = 1
+
+[State -2, TargetState]
+type = TargetState
+triggerall = movehit
+trigger1 = numtarget(620)
+trigger1 = target(620),stateno = 5000
+trigger1 = target(620),authorname = "GM"
+trigger1 = target(620),name="Alex"||target(620),name="Hugo"||target(620),name="Ryu"||target(620),name="Ken"||target(620),name="Gouki"||target(620),name="Sean"||target(620),name="Ibuki"
+value = 5600
+ignorehitpause = 1
+
+[State -2, TargetState]
+type = TargetState
+triggerall = movehit
+triggerall = numenemy = 1
+triggerall = numtarget
+triggerall = target,authorname = "GM"
+triggerall = target,name="Alex"||target,name="Hugo"||target,name="Ryu"||target,name="Ken"||target,name="Gouki"||target,name="Sean"||target,name="Ibuki"||target,name="Gill"
+trigger1 = NumTarget(1333)
+trigger2 = NumTarget(3105)||NumTarget(3106)||NumTarget(3107)||NumTarget(3108)
+value = 5700
+ignorehitpause = 1
+
+[State -2, varset]
+type = varset
+triggerall = numtarget
+triggerall = target,gethitvar(hittime) = 0
+trigger1 = (target,stateno = 5001) || (target,stateno =5011)
+trigger2 = (target,stateno = 5610) || (target,stateno =5630)
+trigger3 = (target,stateno = 151) || (target,stateno =153) || (target,stateno =155)
+trigger4 = (target,stateno = 6151) || (target,stateno = 6153) || (target,stateno = 6155)
+fvar(21) = 6
+ignorehitpause = 1
+
+[State -2, varadd]
+type = varadd
+trigger1 = fvar(21) > 0
+fvar(21) = -1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno != [1000,1030]
+var(16) = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;削りＫＯ
+[State -2, ChangeState] 
+type = null;ChangeState
+triggerall = !alive
+trigger1 = (Stateno = 5000) || (Stateno = 5010)
+trigger1 = (prevstateno = [130,131]) || (prevstateno = [150,153])
+value = 5190
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ＫＯ
+[State -2, VarSet]
+type = VarSet
+trigger1 = alive
+fvar(7) = 0
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = alive = 0
+trigger1 = fvar(7) = 0
+fvar(7) = 1
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = alive = 0
+trigger1 = fvar(7) >= 1
+fvar(7) = 1
+
+[State -2, playsnd]
+type = playsnd
+triggerall = alive = 0
+triggerall = fvar(7) = 3
+trigger1 = stateno != 5190
+trigger2 = anim != 5190
+value = 11,1
+channel = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = fvar(7) = 3
+fvar(7) = -1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;各種VarSet
+
+;ハイジャンプ
+[State -2,longjump]
+type = VarSet
+trigger1 = var(50) = 0
+trigger1 = Command = "longjump_u" || Command = "longjump_f" || Command = "longjump_b"
+var(3) = 1
+
+[State -2,longjump]
+type = VarSet
+triggerall = var(3)
+trigger1 = time = 1
+trigger1 = stateno != [40,50]
+var(3) = 0
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = statetype != A 
+fvar(15) = Const(movement.yaccel)*const(size.yscale)
+
+;対空ガード
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno != [120,153]
+trigger1 = stateno != [6140,6153]
+var(4) = 0
+
+;クイックスタンディング
+[State -2, VarSet]
+type = VarSet
+Trigger1 = statetype != L
+var(7) = -1
+
+[State -3, StopSnd]
+type = StopSnd
+trigger1 = movetype = H
+channel = 3
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ブロッキング入力
+[State -2, ブロッキング]
+type = VarSet
+trigger1 = var(30) >= 23
+trigger2 = (stateno = [4000,4205])&&!time
+var(33) = 0
+
+[State -2, ブロッキング]
+type = VarSet
+trigger1 = var(30) >= 23
+trigger2 = (stateno = [4000,4205])&&!time
+var(30) = 0
+
+[State -2, ブロッキング]
+type = VarAdd
+trigger1 = var(30)
+var(30) = 1
+ignorehitpause = 1
+
+[State -2, ブロッキング]
+type = VarAdd
+trigger1 = var(19)
+var(19) = -1
+ignorehitpause = 1
+
+[State -2, ブロッキング]
+type = VarSet
+triggerall = var(30) = 0
+triggerall = var(50) = 0
+trigger1 = command = "bl1" && command != "holddown"&& Command != "holdup"
+trigger1 = var(19):= 10
+var(30) = 1
+
+[State -2, ブロッキング]
+type = VarSet
+trigger1 = var(50) = 0
+trigger1 = var(30) = [1,6+helper(30000),var(1)]
+trigger1 = command != "holddown" && Command != "holdup" && command != "holdfwd"&& Command != "holdback"
+var(33) = 1
+
+[State -2, ブロッキング]
+type = VarSet
+trigger1 = var(31) >= 23
+trigger2 = (stateno = [4000,4205])&&!time
+var(34) = 0
+
+[State -2, ブロッキング]
+type = VarSet
+trigger1 = var(31) >= 23
+trigger2 = (stateno = [4000,4205])&&!time
+var(31) = 0
+
+[State -2, ブロッキング]
+type = VarAdd
+trigger1 = var(31)
+var(31) = 1
+ignorehitpause = 1
+
+[State -2, ブロッキング]
+type = VarSet
+triggerall = var(31) = 0
+triggerall = var(50) = 0
+trigger1 = command = "bl2" && command != "holdfwd"&& Command != "holdback"
+trigger1 = var(19):= 10
+var(31) = 1
+
+[State -2, ブロッキング]
+type = VarSet
+trigger1 = var(50) = 0
+trigger1 = var(31) = [1,6+helper(30000),var(1)]
+trigger1 = command != "holddown" && Command != "holdup" && command != "holdfwd"&& Command != "holdback"
+var(34) = 1
+
+[State -2, ブロッキング]
+type = VarSet
+trigger1 = ctrl
+trigger2 = stateno = [150,155]
+trigger3 = stateno = [6150,6155]
+var(29) = 0
+
+[State -2, ブロッキング]
+type = VarSet
+trigger1 = stateno = [6150,6155]
+trigger2 = numhelper(30000)
+trigger2 = helper(30000),var(4) = 1
+trigger2 = stateno = [150,155]
+var(32) = 1
+
+[State -2, ブロッキング]
+type = VarSet
+trigger1 = ctrl
+trigger2 = numhelper(30000)
+trigger2 = helper(30000),var(4) = 0
+trigger2 = stateno = [150,155]
+var(32) = 0
+
+;立ちブロ
+[State -2, HitOverride] 
+type = HitOverride
+triggerall = var(50) = 0
+triggerall = statetype != A
+trigger1 = (ctrl||((stateno = [4000,4115])&&!fvar(9))) && (var(30) = [1,6+helper(30000),var(1)]) && helper(30000),var(0)
+trigger2 = (ctrl||((stateno = [4000,4115])&&!fvar(9))) && (var(30) = [7+helper(30000),var(1),10+helper(30000),var(1)]) && var(33) && helper(30000),var(0)
+trigger3 = (stateno = [4000,4115]) && fvar(9)
+trigger4 = (stateno = [6150,6153]) && (var(30) = [1,ifelse((enemynear,hitdefattr=S,SA,HA),2,3)+helper(30000),var(3)]) && helper(30000),var(2)
+trigger5 = numhelper(30000) && helper(30000),var(4) = 1
+trigger5 = (stateno = [150,153]) && (var(30) = [1,ifelse((enemynear,hitdefattr=S,SA,HA),2,3)+helper(30000),var(3)]) && helper(30000),var(2)
+slot = 0
+attr = S, AA
+stateno = 4000
+time = 1
+
+[State -2, HitOverride] 
+type = HitOverride
+triggerall = var(50) = 0
+triggerall = statetype != A
+trigger1 = (ctrl||((stateno = [4000,4115])&&!fvar(9))) && (var(30) = [1,5+helper(30000),var(1)]) && helper(30000),var(0)
+trigger2 = (stateno = [4000,4115]) && fvar(9)
+trigger3 = (stateno = [6150,6153]) && (var(30) = [1,ifelse((enemynear,hitdefattr=A,SA,HA),2,3)+helper(30000),var(3)]) && helper(30000),var(2)
+trigger4 = numhelper(30000) && helper(30000),var(4) = 1
+trigger4 = (stateno = [150,153]) && (var(30) = [1,ifelse((enemynear,hitdefattr=A,SA,HA),2,3)+helper(30000),var(3)]) && helper(30000),var(2)
+slot = 1
+attr = A, AA
+stateno = 4000
+time = 1
+
+[State -2, HitOverride] 
+type = HitOverride
+triggerall = var(50) = 0
+triggerall = statetype != A
+trigger1 = (ctrl||((stateno = [4000,4115])&&!fvar(9))) && (var(30) = [1,6+helper(30000),var(1)]) && helper(30000),var(0)
+trigger2 = (ctrl||((stateno = [4000,4115])&&!fvar(9))) && (var(30) = [7+helper(30000),var(1),10+helper(30000),var(1)]) && var(33) && helper(30000),var(0)
+trigger3 = (stateno = [4000,4115]) && fvar(9)
+trigger4 = (stateno = [6150,6153]) && (var(30) = [1,2+helper(30000),var(3)]) && helper(30000),var(2)
+trigger5 = numhelper(30000) && helper(30000),var(4) = 1
+trigger5 = (stateno = [150,153]) && (var(30) = [1,2+helper(30000),var(3)]) && helper(30000),var(2)
+slot = 2
+attr = SA, AP
+stateno = 4010
+time = 1
+
+;屈ブロ
+[State -2, HitOverride]
+type = HitOverride
+triggerall = var(50) = 0
+triggerall = statetype != A
+trigger1 = (ctrl||((stateno = [4000,4115])&&!fvar(9))) && (var(31) = [1,6+helper(30000),var(1)]) && helper(30000),var(0)
+trigger2 = (ctrl||((stateno = [4000,4115])&&!fvar(9))) && (var(31) = [7+helper(30000),var(1),10+helper(30000),var(1)]) && var(34) && helper(30000),var(0)
+trigger3 = (stateno = [4000,4115]) && fvar(9)
+trigger4 = (stateno = [6150,6153]) && (var(31) = [1,ifelse((enemynear,hitdefattr=C,SA,HA),2,3)+helper(30000),var(3)]) && helper(30000),var(2)
+trigger5 = numhelper(30000) && helper(30000),var(4) = 1
+trigger5 = (stateno = [150,153]) && (var(31) = [1,ifelse((enemynear,hitdefattr=C,SA,HA),2,3)+helper(30000),var(3)]) && helper(30000),var(2)
+slot = 3
+attr = C, AA
+stateno = 4100
+time = 1
+
+[State -2, HitOverride]
+type = HitOverride
+triggerall = var(50) = 0
+triggerall = statetype != A
+trigger1 = (ctrl||((stateno = [4000,4115])&&!fvar(9))) && (var(31) = [1,6+helper(30000),var(1)]) && helper(30000),var(0)
+trigger2 = (ctrl||((stateno = [4000,4115])&&!fvar(9))) && (var(31) = [7+helper(30000),var(1),10+helper(30000),var(1)]) && var(34) && helper(30000),var(0)
+trigger3 = (stateno = [4000,4115]) && fvar(9)
+trigger4 = (stateno = [6150,6153]) && (var(31) = [1,2+helper(30000),var(3)]) && helper(30000),var(2)
+trigger5 = numhelper(30000) && helper(30000),var(4) = 1
+trigger5 = (stateno = [150,153]) && (var(31) = [1,2+helper(30000),var(3)]) && helper(30000),var(2)
+slot = 4
+attr = C, AP
+stateno = 4110
+time = 1
+
+;空中ブロ
+[State -2, HitOverride]
+type = HitOverride
+triggerall = var(50) = 0
+triggerall = statetype = A
+trigger1 = (ctrl||(stateno=5040&&var(0)=1)||((stateno = [4200,4205])&&!fvar(9))) && (var(30) = [1,6+helper(30000),var(1)]) && helper(30000),var(0)
+trigger2 = (ctrl||(stateno=5040&&var(0)=1)||((stateno = [4200,4205])&&!fvar(9))) && (var(30) = 7+helper(30000),var(1)) && var(33) && helper(30000),var(0)
+trigger3 = (stateno = [4200,4205]) && fvar(9)
+slot = 5
+attr = SCA, AA
+stateno = 4200
+time = 1
+
+[State -2, HitOverride]
+type = HitOverride
+triggerall = var(50) = 0
+triggerall = statetype = A
+trigger1 = (ctrl||(stateno=5040&&var(0)=1)||((stateno = [4200,4205])&&!fvar(9))) && (var(30) = [1,6+helper(30000),var(1)]) && helper(30000),var(0)
+trigger2 = (ctrl||(stateno=5040&&var(0)=1)||((stateno = [4200,4205])&&!fvar(9))) && (var(30) = 7+helper(30000),var(1)) && var(33) && helper(30000),var(0)
+trigger3 = (stateno = [4200,4205]) && fvar(9)
+slot = 6
+attr = SCA, AP
+stateno = 4205
+time = 1
+
+[State -2, PowerAdd]
+type = PowerAdd
+trigger1 = stateno = [4000,4205]
+trigger1 = !time
+trigger1 = power-var(17) >= 0
+value = 40-power+var(17)
+ignorehitpause = 1
+
+[State -2, varset]
+type = varset
+trigger1 = 1
+var(17) = power
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = stateno = 151 || stateno = 153 || stateno = 155
+trigger2 = stateno = 6151 || stateno = 6153 || stateno = 6155
+fvar(3) = 1
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno != 151 && stateno != 153 && stateno != 155
+trigger1 = stateno != 6151 && stateno != 6153 && stateno != 6155
+fvar(3) = 0
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = numpartner = 0
+trigger1 = numenemy
+trigger1 = enemy,numpartner = 0
+trigger1 = enemy,authorname = "GM"
+trigger1 = enemy,name="Alex"||enemy,name="Hugo"||enemy,name="Ryu"||enemy,name="Ken"||enemy,name="Gouki"||enemy,name="Sean"||enemy,name="Ibuki"||enemy,name="Gill"
+var(0) = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = numpartner > 0
+trigger2 = numenemy
+trigger2 = enemy,numpartner > 0
+trigger3 = numenemy
+trigger3 = enemy,authorname = "GM"
+trigger3 = enemy,name!="Alex"&&enemy,name!="Hugo"&&enemy,name!="Ryu"&&enemy,name!="Ken"&&enemy,name!="Gouki"&&enemy,name!="Sean"&&enemy,name!="Ibuki"&&enemy,name!="Gill"
+var(0) = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;stateno
+[State -2, VarSet]
+type = VarSet
+trigger1 = movetype = A
+var(49) = stateno
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ライフ情報取得
+[State -2, ライフ確認]
+type = VarSet
+triggerall = RoundState = [0,1]
+trigger1 = RoundNo = 1  
+var(52) = Life
+
+[State -2, ライフ取得ミス対策]
+type = VarSet
+triggerall = Var(52) = [0,100]
+triggerall = Time = 1
+trigger1 = RoundNo = 1
+trigger2 = RoundsExisted = 0
+var(52) = const(data.life)
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ファーストアタック判定
+[State -2, varset]
+type = varset
+triggerall = var(9) = 0
+trigger1 = movetype = H
+trigger1 = (stateno != [150,155]) && (stateno != [6150,6155])
+trigger1 = var(53)-life > 0
+var(9) = 1
+ignorehitpause = 1
+
+[State -2, varset]
+type = varset
+triggerall = var(9) = 0
+trigger1 = stateno != [800,899]
+trigger1 = numenemy
+trigger1 = enemy,movetype = H
+trigger1 = (enemy,stateno = [5000,5099]) || (enemy,stateno = [7000,7999])
+var(9) = 1
+ignorehitpause = 1
+
+[State -2, varset]
+type = varset
+trigger1 = roundstate = 0
+var(9) = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;スタン判定
+[State -2, varset]
+type = varset
+trigger1 = roundstate = 0
+fvar(2) = 0.0
+
+[State -2, varset]
+type = varset
+trigger1 = fvar(2) <= 0.0
+trigger2 = var(46) = 1
+trigger2 = anim != [5300,5301]
+fvar(2) = 0.0
+ignorehitpause = 1
+
+[State -2, varset]
+type = varset
+trigger1 = movetype != H
+fvar(23) = 0
+
+[State -2, varset]
+type = varadd
+trigger1 = numhelper(30000) && helper(30000),var(20)
+trigger1 = roundstate = 2
+trigger1 = stateno != [120,155]
+trigger1 = movetype = H
+trigger1 = numenemy
+trigger1 = var(53)-life > 0
+fvar(23) = ifelse(fvar(23)=0,1,fvar(23)*ifelse((enemy,HitDefAttr=SCA,NA),.1,ifelse((enemy,HitDefAttr=SCA,SA),.2,ifelse((enemy,HitDefAttr=SCA,HA),.3,.4))))
+ignorehitpause = 1
+
+[State -2, varset]
+type = varset
+trigger1 = numhelper(30000) && helper(30000),var(20) = 0
+fvar(2) = 0
+
+[State -2, varadd]
+type = varadd
+trigger1 = numhelper(30000) && helper(30000),var(20)
+trigger1 = roundstate = 2
+trigger1 = stateno != [120,155]
+trigger1 = movetype = H
+trigger1 = numenemy
+trigger1 = var(53)-life > 0
+fvar(2) = (var(53)-life)/(ifelse((enemy,HitDefAttr=SCA,NA),8,ifelse((enemy,HitDefAttr=SCA,SA),10,ifelse((enemy,HitDefAttr=SCA,HA),12,ifelse(enemy,hitcount>=10,1000,14))))*fvar(23))
+ignorehitpause = 1
+
+[State -2, varset]
+type = varset
+trigger1 = fvar(2) >= 64.0
+trigger1 = anim = 5300
+var(46) = 1
+ignorehitpause = 1
+
+[State -2, varset]
+type = varset
+trigger1 = fvar(2) < 64.0
+var(46) = 0
+ignorehitpause = 1
+
+[State -2, varset]
+type = varset
+trigger1 = fvar(2) >= 64.0
+trigger2 = anim = 5300
+fvar(2) = 64.0
+ignorehitpause = 1
+
+[State -2, varadd]
+type = varadd
+triggerall = fvar(2) > 0.0
+triggerall = fvar(2) < 64.0
+trigger1 = gametime%12 = 0
+fvar(2) = -0.5
+
+[State -2, LifeAdd]
+type = LifeAdd
+trigger1 = roundstate = 2
+trigger1 = fvar(12) = 1
+trigger1 = movetype = H
+trigger1 = (stateno != [150,155]) && (stateno != [6150,6155])
+trigger1 = var(53)-life > 0
+value = -ceil((var(53)-life)*0.5)
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = fvar(12) = 1
+triggerall = time = 1
+trigger1 = movetype = H
+trigger2 = stateno != [1700,1720]
+fvar(12) = 0
+
+[State -2, varset]
+type = varset
+trigger1 = 1
+var(53) = life
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ゲージ関連
+[State -2, VarSet]
+type = VarSet
+triggerall = numpartner
+triggerall = partner,authorname = "GM"
+trigger1 = partner,name = "Alex"
+trigger2 = partner,name = "Hugo"
+trigger3 = partner,name = "Ryu"
+trigger4 = partner,name = "Ken"
+trigger5 = partner,name = "Gouki"
+trigger6 = partner,name = "Sean"
+trigger7 = partner,name = "Ibuki"
+trigger8 = partner,name = "Gill"
+fvar(37) = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = numpartner
+triggerall = partner,authorname = "Homura"
+trigger1 = partner,name = "Remy"
+fvar(37) = 1
+
+;パワーゲージ
+[State -3]
+type = helper
+triggerall = numhelper(50000) = 0
+trigger1 = numpartner = 0
+trigger2 = numpartner && !fvar(37)
+trigger3 = fvar(37) && id < partner,id
+name = "ゲージ"
+id = 50000
+pos =  0,0
+postype = left
+stateno = 50000
+helpertype = normal
+ontop = 1
+keyctrl = 0
+
+;スタンゲージ
+[State -3]
+type = helper
+triggerall = numhelper(30000)
+triggerall = helper(30000),var(20)
+triggerall = helper(30000),var(21)
+triggerall = numhelper(25000) = 0
+trigger1 = numpartner = 0
+trigger2 = numpartner && !fvar(37)
+trigger3 = fvar(37) && id < partner,id
+name = "ゲージ"
+id = 25000
+pos =  0,0
+postype = left
+stateno = 25000
+helpertype = normal
+keyctrl = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;1P,2P側判定
+[State -2, VarSet]
+type = VarSet
+triggerall = Var(1) != 1
+triggerall = Var(1) != 2
+trigger1 = Facing = 1
+var(1) = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = Var(1) != 1
+triggerall = Var(1) != 2
+trigger1 = Facing = -1
+var(1) = 2
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;残像除去
+[State -2,Afterimage]
+type = Afterimage
+trigger1 = MoveType = H
+time = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;AssertSpecial
+[State -2, AssertSpecial]
+Type = AssertSpecial
+Trigger1 = 1
+flag = NoAirGuard
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;地震
+[State -2, Envshake]
+type = Envshake
+triggerall = numtarget
+triggerall = target,stateno = 5100
+triggerall = target,time = 3
+trigger1 = target,prevstateno = 812
+time = 12
+freq = 120
+ampl = -6
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ダメージ補正
+
+;パーソナルアクション
+[State -2, Attack_Up]
+type = VarSet
+trigger1 = moveguarded
+trigger2 = fvar(29) < 1.0
+trigger3 = fvar(29) > 1.0
+trigger3 = fvar(29) < 1.438
+trigger3 = !numtarget
+trigger3 = !var(14)
+fvar(29) = 1.0
+ignorehitpause = 1
+
+[State -2, Attack_Up]
+type = VarAdd
+trigger1 = movehit
+trigger1 = stateno != [800,899]
+trigger1 = stateno != [1100,1199]
+trigger1 = stateno != [1500,1599]
+trigger1 = stateno != 3100
+fvar(29) = -0.0625
+ignorehitpause = 1
+
+[State -2, Attack_Up]
+type = VarAdd
+trigger1 = movehit
+trigger1 = stateno = 3100
+trigger1 = animelemtime(9) > 0
+fvar(29) = -0.0625
+ignorehitpause = 1
+
+;スーパーキャンセル
+[State -2, Varset]
+type = Varset
+trigger1 = fvar(27) = 0
+trigger2 = fvar(27) < 1.0
+trigger2 = !fvar(10) && !var(14)
+fvar(27) = 1.0
+ignorehitpause = 1
+
+[State -2, Varset]
+type = Varset
+trigger1 = numtarget(1430)
+fvar(27) = 0.75
+ignorehitpause = 1
+
+;しゃがみカウンター
+[State -2, Attack_Up]
+type = VarSet
+trigger1 = numenemy
+fvar(28) = ifelse(enemynear,statetype=C,1.25,1)
+
+;根性値補正
+[State -2, VarSet]
+type = VarSet
+trigger1 = enemy,teammode = simul
+trigger1 = (100*((enemy(0),life)+(enemy(1),life))/((enemy(0),const(data.life))+(enemy(1),const(data.life))))>30
+fvar(26) = 1.0
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = enemy,teammode = simul
+trigger1 = (100*((enemy(0),life)+(enemy(1),life))/((enemy(0),const(data.life))+(enemy(1),const(data.life))))<=30
+trigger1 = (100*((enemy(0),life)+(enemy(1),life))/((enemy(0),const(data.life))+(enemy(1),const(data.life))))>20
+fvar(26) = 0.89
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = enemy,teammode = simul
+trigger1 = (100*((enemy(0),life)+(enemy(1),life))/((enemy(0),const(data.life))+(enemy(1),const(data.life))))<=20
+trigger1 = (100*((enemy(0),life)+(enemy(1),life))/((enemy(0),const(data.life))+(enemy(1),const(data.life))))>10
+fvar(26) = 0.78
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = enemy,teammode = simul
+trigger1 = (100*((enemy(0),life)+(enemy(1),life))/((enemy(0),const(data.life))+(enemy(1),const(data.life))))<=10
+trigger1 = (100*((enemy(0),life)+(enemy(1),life))/((enemy(0),const(data.life))+(enemy(1),const(data.life))))>5
+fvar(26) = 0.67
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = enemy,teammode = simul
+trigger1 = (100*((enemy(0),life)+(enemy(1),life))/((enemy(0),const(data.life))+(enemy(1),const(data.life))))<=5
+fvar(26) = 0.56
+
+[State -2, VarSet]
+type = VarSet
+triggerall = (enemy,teammode = single) || (enemy,teammode = turns)
+trigger1 = (100*enemy,life/enemy,const(data.life))>30
+fvar(26) = 1.0
+
+[State -2, VarSet]
+type = VarSet
+triggerall = (enemy,teammode = single) || (enemy,teammode = turns)
+trigger1 = (100*enemy,life/enemy,const(data.life))<=30
+trigger1 = (100*enemy,life/enemy,const(data.life))>20
+fvar(26) = 0.89
+
+[State -2, VarSet]
+type = VarSet
+triggerall = (enemy,teammode = single) || (enemy,teammode = turns)
+trigger1 = (100*enemy,life/enemy,const(data.life))<=20
+trigger1 = (100*enemy,life/enemy,const(data.life))>10
+fvar(26) = 0.78
+
+[State -2, VarSet]
+type = VarSet
+triggerall = (enemy,teammode = single) || (enemy,teammode = turns)
+trigger1 = (100*enemy,life/enemy,const(data.life))<=10
+trigger1 = (100*enemy,life/enemy,const(data.life))>5
+fvar(26) = 0.67
+
+[State -2, VarSet]
+type = VarSet
+triggerall = (enemy,teammode = single) || (enemy,teammode = turns)
+trigger1 = (100*enemy,life/enemy,const(data.life))<=5
+fvar(26) = 0.56
+
+;チェーンコンボ
+[State -2, Attack_Up]
+type = VarSet
+trigger1 = movetype != A
+trigger2 = !numtarget
+fvar(24) = 1.0
+
+
+[State -2, Attack_Down]
+type = VarSet
+triggerall = fvar(10)
+trigger1 = !numtarget
+trigger1 = !var(14)
+fvar(10) = 0
+
+[State -2, Attack_Down]
+type = VarSet
+trigger1 = !numhelper(6000)
+trigger1 = !numhelper(6001)
+trigger1 = !numhelper(6002)
+trigger1 = !numhelper(6100)
+trigger1 = !numhelper(6110)
+trigger1 = !numhelper(6120)
+trigger1 = !numhelper(6200)
+trigger1 = !numhelper(6201)
+trigger1 = !numhelper(6202)
+var(14) = 0
+
+[State -2, Attack_Down]
+type = VarSet
+trigger1 = !numhelper(6000)
+trigger1 = !numhelper(6001)
+trigger1 = !numhelper(6002)
+fvar(36) = 0
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = MoveHit 
+trigger1 = stateno = 250
+trigger2 = stateno = 420
+trigger3 = stateno = 450
+trigger4 = stateno = 620
+trigger5 = stateno = 650
+trigger6 = stateno = 950
+fvar(10) = 1
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = MoveHit 
+trigger1 = stateno = 210
+trigger2 = stateno = [220,222]
+trigger3 = stateno = 225
+trigger4 = stateno = 240
+trigger5 = stateno = 410
+trigger6 = stateno = 440
+trigger7 = stateno = [610,615]
+trigger8 = stateno = [640,645]
+trigger9 = stateno = [920,940]
+trigger10 = stateno = 960
+fvar(10) = 0.80
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = MoveHit 
+trigger1 = stateno = [200,205]
+trigger2 = stateno = 230
+trigger3 = stateno = 400
+trigger4 = stateno = 430
+trigger5 = stateno = [600,605]
+trigger6 = stateno = [630,635]
+trigger7 = stateno = [900,910]
+fvar(10) = 0.55
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = MoveHit 
+trigger1 = numtarget(255)
+trigger2 = var(37) = 0
+trigger2 = numtarget(256)
+fvar(10) = 0.55
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = MoveHit 
+trigger1 = var(37) = 1
+trigger1 = numtarget(256)
+fvar(10) = 3.0
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = MoveHit 
+trigger1 = stateno = [1200,1230]
+trigger2 = stateno = [1300,1330]
+trigger3 = stateno = [1400,1430]
+fvar(10) = 0.75
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = MoveHit 
+trigger1 = stateno = 3100
+trigger2 = stateno = 3300
+fvar(10) = 0.65
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = MoveHit 
+trigger1 = numtarget(3210)
+trigger2 = numtarget(3220)
+trigger3 = numtarget(3230)
+trigger4 = numtarget(3240)
+trigger5 = numtarget(3250)
+fvar(10) = 1.0
+ignorehitpause = 1
+
+[State -2, Attack_Down]
+type = VarSet
+trigger1 = !fvar(10)
+fvar(25) = 1.0
+
+[State -2, Attack_Down]
+type = VarSet
+trigger1 = movetype != A
+fvar(14) = 1.0
+
+[State -2, targetcombo]
+type = VarSet
+trigger1 = ctrl
+trigger2 = movetype = H
+var(37) = 0
+
+[State -2, Attack_Down]
+type = VarSet
+trigger1 = 1
+fvar(0) = ifelse((1.0-(fvar(10)*0.095))<0.15,0.15,(1.0-(fvar(10)*0.095)))
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ＰＡガード
+[State -2, ChangeState]
+type = ChangeState
+trigger1 = stateno = 195
+trigger1 = movehit
+trigger1 = numtarget(195)
+value = 196
+ignorehitpause = 1
+
+[State -2, ChangeState]
+type = ChangeState
+triggerall = moveguarded
+trigger1 = stateno = 195
+trigger1 = animelemtime(7) >= 1
+value = 10196
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;風斬りEXヒット
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno = 1230
+trigger1 = movehit
+trigger1 = numtarget(1233)
+fvar(32) = 1
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno != 1230
+fvar(32) = 0
+
+[State -2, afterimage]
+type = afterimage
+triggerall = prevstateno = 1230
+trigger1 = stateno = [600,655]
+trigger2 = stateno = 855
+trigger3 = stateno = [1000,1020]
+time = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;飛燕ヒット
+[State -2, ChangeState]
+type = ChangeState
+trigger1 = stateno = [1400,1430]
+trigger1 = movecontact
+value = 1440
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = movecontact
+trigger1 = stateno = 1440
+trigger1 = animelemtime(3) > 0
+var(22) = 1
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = stateno != 1440
+var(22) = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ジャグルリセット
+[State -2, Juggle Reset]
+type = VarSet
+triggerall = var(41)
+triggerall = numenemy
+trigger1 = enemy,statetype != A
+trigger2 = enemy,movetype = A
+trigger3 = enemy,life = 0
+var(41) = 0
+ignorehitpause = 1
+
+[State -2, Juggle Reset]
+type = VarSet
+triggerall = var(41)
+triggerall = MoveHit
+trigger1 = stateno = 3000
+trigger2 = stateno = 3300
+var(41) = 0
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ジャグルチェック(通常技)
+[State -2, Juggle Check]
+type = VarAdd
+triggerall = MoveHit
+trigger1 = stateno = [200,240]
+trigger2 = numtarget(255)
+trigger3 = stateno = [400,410]
+trigger4 = stateno = [430,450]
+trigger5 = stateno = [900,950]
+var(41) = 1
+ignorehitpause = 1
+
+[State -2, Juggle Check]
+type = VarAdd
+triggerall = MoveHit
+trigger1 = stateno = 250
+trigger2 = numtarget(256)
+trigger3 = stateno = 420
+trigger4 = stateno = 960
+trigger5 = stateno = [600,655]
+var(41) = 3
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ジャグルチェック(必殺技)
+[State -2, Juggle Check]
+type = VarAdd
+triggerall = MoveHit
+trigger1 = numtarget(1202)
+var(41) = 6
+ignorehitpause = 1
+
+[State -2, Juggle Check]
+type = VarAdd
+triggerall = MoveHit
+trigger1 = numtarget(1233)
+var(41) = 3
+ignorehitpause = 1
+
+[State -2, Juggle Check]
+type = VarAdd
+triggerall = MoveHit
+trigger1 = numtarget(1300)||numtarget(1301)
+trigger2 = numtarget(1310)||numtarget(1311)||numtarget(1312)
+trigger3 = numtarget(1320)||numtarget(1321)||numtarget(1322)
+trigger4 = numtarget(1330)||numtarget(1331)||numtarget(1332)||numtarget(1333)
+var(41) = 1
+ignorehitpause = 1
+
+[State -2, Juggle Check]
+type = VarAdd
+triggerall = MoveHit
+trigger1 = numtarget(1400)
+trigger2 = numtarget(1410)
+trigger3 = numtarget(1420)
+trigger4 = numtarget(1430)
+trigger5 = numtarget(1440)
+var(41) = 1
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;強制終了技ヒット
+[State -2, varset]
+type = varset
+triggerall = numenemy
+trigger1 = enemy,statetype != A
+trigger2 = enemy,movetype = A
+trigger3 = enemy,life = 0
+fvar(5) = 0
+ignorehitpause = 1
+
+[State -2, varset]
+type = varset
+triggerall = MoveHit
+trigger1 = numtarget(1200) || numtarget(1201)
+trigger1 = numtarget(1210) || numtarget(1211) || numtarget(1212)
+trigger1 = numtarget(1220) || numtarget(1221) || numtarget(1222) || numtarget(1223)
+trigger1 = numtarget(1230) || numtarget(1231) || numtarget(1232)
+fvar(5) = 1
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = numenemy
+trigger1 = enemy,statetype != A
+trigger2 = enemy,movetype = A
+trigger3 = enemy,life = 0
+var(5) = 0
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movehit
+triggerall = numtarget
+trigger1 = stateno = 255
+trigger2 = stateno = [1200,1230]
+trigger3 = stateno = [1300,1330]
+trigger4 = stateno = [1400,1440]
+trigger5 = stateno = 3000
+trigger6 = stateno = [3210,3260]
+trigger7 = stateno = 3300
+var(5) = 0
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = numpartner = 0
+triggerall = movehit
+triggerall = numtarget
+triggerall = target,statetype = A
+trigger1 = stateno = [200,250]
+trigger2 = stateno = [400,650]
+trigger3 = stateno = [900,960]
+var(5) = 1
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;追い討ち判定用ヒット確認
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = fvar(4) > 0
+trigger1 = !var(13)
+trigger1 = !var(48)
+trigger1 = !var(25)
+trigger1 = !var(15)
+fvar(4) = -1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = fvar(4) < 1
+fvar(4) = 0
+
+[State -2, VarSet]
+type = VarSet
+triggerall = MoveHit 
+trigger1 = stateno = [200,205]
+trigger2 = stateno = 230
+trigger3 = stateno = 400
+trigger4 = stateno = 430
+trigger5 = stateno = [600,605]
+trigger6 = stateno = [630,635]
+trigger7 = stateno = 900
+fvar(4) = 3
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = MoveHit 
+trigger1 = stateno = 210
+trigger2 = stateno = 240
+trigger3 = stateno = 410
+trigger4 = stateno = 440
+trigger5 = stateno = [610,615]
+trigger6 = stateno = [640,645]
+trigger7 = stateno = [910,940]
+trigger8 = stateno = 960
+fvar(4) = 5
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = MoveHit 
+trigger1 = stateno = [220,225]
+trigger2 = stateno = 250
+trigger3 = stateno = 420
+trigger4 = stateno = 450
+trigger5 = stateno = 620
+trigger6 = stateno = 650
+trigger7 = stateno = [1300,1330]
+trigger8 = stateno = [1400,1440]
+fvar(4) = 7
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = MoveHit 
+trigger1 = numtarget(1200) || numtarget(1201)
+trigger2 = numtarget(1210) || numtarget(1211) || numtarget(1212)
+trigger3 = numtarget(1220) || numtarget(1221) || numtarget(1222) || numtarget(1223)
+trigger4 = numtarget(1230) || numtarget(1231) || numtarget(1232)
+fvar(4) = 1
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(34) = helper(30000),var(12)
+
+[State -2, varset]
+type = varset
+trigger1 = stateno != [3000,3300]
+var(25) = 0
+
+[State -2, varadd]
+type = varadd
+trigger1 = var(15) > 0
+var(15) = -1
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;追い討ちの可不
+[State -2, VarSet]
+type = VarSet
+triggerall = numenemy
+trigger1 = enemy,statetype != A
+trigger2 = enemy,movetype = A
+trigger3 = enemy,life = 0
+var(24) = 0
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = enemy,life > 0
+triggerall = numenemy
+triggerall = enemy,statetype = A
+triggerall = enemy,movetype = H
+triggerall = fvar(5) = 0
+trigger1 = var(41) < (fvar(34)=1)*4+(fvar(34)=2)*6+(fvar(34)=3)*9+(fvar(34)=4)*999999999
+trigger2 = var(41) >= (fvar(34)=1)*4+(fvar(34)=2)*6+(fvar(34)=3)*9+(fvar(34)=4)*999999999
+trigger2 = fvar(4)
+var(24) = 0
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = enemy,life > 0
+triggerall = numtarget || var(14)
+triggerall = numenemy
+triggerall = enemy,statetype = A
+triggerall = enemy,movetype = H
+trigger1 = fvar(5) = 1
+trigger2 = !fvar(4)
+trigger2 = var(41) >= (fvar(34)=1)*4+(fvar(34)=2)*6+(fvar(34)=3)*9+(fvar(34)=4)*999999999
+var(24) = 1
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;相手空中復帰誘導
+[State -2, Air Recovery]
+type = VarSet
+triggerall = numenemy
+trigger1 = enemy,statetype != A
+trigger2 = enemy,movetype = A
+trigger3 = enemy,life = 0
+fvar(39) = 0
+ignorehitpause = 1
+
+[State -2, Air Recovery]
+type = VarSet
+triggerall = MoveHit
+trigger1 = stateno = 255
+trigger2 = stateno = 450
+trigger3 = stateno = 650
+trigger4 = stateno = [1200,1230]
+trigger5 = stateno = [1300,1330]
+trigger6 = stateno = [1400,1440]
+trigger7 = stateno = 3000
+trigger8 = stateno = 3300
+fvar(39) = 1
+ignorehitpause = 1
+
+[State -2, Air Recovery]
+type = TargetState
+triggerall = fvar(39) != 0
+triggerall = MoveHit
+trigger1 = stateno = [200,250]
+trigger2 = stateno = [400,440]
+trigger3 = stateno = [600,645]
+trigger4 = stateno = [900,960]
+value = 7000
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ヒット確認
+[State -2, VarSet]
+type = VarSet
+trigger1 = var(11) > 0
+var(11) = 0
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = MoveHit 
+trigger1 = var(49) = [200,655]
+trigger2 = var(49) = [900,960]
+trigger3 = var(49) = [1200,1230]
+trigger4 = var(49) = [1300,1330]
+trigger5 = var(49) = [1400,1440]
+trigger6 = var(49) = 3100
+trigger7 = var(49) = 3300
+var(11) = 1
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = MoveHit 
+trigger1 = var(49) = [3210,3250]
+var(11) = 2
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ヒットスパーク
+[State -2, Explod]
+type = Explod
+triggerall = var(11) = 1
+triggerall = numtarget
+trigger1 = target,stateno = [5000,5099]
+trigger2 = target,stateno = [5600,5700]
+trigger3 = target,stateno = [7000,7599]
+anim = var(44)
+pos = var(42),var(43)
+postype = p1
+sprpriority = 10
+bindtime = 1
+ignorehitpause = 1
+ownpal = 1
+facing = 1
+scale = const(size.xscale),const(size.yscale)
+
+[State -2, Explod]
+type = Explod
+triggerall = var(11) = 1
+triggerall = !numtarget
+triggerall = numenemy
+triggerall = enemy,movetype = H
+trigger1 = enemy,stateno = [5000,5099]
+trigger2 = enemy,stateno = [5600,5700]
+trigger3 = enemy,stateno = [7000,7020]
+anim = var(44)
+pos = var(42),var(43)
+postype = p1
+sprpriority = 10
+bindtime = 1
+ignorehitpause = 1
+ownpal = 1
+facing = 1
+scale = const(size.xscale)*ifelse(var(6)=2,fvar(38),1),const(size.yscale)*ifelse(var(6)=2,fvar(38),1)
+
+[State -2, Explod]
+type = Explod
+triggerall = var(11) = 2
+triggerall = numtarget
+trigger1 = target,stateno = [5000,5099]
+trigger2 = target,stateno = [5600,5700]
+anim = var(44)
+pos = var(42),var(43)
+postype = p2
+sprpriority = 10
+bindtime = 1
+ignorehitpause = 1
+ownpal = 1
+facing = 1
+scale = const(size.xscale),const(size.yscale)
+
+[State -2, Explod]
+type = Explod
+triggerall = var(11) = 2
+triggerall = !numtarget
+triggerall = numenemy
+triggerall = enemy,movetype = H
+trigger1 = enemy,stateno = [5000,5099]
+trigger2 = enemy,stateno = [5600,5700]
+anim = var(44)
+pos = var(42),var(43)
+postype = p2
+sprpriority = 10
+bindtime = 1
+ignorehitpause = 1
+ownpal = 1
+facing = 1
+scale = const(size.xscale),const(size.yscale)
+
+[State -2, Var]
+type = VarSet
+trigger1 = movetype != A
+var(42) = 0
+
+[State -2, Var]
+type = VarSet
+trigger1 = movetype != A
+var(43) = 0
+
+[State -2, Var]
+type = VarSet
+trigger1 = movetype != A
+var(44) = -1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;コンボ用ヒット確認
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = [200,222]
+trigger2 = stateno = [230,250]
+trigger3 = stateno = [400,450]
+trigger4 = stateno = [600,650]
+trigger5 = stateno = 900
+trigger6 = stateno = [920,960]
+trigger7 = stateno = [1200,1230]
+trigger8 = stateno = [1100,1130]
+trigger9 = stateno = [1300,1330]
+trigger10 = stateno = [1400,1420]
+trigger11 = stateno = 3100
+trigger12 = stateno = [3210,3260]
+var(38) = stateno
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1440
+trigger1 = animelemtime(4) >= 0
+var(38) = stateno
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 225
+var(38) = ifelse(AnimElemtime(10)<=0,225,226)
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 255
+var(38) = ifelse(AnimElemtime(6)<=0,255,256)
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 910
+var(38) = ifelse(AnimElemtime(7)<=0,910,911)
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1300
+trigger1 = anim = 1300
+trigger1 = animelemtime(9) >= 0
+trigger1 = animelemtime(10) <= 0
+var(38) = 1300
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1300
+trigger1 = anim = 1300
+trigger1 = animelemtime(23) >= 0
+trigger1 = animelemtime(24) <= 0
+var(38) = 1301
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1300
+trigger1 = anim = 1301
+var(38) = 1302
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1310
+trigger1 = anim = 1310
+trigger1 = animelemtime(9) >= 0
+trigger1 = animelemtime(10) <= 0
+var(38) = 1310
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1310
+trigger1 = anim = 1310
+trigger1 = animelemtime(23) >= 0
+trigger1 = animelemtime(24) <= 0
+var(38) = 1311
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1310
+trigger1 = anim = 1312
+var(38) = 1312
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1320
+trigger1 = anim = 1320
+trigger1 = animelemtime(9) >= 0
+trigger1 = animelemtime(10) <= 0
+var(38) = 1320
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1320
+trigger1 = anim = 1320
+trigger1 = animelemtime(23) >= 0
+trigger1 = animelemtime(24) <= 0
+var(38) = 1321
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1320
+trigger1 = anim = 1320
+trigger1 = animelemtime(38) >= 0
+trigger1 = animelemtime(39) <= 0
+var(38) = 1322
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1320
+trigger1 = anim = 1321
+var(38) = 1323
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1330
+trigger1 = anim = 1330
+trigger1 = animelemtime(8) >= 0
+trigger1 = animelemtime(9) <= 0
+var(38) = 1330
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1330
+trigger1 = anim = 1330
+trigger1 = animelemtime(18) >= 0
+trigger1 = animelemtime(19) <= 0
+var(38) = 1331
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1330
+trigger1 = anim = 1330
+trigger1 = animelemtime(28) >= 0
+trigger1 = animelemtime(29) <= 0
+var(38) = 1332
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1330
+trigger1 = anim = 1330
+trigger1 = animelemtime(39) >= 0
+trigger1 = animelemtime(40) <= 0
+var(38) = 1333
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1330
+trigger1 = anim = 1331
+var(38) = 1334
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1330
+trigger1 = anim = 1332
+var(38) = 1335
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1330
+trigger1 = anim = 1333
+var(38) = 1336
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+triggerall = stateno = 3300
+trigger1 = animelemtime(9) >= 0
+trigger1 = animelemtime(12) <= 0
+var(38) = 3300
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+triggerall = stateno = 3300
+trigger1 = animelemtime(21) >= 0
+trigger1 = animelemtime(24) <= 0
+var(38) = 3301
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+triggerall = stateno = 3300
+trigger1 = animelemtime(37) >= 0
+trigger1 = animelemtime(40) <= 0
+var(38) = 3302
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+triggerall = stateno = 3300
+trigger1 = animelemtime(43) >= 0
+trigger1 = animelemtime(45) <= 0
+var(38) = 3303
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+triggerall = stateno = 3300
+trigger1 = animelemtime(51) >= 0
+trigger1 = animelemtime(53) <= 0
+var(38) = 3304
+ignorehitpause = 1
+
+[State -2, HitPauseTime]
+type = VarSet
+triggerall = movecontact
+triggerall = stateno = 3300
+trigger1 = animelemtime(62) >= 0
+trigger1 = animelemtime(65) <= 0
+var(38) = 3305
+ignorehitpause = 1
+
+[State -2, VarSet]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = [200,655]
+trigger2 = stateno = [900,960]
+trigger3 = stateno = [1100,1130]
+trigger4 = stateno = [1200,1230]
+trigger5 = stateno = [1300,1330]
+trigger6 = stateno = [1400,1440]
+trigger7 = stateno = 3100
+trigger8 = stateno = [3210,3260]
+trigger9 = stateno = 3300
+fvar(13) = 5
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = var(38)
+trigger1 = !var(13)
+trigger1 = fvar(13) > 0
+fvar(13) = -1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = ctrl
+trigger2 = !var(13)
+trigger2 = !fvar(13)
+var(38) = 0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ヒットバックフラグ発生
+[State -2, CornerPush]
+type = VarSet
+triggerall = fvar(1)
+trigger1 = !NumTarget
+trigger2 = NumTarget
+trigger2 = Target,statetype = L
+trigger3 = movetype = H
+trigger4 = fvar(33)
+fvar(1) = 0
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = moveguarded
+trigger1 = stateno = 195
+fvar(1) = 11*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 200
+fvar(1) = 8*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 205
+fvar(1) = 9*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 210
+fvar(1) = 12*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 220
+fvar(1) = 10*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 221
+fvar(1) = 12*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 222
+fvar(1) = 5*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 225
+fvar(1) = 14*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 230
+fvar(1) = 8*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 240
+fvar(1) = 10*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 250
+fvar(1) = 17*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = moveguarded
+trigger1 = numtarget(255)
+fvar(1) = 7*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = moveguarded
+trigger1 = numtarget(256)
+fvar(1) = 14*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movehit
+trigger1 = numtarget(255)
+fvar(1) = 1*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movehit
+trigger1 = numtarget(256)
+fvar(1) = 1*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 400
+fvar(1) = 7*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 410
+fvar(1) = 7*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 420
+fvar(1) = 16.0*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 430
+fvar(1) = 7*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 440
+fvar(1) = 7*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 450
+fvar(1) = 10*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 900
+fvar(1) = 8*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(910)
+fvar(1) = 5*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(911)
+fvar(1) = 9*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 920
+fvar(1) = 12*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 930
+fvar(1) = 14*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 940
+fvar(1) = 8*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 950
+fvar(1) = 7*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 960
+fvar(1) = 8*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+triggerall = numtarget
+triggerall = target,statetype != A
+trigger1 = stateno = [600,615]
+trigger2 = stateno = [630,645]
+fvar(1) = 6*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+triggerall = numtarget
+triggerall = target,statetype != A
+trigger1 = stateno = 620
+fvar(1) = 9*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+triggerall = numtarget
+triggerall = target,statetype != A
+trigger1 = stateno = 650
+fvar(1) = 12*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+triggerall = numtarget
+triggerall = target,statetype = A
+trigger1 = stateno = [600,605]
+trigger2 = stateno = [630,635]
+fvar(1) = 6*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+triggerall = numtarget
+triggerall = target,statetype = A
+trigger1 = stateno = [610,615]
+trigger2 = stateno = [640,645]
+fvar(1) = 9*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+triggerall = numtarget
+triggerall = target,statetype = A
+trigger1 = stateno = [620,625]
+trigger2 = stateno = [650,655]
+fvar(1) = 12*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = moveguarded
+trigger1 = stateno = [1100,1130]
+fvar(1) = 4*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = [1200,1230]
+fvar(1) = 8.5*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1300)
+trigger2 = numtarget(1301)
+trigger3 = numtarget(1310)
+trigger4 = numtarget(1311)
+trigger5 = numtarget(1312)
+trigger6 = numtarget(1320)
+trigger7 = numtarget(1321)
+trigger8 = numtarget(1322)
+fvar(1) = 6.5*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(1302)
+trigger2 = numtarget(1313)
+trigger3 = numtarget(1323)
+fvar(1) = 9*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 1330
+fvar(1) = 11*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = [1400,1440]
+fvar(1) = 6*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = moveguarded
+trigger1 = stateno = [1500,1520]
+fvar(1) = 9.0*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = 3100
+fvar(1) = (5+(animelemtime(26)>0)*5)*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(3300)
+fvar(1) = 8*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(3301)
+fvar(1) = 6*const(size.xscale)
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = numtarget(3305)
+fvar(1) = 10*const(size.xscale)
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;コーナープッシュ処理
+[State -2, CornerPush]
+type = VarSet
+trigger1 = !var(13) && !var(25) && !var(48) && !fvar(6) && fvar(1) < 0.1
+fvar(1) = 0
+
+[State -2, CornerPush]
+type = PosAdd
+trigger1 = !var(13) && !var(25) && !var(48) && fvar(1) && !fvar(6)
+trigger1 = numtarget
+trigger1 = target,BackEdgeBodyDist <= 0 || target,FrontEdgeBodyDist <= 0
+x = -fvar(1)
+
+[State -2, CornerPush]
+type = VarSet
+trigger1 = !var(13) && !var(25) && !var(48) && fvar(1) && !fvar(6)
+fvar(1) = fvar(1)*.8
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movecontact
+trigger1 = stateno = [1200,1230]
+trigger1 = numtarget
+trigger1 = target,statetype = A
+fvar(1) = 0
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = fvar(33)
+trigger1 = !NumTarget
+trigger2 = NumTarget
+trigger2 = target,statetype != A
+trigger3 = movetype = H
+trigger4 = fvar(1)
+trigger5 = stateno = 1250
+fvar(33) = 0
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = fvar(35)
+trigger1 = !fvar(33)
+fvar(35) = 0
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movehit
+trigger1 = stateno = [1200,1230]
+trigger1 = numtarget
+trigger1 = target,statetype = A
+fvar(33) = 2.0
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+trigger1 = fvar(35) = 0
+trigger1 = fvar(33)
+trigger1 = numtarget
+trigger1 = target,BackEdgeBodyDist <= 0 || target,FrontEdgeBodyDist <= 0
+fvar(35) = pos X
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = PosAdd
+triggerall = !var(13) && !var(25) && !var(48) && !fvar(6) && fvar(33)
+triggerall = numtarget
+triggerall = target,BackEdgeBodyDist <= 0 || target,FrontEdgeBodyDist <= 0
+triggerall = abs(target,pos X-pos X) < ceil(100*const(size.xscale))
+;triggerall = statetype = A
+triggerall = abs(fvar(35)-pos X) < ceil(50*const(size.xscale))
+trigger1 = facing = 1
+trigger1 = target,Pos X - Pos X >= 0
+trigger2 = facing = -1
+trigger2 = target,Pos X - Pos X < 0
+x = -fvar(33)
+
+[State -2, CornerPush]
+type = PosAdd
+triggerall = !var(13) && !var(25) && !var(48) && !fvar(6) && fvar(33) && fvar(35)
+triggerall = numtarget
+triggerall = target,BackEdgeBodyDist <= 0 || target,FrontEdgeBodyDist <= 0
+triggerall = abs(target,pos X-pos X) < ceil(80*const(size.xscale))
+;triggerall = statetype = A
+triggerall = abs(fvar(35)-pos X) < ceil(50*const(size.xscale))
+trigger1 = facing = 1
+trigger1 = target,Pos X - Pos X < 0
+trigger2 = facing = -1
+trigger2 = target,Pos X - Pos X >= 0
+x = fvar(33)
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = numenemy
+trigger1 = (enemy,stateno != [5000,5050]) && (enemy,stateno != [7000,7999]) && enemy,stateno != 5700
+trigger2 = enemynear,statetype != A
+fvar(9) = 0
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movehit
+triggerall = numtarget
+triggerall = target,statetype = A
+trigger1 = stateno = [200,655]
+trigger2 = stateno = [900,960]
+fvar(9) = 1
+ignorehitpause = 1
+
+[State -2, CornerPush]
+type = VarSet
+triggerall = movehit
+trigger1 = stateno = [1200,1230]
+trigger2 = stateno = [1300,1330]
+trigger3 = stateno = [1400,1440]
+fvar(9) = 1
+ignorehitpause = 1
+
+[State -2, VelSet]
+type = posadd
+triggerall = fvar(9)
+triggerall = statetype = A
+triggerall = stateno != [1200,1230]
+triggerall = vel X > 0
+trigger1 = numenemy
+trigger1 = (enemynear,stateno = [5020,5050])||(enemynear,stateno = [7000,7020])||enemynear,stateno = 5700
+trigger1 = enemynear,BackEdgeBodyDist <= 0
+x = (enemy,vel X)*.4
+
+[State -2, VelSet]
+type = posadd
+triggerall = fvar(9)
+triggerall = stateno=20||stateno=100||(stateno=[1200,1230])
+triggerall = vel X > 0
+triggerall = FrontEdgeBodyDist < ceil(80*const(size.xscale))
+trigger1 = numenemy
+trigger1 = (enemynear,stateno = [5020,5050])||(enemynear,stateno = [7000,7020])||enemynear,stateno = 5700
+trigger1 = enemynear,BackEdgeBodyDist <= 0
+x = -(vel X)
+
+;空中通常技(対ブロッキング)
+[State -2, Velocity]
+type = VelSet
+triggerall = stateno = 195 || (stateno = [600,655]) || stateno = 930 || stateno = [950,960]
+triggerall = statetype = A
+triggerall = movehit
+triggerall = numenemy
+triggerall = enemynear,authorname = "GM"
+triggerall = enemynear,name="Alex"||enemynear,name="Hugo"||enemynear,name="Ryu"||enemynear,name="Ken"||enemynear,name="Gouki"||enemynear,name="Sean"||enemynear,name="Ibuki"||enemynear,name="Gill"
+trigger1 = enemynear,stateno = [4000,4205]
+x = ifelse(vel X < 0,(vel X)*.4,ifelse(vel X > 0,-(vel X)*.6,-1.0))
+y = ifelse(vel Y<0,(vel Y)*.85,0)
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;MoveHitReset
+[State -2, MoveHitReset]
+type = MoveHitReset
+trigger1 = MoveContact
+trigger2 = var(11) || var(12)
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+
+[State -3, PlaySnd]
+type = PlaySnd
+triggerall = time = 1
+triggerall = alive
+triggerall = movetype = H
+trigger1 = stateno = 7000
+trigger1 = Anim = 5000 || Anim = 5001 || Anim = 5010 || Anim = 5011
+value = S5000,0
+channel = 2
+
+[State -3, PlaySnd]
+type = PlaySnd
+triggerall = time = 1
+triggerall = alive
+triggerall = movetype = H
+trigger1 = stateno = 5600
+trigger1 = Anim = 5600
+trigger2 = stateno = 7000
+trigger2 = Anim = 5002 || Anim = 5012 || Anim = 5030
+trigger3 = stateno = [7400,7599]
+trigger3 = Anim = 5002 || Anim = 5012 || Anim = 5022 || Anim = 5030 || Anim = [5050,5052]
+trigger4 = stateno = 5700
+trigger4 = Anim = 5700
+value = S5000,1
+channel = 2
+
+;☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+; 常時監視ステート（p2statenoなどで相手に行動を制御された時は実行しない）
+;☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
+[Statedef -3]
+
+;各種音声
+[State -3, 音を鳴らす]
+type = PlaySnd
+trigger1 = Time = 1
+trigger1 = stateno = [52,54] 
+value = 52, 0
+
+[State -3, PlaySnd]
+type = PlaySnd
+triggerall = time = 1
+triggerall = alive
+trigger1 = stateno = 5000
+trigger1 = Anim = 15000 || Anim = 15001 || Anim = 15010 || Anim = 15011
+trigger2 = stateno = 5010
+trigger2 = Anim = 15020 || Anim = 15021
+trigger3 = stateno = 5020
+trigger3 = Anim = 5000 || Anim = 5001 || Anim = 5010 || Anim = 5011
+value = S5000,0
+channel = 2
+
+[State -3, PlaySnd]
+type = PlaySnd
+triggerall = time = 1
+triggerall = alive
+trigger1 = stateno = 5000
+trigger1 = Anim = 15002 || Anim = 15012
+trigger2 = stateno = 5010
+trigger2 = Anim = 15022
+trigger3 = stateno = 5020
+trigger3 = Anim = 5002 || Anim = 5012
+trigger4 = stateno = 5070
+trigger4 = Anim = 5070
+trigger5 = stateno = 5080
+trigger5 = Anim = 5080 || Anim = 5090
+value = S5000,1
+channel = 2
+
+[State -3, PlaySnd]
+type = PlaySnd
+triggerall = time = 1
+triggerall = alive
+trigger1 = stateno = 5000 || stateno = 5010
+trigger1 = anim != [15000,15002]
+trigger1 = anim != [15010,15012]
+trigger1 = anim != [15020,15022]
+trigger2 = stateno = 5020
+trigger2 = anim != [5000,5002]
+trigger2 = anim != [5010,5012]
+trigger2 = anim != [5020,5022]
+value = S5000,1
+channel = 2
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;Width
+[State -3, 物理的なキャラの幅]
+type = Width
+triggerall = numenemy
+triggerall = enemynear,BackEdgeBodyDist <= 0 || enemynear,FrontEdgeBodyDist <= 0
+trigger1 = facing = 1
+trigger1 = enemynear,Pos X - Pos X >= 0
+trigger2 = facing = -1
+trigger2 = enemynear,Pos X - Pos X < 0
+edge = 5,0
+
+[State -3, 物理的なキャラの幅]
+type = Width
+triggerall = numtarget
+triggerall = target,statetype = A
+triggerall = target,BackEdgeBodyDist <= 0 || target,FrontEdgeBodyDist <= 0
+trigger1 = facing = 1
+trigger1 = target,Pos X - Pos X >= 0
+trigger2 = facing = -1
+trigger2 = target,Pos X - Pos X < 0
+edge = target,const(size.air.front),0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ブロッキングテキスト
+
+;Blocking text (1p)
+[State -3, Explod]
+type = Explod
+triggerall = Numhelper(30000)
+triggerall = helper(30000),var(24)
+triggerall = NumExplod(20000) = 0
+triggerall = IsHelper != 1
+triggerall = Var(1) = 1
+trigger1 = stateno = [4000,4015]
+trigger2 = stateno = [4100,4115]
+trigger3 = stateno = [4200,4205]
+anim = 20060
+ID = 20000
+pos = 10,helper(30000),var(25)
+postype = left
+removetime = 42
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+supermove = 1
+bindtime = -1
+sprpriority = -2
+ownpal = 1
+ignorehitpause = 1
+scale = 0.5,0.5
+
+;Blocking text (2p)
+[State -3, Explod]
+type = Explod
+triggerall = Numhelper(30000)
+triggerall = helper(30000),var(24)
+triggerall = NumExplod(20000) = 0
+triggerall = IsHelper != 1
+triggerall = Var(1) = 2
+trigger1 = stateno = [4000,4015]
+trigger2 = stateno = [4100,4115]
+trigger3 = stateno = [4200,4205]
+anim = 20061
+ID = 20000
+pos = -10,helper(30000),var(25)
+postype = right
+removetime = 42
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+supermove = 1
+bindtime = -1
+sprpriority = -2
+ownpal = 1
+ignorehitpause = 1
+scale = 0.5,0.5
+
+[State -3, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(20000) = 1
+ID = 20020
+ignorehitpause = 1
+
+[State -3, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(20000) = 1
+ID = 20030
+ignorehitpause = 1
+
+[State -3, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(20000) = 1
+ID = 20040
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;リバーサルテキスト
+
+;Reversal text (1p)
+[State -3, Explod]
+type = Explod
+triggerall = Numhelper(30000)
+triggerall = helper(30000),var(24)
+triggerall = NumExplod(20030) = 0
+triggerall = Var(1) = 1
+triggerall = time = 1
+triggerall = Stateno = [1000,3300]
+;triggerall = movetype = A
+trigger1 = Prevstateno = [5120,5123]
+trigger2 = PrevStateNo = [5300,5301]
+trigger3 = PrevStateNo = 5610
+trigger4 = (PrevStateNo = [150,155]) || (PrevStateNo = [6150,6155])
+trigger5 = (Prevstateno = 5001) || (Prevstateno = 5011)
+anim = 20030
+ID = 20030
+pos = 10,helper(30000),var(25)
+postype = left
+removetime = 60
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+supermove = 1
+bindtime = -1
+sprpriority = -2
+ownpal = 1
+ignorehitpause = 1
+scale = 0.5,0.5
+
+;Reversal text (2p)
+[State -3, Explod]
+type = Explod
+triggerall = Numhelper(30000)
+triggerall = helper(30000),var(24)
+triggerall = NumExplod(20030) = 0
+triggerall = Var(1) = 2
+triggerall = time = 1
+triggerall = Stateno = [1000,3300]
+;triggerall = movetype = A
+trigger1 = Prevstateno = [5120,5123]
+trigger2 = PrevStateNo = [5300,5301]
+trigger3 = PrevStateNo = 5610
+trigger4 = (PrevStateNo = [150,155]) || (PrevStateNo = [6150,6155])
+trigger5 = (Prevstateno = 5001) || (Prevstateno = 5011)
+anim = 20031
+ID = 20030
+pos = -10,helper(30000),var(25)
+postype = right
+removetime = 60
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+supermove = 1
+bindtime = -1
+sprpriority = -2
+ownpal = 1
+ignorehitpause = 1
+scale = 0.5,0.5
+
+[State -3, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(20030) = 1
+ID = 20000
+ignorehitpause = 1
+
+[State -3, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(20030) = 1
+ID = 20010
+ignorehitpause = 1
+
+[State -3, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(20030) = 1
+ID = 20040
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ファーストアタックテキスト
+
+;First Attack text (1p)
+[State -3, Explod]
+type = Explod
+triggerall = Numhelper(30000)
+triggerall = helper(30000),var(24)
+triggerall = NumExplod(20040) = 0
+triggerall = var(1) = 1
+triggerall = var(9) = 0
+trigger1 = stateno != [800,899]
+trigger1 = numenemy
+trigger1 = enemy,movetype = H
+trigger1 = enemy,stateno = [5000,5099]
+anim = 20040
+ID = 20040
+pos = 10,helper(30000),var(25); + ifelse(NumExplod(20030) = 1,16,0)
+postype = left
+removetime = 60
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+supermove = 1
+bindtime = -1
+sprpriority = -2
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+scale = 0.5,0.5
+
+;First Attack text (2p)
+[State -3, Explod]
+type = Explod
+triggerall = Numhelper(30000)
+triggerall = helper(30000),var(24)
+triggerall = NumExplod(20040) = 0
+triggerall = var(1) = 2
+triggerall = var(9) = 0
+trigger1 = stateno != [800,899]
+trigger1 = numenemy
+trigger1 = enemy,movetype = H
+trigger1 = enemy,stateno = [5000,5099]
+anim = 20041
+ID = 20040
+pos = -10,helper(30000),var(25); + ifelse(NumExplod(20031) = 1,16,0)
+postype = right
+removetime = 60
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+supermove = 1
+bindtime = -1
+sprpriority = -2
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+scale = 0.5,0.5
+
+[State -3, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(20040) = 1
+ID = 20000
+ignorehitpause = 1
+
+[State -3, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(20040) = 1
+ID = 20010
+ignorehitpause = 1
+
+[State -3, RemoveExplod]
+type = RemoveExplod
+trigger1 = NumExplod(20040) = 1
+ID = 20030
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;スーパーアーツフィニッシュテキスト
+;Super Arts Finish text (1p)
+[State -3, Explod]
+type = Explod
+triggerall = Numhelper(30000)
+triggerall = helper(30000),var(24)
+triggerall = NumExplod(20050) = 0
+triggerall = Var(1) = 1
+triggerall = stateno = 180
+trigger1 = var(59) = -1
+anim = 20050
+ID = 20050
+pos = 10,helper(30000),var(25)
+postype = left
+removetime = 120
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+supermove = 1
+bindtime = -1
+sprpriority = -2
+ownpal = 1
+scale = 0.5,0.5
+
+;Super Arts Finish text (2p)
+[State -3, Explod]
+type = Explod
+triggerall = Numhelper(30000)
+triggerall = helper(30000),var(24)
+triggerall = NumExplod(20050) = 0
+triggerall = Var(1) = 2
+triggerall = stateno = 180
+trigger1 = var(59) = -1
+anim = 20051
+ID = 20050
+pos = -10,helper(30000),var(25)
+postype = right
+removetime = 120
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+supermove = 1
+bindtime = -1
+sprpriority = -2
+ownpal = 1
+scale = 0.5,0.5
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;勝利判定
+[State -3, VarSet]
+type = VarSet
+trigger1 = roundstate = [0,1]
+var(54) = 0
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = var(54) = 0
+trigger1 = roundstate = 3
+var(54) = 1
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarSet
+trigger1 = var(54) = 1
+var(54) = -1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;スーパーアーツ　フィニッシュ
+[State -3, VarSet]
+type = VarSet
+trigger1 = roundstate = 0
+var(59) = 0
+
+[state -3, VarSet]
+type = VarSet
+triggerall = var(59) = 0
+triggerall = winko
+trigger1 = stateno = [3100,3300]
+trigger2 = numhelper(6200)
+trigger2 = helper(6200),var(14)
+trigger3 = numhelper(6201)
+trigger3 = helper(6201),var(14)
+trigger4 = numhelper(6202)
+trigger4 = helper(6202),var(14)
+var(59) = 1
+ignorehitpause = 1
+
+[state -3, helper]
+type = helper
+triggerall = NumHelper(10000) = 0
+triggerall = NumHelper(11000) = 0
+triggerall = winko
+triggerall = var(54)
+triggerall = var(59) = 1
+triggerall = numtarget || var(14)
+trigger1 = !numpartner
+trigger2 = numpartner
+trigger2 = partner,alive = 0
+ID = 10000
+pos = 0,0
+postype = left
+stateno = 10000
+helpertype = normal
+name = "sa-ko"
+pausemovetime = 99999999
+supermovetime = 99999999
+sprpriority = -5
+ownpal = 1
+keyctrl = 0
+ignorehitpause = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;パーフェクトテキスト
+[State -2, VarAdd]
+type = VarSet
+trigger1 = roundstate != [3,4]
+fvar(8) = 0
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = roundstate = 3
+trigger1 = life >= var(52)
+fvar(8) = 1
+ignorehitpause = 1
+
+;Perfect text (1p)
+[State -3, Explod]
+type = Explod
+triggerall = Numhelper(30000)
+triggerall = helper(30000),var(24)
+triggerall = NumExplod(20070) = 0
+triggerall = Var(1) = 1
+trigger1 = stateno = 180
+trigger1 = fvar(8) = 1
+trigger1 = life = var(52)
+anim = 20070
+ID = 20070
+pos = 10,helper(30000),var(25) + (var(59)=-1)*16
+postype = left
+removetime = 120
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+supermove = 1
+bindtime = -1
+sprpriority = -2
+ownpal = 1
+scale = 0.5,0.5
+
+;Perfect text (2p)
+[State -3, Explod]
+type = Explod
+triggerall = Numhelper(30000)
+triggerall = helper(30000),var(24)
+triggerall = NumExplod(20070) = 0
+triggerall = Var(1) = 2
+trigger1 = stateno = 180
+trigger1 = fvar(8) = 1
+trigger1 = life = var(52)
+anim = 20071
+ID = 20070
+pos = -10,helper(30000),var(25) + (var(59)=-1)*16
+postype = right
+removetime = 120
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+supermove = 1
+bindtime = -1
+sprpriority = -2
+ownpal = 1
+scale = 0.5,0.5
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ノーマルフィニッシュ
+[state -3, VarSet]
+type = VarSet
+triggerall = var(59) = 0
+triggerall = winko
+trigger1 = stateno = 196
+trigger2 = stateno = [200,960]
+trigger3 = stateno = [1100,1550]
+trigger4 = numhelper(6000)
+trigger4 = helper(6000),var(59)
+trigger5 = numhelper(6001)
+trigger5 = helper(6001),var(59)
+trigger6 = numhelper(6002)
+trigger6 = helper(6002),var(59)
+trigger7 = numhelper(6003)
+trigger7 = helper(6003),var(59)
+var(59) = 2
+ignorehitpause = 1
+
+[state -2, helper]
+type = helper
+triggerall = NumHelper(11000) = 0
+triggerall = var(59) = 2
+triggerall = winko
+triggerall = var(54)
+triggerall = numtarget || var(14)
+trigger1 = !numpartner
+trigger2 = numpartner
+trigger2 = partner,alive = 0
+ID = 11000
+pos = 0,0
+postype = left
+stateno = 11000
+helpertype = normal
+name = "no-ko"
+pausemovetime = 99999999
+supermovetime = 99999999
+sprpriority = -5
+ownpal = 1
+keyctrl = 0
+ignorehitpause = 1
+

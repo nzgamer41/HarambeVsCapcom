@@ -1,0 +1,899 @@
+; Common States
+;---------------------------------------------------------------------------
+; Stand
+[Statedef 0]
+type = S
+physics = S
+sprpriority = 0
+velset = 0,0
+
+[State 0, 1]
+type = ChangeAnim
+trigger1 = Anim != 0 && Anim != 5
+trigger2 = Anim = 5 && AnimTime = 0 ;Turn anim over
+value = 0
+
+[State 0, 2]
+type = ChangeState
+trigger1 = !Alive
+value = 5050
+
+;---------------------------------------------------------------------------
+; Stand to Crouch
+[Statedef 10]
+type = C
+physics = C
+velset = 0,0
+anim = 10
+
+[State 10, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+
+;---------------------------------------------------------------------------
+; Walk
+[Statedef 20]
+type = S
+physics = S
+sprpriority = 0
+
+[State 20, 1]
+type = VelSet
+trigger1 = command = "holdfwd"
+trigger1 = Anim != 5
+x = const(velocity.walk.fwd.x)
+
+[State 20, 2]
+type = VelSet
+trigger1 = command = "holdback"
+trigger1 = Anim != 5
+x = const(velocity.walk.back.x)
+
+[State 20, 3]
+type = VelSet
+trigger1 = Anim = 5
+x = 0
+
+[State 20, 4]
+type = ChangeAnim
+triggerall = command = "holdfwd"
+trigger1 = Anim != 20 && Anim != 5
+trigger2 = Anim = 5 && AnimElem = 2, >= 0
+value = 20
+
+[State 20, 5]
+type = ChangeAnim
+triggerall = command = "holdback"
+trigger1 = Anim != 21 && Anim != 5
+trigger2 = Anim = 5 && AnimElem = 2, >= 0
+value = 21
+
+;---------------------------------------------------------------------------
+; Jump Land
+[Statedef 52]
+type = S
+physics = S
+velset = 0,0
+anim = 47
+ctrl = 0
+
+[State 52, 1]
+type = PosSet
+trigger1 = 1
+y = 0
+
+[State 52, 2]
+type = PlaySnd
+trigger1 = Time <= 0
+value = 0, 0
+
+[State 52, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; RUN_FWD
+[Statedef 100]
+type = S
+physics = N
+anim = 40
+sprpriority = 1
+velset = 0,0
+ctrl = 1
+
+[State 100, 0]
+type = AssertSpecial
+trigger1 = 1
+flag = NoWalk
+
+[State 100, 1]
+type = VelSet
+trigger1 = Anim = 40
+trigger1 = AnimTime = 0
+x = const(velocity.run.fwd.x) * 2
+
+[State 100, 2]
+type = ChangeAnim
+trigger1 = Anim = 40
+trigger1 = AnimTime = 0
+value = 100
+
+[State 100, VelAdd]
+type = VelAdd
+trigger1 = Anim != 40
+trigger1 = Vel X > 0
+x = -0.5
+
+[State 100, 3]
+type = ChangeState
+trigger1 = Anim = 100
+trigger1 = AnimTime = 0
+value = 101
+
+;---------------------------------------------------------------------------
+; RUN_FWD Land
+[Statedef 101]
+type = S
+physics = N
+anim = 101
+sprpriority = 1
+velset = 0,0
+ctrl = 0
+
+[State 100, 2]
+type = PlaySnd
+trigger1 = Time <= 0
+value = 0, 0
+
+[State 100, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; RUN_BACK
+[Statedef 105]
+type = S
+physics = N
+sprpriority = 1
+velset = 0,0
+anim = 40
+ctrl = 0
+
+[State 105, 1]
+type = VelSet
+trigger1 = Anim = 40
+trigger1 = AnimTime = 0
+x = const(velocity.run.back.x)
+y = const(velocity.run.back.y)
+
+[State 105, TypeSet]
+type = StateTypeSet
+trigger1 = Anim = 40
+trigger1 = AnimTime = 0
+statetype = A
+physics = N
+
+[State 105, Anim]
+type = ChangeAnim
+trigger1 = Anim = 40
+trigger1 = AnimTime = 0
+value = 105
+
+[State 105, 2]
+type = VelAdd
+trigger1 = Anim != 40
+trigger1 = Vel X < 0
+y = 0.45
+
+[State 105, 3]
+type = ChangeState
+trigger1 = Time > 0
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+trigger1 = Anim != 40
+value = 52
+
+;---------------------------------------------------------------------------
+; HITA_FALL (knocked up, falling)
+[Statedef 5050]
+type    = A
+movetype= H
+physics = N
+
+[State 5050, 1] ;Change anim when done with transition
+type = ChangeAnim
+trigger1 = AnimTime = 0
+trigger1 = Anim = 5035
+trigger2 = Time = 0     ;If no transition anim
+trigger2 = Anim != 5035
+trigger2 = (Anim != [5051, 5059]) && (Anim != [5061, 5069])
+trigger2 = Anim != 5090 ;Not if hit off ground anim
+value = 5050
+
+[State 5050, 2] ;Coming down anim
+type = ChangeAnim
+trigger1 = anim = [5050,5059]
+trigger1 = Vel Y >= ifelse(anim = 5050, 1, -2)
+trigger1 = SelfAnimExist(anim+10)
+value = anim+10
+persistent = 0
+
+[State 5050, 3] ;Gravity
+type = VelAdd
+trigger1 = 1
+y = GetHitVar(yaccel)
+
+[State 5050, 4] ;Recover near ground
+type = ChangeState
+triggerall = Vel Y > 0
+triggerall = Pos Y >= 0
+triggerall = alive
+triggerall = CanRecover
+trigger1 = Command = "recovery"
+value = 5200 ;HITFALL_RECOVER
+
+[State 5050, 5]; Recover in mid air
+type = ChangeState
+triggerall = Vel Y > -1
+triggerall = alive
+triggerall = CanRecover
+trigger1 = Command = "recovery"
+value = 5210 ;HITFALL_AIRRECOVER
+
+[State 5050, 6]
+type = ChangeState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 5100 ;HIT_BOUNCE
+
+;---------------------------------------------------------------------------
+; HIT_TRIP2 (fall through air)
+[Statedef 5071]
+type = A
+movetype = H
+physics = N
+
+[State 5071, 1]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 5071, 2] ;Acceleration
+type = VelAdd
+trigger1 = 1
+y = GetHitVar(yaccel)
+
+[State 5071, 3] ;Hit ground
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+type = ChangeState
+value = 5100
+
+;---------------------------------------------------------------------------
+; HIT_BOUNCE (bounce into air)
+[Statedef 5101]
+type    = L
+movetype= H
+physics = N
+
+[State 5101, 1] ;Coming hit ground anim (normal)
+type = ChangeAnim
+triggerall = Time = 0
+trigger1 = Anim != [5101,5109]
+trigger2 = !SelfAnimExist(5160 + (anim % 10))
+value = 5160
+
+[State 5101, 2] ;Coming hit ground anim (for hit up)
+type = ChangeAnim
+triggerall = Time = 0
+trigger1 = Anim = [5101,5109]
+trigger1 = SelfAnimExist(5160 + (anim % 10))
+value = 5160 + (anim % 10)
+
+[State 5101, 3]
+type = HitFallVel
+trigger1 = Time = 0
+
+[State 5101, 4] ;Acceleration
+type = VelAdd
+trigger1 = 1
+y = .4
+
+[State 5101, 5] ;Hit ground
+trigger1 = Time > 0
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+type = ChangeState
+value = 5110
+
+;---------------------------------------------------------------------------
+; HIT_LIEDOWN
+[Statedef 5111]
+type = L
+movetype = H
+physics = N
+sprpriority = -5
+velset = 0,0
+ctrl = 0
+
+[State 5110, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 5110, 1] ;For hit up/up-diag type (from state 5081)
+type = ChangeAnim
+persistent = 0
+trigger1 = SelfAnimExist(5110 + (anim % 10))
+trigger1 = anim = [5081,5089]
+value = 5110 + (anim % 10)
+
+[State 5110, 2] ;Hit ground anim (normal)
+type = ChangeAnim
+triggerall = time = 0
+triggerall = anim != [5110,5119] ;Not already changed anim
+trigger1 = anim != [5161,5169]
+trigger2 = !SelfAnimExist(5170 + (anim % 10))
+value = 5170
+
+[State 5110, 3] ;Hit ground anim (for hit up)
+type = ChangeAnim
+triggerall = time = 0
+triggerall = anim != [5110,5119] ;Not already changed anim
+trigger1 = anim = [5161,5169]
+trigger1 = SelfAnimExist(5170 + (anim % 10))
+value = 5170 + (anim % 10)
+
+[State 5110, 4] ;For hit up type
+type = ChangeAnim
+persistent = 0
+triggerall = anim = [5171,5179]
+triggerall = SelfAnimExist(5110 + (anim % 10))
+trigger1 = AnimTime = 0
+trigger2 = SysVar(0) ;SysVar(0) = 1 avoids hit ground anim
+value = 5110 + (anim % 10)
+
+[State 5110, 5] ;For normal
+type = ChangeAnim
+persistent = 0
+triggerall = Anim != [5111,5119]
+trigger1 = AnimTime = 0
+trigger2 = SysVar(0) ;SysVar(0) = 1 avoids hit ground frame
+value = 5110
+
+[State 5110, 6] ;If just died
+type = SelfState
+triggerall = !alive
+trigger1 = AnimTime = 0
+trigger2 = SysVar(0) ;SysVar(0) = 1 avoids hit ground frame
+trigger3 = Anim = [5110,5119]
+value = 5150
+
+[State 5110, 7]
+type = ChangeState
+triggerall = alive
+trigger1 = Time > 10
+value = 5121
+
+;---------------------------------------------------------------------------
+; HIT_LIEDOWN
+[Statedef 5115]
+type = L
+movetype = H
+physics = N
+sprpriority = -5
+velset = 0,0
+ctrl = 0
+
+[State 5115, 1] ;For hit up/up-diag type (from state 5081)
+type = ChangeAnim
+persistent = 0
+trigger1 = SelfAnimExist(5110 + (anim % 10))
+trigger1 = anim = [5081,5089]
+value = 5110 + (anim % 10)
+
+[State 5115, 2] ;Hit ground anim (normal)
+type = ChangeAnim
+triggerall = time = 0
+triggerall = anim != [5110,5119] ;Not already changed anim
+trigger1 = anim != [5161,5169]
+trigger2 = !SelfAnimExist(5170 + (anim % 10))
+value = 5170
+
+[State 5115, 3] ;Hit ground anim (for hit up)
+type = ChangeAnim
+triggerall = time = 0
+triggerall = anim != [5110,5119] ;Not already changed anim
+trigger1 = anim = [5161,5169]
+trigger1 = SelfAnimExist(5170 + (anim % 10))
+value = 5170 + (anim % 10)
+
+[State 5115, 4] ;For hit up type
+type = ChangeAnim
+persistent = 0
+triggerall = anim = [5171,5179]
+triggerall = SelfAnimExist(5110 + (anim % 10))
+trigger1 = AnimTime = 0
+trigger2 = SysVar(0) ;SysVar(0) = 1 avoids hit ground anim
+value = 5110 + (anim % 10)
+
+[State 5115, 5] ;For normal
+type = ChangeAnim
+persistent = 0
+triggerall = Anim != [5111,5119]
+trigger1 = AnimTime = 0
+trigger2 = SysVar(0) ;SysVar(0) = 1 avoids hit ground frame
+value = 5110
+
+[State 5115, 6] ;If just died
+type = SelfState
+triggerall = !alive
+trigger1 = AnimTime = 0
+trigger2 = SysVar(0) ;SysVar(0) = 1 avoids hit ground frame
+trigger3 = Anim = [5110,5119]
+value = 5150
+
+[State 5115, 7]
+type = SelfState
+triggerall = alive
+trigger1 = Time > 20
+value = 5120
+
+;---------------------------------------------------------------------------
+; HIT_GETUP
+[Statedef 5120]
+type = L
+movetype = H
+physics = N
+
+[State 5120, 1a] ;Get up anim (normal)
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = anim != [5111,5119]
+trigger2 = !SelfAnimExist(5120 + (anim % 10))
+value = 5120
+
+[State 5120, 1b] ;Get up anim (for hit up/diag-up)
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = anim = [5111,5119]
+trigger1 = SelfAnimExist(5120 + (anim % 10))
+value = 5120 + (anim % 10)
+
+[State 5120, 2]
+type = VelSet
+trigger1 = Time = 0
+x = 0
+
+[State 5120, 3]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 5120, 4]
+type = HitFallSet
+trigger1 = AnimTime = 0
+value = 1
+
+[State 5120, 5] ;Can't be thrown right after getting up
+type = NotHitBy
+trigger1 = AnimTime = 0
+value = , NT,ST,HT
+time = 12
+
+[State 5120, 6] ;Can't be hit right after getting up (short time)
+type = NotHitBy
+trigger1 = AnimTime = 0
+value2 = SCA
+time = 3
+
+[State 5120, 7]
+type = ChangeState
+triggerall = Var(9) > 0
+trigger1 = AnimTime = 0
+value = 5300
+ctrl = 0
+
+[State 5120, 8]
+type = ChangeState
+triggerall = Var(9) <= 0
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; HIT_GETUP
+[Statedef 5121]
+type = L
+movetype = H
+physics = N
+sprpriority = -5
+velset = 0,0
+ctrl = 0
+
+[State 5120, 0]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 5120, 1a] ;Get up anim (normal)
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = anim != [5111,5119]
+trigger2 = !SelfAnimExist(5120 + (anim % 10))
+value = 5120
+
+[State 5120, 1b] ;Get up anim (for hit up/diag-up)
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = anim = [5111,5119]
+trigger1 = SelfAnimExist(5120 + (anim % 10))
+value = 5120 + (anim % 10)
+
+[State 5120, 2]
+type = VelSet
+trigger1 = Time = 0
+x = 0
+
+[State 5120, 3]
+type = HitFallSet
+trigger1 = AnimTime = 0
+value = 1
+
+[State 5120, 4] ;Can't be thrown right after getting up
+type = NotHitBy
+trigger1 = AnimTime = 0
+value = , NT,ST,HT
+time = 12
+
+[State 5120, 5] ;Can't be hit right after getting up (short time)
+type = NotHitBy
+trigger1 = AnimTime = 0
+value2 = SCA
+time = 3
+
+[State 5120, 6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 5300
+
+;---------------------------------------------------------------------------
+; Recovery Roll Backward
+[Statedef 5220]
+type = C
+movetype = I
+physics = N
+velset = 0,0
+anim = 5220
+facep2 = 1
+ctrl = 0
+
+[State 5220, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 5220, 2]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 5220, 3]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 5220, 4]
+type = VelSet
+trigger1 = Time = 12
+x = -6
+
+[State 5230, 5]
+type = VelSet
+trigger1 = Time = 36
+x = 0
+
+[State 5230, 6]
+type = ChangeState
+trigger1 = Time = 36
+value = 11
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Recovery Roll Forward
+[Statedef 5230]
+type = C
+movetype = I
+physics = N
+velset = 0,0
+anim = 5230
+facep2 = 1
+ctrl = 0
+
+[State 5230, 1]
+type = VarSet
+trigger1 = SysVar(1) = 1
+trigger1 = Command = "holdfwd"
+sysvar(1) = 2
+
+[State 5230, 2]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 5230, 3]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 5230, 4]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 5230, 5]
+type = VelSet
+trigger1 = Time = 12
+x = 6
+
+[State 5230, 6]
+type = VelSet
+trigger1 = Time = ifelse(SysVar(1) = 1, 36, 60)
+x = 0
+
+[State 5230, 7]
+type = ChangeState
+trigger1 = Time = ifelse(SysVar(1) = 1, 36, 60)
+value = 11
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Dizzy
+[Statedef 5300]
+type = S
+movetype = H
+physics = S
+velset = 0,0
+ctrl = 0
+
+[State 5300, HitFall]
+type = HitFallSet
+trigger1 = HitFall
+value = 0
+
+[State 5300, VarSet]
+type = VarSet
+trigger1 = PrevStateNo != 5121
+v = 7
+value = 0
+
+[State 5300, VarAdd]
+type = VarAdd
+trigger1 = Time <= 0
+trigger1 = PrevStateNo != 5121
+v = 8
+value = 5
+
+[State 5300, VarSet]
+type = VarSet
+trigger1 = PrevStateNo != 5121
+v = 9
+value = 0
+
+[State 5300, 0]
+type = ChangeAnim
+triggerall = SelfAnimExist(5300)
+trigger1 = Anim != 5300
+value = 5300
+
+[State 5300, 1]
+type = ChangeAnim2
+triggerall = !SelfAnimExist(5300)
+trigger1 = Anim != 5310
+value = 5310
+
+[State 5300, 2]
+type = PlaySnd
+trigger1 = Time <= 0
+value = 12, 3
+channel = 0
+
+;----- Recovery -----
+[State 5300, 3]
+type = VarSet
+trigger1 = Time <= 0
+sysvar(2) = 0
+
+[State 5300, 4]
+type = VarAdd
+trigger1 = Command = "FF"
+trigger2 = Command = "BB"
+trigger3 = Command = "recovery"
+sysvar(2) = 1
+
+[State 5300, 5]
+type = PalFX
+trigger1 = Command = "FF"
+trigger2 = Command = "BB"
+trigger3 = Command = "recovery"
+add = 100, 100, 100
+time = 1
+ignorehitpause = 1
+
+[State 5300, 6]
+type = ChangeAnim
+triggerall = AnimElemTime(AnimElemNo(0) + 1) < 0
+trigger1 = Command = "FF"
+trigger2 = Command = "BB"
+trigger3 = Command = "recovery"
+value = Anim
+elem = AnimElemNo(0) + 1
+;--------------------
+
+[State 5300, 7]
+type = SelfState
+trigger1 = SysVar(2) < 10
+trigger1 = Time >= 200
+trigger1 = AnimTime = 0
+trigger2 = SysVar(2) >= 10
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Dizzy
+[Statedef 5310]
+type = S
+movetype = H
+physics = S
+velset = 0,0
+ctrl = 0
+
+[State 5310, HitFall]
+type = HitFallSet
+trigger1 = HitFall
+value = 0
+
+[State 5310, 0]
+type = ChangeAnim
+triggerall = SelfAnimExist(5300)
+trigger1 = Anim != 5300
+value = 5300
+
+[State 5310, 1]
+type = ChangeAnim2
+triggerall = !SelfAnimExist(5300)
+trigger1 = Anim != 5310
+value = 5310
+
+[State 5310, 2]
+type = PlaySnd
+trigger1 = Time <= 0
+value = 12, 3
+channel = 0
+
+[State 5310, 3]
+type = SelfState
+trigger1 = Time >= 200
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Dizzy Fall - HitPause
+[Statedef 5400]
+type = A
+movetype = H
+physics = N
+anim = 5052
+velset = 0,0
+
+[State 5400, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value2 = SCA
+time = 2
+
+[State 5400, HitFall]
+type = HitFallSet
+trigger1 = 1
+value = 1
+
+[State 5400, VarSet]
+type = VarSet
+trigger1 = 1
+v = 7
+value = 0
+
+[State 5400, VarAdd]
+type = VarAdd
+trigger1 = Time <= 0
+v = 8
+value = 5
+
+[State 5400, VarSet]
+type = VarSet
+trigger1 = !Alive
+v = 9
+value = 0
+
+[State 5400, VarSet]
+type = VarSet
+trigger1 = Alive
+v = 9
+value = 1
+
+[State 5400, ForceFeedback]
+type = ForceFeedback
+trigger1 = time <= 0
+time = 12
+waveform = sinesquare
+ampl = 140
+
+[State 5400, ChangeAnim]
+type = ChangeAnim
+trigger1 = !HitShakeOver
+value = 5052
+
+[State 5400, VelSet]
+type = VelSet
+trigger1 = HitShakeOver
+x = -6
+y = -6
+
+[State 5400, State]
+type = ChangeState
+trigger1 = HitShakeOver
+value = 5401
+
+;---------------------------------------------------------------------------
+; Dizzy Fall - Coming Down
+[Statedef 5401]
+type = A
+movetype = H
+physics = N
+anim = 5052
+
+[State 5410, VelAdd]
+type = VelAdd
+trigger1 = 1
+y = .4
+
+[State 5410, Anim]
+type = ChangeAnim
+trigger1 = Anim = 5052
+trigger1 = Vel Y > 0
+value = 5062
+
+[State 5410, HitSet]
+type = VarSet
+trigger1 = Time > 0
+trigger1 = Vel Y > 0
+trigger1 = Pos Y > 0
+v = 15
+value = 0
+
+[State 5410, Pause]
+type = Pause
+trigger1 = TimeMod = 2,0
+trigger1 = Time <= 10
+time = 1
+
+[State 5410, SelfState]
+type = SelfState
+trigger1 = Time > 0
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 5100 ;Hit ground
+
+;---------------------------------------------------------------------------

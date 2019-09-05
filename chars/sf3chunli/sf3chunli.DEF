@@ -1,0 +1,30 @@
+[Info]
+Name="SF3 Chun Li"
+DisplayName="Chun Li"
+VersionDate=1,01,2005
+MugenVersion=07,31,2000
+Author="Conversion World - J.Lee"
+Pal.Defaults=1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+cmd=sf3chunli.cmd
+cns=sf3chunli.cns
+st=sf3chunli.cns
+st1=sf3chunli-1.cns
+st2=sf3chunli-2.cns
+stcommon=common1.cns
+sprite=sf3chunli.sff
+anim=sf3chunli.air
+sound=sf3chunli.snd
+pal1=sf3chunli-default.act
+pal2=sf3chunli-02.act
+pal3=sf3chunli-03.act
+pal4=sf3chunli-04.act
+pal5=sf3chunli-05.act
+pal6=sf3chunli-06.act
+pal7=sf3chunli-07.act
+pal8=sf3chunli-08.act
+pal9=sf3chunli-09.act
+pal10=sf3chunli-10.act
+pal11=sf3chunli-ex.act
+pal12=sf3chunli-ex2.act

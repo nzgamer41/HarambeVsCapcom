@@ -1,0 +1,236 @@
+;------------------------------------
+[Statedef -3]
+
+;----------------------------------------------------
+[State -2]
+type = VelMul
+triggerall = StateType = A
+trigger1 = MoveType != H
+trigger1 = StateNo != [945, 949]
+trigger1 = StateNo != [5000, 5299]
+X = .8
+
+;--------------------------負けグラ呼び出し--------------------------
+[State 191, 6]
+type = Helper
+trigger1 = var(16) >= 5
+trigger1 = !NumHelper(4250)
+trigger1 = Enemy,NumHelper(4100) + Enemy,NumHelper(4200)
+StateNo = 4000
+ID = 4250
+
+;----------------------------------------------------
+[State -2]
+type = VarAdd
+trigger1 = StateNo = 50 || StateNo = 70
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 605 || StateNo = 608
+trigger4 = StateNo = 611 || StateNo = 614
+trigger5 = StateNo = 621 || StateNo = 624
+trigger6 = StateNo = 625 || StateNo = 628
+trigger7 = StateNo = 631 || StateNo = 634
+trigger8 = StateNo = 641 || StateNo = 644
+trigger9 = StateNo = 651 || StateNo = 654
+trigger10 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+var(43) = 1
+
+[State -2]
+type = PosAdd
+triggerall = var(14) = -2 || var(14) = 0 || var(14) = 2
+trigger1 = StateNo = 50
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 605 || StateNo = 608
+trigger4 = StateNo = 611 || StateNo = 614
+trigger5 = StateNo = 621 || StateNo = 624
+trigger6 = StateNo = 625 || StateNo = 628
+trigger7 = StateNo = 631 || StateNo = 634
+trigger8 = StateNo = 641 || StateNo = 644
+trigger9 = StateNo = 651 || StateNo = 654
+trigger10 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+X = ifelse(var(14)=0, Const(Velocity.Jump.Neu.x), ifelse(var(14)=2, Const(Velocity.Jump.Fwd.x), Const(Velocity.Jump.Back.x))) * Const(Size.XScale)
+
+[State -2]
+type = PosAdd
+triggerall = var(14) = -1 || var(14) = 1 || var(14) = 3
+trigger1 = StateNo = 70
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 605 || StateNo = 608
+trigger4 = StateNo = 611 || StateNo = 614
+trigger5 = StateNo = 621 || StateNo = 624
+trigger6 = StateNo = 625 || StateNo = 628
+trigger7 = StateNo = 631 || StateNo = 634
+trigger8 = StateNo = 641 || StateNo = 644
+trigger9 = StateNo = 651 || StateNo = 654
+trigger10 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+X = ifelse(var(14)=1, 0, ifelse(var(14)=3, 3.5, -3.25)) * Const(Size.XScale)
+
+;------------------------------ガードブロッキング------------------------------
+;地上基本技を前ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 0
+stateno = 3005
+attr = S, NA
+time = 1
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [0, 1]
+trigger1 = var(33) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 0
+StateNo = 3005
+attr = SC, NA
+time = 1
+;------------------------------------
+;地上必殺技（飛び道具除く）を前ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 1
+stateno = 3005
+attr = S, SA, HA
+time = 1
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [0, 1]
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 1
+StateNo = 3005
+attr = SC, SA, HA
+time = 1
+;------------------------------------
+;地上基本技を下ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(35) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 2
+stateno = 3015
+attr = C, NA
+time = 1
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [1, 2]
+trigger1 = var(35) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 2
+stateno = 3015
+attr = SC, NA
+time = 1
+;------------------------------------
+;地上必殺技（飛び道具除く）を下ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(35) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 3
+stateno = 3015
+attr = C, SA, HA
+time = 1
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [1, 2]
+trigger1 = var(35) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 3
+stateno = 3015
+attr = SC, SA, HA
+time = 1
+;------------------------------------
+;空中基本技を前ブロ
+[State -2, Blocking-3]
+type = HitOverrIDe
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 4
+stateno = 3005
+attr = A, NA
+time = 1
+;------------------------------------
+;空中必殺技（飛び道具除く）を前ブロ
+[State -2, Blocking-3]
+type = HitOverrIDe
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 5
+stateno = 3005
+attr = A, SA, HA
+time = 1
+;------------------------------------
+;空中・上段飛び道具を前ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 6
+stateno = 3005
+attr = SA, AP
+time = 1
+;------------------------------------
+;下段飛び道具を下ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(35) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 7
+stateno = 3015
+attr = C, AP
+time = 1
+;----------------------------------タックルの画面端進入距離制限----------------------------------
+[State 2012]
+type = Width
+triggerall = P2Dist X > 0
+trigger1 = StateNo = [1201, 1249]
+trigger2 = StateNo = [1251, 1299]
+trigger3 = StateNo = [1301, 1349]
+trigger4 = StateNo = [1351, 1399]
+edge = Ceil(36 * Const(Size.XScale)), 0
+
+[State 2012]
+type = Null;Width
+;triggerall = P2Dist X <= 0
+trigger1 = StateNo = [2051, 2053]
+edge = Ceil(-120 * Const(Size.XScale)), 0
+
+[State 2012]
+type = Null;PlayerPush
+trigger1 = StateNo = [2051, 2053]
+trigger1 = EnemyNear,StateType != A
+value = (EnemyNear,StateType = C)
+

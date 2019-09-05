@@ -1,0 +1,54 @@
+;*******************************************************************************
+;*******************************************************************************
+;*************************    Striker   ****************************************
+;*******************************************************************************
+;*******************************************************************************
+
+;--------------------------------
+[StateDef 9999]
+type = S
+movetype = U
+physics = S
+ctrl = 0
+anim=0
+velset = 0,0
+juggle = 6
+
+[State 9999, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 60
+anim = -1
+sound = S9990,4
+movetime = 60
+darken = 1
+
+[State 9999, VarAdd]
+type = VarAdd
+trigger1 = time = 2
+v = 55
+value = -1
+ignorehitpause =  1
+
+[State 9999, Helper]
+type = Helper
+trigger1 = time = 1
+helpertype = normal ;player
+name = "Ken"
+ID = 9990
+stateno = 9990
+pos = 40,-280
+postype = p1    ;p2,front,back,left,right
+facing = 1
+ownpal = 1
+supermovetime = 9999
+pausemovetime = 9999
+ignorehitpause = 1
+size.xscale = 1
+size.yscale = 1
+
+[State 9999, End]
+type = ChangeState
+trigger1 = time = 70
+value = 0
+ctrl = 1

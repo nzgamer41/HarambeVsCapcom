@@ -1,0 +1,15 @@
+==================================
+EVILKEN INTRO by KingTigre and Reu
+==================================
+
+Sprites rips: Koga, Kingtigre
+Sprite edits: Kingtigre
+Music: Sol Bianca
+Music arrangement and sound effects: Reu
+Programming: Reu
+
+Note:
+Your computer must be able to keep MUGEN running at 60fps for sound and music to sync with the graphics.
+
+Visit:
+http://www.reubenkee.com/

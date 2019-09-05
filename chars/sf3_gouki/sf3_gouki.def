@@ -1,0 +1,63 @@
+[Info]
+name = "Gouki"
+displayname = "Gouki"
+versiondate = 2009/7/2
+mugenversion = 1.0
+author = "GM"
+pal.defaults = 1,2,3,4,5,6
+localcoord = 320,240;400,300
+
+[Files]
+sprite = sf3_gouki.sff
+sound = sf3_gouki.snd
+anim = sf3_gouki.air
+cmd = sf3_gouki.cmd
+cns = sf3_gouki.cns
+st  = sf3_gouki.cns
+st1 = sf3_gouki_N1.cns
+st2 = sf3_gouki_N2.cns
+st3 = sf3_gouki_S1.cns
+st4 = sf3_gouki_S2.cns
+st5 = sf3_gouki_H1.cns
+st6 = sf3_gouki_H2.cns
+st7 = sf3_gouki_H3.cns
+st8 = sf3_gouki-2-3.cns
+st9 = system_direction.cns
+stcommon = common.cns
+pal1 = act/gouki01.act
+pal2 = act/gouki02.act
+pal3 = act/gouki03.act
+pal4 = act/gouki04.act
+pal5 = act/gouki05.act
+pal6 = act/gouki06.act
+;pal7 = act/gouki07.act
+;pal8 = act/gouki08.act
+;pal9 = act/gouki09.act
+;pal10 = act/gouki10.act
+;pal11 = act/gouki11.act
+;pal12 = act/gouki12.act
+pal7 = act/shin_gouki01.act
+pal8 = act/shin_gouki02.act
+pal9 = act/shin_gouki03.act
+pal10 = act/shin_gouki04.act
+pal11 = act/shin_gouki05.act
+pal12 = act/shin_gouki06.act
+
+[Palette Keymap]
+a = 1
+b = 2
+c = 3
+x = 4
+y = 5
+z = 6
+a2 = 7
+b2 = 8
+c2 = 9
+x2 = 10
+y2 = 11
+z2 = 12
+
+
+[Arcade]
+intro.storyboard =
+ending.storyboard =

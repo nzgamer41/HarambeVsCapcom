@@ -1,0 +1,2720 @@
+;☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+; ここからは超必殺技のステート
+;☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+;ハイパーボム(始動)
+[Statedef 3000]
+type    = S
+movetype = A
+physics = N
+anim = 3000
+juggle = 0
+ctrl = 0
+velset = 0,0
+poweradd = -1280 
+facep2 = 1
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = time = 0
+fvar(1) = 0
+
+[State -2, VarSet]
+type = VarSet
+trigger1 = time = 0
+var(10) = 3
+
+[State -2, varset]
+type = varset
+trigger1 = 1
+var(25) = ifelse(time<=51,1,0)
+
+[State -2, Varset]
+type = Varset
+trigger1 = time = 0
+trigger1 = prevstateno = 3100
+trigger1 = var(47)
+fvar(27) = 0.5
+ignorehitpause = 1
+
+[State -2, Varset]
+type = Varset
+trigger1 = time = 0
+var(47) = 0
+
+[State -2, Varset]
+type = Varset
+trigger1 = time = 0
+var(56) = 0
+
+[state 3700]
+type = NotHitby
+trigger1 = time = 0
+value = SCA
+time = 54
+
+[state 3700]
+type = SuperPause
+trigger1 = time = 0
+time = 50
+movetime = 50
+sound = s2000,1
+p2defmul = 1
+anim = -1
+
+[State 3000]
+type = explod
+trigger1 = time = 0
+anim = 7200
+pos = ceil(20*const(size.xscale)),ceil(-66*const(size.yscale))
+postype = p1
+facing = facing*facing
+bindtime = -1
+supermove = 1
+sprpriority = 5
+ownpal = 1
+removeongethit = 1
+ignorehitpause = 1
+persistent = 0
+scale = const(size.xscale),const(size.yscale)
+
+[State 3000]
+type = explod
+trigger1 = time = 32
+anim = 7300
+pos = 160,floor(screenpos y)-ceil(67*const(size.yscale))
+postype = left
+bindtime = -1
+supermove = 1
+sprpriority = 5
+ownpal = 1
+removeongethit = 1
+ignorehitpause = 1
+persistent = 0
+scale = const(size.xscale),const(size.yscale)
+
+[State 3000]
+type = explod
+trigger1 = time = 43
+anim = 7400
+pos = 0, 0
+postype = p1
+facing = facing*facing
+bindtime = -1
+supermove = 1
+sprpriority = 5
+ownpal = 1
+removeongethit = 1
+ignorehitpause = 1
+persistent = 0
+scale = const(size.xscale),const(size.yscale)
+
+[State 4000, PalFX]
+type = PalFX
+trigger1 = time = 30
+time = 4
+color = 20
+add = 10,10,100
+sinadd = -20,-20,-110,10
+
+[State 4000, PalFX]
+type = PalFX
+trigger1 = time = 36
+time = 2
+color = 20
+add = 10,10,100
+sinadd = -20,-20,-110,10
+
+[State -2, AfterImage]
+type = AfterImage
+trigger1 = Time = 0
+time = 999999999
+trans = none
+length = 5
+timegap  = 3
+framegap = 1
+palcolor = 0
+palinvertall = 0
+palbright = 50,50,255
+palcontrast = 255,255,255
+palpostbright = 50,50,255
+PalAdd = -40,-40,0
+PalMul = 1,1,1
+
+[State 1100, 音を鳴らす]
+type = playsnd
+trigger1 = animelemtime(1) = 0
+value = 3000,0
+channel = 0
+
+[State -2, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(2) = 0
+value = S1,2
+
+[State 1120, Position]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(2) = 0
+x = 6*const(size.xscale)
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(4) = 0
+x = 14*const(size.xscale)
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(5) = 0
+x = 1*const(size.xscale)
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(6) = 0
+trigger2 = animelemtime(7) = 0
+x = -8*const(size.xscale)
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(8) = 0
+x = -5*const(size.xscale)
+
+[State 1000, HitDef]
+type = HitDef
+trigger1 = var(18) = 0
+trigger1 = Animelem = 3
+trigger1 = P2BodyDist X = [ceil(-20*const(size.xscale)),ceil(68*const(size.xscale))]
+trigger1 = P2MoveType != H
+trigger1 = P2StateNo != 40
+trigger1 = P2StateNo != [150,155]
+attr = S, HT
+hitflag = M- 
+priority = 7, Miss
+sparkno = -1
+p1facing = 1
+p2facing = ifelse(var(13)=1,-1,1)
+p1stateno = 3010+var(13)*40
+;p2stateno = 3020+var(13)*40
+hitsound = S800,0
+numhits = 0
+guard.dist = 0
+getpower = 0
+givepower = 0
+ID = 3000
+
+[State 1000, HitDef]
+type = HitDef
+triggerall = var(18) = 0
+triggerall = Animelem = 3
+triggerall = P2BodyDist X = [ceil(-20*const(size.xscale)),ceil(68*const(size.xscale))]
+trigger1 = NumTarget
+trigger1 = Target,StateNo = [5600,5630]
+attr = S, HT
+hitflag = M 
+priority = 7, Miss
+sparkno = -1
+p1facing = 1
+p2facing = ifelse(var(13)=0,-1,1)
+p1stateno = 3050-var(13)*40
+;p2stateno = 3060-var(13)*40
+hitsound = S800,0
+numhits = 0
+guard.dist = 0
+getpower = 0
+givepower = 0
+ID = 3000
+
+[State 1000, Ctrlset]
+type = Ctrlset
+trigger1 = AnimelemTime(9) >= 2
+value = 1
+
+[State 920]
+type = StateTypeSet
+trigger1 = AnimelemTime(4) >= 0
+movetype = I 
+
+[State 920]
+type = afterimage
+trigger1 = AnimelemTime(8) = 0
+time = 0
+
+[State 1000, ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+; ハイパーボム(投げた側)
+[Statedef 3010]
+type    = S
+movetype= A
+physics = N
+anim = 3010
+SprPriority = 2
+
+[State -2, TargetState]
+type = TargetState
+Trigger1 = time = 0
+value = 3020
+
+[State -2, TargetState]
+type = TargetState
+Trigger1 = time = 0
+trigger1 = target,authorname = "GM"
+trigger1 = target,name = "Alex"
+value = 3021
+
+[State -2, TargetState]
+type = TargetState
+Trigger1 = time = 0
+trigger1 = target,authorname = "GM"
+trigger1 = target,name = "Hugo"
+value = 3022
+
+[State -2, TargetState]
+type = TargetState
+Trigger1 = time = 0
+trigger1 = target,authorname = "GM"
+trigger1 = target,name="Ryu"||target,name="Ken"||target,name="Gouki"||target,name="Ibuki"||target,name="Gill"
+value = 3023
+
+[State 1200, Position]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 1200, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = 0
+y = 0
+
+[State -2, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(6) = 0
+value = S0,0
+channel = 0
+
+[State -2, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(20) = 0
+value = S0,1
+channel = 0
+
+[State -2, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(8) = 0
+trigger2 = animelemtime(22) = 0
+value = S1,2
+
+[State -2, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(34) = 0
+value = S0,2
+channel = 0
+
+[State -2, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(37) = 4
+value = S3000,1
+channel = 0
+
+[State 1200, 9]
+type = Width
+trigger1 = animelemtime(10) < 0
+trigger2 = animelemtime(15) >= 0
+trigger2 = animelemtime(24) < 0
+trigger3 = animelemtime(29) >= 0
+trigger3 = animelemtime(33) < 0
+edge = ceil(30*const(size.xscale)),ceil(40*const(size.xscale))
+
+[State 1200, 9]
+type = Width
+trigger1 = animelemtime(10) >= 0
+trigger1 = animelemtime(15) < 0
+trigger2 = animelemtime(24) >= 0
+trigger2 = animelemtime(29) < 0
+edge = ceil(30*const(size.xscale)),ceil(80*const(size.xscale))
+
+[State 1200, 9]
+type = Width
+trigger1 = animelemtime(33) >= 0
+edge = ceil(100*const(size.xscale)),0
+
+[State -2, Playerpush]
+type = Playerpush
+trigger1 = 1
+value = 0
+
+[State -2, posadd]
+type = posadd
+trigger1 = time = 0
+x = -3*const(size.xscale)
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(5) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(6) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(8) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(11) = 0
+x = ceil(-28*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(15) = 0
+x = ceil(-35*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(16) = 0
+x = ceil(-48*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(20) = 0
+x = ceil(-30*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(22) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(25) = 0
+x = ceil(-28*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(29) = 0
+x = ceil(-35*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(30) = 0
+x = ceil(-48*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(34) = 0
+x = ceil(-30*const(size.xscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 1 && P2StateNo = 3020
+pos = ceil(100*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 2 && P2StateNo = 3020
+pos = ceil(100*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 3 && P2StateNo = 3020
+pos = ceil(100*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 4 && P2StateNo = 3020
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 5 && P2StateNo = 3020
+pos = ceil(30*const(size.xscale)), ceil(-60*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 6 && P2StateNo = 3020
+pos = ceil(35*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 7 && P2StateNo = 3020
+pos = ceil(30*const(size.xscale)), ceil(-65*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 8 && P2StateNo = 3020
+pos = ceil(40*const(size.xscale)), ceil(-70*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 9 && P2StateNo = 3020
+pos = ceil(25*const(size.xscale)), ceil(-75*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 10 && P2StateNo = 3020
+pos = ceil(5*const(size.xscale)), ceil(-95*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 11 && P2StateNo = 3020
+pos = ceil(-40*const(size.xscale)), ceil(-90*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 12 && P2StateNo = 3020
+pos = ceil(-80*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 13 && P2StateNo = 3020
+pos = ceil(-80*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 14 && P2StateNo = 3020
+pos = ceil(-80*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 15 && P2StateNo = 3020
+pos = ceil(-20*const(size.xscale)), ceil(-50*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 16 && P2StateNo = 3020
+pos = ceil(15*const(size.xscale)), ceil(-45*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 17 && P2StateNo = 3020
+pos = ceil(10*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 18 && P2StateNo = 3020
+pos = ceil(30*const(size.xscale)), ceil(-50*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 19 && P2StateNo = 3020
+pos = ceil(30*const(size.xscale)), ceil(-60*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 20 && P2StateNo = 3020
+pos = ceil(35*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 21 && P2StateNo = 3020
+pos = ceil(30*const(size.xscale)), ceil(-65*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 22 && P2StateNo = 3020
+pos = ceil(40*const(size.xscale)), ceil(-70*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 23 && P2StateNo = 3020
+pos = ceil(25*const(size.xscale)), ceil(-75*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 24 && P2StateNo = 3020
+pos = ceil(5*const(size.xscale)), ceil(-95*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 25 && P2StateNo = 3020
+pos = ceil(-40*const(size.xscale)), ceil(-90*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 26 && P2StateNo = 3020
+pos = ceil(-80*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 27 && P2StateNo = 3020
+pos = ceil(-80*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 28 && P2StateNo = 3020
+pos = ceil(-80*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 29 && P2StateNo = 3020
+pos = ceil(-40*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 30 && P2StateNo = 3020
+pos = ceil(10*const(size.xscale)), ceil(-30*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 31 && P2StateNo = 3020
+pos = ceil(15*const(size.xscale)), ceil(-45*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 32 && P2StateNo = 3020
+pos = ceil(15*const(size.xscale)), ceil(-50*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 33 && P2StateNo = 3020
+pos = ceil(15*const(size.xscale)), ceil(-65*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 34 && P2StateNo = 3020
+pos = ceil(45*const(size.xscale)), ceil(-70*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelem = 35 && P2StateNo = 3020
+pos = ceil(31*const(size.xscale)), ceil(-140*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelem = 36 && P2StateNo = 3020
+pos = ceil(13*const(size.xscale)), ceil(-148*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelem = 37 && P2StateNo = 3020
+pos = ceil(5*const(size.xscale)), ceil(-155*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelemtime(38) >= 0  && P2StateNo = 3020
+pos = 0, ceil(-142*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 1 && P2StateNo = 3021
+pos = ceil(70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 2 && P2StateNo = 3021
+pos = ceil(70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 3 && P2StateNo = 3021
+pos = ceil(70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 4 && P2StateNo = 3021
+pos = ceil(85*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 5 && P2StateNo = 3021
+pos = ceil(51*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 6 && P2StateNo = 3021
+pos = ceil(85*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 7 && P2StateNo = 3021
+pos = ceil(50*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 8 && P2StateNo = 3021
+pos = ceil(55*const(size.xscale)), ceil(-2*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 9 && P2StateNo = 3021
+pos = ceil(26*const(size.xscale)), ceil(-3*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 10 && P2StateNo = 3021
+pos = ceil(3*const(size.xscale)), ceil(-21*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 11 && P2StateNo = 3021
+pos = ceil(-22*const(size.xscale)), ceil(-53*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 12 && P2StateNo = 3021
+pos = ceil(-80*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 13 && P2StateNo = 3021
+pos = ceil(-80*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 14 && P2StateNo = 3021
+pos = ceil(-80*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 15 && P2StateNo = 3021
+pos = ceil(26*const(size.xscale)), ceil(-123*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 16 && P2StateNo = 3021
+pos = ceil(26*const(size.xscale)), ceil(-128*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 17 && P2StateNo = 3021
+pos = ceil(1*const(size.xscale)), ceil(-113*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 18 && P2StateNo = 3021
+pos = ceil(23*const(size.xscale)), ceil(-100*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 19 && P2StateNo = 3021
+pos = ceil(51*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 20 && P2StateNo = 3021
+pos = ceil(85*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 21 && P2StateNo = 3021
+pos = ceil(50*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 22 && P2StateNo = 3021
+pos = ceil(55*const(size.xscale)), ceil(-2*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 23 && P2StateNo = 3021
+pos = ceil(26*const(size.xscale)), ceil(-3*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 24 && P2StateNo = 3021
+pos = ceil(3*const(size.xscale)), ceil(-21*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 25 && P2StateNo = 3021
+pos = ceil(-22*const(size.xscale)), ceil(-53*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 26 && P2StateNo = 3021
+pos = ceil(-80*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 27 && P2StateNo = 3021
+pos = ceil(-80*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 28 && P2StateNo = 3021
+pos = ceil(-80*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 29 && P2StateNo = 3021
+pos = ceil(-63*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 30 && P2StateNo = 3021
+pos = ceil(33*const(size.xscale)), ceil(-53*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 31 && P2StateNo = 3021
+pos = ceil(25*const(size.xscale)), ceil(-100*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 32 && P2StateNo = 3021
+pos = ceil(24*const(size.xscale)), ceil(-105*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 33 && P2StateNo = 3021
+pos = ceil(51*const(size.xscale)), ceil(-71*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 34 && P2StateNo = 3021
+pos = ceil(60*const(size.xscale)), ceil(-30*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelem = 35 && P2StateNo = 3021
+pos = ceil(40*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelem = 36 && P2StateNo = 3021
+pos = ceil(14*const(size.xscale)), ceil(-150*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelem = 37 && P2StateNo = 3021
+pos = ceil(-6*const(size.xscale)), ceil(-157*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelemtime(38) >= 0  && P2StateNo = 3021
+pos = ceil(-4*const(size.xscale)), ceil(-70*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 1 && P2StateNo = 3022
+pos = ceil(95*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 2 && P2StateNo = 3022
+pos = ceil(95*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 3 && P2StateNo = 3022
+pos = ceil(80*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 4 && P2StateNo = 3022
+pos = ceil(32*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 5 && P2StateNo = 3022
+pos = ceil(10*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 6 && P2StateNo = 3022
+pos = ceil(26*const(size.xscale)), ceil(-8*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 7 && P2StateNo = 3022
+pos = ceil(38*const(size.xscale)), ceil(-1*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 8 && P2StateNo = 3022
+pos = ceil(46*const(size.xscale)), ceil(-14*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 9 && P2StateNo = 3022
+pos = ceil(42*const(size.xscale)), ceil(-23*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 10 && P2StateNo = 3022
+pos = ceil(16*const(size.xscale)), ceil(-36*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 11 && P2StateNo = 3022
+pos = ceil(-26*const(size.xscale)), ceil(-128*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 12 && P2StateNo = 3022
+pos = ceil(-70*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 13 && P2StateNo = 3022
+pos = ceil(-70*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 14 && P2StateNo = 3022
+pos = ceil(-70*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 15 && P2StateNo = 3022
+pos = ceil(-35*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 16 && P2StateNo = 3022
+pos = ceil(12*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 17 && P2StateNo = 3022
+pos = ceil(9*const(size.xscale)), ceil(-110*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 18 && P2StateNo = 3022
+pos = ceil(37*const(size.xscale)), ceil(-28*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 19 && P2StateNo = 3022
+pos = ceil(10*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 20 && P2StateNo = 3022
+pos = ceil(26*const(size.xscale)), ceil(-8*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 21 && P2StateNo = 3022
+pos = ceil(38*const(size.xscale)), ceil(-1*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 22 && P2StateNo = 3022
+pos = ceil(46*const(size.xscale)), ceil(-14*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 23 && P2StateNo = 3022
+pos = ceil(42*const(size.xscale)), ceil(-23*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 24 && P2StateNo = 3022
+pos = ceil(16*const(size.xscale)), ceil(-36*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 25 && P2StateNo = 3022
+pos = ceil(-26*const(size.xscale)), ceil(-128*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 26 && P2StateNo = 3022
+pos = ceil(-70*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 27 && P2StateNo = 3022
+pos = ceil(-70*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 28 && P2StateNo = 3022
+pos = ceil(-70*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 29 && P2StateNo = 3022
+pos = ceil(-20*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 30 && P2StateNo = 3022
+pos = ceil(35*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 31 && P2StateNo = 3022
+pos = ceil(30*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 32 && P2StateNo = 3022
+pos = ceil(30*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 33 && P2StateNo = 3022
+pos = ceil(11*const(size.xscale)), ceil(2*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 34 && P2StateNo = 3022
+pos = ceil(47*const(size.xscale)), ceil(-15*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 35 && P2StateNo = 3022
+pos = ceil(-8*const(size.xscale)), ceil(-227*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 36 && P2StateNo = 3022
+pos = ceil(-9*const(size.xscale)), ceil(-66*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 37 && P2StateNo = 3022
+pos = ceil(-12*const(size.xscale)), ceil(-75*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelemtime(38) >= 0  && P2StateNo = 3022
+pos = ceil(-9*const(size.xscale)), ceil(-237*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 1 && P2StateNo = 3023
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 2 && P2StateNo = 3023
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 3 && P2StateNo = 3023
+pos = ceil(50*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 4 && P2StateNo = 3023
+pos = ceil(80*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 5 && P2StateNo = 3023
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 6 && P2StateNo = 3023
+pos = ceil(40*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 7 && P2StateNo = 3023
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 8 && P2StateNo = 3023
+pos = ceil(65*const(size.xscale)), ceil(-15*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 9 && P2StateNo = 3023
+pos = ceil(60*const(size.xscale)), ceil(-20*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 10 && P2StateNo = 3023
+pos = ceil(40*const(size.xscale)), ceil(-40*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 11 && P2StateNo = 3023
+pos = ceil(-30*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 12 && P2StateNo = 3023
+pos = ceil(-70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 13 && P2StateNo = 3023
+pos = ceil(-70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 14 && P2StateNo = 3023
+pos = ceil(-70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 15 && P2StateNo = 3023
+pos = ceil(-50*const(size.xscale)), ceil(-100*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 16 && P2StateNo = 3023
+pos = ceil(5*const(size.xscale)), ceil(-90*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 17 && P2StateNo = 3023
+pos = ceil(20*const(size.xscale)), ceil(-85*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 18 && P2StateNo = 3023
+pos = ceil(25*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 19 && P2StateNo = 3023
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 20 && P2StateNo = 3023
+pos = ceil(40*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 21 && P2StateNo = 3023
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 22 && P2StateNo = 3023
+pos = ceil(65*const(size.xscale)), ceil(-15*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 23 && P2StateNo = 3023
+pos = ceil(60*const(size.xscale)), ceil(-20*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 24 && P2StateNo = 3023
+pos = ceil(40*const(size.xscale)), ceil(-40*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 25 && P2StateNo = 3023
+pos = ceil(-30*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 26 && P2StateNo = 3023
+pos = ceil(-70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 27 && P2StateNo = 3023
+pos = ceil(-70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 28 && P2StateNo = 3023
+pos = ceil(-70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 29 && P2StateNo = 3023
+pos = ceil(-15*const(size.xscale)), ceil(-10*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 30 && P2StateNo = 3023
+pos = ceil(35*const(size.xscale)), ceil(-85*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 31 && P2StateNo = 3023
+pos = ceil(20*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 32 && P2StateNo = 3023
+pos = ceil(20*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 33 && P2StateNo = 3023
+pos = ceil(40*const(size.xscale)), ceil(-85*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 34 && P2StateNo = 3023
+pos = ceil(60*const(size.xscale)), ceil(-105*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelem = 35 && P2StateNo = 3023
+pos = ceil(55*const(size.xscale)), ceil(-195*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelem = 36 && P2StateNo = 3023
+pos = ceil(20*const(size.xscale)), ceil(-140*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelem = 37 && P2StateNo = 3023
+pos = ceil(-5*const(size.xscale)), ceil(-160*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = animelemtime(38) >= 0  && P2StateNo = 3023
+pos = 0, ceil(-100*const(size.yscale))
+
+[State -2, HitAdd]
+type = HitAdd
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+value = 1
+
+[State -2, TargetLifeAdd]
+type = TargetLifeAdd
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+value = ceil(-180*fvar(0)*fvar(24)*fvar(31)*(const(data.attack)*0.01))
+kill = 0
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+fvar(15) = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = fvar(23) > 1.0
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+fvar(23) = -0.0625
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = fvar(24) > 1.0
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+fvar(24) = -0.0625
+
+[State -2, Explod]
+type = Explod
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+ID = 6700
+anim = 6700
+postype = p1
+pos = ceil(-90*const(size.xscale)),0
+;persistent = 0
+velocity = 0, 0
+accel = 0, 0
+sprpriority = 5
+
+[State -2, Explod]
+type = null;Explod
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+ID = 6500
+anim = 6500
+postype = p1
+pos = ceil(-90*const(size.xscale)),0
+;persistent = 0
+velocity = 0, 0
+accel = 0, 0
+sprpriority = -1
+
+[State 810, Explod]
+type = Explod
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+anim = 6920
+postype = p1
+pos = ceil(-90*const(size.xscale)),0
+;persistent = 0
+velocity = 0, 0
+accel = 0, 0
+sprpriority = -100
+
+[State 810, Explod]
+type = Explod
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+anim = 6930
+postype = p1
+pos = ceil(-90*const(size.xscale)),0
+;persistent = 0
+velocity = 0, 0
+accel = 0, 0
+sprpriority = -100
+
+[State -2, helper]
+type = helper
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+stateno = 7700
+id = 7700
+postype = p1
+pos = ceil(-90*const(size.xscale)),0
+sprpriority = 4
+helpertype = normal
+ownpal = 1
+keyctrl = 0 
+;persistent = 0
+
+[State 5110, 6]
+type = PlaySnd
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+value = S5100,1
+
+[State -2, Envshake]
+type = Envshake
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+time = 16
+freq = 120
+ampl = -8
+
+[State 1200, Velocity]
+type = VelSet
+trigger1 = AnimElemtime(36) = 0
+x = 3.0
+y = -18.0
+
+[State 1200, veladd]
+type = veladd
+trigger1 = animelemtime(36) >= 0
+y = .75
+
+[State -2, Explod]
+type = Explod
+trigger1 = animelemtime(36) = 2
+trigger2 = animelemtime(37) = 1
+trigger3 = animelemtime(37) = 5
+ID = 6250
+anim = 6250
+postype = p1
+pos = 0, 20
+random = 0, 5
+velocity = 0, 0
+accel = 0, 0
+bindtime = 1
+sprpriority = 3
+
+[State -2, Explod]
+type = Explod
+trigger1 = animelemtime(37) = 3
+trigger2 = animelemtime(37) = 7
+ID = 6200
+anim = 6200
+postype = p1
+pos = 0, 20
+random = 0, 5
+velocity = 0, 0
+accel = 0, 0
+bindtime = 1
+sprpriority = 3
+
+[State 1200, StateType]
+type = StateTypeSet
+trigger1 = AnimElem = 36
+StateType = A
+physics = N
+
+[State -2, State End]
+type = ChangeState
+triggerall = animelemtime(36) > 0
+trigger1 = vel Y > 0
+trigger1 = pos Y >= 0
+value = 1051
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)
+[Statedef 3020]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3020
+
+[State -2, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)3rd専用anim1
+[Statedef 3021]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3021
+
+[State -2, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)3rd専用anim1
+[Statedef 3022]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3022
+
+[State -2, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)3rd専用anim1
+[Statedef 3023]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3023
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+trigger1 = authorname = "GM"
+trigger1 = name = "Ibuki"
+value = 3024
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+trigger1 = authorname = "GM"
+trigger1 = name = "Gill"
+value = 3025+(facing=-1)*100000
+
+[State -2, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)3rd専用anim1
+[Statedef 3024]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3024
+
+[State -2, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+;☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+; ハイパーボム(投げた側)
+[Statedef 3050]
+type    = S
+movetype= A
+physics = N
+anim = 3050
+SprPriority = 2
+
+[State -2, Varset]
+type = Varset
+trigger1 = time = 0
+fvar(25) = fvar(0)
+
+[State -2, TargetState]
+type = TargetState
+Trigger1 = time = 0
+value = 3060
+
+[State -2, TargetState]
+type = TargetState
+Trigger1 = time = 0
+trigger1 = target,authorname = "GM"
+trigger1 = target,name = "Alex"
+value = 3061
+
+[State -2, TargetState]
+type = TargetState
+Trigger1 = time = 0
+trigger1 = target,authorname = "GM"
+trigger1 = target,name = "Hugo"
+value = 3062
+
+[State -2, TargetState]
+type = TargetState
+Trigger1 = time = 0
+trigger1 = target,authorname = "GM"
+trigger1 = target,name = "Ryu" || target,name = "Ken" || target,name = "Gouki"
+value = 3063
+
+[State -2, TargetState]
+type = TargetState
+Trigger1 = time = 0
+trigger1 = target,authorname = "GM"
+trigger1 = target,name = "Ibuki"
+value = 3064
+
+[State -2, TargetState]
+type = TargetState
+Trigger1 = time = 0
+trigger1 = target,authorname = "GM"
+trigger1 = target,name = "Gill"
+value = 3065
+
+[State 1200, Position]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 1200, VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = 0
+y = 0
+
+[State -2, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(7) = 0
+trigger2 = animelemtime(21) = 0
+trigger3 = animelemtime(35) = 0
+trigger4 = animelemtime(49) = 0
+value = S0,3
+channel = 0
+
+[State -2, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(63) = 2
+value = S1000,0
+channel = 0
+
+[State -2, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(9) = 0
+trigger2 = animelemtime(23) = 0
+trigger3 = animelemtime(37) = 0
+trigger4 = animelemtime(51) = 0
+trigger5 = animelemtime(65) = 0
+value = S1,2
+
+[State 1200, 9]
+type = Width
+trigger1 = animelemtime(10) < 0
+trigger2 = animelemtime(15) >= 0
+trigger2 = animelemtime(24) < 0
+trigger3 = animelemtime(29) >= 0
+trigger3 = animelemtime(38) < 0
+trigger4 = animelemtime(43) >= 0
+trigger4 = animelemtime(52) < 0
+trigger5 = animelemtime(57) >= 0
+trigger5 = animelemtime(66) < 0
+edge = ceil(30*const(size.xscale)),ceil(40*const(size.xscale))
+
+[State 1200, 9]
+type = Width
+trigger1 = animelemtime(10) >= 0
+trigger1 = animelemtime(15) < 0
+trigger2 = animelemtime(24) >= 0
+trigger2 = animelemtime(29) < 0
+trigger3 = animelemtime(38) >= 0
+trigger3 = animelemtime(43) < 0
+trigger4 = animelemtime(52) >= 0
+trigger4 = animelemtime(57) < 0
+trigger5 = animelemtime(66) >= 0
+edge = ceil(30*const(size.xscale)),ceil(80*const(size.xscale))
+
+[State -2, Playerpush]
+type = Playerpush
+trigger1 = 1
+value = 0
+
+[State -2, posadd]
+type = posadd
+trigger1 = time = 0
+x = -3*const(size.xscale)
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(5) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(6) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(8) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(11) = 0
+x = ceil(-28*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(15) = 0
+x = ceil(-35*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(16) = 0
+x = ceil(-48*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(20) = 0
+x = ceil(-30*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(22) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(25) = 0
+x = ceil(-28*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(29) = 0
+x = ceil(-35*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(30) = 0
+x = ceil(-48*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(34) = 0
+x = ceil(-30*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(36) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(39) = 0
+x = ceil(-28*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(43) = 0
+x = ceil(-35*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(44) = 0
+x = ceil(-48*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(48) = 0
+x = ceil(-30*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(50) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(53) = 0
+x = ceil(-28*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(57) = 0
+x = ceil(-35*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(58) = 0
+x = ceil(-48*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(62) = 0
+x = ceil(-30*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(64) = 0
+x = ceil(-20*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(67) = 0
+x = ceil(-28*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(72) = 0
+x = ceil(-35*const(size.xscale))
+
+[State -2, posadd]
+type = posadd
+trigger1 = animelemtime(73) = 0
+x = ceil(-48*const(size.xscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 1 && P2StateNo = 3060
+pos = ceil(100*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 2 && P2StateNo = 3060
+pos = ceil(100*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 3 && P2StateNo = 3060
+pos = ceil(100*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 4 && P2StateNo = 3060
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 5
+trigger2 = AnimElem = 19
+trigger3 = AnimElem = 33
+trigger4 = AnimElem = 47
+trigger5 = AnimElem = 61
+pos = ceil(30*const(size.xscale)), ceil(-60*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 6
+trigger2 = AnimElem = 20
+trigger3 = AnimElem = 34
+trigger4 = AnimElem = 48
+trigger5 = AnimElem = 62
+pos = ceil(35*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 7
+trigger2 = AnimElem = 21
+trigger3 = AnimElem = 35
+trigger4 = AnimElem = 49
+trigger5 = AnimElem = 63
+pos = ceil(30*const(size.xscale)), ceil(-65*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 8
+trigger2 = AnimElem = 22
+trigger3 = AnimElem = 36
+trigger4 = AnimElem = 50
+trigger5 = AnimElem = 64
+pos = ceil(40*const(size.xscale)), ceil(-70*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 9
+trigger2 = AnimElem = 23
+trigger3 = AnimElem = 37
+trigger4 = AnimElem = 51
+trigger5 = AnimElem = 65
+pos = ceil(25*const(size.xscale)), ceil(-75*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 10
+trigger2 = AnimElem = 24
+trigger3 = AnimElem = 38
+trigger4 = AnimElem = 52
+trigger5 = AnimElem = 66
+pos = ceil(5*const(size.xscale)), ceil(-95*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 25
+trigger3 = AnimElem = 39
+trigger4 = AnimElem = 53
+trigger5 = AnimElem = 67
+pos = ceil(-40*const(size.xscale)), ceil(-90*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 12
+trigger2 = AnimElem = 26
+trigger3 = AnimElem = 40
+trigger4 = AnimElem = 54
+trigger5 = AnimElem = 68
+pos = ceil(-80*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 13
+trigger2 = AnimElem = 27
+trigger3 = AnimElem = 41
+trigger4 = AnimElem = 55
+trigger5 = AnimElem = 69
+pos = ceil(-80*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 14
+trigger2 = AnimElem = 28
+trigger3 = AnimElem = 42
+trigger4 = AnimElem = 56
+pos = ceil(-80*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 15
+trigger2 = AnimElem = 29
+trigger3 = AnimElem = 43
+trigger4 = AnimElem = 57
+pos = ceil(-20*const(size.xscale)), ceil(-50*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 16
+trigger2 = AnimElem = 30
+trigger3 = AnimElem = 44
+trigger4 = AnimElem = 58
+pos = ceil(15*const(size.xscale)), ceil(-45*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 17
+trigger2 = AnimElem = 31
+trigger3 = AnimElem = 45
+trigger4 = AnimElem = 59
+pos = ceil(10*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3060
+trigger1 = AnimElem = 18
+trigger2 = AnimElem = 32
+trigger3 = AnimElem = 46
+trigger4 = AnimElem = 60
+pos = ceil(30*const(size.xscale)), ceil(-50*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 1 && P2StateNo = 3061
+pos = ceil(70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 2 && P2StateNo = 3061
+pos = ceil(70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 3 && P2StateNo = 3061
+pos = ceil(70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 4 && P2StateNo = 3061
+pos = ceil(85*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 5
+trigger2 = AnimElem = 19
+trigger3 = AnimElem = 33
+trigger4 = AnimElem = 47
+trigger5 = AnimElem = 61
+pos = ceil(51*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 6
+trigger2 = AnimElem = 20
+trigger3 = AnimElem = 34
+trigger4 = AnimElem = 48
+trigger5 = AnimElem = 62
+pos = ceil(85*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 7
+trigger2 = AnimElem = 21
+trigger3 = AnimElem = 35
+trigger4 = AnimElem = 49
+trigger5 = AnimElem = 63
+pos = ceil(50*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 8
+trigger2 = AnimElem = 22
+trigger3 = AnimElem = 36
+trigger4 = AnimElem = 50
+trigger5 = AnimElem = 64
+pos = ceil(55*const(size.xscale)), ceil(-2*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 9
+trigger2 = AnimElem = 23
+trigger3 = AnimElem = 37
+trigger4 = AnimElem = 51
+trigger5 = AnimElem = 65
+pos = ceil(26*const(size.xscale)), ceil(-3*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 10
+trigger2 = AnimElem = 24
+trigger3 = AnimElem = 38
+trigger4 = AnimElem = 52
+trigger5 = AnimElem = 66
+pos = ceil(3*const(size.xscale)), ceil(-21*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 25
+trigger3 = AnimElem = 39
+trigger4 = AnimElem = 53
+trigger5 = AnimElem = 67
+pos = ceil(-22*const(size.xscale)), ceil(-53*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 12
+trigger2 = AnimElem = 26
+trigger3 = AnimElem = 40
+trigger4 = AnimElem = 54
+trigger5 = AnimElem = 68
+pos = ceil(-80*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 13
+trigger2 = AnimElem = 27
+trigger3 = AnimElem = 41
+trigger4 = AnimElem = 55
+trigger5 = AnimElem = 69
+pos = ceil(-80*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 14
+trigger2 = AnimElem = 28
+trigger3 = AnimElem = 42
+trigger4 = AnimElem = 56
+pos = ceil(-80*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 15
+trigger2 = AnimElem = 29
+trigger3 = AnimElem = 43
+trigger4 = AnimElem = 57
+pos = ceil(26*const(size.xscale)), ceil(-123*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 16
+trigger2 = AnimElem = 30
+trigger3 = AnimElem = 44
+trigger4 = AnimElem = 58
+pos = ceil(26*const(size.xscale)), ceil(-128*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 17
+trigger2 = AnimElem = 31
+trigger3 = AnimElem = 45
+trigger4 = AnimElem = 59
+pos = ceil(1*const(size.xscale)), ceil(-113*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3061
+trigger1 = AnimElem = 18
+trigger2 = AnimElem = 32
+trigger3 = AnimElem = 46
+trigger4 = AnimElem = 60
+pos = ceil(23*const(size.xscale)), ceil(-100*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 1 && P2StateNo = 3062
+pos = ceil(95*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 2 && P2StateNo = 3062
+pos = ceil(95*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 3 && P2StateNo = 3062
+pos = ceil(80*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 4 && P2StateNo = 3062
+pos = ceil(32*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 5
+trigger2 = AnimElem = 19
+trigger3 = AnimElem = 33
+trigger4 = AnimElem = 47
+pos = ceil(10*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 6
+trigger2 = AnimElem = 20
+trigger3 = AnimElem = 34
+trigger4 = AnimElem = 48
+pos = ceil(26*const(size.xscale)), ceil(-8*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 7
+trigger2 = AnimElem = 21
+trigger3 = AnimElem = 35
+trigger4 = AnimElem = 49
+pos = ceil(38*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 8
+trigger2 = AnimElem = 22
+trigger3 = AnimElem = 36
+trigger4 = AnimElem = 50
+pos = ceil(46*const(size.xscale)), ceil(-14*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 9
+trigger2 = AnimElem = 23
+trigger3 = AnimElem = 37
+trigger4 = AnimElem = 51
+pos = ceil(42*const(size.xscale)), ceil(-23*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 10
+trigger2 = AnimElem = 24
+trigger3 = AnimElem = 38
+trigger4 = AnimElem = 52
+pos = ceil(16*const(size.xscale)), ceil(-36*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 25
+trigger3 = AnimElem = 39
+trigger4 = AnimElem = 53
+pos = ceil(-26*const(size.xscale)), ceil(-128*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 12
+trigger2 = AnimElem = 26
+trigger3 = AnimElem = 40
+trigger4 = AnimElem = 54
+pos = ceil(-70*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 13
+trigger2 = AnimElem = 27
+trigger3 = AnimElem = 41
+trigger4 = AnimElem = 55
+pos = ceil(-70*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 14
+trigger2 = AnimElem = 28
+trigger3 = AnimElem = 42
+trigger4 = AnimElem = 56
+pos = ceil(-70*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 15
+trigger2 = AnimElem = 29
+trigger3 = AnimElem = 43
+trigger4 = AnimElem = 57
+pos = ceil(35*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 16
+trigger2 = AnimElem = 30
+trigger3 = AnimElem = 44
+trigger4 = AnimElem = 58
+pos = ceil(12*const(size.xscale)), ceil(-118*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 17
+trigger2 = AnimElem = 31
+trigger3 = AnimElem = 45
+trigger4 = AnimElem = 59
+pos = ceil(9*const(size.xscale)), ceil(-110*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = 3062
+trigger1 = AnimElem = 18
+trigger2 = AnimElem = 32
+trigger3 = AnimElem = 46
+trigger4 = AnimElem = 60
+pos = ceil(37*const(size.xscale)), ceil(28*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 61 && P2StateNo = 3062
+pos = ceil(10*const(size.xscale)), ceil(-5*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 62 && P2StateNo = 3062
+pos = ceil(26*const(size.xscale)), ceil(-8*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 63 && P2StateNo = 3062
+pos = ceil(9*const(size.xscale)), ceil(-20*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 64 && P2StateNo = 3062
+pos = ceil(14*const(size.xscale)), ceil(-28*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 65 && P2StateNo = 3062
+pos = ceil(-5*const(size.xscale)), ceil(-29*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 66 && P2StateNo = 3062
+pos = ceil(-42*const(size.xscale)), ceil(-18*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 67 && P2StateNo = 3062
+pos = ceil(-56*const(size.xscale)), ceil(13*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 68 && P2StateNo = 3062
+pos = ceil(-80*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 1 && P2StateNo = [3063,3065]
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 2 && P2StateNo = [3063,3065]
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 3 && P2StateNo = [3063,3065]
+pos = ceil(50*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+trigger1 = AnimElem = 4 && P2StateNo = [3063,3065]
+pos = ceil(80*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 5
+trigger2 = AnimElem = 19
+trigger3 = AnimElem = 33
+trigger4 = AnimElem = 47
+trigger5 = AnimElem = 61
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 6
+trigger2 = AnimElem = 20
+trigger3 = AnimElem = 34
+trigger4 = AnimElem = 48
+trigger5 = AnimElem = 62
+pos = ceil(40*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 7
+trigger2 = AnimElem = 21
+trigger3 = AnimElem = 35
+trigger4 = AnimElem = 49
+trigger5 = AnimElem = 63
+pos = ceil(60*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 8
+trigger2 = AnimElem = 22
+trigger3 = AnimElem = 36
+trigger4 = AnimElem = 50
+trigger5 = AnimElem = 64
+pos = ceil(65*const(size.xscale)), ceil(-15*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 9
+trigger2 = AnimElem = 23
+trigger3 = AnimElem = 37
+trigger4 = AnimElem = 51
+trigger5 = AnimElem = 65
+pos = ceil(60*const(size.xscale)), ceil(-20*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 10
+trigger2 = AnimElem = 24
+trigger3 = AnimElem = 38
+trigger4 = AnimElem = 52
+trigger5 = AnimElem = 66
+pos = ceil(40*const(size.xscale)), ceil(-40*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 11
+trigger2 = AnimElem = 25
+trigger3 = AnimElem = 39
+trigger4 = AnimElem = 53
+trigger5 = AnimElem = 67
+pos = ceil(-30*const(size.xscale)), ceil(-25*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 12
+trigger2 = AnimElem = 26
+trigger3 = AnimElem = 40
+trigger4 = AnimElem = 54
+trigger5 = AnimElem = 68
+pos = ceil(-70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 13
+trigger2 = AnimElem = 27
+trigger3 = AnimElem = 41
+trigger4 = AnimElem = 55
+trigger5 = AnimElem = 69
+pos = ceil(-70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 14
+trigger2 = AnimElem = 28
+trigger3 = AnimElem = 42
+trigger4 = AnimElem = 56
+pos = ceil(-70*const(size.xscale)), 0
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 15
+trigger2 = AnimElem = 29
+trigger3 = AnimElem = 43
+trigger4 = AnimElem = 57
+pos = ceil(-50*const(size.xscale)), ceil(-100*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 16
+trigger2 = AnimElem = 30
+trigger3 = AnimElem = 44
+trigger4 = AnimElem = 58
+pos = ceil(5*const(size.xscale)), ceil(-90*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 17
+trigger2 = AnimElem = 31
+trigger3 = AnimElem = 45
+trigger4 = AnimElem = 59
+pos = ceil(20*const(size.xscale)), ceil(-85*const(size.yscale))
+
+[State -2, TargetBind]
+type = TargetBind
+triggerall = P2StateNo = [3063,3065]
+trigger1 = AnimElem = 18
+trigger2 = AnimElem = 32
+trigger3 = AnimElem = 46
+trigger4 = AnimElem = 60
+pos = ceil(25*const(size.xscale)), ceil(-55*const(size.yscale))
+
+[State -2, HitAdd]
+type = HitAdd
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+trigger5 = animelemtime(68) = 0
+value = 1
+
+[State -2, TargetLifeAdd]
+type = TargetLifeAdd
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+value = ceil(-115*fvar(25)*fvar(24)*fvar(26)*fvar(27)*fvar(31)*(const(data.attack)*0.01))
+kill = 0
+
+[State -2, TargetLifeAdd]
+type = TargetLifeAdd
+trigger1 = animelemtime(68) = 0
+value = ceil(-130*fvar(25)*fvar(24)*fvar(26)*fvar(27)*fvar(31)*(const(data.attack)*0.01))
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+trigger5 = animelemtime(68) = 0
+fvar(15) = 1
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = fvar(23) > 1.0
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+trigger5 = animelemtime(68) = 0
+fvar(23) = -0.0625
+ignorehitpause = 1
+
+[State -2, VarAdd]
+type = VarAdd
+triggerall = fvar(24) > 1.0
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+trigger5 = animelemtime(68) = 0
+fvar(24) = -0.0625
+ignorehitpause = 1
+
+[State -2, Explod]
+type = Explod
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+trigger5 = animelemtime(68) = 0
+ID = 6700
+anim = 6700
+postype = p1
+pos = ceil(-90*const(size.xscale)),0
+;persistent = 0
+velocity = 0, 0
+accel = 0, 0
+sprpriority = 5
+
+[State -2, Explod]
+type = null;Explod
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+trigger5 = animelemtime(68) = 0
+ID = 6500
+anim = 6500
+postype = p1
+pos = ceil(-90*const(size.xscale)),0
+;persistent = 0
+velocity = 0, 0
+accel = 0, 0
+sprpriority = -1
+
+[State 810, Explod]
+type = Explod
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+trigger5 = animelemtime(68) = 0
+anim = 6920
+postype = p1
+pos = ceil(-90*const(size.xscale)),0
+;persistent = 0
+velocity = 0, 0
+accel = 0, 0
+sprpriority = -100
+
+[State 810, Explod]
+type = Explod
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+trigger5 = animelemtime(68) = 0
+anim = 6930
+postype = p1
+pos = ceil(-90*const(size.xscale)),0
+;persistent = 0
+velocity = 0, 0
+accel = 0, 0
+sprpriority = -100
+
+[State -2, helper]
+type = helper
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+trigger5 = animelemtime(68) = 2
+stateno = 7700
+id = 7700
+postype = p1
+pos = ceil(-90*const(size.xscale)),0
+sprpriority = 4
+helpertype = normal
+ownpal = 1
+keyctrl = 0 
+;persistent = 0
+
+[State 5110, 6]
+type = PlaySnd
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+trigger5 = animelemtime(68) = 0
+value = S5100,1
+
+[State -2, Envshake]
+type = Envshake
+trigger1 = animelemtime(12) = 0
+trigger2 = animelemtime(26) = 0
+trigger3 = animelemtime(40) = 0
+trigger4 = animelemtime(54) = 0
+time = 10
+freq = 120
+ampl = -8
+
+[State -2, Envshake]
+type = Envshake
+trigger1 = animelemtime(68) = 2
+time = 20
+freq = 140
+ampl = -8
+
+[State -3]
+type = AfterImage
+trigger1 = AnimTime = 0
+time = 0
+
+[State -2, State End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)
+[Statedef 3060]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3060
+
+[State 810, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+[State 1200, Velocity]
+type = VelSet
+trigger1 = AnimElemtime(61) = 0
+x = -2.0
+y = -4.0
+
+[State 1200, veladd]
+type = veladd
+trigger1 = animelemtime(61) >= 0
+y = .60
+
+[State -2, Changestate]
+type = selfstate
+trigger1 = animelemtime(61) > 0
+trigger1 = vel Y > 0
+trigger1 = pos Y >= -15
+value = 5100
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)3rd専用anim1
+[Statedef 3061]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3061
+
+[State 810, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+[State -2, velset]
+type = velset
+trigger1 = animelemtime(66) = 0
+x = -4.0
+
+[State -2, velset]
+type = velmul
+trigger1 = animelemtime(66) >= 0
+x = .90
+
+[State -2, SelfState]
+type = selfstate
+trigger1 = animtime = 0
+value = 5110
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)3rd専用anim1
+[Statedef 3062]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3062
+
+[State 810, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+[State -2, SelfState]
+type = changestate
+trigger1 = animtime = 0
+value = 1682
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)3rd専用anim1
+[Statedef 3063]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3063
+
+[State 810, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+[State -2, velset]
+type = velset
+trigger1 = animelemtime(63) = 0
+x = -3.0
+
+[State -2, SelfState]
+type = changestate
+trigger1 = animtime = 0
+value = 1662
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)3rd専用anim1
+[Statedef 3064]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3064
+
+[State 810, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+[State -2, velset]
+type = velset
+trigger1 = animelemtime(63) = 0
+x = -3.0
+
+[State -2, SelfState]
+type = changestate
+trigger1 = animtime = 0
+value = 1663
+
+;△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△
+;ハイパーボム(投げられた側)3rd専用anim1
+[Statedef 3065]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+SprPriority = 1
+
+[State -2, ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = time = 0
+value = 3065+(facing=-1)*100000
+
+[State 810, 0]
+type = ScreenBound
+trigger1 = 1
+value = ifelse(animelemtime(11)<0,0,1)
+movecamera = 1,0
+
+[State -2, velset]
+type = velset
+trigger1 = animelemtime(63) = 0
+x = -3.0
+
+[State -2, SelfState]
+type = changestate
+trigger1 = animtime = 0
+value = 1664

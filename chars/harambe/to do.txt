@@ -1,0 +1,42 @@
+other stuff needed:
+- make his AI not even throw the skrull. make that be something on the player can do if controlling him. he spams the skrull throw. it'd be better to remove altogether from AI, if only because removes ability to spam, and he needs a slight tone down
+- something messed up in shared palette. when in alt palette, many times he'll flash over to original palette
+- i liked all the new stuff you did, especially the pteradactyl, gorilla transform gun and the throw. very cool work Very Happy
+
+hey there Smile
+
+so wanted to check in on that next update of grodd. i did give you those other sprites from jhonny, yes? i thought of an idea with them. when fire the gun hyper at certain characters, they temporarily flash into those gorilla sprites of the justice league members? for example, shoot superman, he flashes into the superman gorilla sprite, then flash back and falls. same with batman and the others. thoughts?
+
+originally sent 7/17
+
+===
+
+oh no. don't worry about your reply at all, it was fine Smile thank you for the work you did on him again, and for even being a part of mmv Very Happy
+
+edit. here is the file from jhonny dc. has some sounds, and something for either a winpose or intro. he didn't explain how it'd work. but there was an episode from the justice league cartoon where he converted all humans into gorillas, including the heroes.
+
+download: sendspace.com c9uodz
+
+delete after: sendspace.com/delete/c9uodz/6fb26be2c993a1bd54ac65625c5a3bc5
+
+but you got the stuff from jhonny dc now right?
+
+basically all needed right now is:
+- apply whatever feedback from last update
+- apply jhonny dc stuff
+- remove the AI's ability to do the stun punch special
+
+i don't know if you still take suggestions but i wanted to add some things:
+
+first thanks for the release, he is really a great char and i enjoy him in my rosters
+the clns are well done, Smile
+i love the ape opponent Locator, so cute,  Embarassed
+using blanka sounds don't bother me, and are welcome on him  Wink
+
+now on the things to improve:
+_ he doesn't have turning sprites sprited, not one where he faces the screen
+_ same with crouch to stand
+_ in the intro, his crown and jewel, belt, disappear?? some sprites must be missing
+_ when he wins, i'm sure he can have better quotes that praising mmv  
+_ why does he wear the brain like this??? in the ending?
+

@@ -1,0 +1,319 @@
+;---------------------------------------------------------------------------
+;EX足刀
+[Statedef 8010]
+type = A
+movetype = H
+physics = N
+anim = 8010
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time = 0
+X = -20
+Y = -1
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time > 0
+Y = 0.1
+
+[State 5020, 4]
+type = ScreenBound
+trigger1 = 1
+value = 1
+
+[State 8010, 3]
+type = ChangeState
+trigger1 = BackEdgeBodyDist <= 0
+value = 8011
+
+[State 8010, 4]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 5100
+
+;---------------------------------------------------------------------------
+[Statedef 8011]
+type = A
+movetype = H
+physics = N
+anim = 8011
+velset = 0, 0
+
+[State 8011, 0]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 8012
+
+[State 8011, 1]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 5100
+
+;---------------------------------------------------------------------------
+[Statedef 8012]
+type = A
+movetype = H
+physics = N
+anim = 5050
+
+[State 80112, 0]
+type = Turn
+trigger1 = time = 0
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time = 0
+X = -2
+Y = -12.7
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time > 0
+Y = 0.65
+
+[State 8010, 0]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 5100
+
+;---------------------------------------------------------------------------
+;EX突進
+[Statedef 8020]
+type = A
+movetype = H
+physics = N
+anim = 8010
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time = 0
+X = -20
+Y = -1
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time > 0
+Y = 0.1
+
+[State 5020, 4]
+type = ScreenBound
+trigger1 = 1
+value = 1
+
+[State 8010, 3]
+type = ChangeState
+trigger1 = BackEdgeBodyDist <= 0
+value = 8021
+
+[State 8010, 4]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 5100
+
+;---------------------------------------------------------------------------
+[Statedef 8021]
+type = A
+movetype = H
+physics = N
+anim = 8011
+velset = 0, 0
+
+[State 8011, 0]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 8022
+
+[State 8011, 1]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 5100
+
+;---------------------------------------------------------------------------
+[Statedef 8022]
+type = A
+movetype = H
+physics = N
+anim = 5050
+
+[State 80112, 0]
+type = Turn
+trigger1 = time = 0
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time = 0
+X = -2
+Y = -12.7
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time > 0
+Y = 0.65
+
+[State 8010, 0]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 5100
+
+;---------------------------------------------------------------------------
+;連突五段目
+[Statedef 8030]
+type = A
+movetype= H
+physics = N
+anim = 8010
+
+[State 5020, 4]
+type = VelAdd
+trigger1 = time = 0
+X = -20
+Y = -6
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time > 0
+Y = 0.65
+
+[State 5020, 4]
+type = ScreenBound
+trigger1 = 1
+value = 1
+
+[State 5020, 5]
+type = ChangeState
+trigger1 = BackEdgeBodyDist <= 0
+value = 8031
+
+[State 5020, 5]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 5100
+
+;---------------------------------------------------------------------------
+[Statedef 8031]
+type = A
+movetype = H
+physics = N
+velset = 0, 0
+anim = 8011
+
+[State 5020, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 8032
+
+[State 5020, 5]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 5100
+
+;---------------------------------------------------------------------------
+[Statedef 8032]
+type = A
+movetype = H
+physics = N
+anim = 5050
+
+[State 5020, 1]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 5020, 1]
+type = turn
+trigger1 = time = 0
+
+[State 5020, 4]
+type = VelAdd
+trigger1 = time = 0
+X = -7
+Y = -13
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time > 0
+Y = 0.65
+
+[State 5020, 5]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 5100
+
+;---------------------------------------------------------------------------
+;腹部二段目
+[Statedef 8040]
+type = A
+movetype= H
+physics = N
+velset = 0, 0
+anim = 8040
+
+[State 5020, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 8041
+
+;---------------------------------------------------------------------------
+[Statedef 8041]
+type = A
+movetype= H
+physics = N
+anim = 8041
+
+[State 5020, 5]
+type = VelAdd
+trigger1 = Time = 0
+Y = 30
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time > 0
+Y = 0.65
+
+[State 5020, 5]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 8042
+
+;---------------------------------------------------------------------------
+[Statedef 8042]
+type = A
+movetype= H
+physics = N
+velset = 0, 0
+anim = 8042
+
+[State 5020, 5]
+type = PosSet
+trigger1 = Time = 0
+Y = 0
+
+[State 5020, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 8043
+
+;---------------------------------------------------------------------------
+[Statedef 8043]
+type = A
+movetype = H
+physics = N
+anim = 5050
+
+[State 5020, 5]
+type = VelAdd
+trigger1 = time = 0
+X = -3.5
+Y = -20.3
+
+[State 8010, 0]
+type = VelAdd
+trigger1 = time > 0
+Y = 0.65
+
+[State 5020, 5]
+type = ChangeState
+trigger1 = Pos Y >= 0 && Vel Y > 0
+value = 5100
+

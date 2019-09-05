@@ -1,0 +1,1576 @@
+;===============================================================================================
+;===============================================================================================
+;CODE RED 1.1
+;==== === ===
+;
+;Feito por Paulo Carvalho (Morfeu)
+;
+;Extraído de X-Men Vs Street Fighter (CPS2)
+;
+;Agradecimentos: Ao Aziz Vicentini, por ter criado o Z-CharCad e o atualizado freqüentemente, 
+;onde eu editei e compilei o SFF deste BG.
+;Aos testadores Winane e Vandré Brunazo (VIB).
+;===============================================================================================
+;===============================================================================================
+
+[Info]
+name = "Code Red"       ;Nome do cenário.
+
+[Camera]
+startx = 0              ;Especifica em que local do eixo x inicia a câmera.
+starty = 0              ;Especifica em que local do eixo y inicia a câmera.
+boundleft = -220        ;Especifica o limite esquerdo do cenário.
+boundright = 220        ;Especifica o limite direito do cenário.
+boundhigh = -237        ;Especifica o limite do alto do cenário.
+boundlow = 0            ;Especifica o limite de baixo do cenário.
+verticalfollow = .5     ;Indica o quanto deve subir o cenário quanto o
+                        ;lutador saltar orientando-se pelo mais alto.
+tension = 60            ;Distância mínima entre os lutadores para que a câmera comece a mover.
+
+;----------------------
+[PlayerInfo]
+ ;Coordenadas de inicialização dos lutadores.
+p1startx = -82          ;Coordenadas x de inicialização
+p1starty = 0            ;Coordenadas y de inicialização
+p1startz = 0            ;Coordenadas z de inicialização
+p1facing = 1            ;Direção da face do lutador: 1=dir, -1=esq
+p2startx = 80
+p2starty = 0
+p2startz = 0
+p2facing = -1
+
+leftbound  = -1000      ;Limite esquerdo do movimento dos lutadores.
+rightbound =  1000      ;Limite direito do movimento dos lutadores.
+topbound  =  0          ;Limite do movimento z.
+botbound  =  0          ;Limite do movimento para o fundo.
+
+;----------------------
+[Scaling]
+;Escalas em geral (geralmente não é necessário mudar).
+topz     = 0            ;Coordenadas de escala z do topo.
+botz     = 50           ;Coordenadas de escala z do fundo.
+topscale = 1            ;Escale para usar no topo .
+botscale = 1.2          ;Escale para usar no fundo. 
+
+;----------------------
+[Bound]
+screenleft = 15         ;Distância que limita o movimento do lutador no canto esquerdo.
+screenright = 15        ;O mesmo que o de cima, mas no canto direto.
+
+;----------------------
+[StageInfo]
+zoffset = 0        ;Regula a distância do pé do lutador ao chão (maior
+                   ;valor = mais baixo, menor = mais alto).
+zoffsetlink = 10   ;Faz com q os lutadores sigam objetos especificados como "drummy"
+autoturn = 1       ;Faz com que os lutadores sempre fiquem de frente um para o outro.
+resetBG = 0        ;Regula se as animações reiniciam nos próximos rounds (valores 0 ou 1).
+
+;----------------------
+[Shadow]
+color = 92,92,92   ;Valores de gama da sombra (vermelho, verde, azul)
+yscale = .3        ;Tamanho da sombra (valores positivos e negativos)
+reflect = 0        ;Adiciona reflexo ao lutador (1 ou 0).
+
+;----------------------
+[Music]
+ ;Som ou música do cenário.
+bgmusic = sound/looped.mp3     ;endereço do arquivo da música
+bgvolume = 255               ;0 = normal, >0 = aumentar, <0 = diminuir (só mp3, cda e mod)
+
+;----------------------
+[BGdef] 
+spr = stages/code_red.sff        ;Indica o local do arquivo dos sprits.
+debugbg = 0                      ;0 = mancha o fundo com o movimento, 1 = fundo magenta.
+
+
+;===============================================================================================
+;===============================================================================================
+
+
+[BG fundo1_esq]        ;primeira imagem de fundo (parte esquerda)
+type = anim
+ID = 1                 ;inclui o objeto no "Movimento de Translação 1"
+actionno = 1
+layerno = 0
+start = -1, 1
+delta = 1,1
+
+[Begin Action 1]
+0,1, 0,0, 1000
+0,3, 0,0, 900
+0,1, 0,0, -1
+
+;----------------------
+[BG fundo1_dir]        ;primeira imagem de fundo (parte direita)
+type = anim
+ID = 1
+actionno = 2
+layerno = 0
+start = -2, 1
+delta = 1,1
+
+[Begin Action 2]
+0,1, 0,0, 1000,h
+0,3, 0,0, 900,h
+0,1, 0,0, -1,h
+
+;----------------------
+[BG luzes_esq]          ;luzes piscantes (parte esquerda)
+type = anim
+ID = 1
+actionno = 40
+layerno = 0
+start = -1, -80
+delta = 1,1
+
+[Begin Action 40]
+-1,-1, 0,0, 750
+3,1, 0,0, 6
+3,2, 0,0, 6
+3,3, 0,0, 6
+3,4, 0,0, 6
+3,5, 0,0, 6
+3,6, 0,0, 6
+3,7, 0,0, 6
+3,8, 0,0, 6
+3,7, 0,0, 6
+3,6, 0,0, 6
+3,5, 0,0, 6
+3,4, 0,0, 6
+3,3, 0,0, 6
+3,2, 0,0, 6
+3,1, 0,0, 6
+3,2, 0,0, 6
+3,3, 0,0, 6
+3,4, 0,0, 6
+3,5, 0,0, 6
+3,6, 0,0, 6
+3,7, 0,0, 6
+3,8, 0,0, 6
+-1,-1, 0,0, 1095
+3,8, 0,0, -1
+
+;----------------------
+[BG luzes_dir]          ;luzes piscantes (parte direita)
+type = anim
+ID = 1
+actionno = 41
+layerno = 0
+start = -2, -80
+delta = 1,1
+
+[Begin Action 41]
+-1,-1, 0,0, 750
+3,1, 0,0, 6,h
+3,2, 0,0, 6,h
+3,3, 0,0, 6,h
+3,4, 0,0, 6,h
+3,5, 0,0, 6,h
+3,6, 0,0, 6,h
+3,7, 0,0, 6,h
+3,8, 0,0, 6,h
+3,7, 0,0, 6,h
+3,6, 0,0, 6,h
+3,5, 0,0, 6,h
+3,4, 0,0, 6,h
+3,3, 0,0, 6,h
+3,2, 0,0, 6,h
+3,1, 0,0, 6,h
+3,2, 0,0, 6,h
+3,3, 0,0, 6,h
+3,4, 0,0, 6,h
+3,5, 0,0, 6,h
+3,6, 0,0, 6,h
+3,7, 0,0, 6,h
+3,8, 0,0, 6,h
+-1,-1, 0,0, 1095
+3,8, 0,0, -1,h
+
+
+;----------------------
+[BG apagando1_esq]      ;apagando as luzes (parte esquerda)
+type = anim
+ID = 1
+actionno = 42
+layerno = 0
+start = -1, 1
+delta = 1,1
+
+[Begin Action 42]
+-1,-1, 0,0, 890
+4,1, 0,0, 6
+4,2, 0,0, 6
+4,3, 0,0, 6
+4,4, 0,0, 6
+4,5, 0,0, 6
+4,6, 0,0, 6
+0,3, 0,0, 100
+-1,-1, 0,0, -1
+
+;----------------------
+[BG apagando1_dir]      ;apagando as luzes (parte direita)
+type = anim
+ID = 1
+actionno = 43
+layerno = 0
+start = -2, 1
+delta = 1,1
+
+[Begin Action 43]
+-1,-1, 0,0, 890
+4,1, 0,0, 6,h
+4,2, 0,0, 6,h
+4,3, 0,0, 6,h
+4,4, 0,0, 6,h
+4,5, 0,0, 6,h
+4,6, 0,0, 6,h
+0,3, 0,0, 100,h
+-1,-1, 0,0, -1
+
+;----------------------
+[BG acendendo1_esq]     ;acendendo luzes de fundo (parte esquerda)
+type = anim
+ID = 1
+actionno = 44
+layerno = 0
+start = -1, -27
+delta = 1,1
+
+[Begin Action 44]
+-1,-1, 0,0, 1065
+5,1, 0,0, 6
+5,2, 0,0, 6
+5,3, 0,0, 6
+5,4, 0,0, 6
+5,5, 0,0, 6
+5,6, 0,0, 6
+-1,-1, 0,0, -1
+
+;----------------------
+[BG acendendo1_dir]     ;acendendo luzes de fundo (parte direita)
+type = anim
+ID = 1
+actionno = 45
+layerno = 0
+start = -2, -27
+delta = 1,1
+
+[Begin Action 45]
+-1,-1, 0,0, 1065
+5,1, 0,0, 6,h
+5,2, 0,0, 6,h
+5,3, 0,0, 6,h
+5,4, 0,0, 6,h
+5,5, 0,0, 6,h
+5,6, 0,0, 6,h
+-1,-1, 0,0, -1
+
+;----------------------
+[BG giro_esq]           ;efeito giratóro (parte esquerda)
+type = anim
+ID = 1
+actionno = 5
+layerno = 0
+start = -1, -27
+delta = 1,1;.8,.9
+
+[Begin Action 5]
+-1,-1, 0,0, 1100
+1,1, 0,0, 120
+;loopstart
+1,2, 0,0, 6
+1,3, 0,0, 6
+1,4, 0,0, 6
+1,5, 0,0, 6
+1,6, 0,0, 6
+1,7, 0,0, 6
+1,8, 0,0, 6
+;loop
+1,1, 0,0, 6
+1,2, 0,0, 6
+1,3, 0,0, 6
+1,4, 0,0, 6
+1,5, 0,0, 6
+1,6, 0,0, 6
+1,7, 0,0, 6
+1,8, 0,0, 6
+;loop
+1,1, 0,0, 6
+1,2, 0,0, 6
+1,3, 0,0, 6
+1,4, 0,0, 6
+1,5, 0,0, 6
+1,6, 0,0, 6
+1,7, 0,0, 6
+1,8, 0,0, 6
+;loop
+1,1, 0,0, 6
+1,2, 0,0, 6
+1,3, 0,0, 6
+1,4, 0,0, 6
+1,5, 0,0, 6
+1,6, 0,0, 6
+1,7, 0,0, 6
+1,8, 0,0, 6
+;loop
+1,1, 0,0, 6
+1,2, 0,0, 6
+1,3, 0,0, 6
+1,4, 0,0, 6
+1,5, 0,0, 6
+1,6, 0,0, 6
+1,7, 0,0, 6
+1,8, 0,0, 6
+;loop
+1,1, 0,0, 6
+1,2, 0,0, 6
+1,3, 0,0, 6
+1,4, 0,0, 6
+1,5, 0,0, 6
+1,6, 0,0, 6
+1,7, 0,0, 6
+1,8, 0,0, 6
+;loop
+1,1, 0,0, 6
+1,2, 0,0, 6
+1,3, 0,0, 6
+1,4, 0,0, 6
+1,5, 0,0, 6
+1,6, 0,0, 6
+1,7, 0,0, 6
+1,8, 0,0, 6
+;loop
+1,1, 0,0, 6
+1,2, 0,0, 6
+1,3, 0,0, 6
+1,4, 0,0, 6
+1,5, 0,0, 6
+1,6, 0,0, 6
+1,7, 0,0, 6
+1,8, 0,0, 6
+;loop
+1,1, 0,0, 6
+1,2, 0,0, 6
+1,3, 0,0, 6
+1,4, 0,0, 6
+1,5, 0,0, 6
+1,6, 0,0, 6
+1,7, 0,0, 6
+1,8, 0,0, 6
+1,1, 0,0, 120
+-1,-1, 0,0, -1
+
+;----------------------
+[BG giro_dir]           ;efeito giratóro (parte direita)
+type = anim
+ID = 1
+actionno = 6
+layerno = 0
+start = -2, -27
+delta = 1,1;.8,.9
+
+[Begin Action 6]
+-1,-1, 0,0, 1100
+1,1, 0,0, 120,h
+;loopstart
+1,8, 0,0, 6,h
+1,7, 0,0, 6,h
+1,6, 0,0, 6,h
+1,5, 0,0, 6,h
+1,4, 0,0, 6,h
+1,3, 0,0, 6,h
+1,2, 0,0, 6,h
+;loop
+1,1, 0,0, 6,h
+1,8, 0,0, 6,h
+1,7, 0,0, 6,h
+1,6, 0,0, 6,h
+1,5, 0,0, 6,h
+1,4, 0,0, 6,h
+1,3, 0,0, 6,h
+1,2, 0,0, 6,h
+;loop
+1,1, 0,0, 6,h
+1,8, 0,0, 6,h
+1,7, 0,0, 6,h
+1,6, 0,0, 6,h
+1,5, 0,0, 6,h
+1,4, 0,0, 6,h
+1,3, 0,0, 6,h
+1,2, 0,0, 6,h
+;loop
+1,1, 0,0, 6,h
+1,8, 0,0, 6,h
+1,7, 0,0, 6,h
+1,6, 0,0, 6,h
+1,5, 0,0, 6,h
+1,4, 0,0, 6,h
+1,3, 0,0, 6,h
+1,2, 0,0, 6,h
+;loop
+1,1, 0,0, 6,h
+1,8, 0,0, 6,h
+1,7, 0,0, 6,h
+1,6, 0,0, 6,h
+1,5, 0,0, 6,h
+1,4, 0,0, 6,h
+1,3, 0,0, 6,h
+1,2, 0,0, 6,h
+;loop
+1,1, 0,0, 6,h
+1,8, 0,0, 6,h
+1,7, 0,0, 6,h
+1,6, 0,0, 6,h
+1,5, 0,0, 6,h
+1,4, 0,0, 6,h
+1,3, 0,0, 6,h
+1,2, 0,0, 6,h
+;loop
+1,1, 0,0, 6,h
+1,8, 0,0, 6,h
+1,7, 0,0, 6,h
+1,6, 0,0, 6,h
+1,5, 0,0, 6,h
+1,4, 0,0, 6,h
+1,3, 0,0, 6,h
+1,2, 0,0, 6,h
+;loop
+1,1, 0,0, 6,h
+1,8, 0,0, 6,h
+1,7, 0,0, 6,h
+1,6, 0,0, 6,h
+1,5, 0,0, 6,h
+1,4, 0,0, 6,h
+1,3, 0,0, 6,h
+1,2, 0,0, 6,h
+;loop
+1,1, 0,0, 6,h
+1,8, 0,0, 6,h
+1,7, 0,0, 6,h
+1,6, 0,0, 6,h
+1,5, 0,0, 6,h
+1,4, 0,0, 6,h
+1,3, 0,0, 6,h
+1,2, 0,0, 6,h
+1,1, 0,0, 120,h
+-1,-1, 0,0, -1
+
+;----------------------
+[BG apagando2_esq]      ;apagando luzes do fundo (parte esquerda)
+type = anim
+ID = 1
+actionno = 46
+layerno = 0
+start = -1, -27
+delta = 1,1
+
+[Begin Action 46]
+-1,-1, 0,0, 1766
+5,6, 0,0, 6
+5,5, 0,0, 6
+5,4, 0,0, 6
+5,3, 0,0, 6
+5,2, 0,0, 6
+5,1, 0,0, 6
+-1,-1, 0,0, -1
+
+;----------------------
+[BG apagando2_dir]      ;apagando luzes do fundo (parte direita)
+type = anim
+ID = 1
+actionno = 47
+layerno = 0
+start = -2, -27
+delta = 1,1
+
+[Begin Action 47]
+-1,-1, 0,0, 1766
+5,6, 0,0, 6,h
+5,5, 0,0, 6,h
+5,4, 0,0, 6,h
+5,3, 0,0, 6,h
+5,2, 0,0, 6,h
+5,1, 0,0, 6,h
+-1,-1, 0,0, -1
+
+;----------------------
+[BG acendendo2_esq]     ;acendendo luzes (parte esquerda)
+type = anim
+ID = 1
+actionno = 48
+layerno = 0
+start = -1, 1
+delta = 1,1
+
+[Begin Action 48]
+-1,-1, 0,0, 1802
+0,3, 0,0, 90
+4,4, 0,0, 6
+4,6, 0,0, 6
+4,4, 0,0, 12
+0,3, 0,0, 12
+4,4, 0,0, 6
+4,3, 0,0, 12
+0,3, 0,0, 6
+4,5, 0,0, 6
+4,4, 0,0, 6
+4,3, 0,0, 6
+4,2, 0,0, 6
+4,1, 0,0, 6
+-1,-1, 0,0, -1
+
+;----------------------
+[BG acendendo2_dir]     ;acendendo luzes (parte direita)
+type = anim
+ID = 1
+actionno = 49
+layerno = 0
+start = -2, 1
+delta = 1,1
+
+[Begin Action 49]
+-1,-1, 0,0, 1802
+0,3, 0,0, 90,h
+4,4, 0,0, 6,h
+4,6, 0,0, 6,h
+4,4, 0,0, 12,h
+0,3, 0,0, 12,h
+4,4, 0,0, 6,h
+4,3, 0,0, 12,h
+0,3, 0,0, 6,h
+4,5, 0,0, 6,h
+4,4, 0,0, 6,h
+4,3, 0,0, 6,h
+4,2, 0,0, 6,h
+4,1, 0,0, 6,h
+-1,-1, 0,0, -1
+
+;----------------------
+[BG fundo2]             ;segunda imagem de fundo
+type = anim
+ID = 1
+actionno = 10
+layerno = 0
+start = 217, -7
+delta = 1,1;.8,.9
+
+[Begin Action 10]
+-1,-1, 0,0, 1900
+0,4, 0,0, -1
+
+;----------------------
+[BG fundo3]             ;terceira imagem de fundo
+type = anim
+ID = 1
+actionno = 11
+layerno = 0
+start = 895, -55
+delta = 1,1;.8,.9
+
+[Begin Action 11]
+-1,-1, 0,0, 1900
+0,5, 0,0, -1
+
+;----------------------
+;------- Morfeu -------
+[BG morfeu_mold]              ;moldura da figura "MORFEU"
+type = anim
+ID = 1
+actionno = 52
+layerno = 0
+start = 621, 18
+delta = 1,1
+
+[Begin Action 52]
+-1,-1, 0,0, 1900
+0,10, 0,0, -1
+
+;----------------------
+[BG morfeu]              ;figura animada "MORFEU"
+type = anim
+ID = 1
+actionno = 53
+layerno = 0
+start = 631, 27
+delta = 1,1
+
+[Begin Action 53]
+8, 1, 0, 0, 12
+8, 2, 0, 0, 6
+8, 3, 0, 0, 6
+8, 4, 0, 0, 6
+8, 5, 0, 0, 6
+8, 6, 0, 0, 6
+8, 7, 0, 0, 12
+8, 6, 0, 0, 6
+8, 7, 0, 0, 12
+8, 6, 0, 0, 6
+8, 5, 0, 0, 6
+8, 4, 0, 0, 6
+8, 3, 0, 0, 6
+8, 2, 0, 0, 6
+
+;------- Morfeu -------
+;----------------------
+[BG alert]              ;figura animada "ALERT"
+type = anim
+ID = 1
+actionno = 50
+layerno = 0
+start = 1273, -120
+delta = 1,1
+
+[Begin Action 50]
+6, 1, 0, 0, 12
+6, 2, 0, 0, 6
+6, 3, 0, 0, 6
+6, 4, 0, 0, 6
+6, 5, 0, 0, 6
+6, 6, 0, 0, 6
+6, 7, 0, 0, 12
+6, 6, 0, 0, 6
+6, 7, 0, 0, 12
+6, 6, 0, 0, 6
+6, 5, 0, 0, 6
+6, 4, 0, 0, 6
+6, 3, 0, 0, 6
+6, 2, 0, 0, 6
+
+;----------------------
+[BG setas]              ;figura animada "setas"
+type = anim
+ID = 1
+actionno = 51
+layerno = 0
+start = 1682, -240
+delta = 1,1
+
+[Begin Action 51]
+7, 1, 0, 0, 3
+7, 2, 0, 0, 3
+7, 3, 0, 0, 3
+7, 4, 0, 0, 3
+7, 5, 0, 0, 3
+7, 6, 0, 0, 3
+7, 7, 0, 0, 3
+
+;----------------------
+;----------------------
+;Movimento de Translação 1
+;========= == ========== =
+
+[BGCtrlDef 1]
+CtrlID = 1              ;define o ID a ser controlado
+
+[BGCtrl 1.1]            ;inicia a translação
+type = VelSet
+time = 2000
+x = -1
+y = 0
+
+[BGCtrl 1.2]            ;pára a translação
+type = VelSet
+time = 3280
+x = 0
+y = 0
+
+[BGCtrl 1.3]
+type = VelSet
+time = 3340
+x = -.5
+y = .5
+
+[BGCtrl 1.4]            ;desabilita todos os objeto ligados a este ID
+type = Enable
+time = 4365
+value = 0
+
+;----------------------
+;----------------------
+
+[BG fundo4.1_dir]       ;fundo da parte da subida (parte direita)
+type = anim
+ID = 2                  ;inclui o objeto no "Movimento de Translação 2"
+actionno = 12
+layerno = 0
+start = -1, -114
+delta = .8, .8
+
+[BG fundo4.2_dir]
+type = anim
+ID = 2
+actionno = 12
+layerno = 0
+start = -1, -626
+delta = .8, .8
+
+[BG fundo4.3_dir]
+type = anim
+ID = 2
+actionno = 12
+layerno = 0
+start = -1, -1138
+delta = .8, .8
+
+[BG fundo4.4_dir]
+type = anim
+ID = 2
+actionno = 12
+layerno = 0
+start = -1, -1650
+delta = .8, .8
+
+
+[Begin Action 12]
+-1,-1, 0,0, 4365
+0,6, 0,0, -1
+
+;----------------------
+[BG fundo4.1_esq]       ;fundo da parte da subida (parte esquerda)
+type = anim
+ID = 2
+actionno = 13
+layerno = 0
+start = -2, -114
+delta = .8, .8
+
+[BG fundo4.2_esq]
+type = anim
+ID = 2
+actionno = 13
+layerno = 0
+start = -2, -626
+delta = .8, .8
+
+[BG fundo4.3_esq]
+type = anim
+ID = 2
+actionno = 13
+layerno = 0
+start = -2, -1138
+delta = .8, .8
+
+[BG fundo4.4_esq]
+type = anim
+ID = 2
+actionno = 13
+layerno = 0
+start = -2, -1650
+delta = .8, .8
+
+
+[Begin Action 13]
+-1,-1, 0,0, 4365
+0,6, 0,0, -1,h
+
+;----------------------
+[BG ceu]                ;imagem de fundo "céu"
+type = anim
+ID = 2
+actionno = 17
+layerno = 0
+start = -1, -2468
+delta = .7, .7
+
+[Begin Action 17]
+-1,-1, 0,0, 4365
+0,9, 0,0, -1
+
+;----------------------
+[BG fundo5_dir]         ;borda da plataforma (parte direita)
+type = anim
+ID = 2
+actionno = 14
+layerno = 0
+start = -1, -2047
+delta = .8, .8
+
+[Begin Action 14]
+-1,-1, 0,0, 4365
+0,7, 0,0, -1
+
+;----------------------
+[BG fundo5_esq]         ;borda da plataforma (parte direita)
+type = anim
+ID = 2
+actionno = 15
+layerno = 0
+start = -2, -2047
+delta = .8, .8
+
+[Begin Action 15]
+-1,-1, 0,0, 4365
+0,7, 0,0, -1,h
+
+;----------------------
+[BG fundo_final]        ;aeroporto e cidade
+type = anim
+ID = 2
+actionno = 16
+layerno = 0
+start = -1, -2333
+delta = .8, .8
+
+[Begin Action 16]
+-1,-1, 0,0, 4365
+0,8, 0,0, -1
+
+;----------------------
+[BG fundo3.2]           ;terceira parte de fundo (novamente mas com profundidade diferente)
+type = anim
+ID = 2
+actionno = 21
+layerno = 0
+start = -897, 458
+delta = .8, .8
+
+[Begin Action 21]
+-1,-1, 0,0, 4365
+0,5, 0,0, -1
+
+;----------------------
+;----------------------
+;Movimento de Translação 2
+;========= == ========== =
+
+[BGCtrlDef 2]
+CtrlID = 2              ;define o ID a ser controlado
+
+[BGCtrl 2.1]            ;aplica aceleração na subida
+type = Veladd
+time = 4425, 4550
+x = 0
+y = .02
+
+[BGCtrl 2.2]
+type = Veladd
+time = 5310, 5340
+x = 0
+y = -.06
+
+[BGCtrl 2.3]
+type = Velset
+time = 6006
+x = 0
+y = 0
+
+;----------------------
+;----------------------
+
+[BG nave_esq]           ;chao, nave (parte esquerda)
+type = anim
+ID = 3
+actionno = 3
+layerno = 0
+start = -1, 56
+delta = 1,1
+
+[Begin Action 3]
+10,1, 0,0, 890          ;iluminação 1
+10,2, 0,0, 6            ;apagando
+10,3, 0,0, 6
+10,4, 0,0, 6
+10,5, 0,0, 6
+10,6, 0,0, 151          ;iluminacão 2
+10,5, 0,0, 6            ;acendendo
+10,4, 0,0, 6
+10,3, 0,0, 6
+10,2, 0,0, 689         ;iluminação 1-
+10,3, 0,0, 6           ;apagando
+10,4, 0,0, 6
+10,5, 0,0, 6
+10,6, 0,0, 180         ;iluminação 2
+10,5, 0,0, 6           ;acendendo
+10,4, 0,0, 6
+10,3, 0,0, 6
+10,2, 0,0, 6
+10,1, 0,0, 120         ;iluninação 1
+10,7, 0,0, 60          ;saindo
+10,8, 0,0, 60
+10,9, 0,0, 60
+10,10, 0,0, 60
+10,11, 0,0, 2000       ;iluminação 3
+10,12, 0,0, 12         ;chegando na subida
+10,13, 0,0, 12
+10,14, 0,0, 12
+10,15, 0,0, 12
+10,16, 0,0, 1100       ;iluminação 4
+10,15, 0,0, 60         ;chegando na saída
+10,14, 0,0, 60
+10,13, 0,0, 60
+10,12, 0,0, 60
+10,11, 0,0, -1         ;iluminação 2
+
+;----------------------
+[BG nave_dir]           ;chao, nave (parte direita)
+type = anim
+ID = 3
+actionno = 4
+layerno = 0
+start = -2, 56
+delta = 1,1
+
+[Begin Action 4]
+10,1, 0,0, 890,h        ;iluminação 1
+10,2, 0,0, 6,h          ;apagando
+10,3, 0,0, 6,h
+10,4, 0,0, 6,h
+10,5, 0,0, 6,h
+10,6, 0,0, 151,h        ;iluminacão 2
+10,5, 0,0, 6,h          ;acendendo
+10,4, 0,0, 6,h
+10,3, 0,0, 6,h
+10,2, 0,0, 689,h       ;iluminação 1-
+10,3, 0,0, 6,h         ;apagando
+10,4, 0,0, 6,h
+10,5, 0,0, 6,h
+10,6, 0,0, 180,h       ;iluminação 2
+10,5, 0,0, 6,h         ;acendendo
+10,4, 0,0, 6,h
+10,3, 0,0, 6,h
+10,2, 0,0, 6,h
+10,1, 0,0, 120,h       ;iluninação 1
+10,7, 0,0, 60,h        ;saindo
+10,8, 0,0, 60,h
+10,9, 0,0, 60,h
+10,10, 0,0, 60,h
+10,11, 0,0, 2000,h     ;iluminação 3
+10,12, 0,0, 12,h       ;chegando na subida
+10,13, 0,0, 12,h
+10,14, 0,0, 12,h
+10,15, 0,0, 12,h
+10,16, 0,0, 1100,h     ;iluminação 4
+10,15, 0,0, 60,h       ;chegando na saída
+10,14, 0,0, 60,h
+10,13, 0,0, 60,h
+10,12, 0,0, 60,h
+10,11, 0,0, -1,h       ;iluminação 2
+
+;----------------------
+[BG Dummy]              ;elemento que guia a posição a posição dos lutadores
+type = dummy
+id = 10
+start = 0, 165
+positionlink = 1        ;liga a posição dos lutadores com o elemento imediatamente precedio,
+                        ;ou seja, "BG nave_esq"
+
+;----------------------
+[BG brilho1_esq]
+type = anim
+ID = 3
+actionno = 7
+layerno = 0
+start = -1, 113
+delta = 1,1
+
+[BG brilho1_dir]
+type = anim
+ID = 3
+actionno = 8
+layerno = 0
+start = -2, 113
+delta = 1,1
+
+
+[Begin Action 7]
+-1,-1, 0,0, 1220
+;loopstart
+2,1, 0,0, 6
+2,2, 0,0, 6
+2,3, 0,0, 6
+2,4, 0,0, 6
+2,5, 0,0, 6
+2,6, 0,0, 6
+2,7, 0,0, 6
+2,8, 0,0, 6
+;loop
+2,1, 0,0, 6
+2,2, 0,0, 6
+2,3, 0,0, 6
+2,4, 0,0, 6
+2,5, 0,0, 6
+2,6, 0,0, 6
+2,7, 0,0, 6
+2,8, 0,0, 6
+;loop
+2,1, 0,0, 6
+2,2, 0,0, 6
+2,3, 0,0, 6
+2,4, 0,0, 6
+2,5, 0,0, 6
+2,6, 0,0, 6
+2,7, 0,0, 6
+2,8, 0,0, 6
+;loop
+2,1, 0,0, 6
+2,2, 0,0, 6
+2,3, 0,0, 6
+2,4, 0,0, 6
+2,5, 0,0, 6
+2,6, 0,0, 6
+2,7, 0,0, 6
+2,8, 0,0, 6
+;loop
+2,1, 0,0, 6
+2,2, 0,0, 6
+2,3, 0,0, 6
+2,4, 0,0, 6
+2,5, 0,0, 6
+2,6, 0,0, 6
+2,7, 0,0, 6
+2,8, 0,0, 6
+;loop
+2,1, 0,0, 6
+2,2, 0,0, 6
+2,3, 0,0, 6
+2,4, 0,0, 6
+2,5, 0,0, 6
+2,6, 0,0, 6
+2,7, 0,0, 6
+2,8, 0,0, 6
+;loop
+2,1, 0,0, 6
+2,2, 0,0, 6
+2,3, 0,0, 6
+2,4, 0,0, 6
+2,5, 0,0, 6
+2,6, 0,0, 6
+2,7, 0,0, 6
+2,8, 0,0, 6
+;loop
+2,1, 0,0, 6
+2,2, 0,0, 6
+2,3, 0,0, 6
+2,4, 0,0, 6
+2,5, 0,0, 6
+2,6, 0,0, 6
+2,7, 0,0, 6
+2,8, 0,0, 6
+;loop
+2,1, 0,0, 6
+2,2, 0,0, 6
+2,3, 0,0, 6
+2,4, 0,0, 6
+2,5, 0,0, 6
+2,6, 0,0, 6
+2,7, 0,0, 6
+2,8, 0,0, 6
+-1,-1, 0,0, -1
+
+[Begin Action 8]
+-1,-1, 0,0, 1220
+;loopstart
+2,8, 0,0, 6,h
+2,7, 0,0, 6,h
+2,6, 0,0, 6,h
+2,5, 0,0, 6,h
+2,4, 0,0, 6,h
+2,3, 0,0, 6,h
+2,2, 0,0, 6,h
+2,1, 0,0, 6,h
+;loop
+2,8, 0,0, 6,h
+2,7, 0,0, 6,h
+2,6, 0,0, 6,h
+2,5, 0,0, 6,h
+2,4, 0,0, 6,h
+2,3, 0,0, 6,h
+2,2, 0,0, 6,h
+2,1, 0,0, 6,h
+;loop
+2,8, 0,0, 6,h
+2,7, 0,0, 6,h
+2,6, 0,0, 6,h
+2,5, 0,0, 6,h
+2,4, 0,0, 6,h
+2,3, 0,0, 6,h
+2,2, 0,0, 6,h
+2,1, 0,0, 6,h
+;loop
+2,8, 0,0, 6,h
+2,7, 0,0, 6,h
+2,6, 0,0, 6,h
+2,5, 0,0, 6,h
+2,4, 0,0, 6,h
+2,3, 0,0, 6,h
+2,2, 0,0, 6,h
+2,1, 0,0, 6,h
+;loop
+2,8, 0,0, 6,h
+2,7, 0,0, 6,h
+2,6, 0,0, 6,h
+2,5, 0,0, 6,h
+2,4, 0,0, 6,h
+2,3, 0,0, 6,h
+2,2, 0,0, 6,h
+2,1, 0,0, 6,h
+;loop
+2,8, 0,0, 6,h
+2,7, 0,0, 6,h
+2,6, 0,0, 6,h
+2,5, 0,0, 6,h
+2,4, 0,0, 6,h
+2,3, 0,0, 6,h
+2,2, 0,0, 6,h
+2,1, 0,0, 6,h
+;loop
+2,8, 0,0, 6,h
+2,7, 0,0, 6,h
+2,6, 0,0, 6,h
+2,5, 0,0, 6,h
+2,4, 0,0, 6,h
+2,3, 0,0, 6,h
+2,2, 0,0, 6,h
+2,1, 0,0, 6,h
+;loop
+2,8, 0,0, 6,h
+2,7, 0,0, 6,h
+2,6, 0,0, 6,h
+2,5, 0,0, 6,h
+2,4, 0,0, 6,h
+2,3, 0,0, 6,h
+2,2, 0,0, 6,h
+2,1, 0,0, 6,h
+;loop
+2,8, 0,0, 6,h
+2,7, 0,0, 6,h
+2,6, 0,0, 6,h
+2,5, 0,0, 6,h
+2,4, 0,0, 6,h
+2,3, 0,0, 6,h
+2,2, 0,0, 6,h
+2,1, 0,0, 6,h
+-1,-1, 0,0, -1
+
+;----------------------
+[BG brilho2_esq]
+type = anim
+ID = 3
+actionno = 60
+layerno = 0
+start = -1, 113
+delta = 1,1
+
+[BG brilho2_dir]
+type = anim
+ID = 3
+actionno = 61
+layerno = 0
+start = -2, 113
+delta = 1,1
+
+
+[Begin Action 60]
+-1,-1, 0,0, 4400
+;loopstart
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+;loop
+9,1, 0,0, 6
+9,2, 0,0, 6
+9,3, 0,0, 6
+9,4, 0,0, 6
+9,5, 0,0, 6
+9,6, 0,0, 6
+9,7, 0,0, 6
+9,8, 0,0, 6
+-1,-1, 0,0, -1
+
+[Begin Action 61]
+-1,-1, 0,0, 4400
+;loopstart
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+;loop
+9,1, 0,0, 6,h
+9,2, 0,0, 6,h
+9,3, 0,0, 6,h
+9,4, 0,0, 6,h
+9,5, 0,0, 6,h
+9,6, 0,0, 6,h
+9,7, 0,0, 6,h
+9,8, 0,0, 6,h
+-1,-1, 0,0, -1
+
+;----------------------
+;----------------------
+;Movimento de Tremor
+;========= == ======
+
+[BGCtrl treme1]         ;começa o tremor
+type = SinY
+time = 1990
+ctrlID = 1, 3           ;indica quais IDs irão tremer
+value = 2, 3, 0
+
+[BGCtrl treme-1]        ;tremina o tremor
+type = SinY
+time = 2010
+ctrlID = 1, 3
+value = 0, 0, 0
+
+[BGCtrl treme2]
+type = SinY
+time = 3280
+ctrlID = 1, 3
+value = 2, 3, 0
+
+[BGCtrl treme-2]
+type = SinY
+time = 3300
+ctrlID = 1, 3
+value = 0, 0, 0
+
+[BGCtrl treme3]
+type = SinY
+time = 4365
+ctrlID = 2, 3
+value = 2, 3, 0
+
+[BGCtrl treme-3]
+type = SinY
+time = 4385
+ctrlID = 2, 3
+value = 0, 0, 0
+
+[BGCtrl treme4]
+type = SinY
+time = 5330
+ctrlID = 2, 3
+value = 2, 3, 0
+
+[BGCtrl treme-4]
+type = SinY
+time = 5340
+ctrlID = 2, 3
+value = 0, 0, 0
+
+[BGCtrl treme5]
+type = SinY
+time = 6006
+ctrlID = 2, 3
+value = 2, 3, 0
+
+[BGCtrl treme-5]
+type = SinY
+time = 6009
+ctrlID = 2, 3
+value = 0, 0, 0

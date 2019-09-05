@@ -1,0 +1,534 @@
+[Statedef -3]
+;----------------------------------------------------
+[State -2]
+type = VelMul
+triggerall = StateType = A
+trigger1 = MoveType != H
+trigger1 = StateNo != [945, 949]
+trigger1 = StateNo != [5000, 5299]
+X = .8
+;--------------------------負けグラ呼び出し--------------------------
+[State 191, 6]
+type = Helper
+trigger1 = var(16) >= 5
+trigger1 = !NumHelper(4250)
+trigger1 = Enemy,NumHelper(4100) + Enemy,NumHelper(4200)
+StateNo = 4000
+ID = 4250
+;--------------------------真・豪鬼の無敵--------------------------
+[State 801, 5]
+type = NotHitBy
+triggerall = var(15) = 1 || var(15) = 3 && var(44) = 0
+trigger1 = StateNo = [1201, 1209]
+trigger2 = StateNo = [1251, 1259]
+trigger3 = StateNo = [1301, 1319]
+trigger4 = StateNo = [1421, 1424]
+trigger5 = StateNo = [1441, 1444]
+trigger6 = StateNo = 2002 && time < 4
+trigger7 = StateNo = [2220, 2223]
+trigger8 = StateNo = [2402, 2409]
+trigger9 = StateNo = [2501, 2513]
+value = SCA
+;--------------------------空中時のx軸移動--------------------------
+[State -2]
+type = varAdd
+trigger1 = StateNo = 50 || StateNo = 70
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 621 || StateNo = 624
+trigger4 = StateNo = 641 || StateNo = 644
+trigger5 = StateNo = 651 || StateNo = 654
+trigger6 = StateNo = 661 || StateNo = 664
+trigger7 = StateNo = 671 || StateNo = 674
+trigger8 = StateNo = 681 || StateNo = 684
+trigger9 = StateNo = 691 || StateNo = 694
+trigger10 = StateNo = 701 || StateNo = 704
+trigger11 = StateNo = 711 || StateNo = 714
+trigger12 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger13 = StateNo = 1501 || StateNo = 1502 || StateNo = 1505 || StateNo = 1510 || StateNo = 1513 || StateNo = 1517
+trigger14 = StateNo = 20601 || StateNo = 20604
+trigger15 = StateNo = 20621 || StateNo = 20624
+trigger16 = StateNo = 20641 || StateNo = 20644
+trigger17 = StateNo = 20651 || StateNo = 20654
+trigger18 = StateNo = 20661 || StateNo = 20664
+trigger19 = StateNo = 20671 || StateNo = 20674
+trigger20 = StateNo = 20681 || StateNo = 20684
+trigger21 = StateNo = 20691 || StateNo = 20694
+trigger22 = StateNo = 20701 || StateNo = 20704
+trigger23 = StateNo = 20711 || StateNo = 20714
+var(43) = 1
+[State -2]
+type = PosAdd
+triggerall = var(14) = -2 || var(14) = 0 || var(14) = 2
+trigger1 = StateNo = 50
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 621 || StateNo = 624
+trigger4 = StateNo = 641 || StateNo = 644
+trigger5 = StateNo = 651 || StateNo = 654
+trigger6 = StateNo = 661 || StateNo = 664
+trigger7 = StateNo = 671 || StateNo = 674
+trigger8 = StateNo = 681 || StateNo = 684
+trigger9 = StateNo = 691 || StateNo = 694
+trigger10 = StateNo = 701 || StateNo = 704
+trigger11 = StateNo = 711 || StateNo = 714
+trigger12 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger13 = StateNo = 1501 || StateNo = 1502 || StateNo = 1505 || StateNo = 1510 || StateNo = 1513 || StateNo = 1517
+trigger14 = StateNo = 20601 || StateNo = 20604
+trigger15 = StateNo = 20621 || StateNo = 20624
+trigger16 = StateNo = 20641 || StateNo = 20644
+trigger17 = StateNo = 20651 || StateNo = 20654
+trigger18 = StateNo = 20661 || StateNo = 20664
+trigger19 = StateNo = 20671 || StateNo = 20674
+trigger20 = StateNo = 20681 || StateNo = 20684
+trigger21 = StateNo = 20691 || StateNo = 20694
+trigger22 = StateNo = 20701 || StateNo = 20704
+trigger23 = StateNo = 20711 || StateNo = 20714
+X = ifelse(var(14) = 0, Const(Velocity.Jump.Neu.x), ifelse(var(14) = 2, Const(Velocity.Jump.Fwd.x), Const(Velocity.Jump.Back.x))) * Const(Size.XScale)
+[State -2]
+type = PosAdd
+triggerall = var(14) = -2 || var(14) = 0 || var(14) = 2
+trigger1 = StateNo = 50
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 621 || StateNo = 624
+trigger4 = StateNo = 641 || StateNo = 644
+trigger5 = StateNo = 651 || StateNo = 654
+trigger6 = StateNo = 661 || StateNo = 664
+trigger7 = StateNo = 671 || StateNo = 674
+trigger8 = StateNo = 681 || StateNo = 684
+trigger9 = StateNo = 691 || StateNo = 694
+trigger10 = StateNo = 701 || StateNo = 704
+trigger11 = StateNo = 711 || StateNo = 714
+trigger12 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger13 = StateNo = 1501 || StateNo = 1502 || StateNo = 1505 || StateNo = 1510 || StateNo = 1513 || StateNo = 1517
+trigger14 = StateNo = 20601 || StateNo = 20604
+trigger15 = StateNo = 20621 || StateNo = 20624
+trigger16 = StateNo = 20641 || StateNo = 20644
+trigger17 = StateNo = 20651 || StateNo = 20654
+trigger18 = StateNo = 20661 || StateNo = 20664
+trigger19 = StateNo = 20671 || StateNo = 20674
+trigger20 = StateNo = 20681 || StateNo = 20684
+trigger21 = StateNo = 20691 || StateNo = 20694
+trigger22 = StateNo = 20701 || StateNo = 20704
+trigger23 = StateNo = 20711 || StateNo = 20714
+X = ifelse(var(14) = 0, 0, ifelse(var(14) = 2, (1 - var(43)) * 0.035, (var(43) - 2) * 0.03) * Const(Size.XScale))
+[State -2]
+type = PosAdd
+triggerall = var(14) = -1 || var(14) = 1 || var(14) = 3
+trigger1 = StateNo = 70
+trigger2 = StateNo = 601 || StateNo = 604
+trigger3 = StateNo = 621 || StateNo = 624
+trigger4 = StateNo = 641 || StateNo = 644
+trigger5 = StateNo = 651 || StateNo = 654
+trigger6 = StateNo = 661 || StateNo = 664
+trigger7 = StateNo = 671 || StateNo = 674
+trigger8 = StateNo = 681 || StateNo = 684
+trigger9 = StateNo = 691 || StateNo = 694
+trigger10 = StateNo = 701 || StateNo = 704
+trigger11 = StateNo = 711 || StateNo = 714
+trigger12 = StateNo = 3023 || StateNo = 3053 || StateNo = 3083
+trigger13 = StateNo = 1501 || StateNo = 1502 || StateNo = 1505 || StateNo = 1510 || StateNo = 1513 || StateNo = 1517
+trigger14 = StateNo = 20601 || StateNo = 20604
+trigger15 = StateNo = 20621 || StateNo = 20624
+trigger16 = StateNo = 20641 || StateNo = 20644
+trigger17 = StateNo = 20651 || StateNo = 20654
+trigger18 = StateNo = 20661 || StateNo = 20664
+trigger19 = StateNo = 20671 || StateNo = 20674
+trigger20 = StateNo = 20681 || StateNo = 20684
+trigger21 = StateNo = 20691 || StateNo = 20694
+trigger22 = StateNo = 20701 || StateNo = 20704
+trigger23 = StateNo = 20711 || StateNo = 20714
+X = ifelse(var(14) = 1, 0, ifelse(var(14) = 3, 5.5, -4.125)) * Const(Size.XScale)
+;--------------------------地上竜巻のx軸移動--------------------------
+[State 1202, 2]
+type = varAdd
+trigger1 = StateNo = 1426
+trigger2 = StateNo = 1429
+trigger3 = StateNo = 1430
+trigger4 = StateNo = 1433
+trigger5 = StateNo = 1437
+var(43) = 1
+[State 1202, 2]
+type = PosAdd
+trigger1 = StateNo = 1426
+trigger2 = StateNo = 1429
+trigger3 = StateNo = 1430
+trigger4 = StateNo = 1433
+trigger5 = StateNo = 1437
+X = 4.25 * Const(Size.XScale)
+[State 1202, 2]
+type = PosAdd
+triggerall = var(43) = 18
+trigger1 = StateNo = 1426
+trigger2 = StateNo = 1429
+trigger3 = StateNo = 1430
+trigger4 = StateNo = 1433
+trigger5 = StateNo = 1437
+X = 6 * Const(Size.XScale)
+[State 1202, 2]
+type = PosAdd
+trigger1 = StateNo = 1426
+trigger2 = StateNo = 1429
+trigger3 = StateNo = 1430
+trigger4 = StateNo = 1433
+trigger5 = StateNo = 1437
+X = (1 - var(43)) * 0.045 * Const(Size.XScale)
+[State 1202, 2]
+type = varAdd
+trigger1 = StateNo = 1446
+trigger2 = StateNo = 1449
+trigger3 = StateNo = 1450
+trigger4 = StateNo = 1453
+trigger5 = StateNo = 1457
+var(43) = 1
+[State 1202, 2]
+type = PosAdd
+trigger1 = StateNo = 1446
+trigger2 = StateNo = 1449
+trigger3 = StateNo = 1450
+trigger4 = StateNo = 1453
+trigger5 = StateNo = 1457
+X = 4.8 * Const(Size.XScale)
+[State 1202, 2]
+type = PosAdd
+trigger1 = StateNo = 1446
+trigger2 = StateNo = 1449
+trigger3 = StateNo = 1450
+trigger4 = StateNo = 1453
+trigger5 = StateNo = 1457
+X = (1 - var(43)) * 0.0275 * Const(Size.XScale)
+;--------------------------空中竜巻のx軸移動--------------------------
+[State 1250, 1]
+type = PosAdd
+trigger1 = StateNo = 1501
+trigger2 = StateNo = 1502
+trigger3 = StateNo = 1505
+trigger4 = StateNo = 1510
+trigger5 = StateNo = 1513
+trigger6 = StateNo = 1517
+X = ifelse(var(13) = 0, 1, ifelse(var(13) = 1, 1.125, 1.5)) * Const(Size.XScale)
+;--------------------------百鬼襲のx軸移動--------------------------
+[State 350, 12]
+type = PosAdd
+trigger1 = StateNo = [1602, 1604]
+trigger2 = StateNo = 1750 || StateNo = 1752
+trigger3 = StateNo = [21802, 21804]
+trigger4 = StateNo = 21860 || StateNo = 21862
+X = ifelse(var(13) = 0, 1.5, ifelse(var(13) = 1, 3, 4.875)) * Const(Size.XScale)
+[State 350, 12]
+type = PosAdd
+trigger1 = StateNo = [1602, 1604]
+trigger2 = StateNo = 1750 || StateNo = 1752
+trigger3 = StateNo = [21802, 21804]
+trigger4 = StateNo = 21860 || StateNo = 21862
+X = (var(43) - 2) * ifelse(var(13) = 0, 0, ifelse(var(13) = 1, 0.05875, 0.065)) * Const(Size.XScale)
+;------------------------------ガードブロッキング------------------------------
+;地上基本技を前ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 0
+stateno = 3005
+attr = S, NA
+time = 1
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [0, 1]
+trigger1 = var(33) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 0
+StateNo = 3005
+attr = SC, NA
+time = 1
+;------------------------------------
+;地上必殺技（飛び道具除く）を前ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 1
+stateno = 3005
+attr = S, SA, HA
+time = 1
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [0, 1]
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 1
+StateNo = 3005
+attr = SC, SA, HA
+time = 1
+;------------------------------------
+;地上基本技を下ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(35) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 2
+stateno = 3015
+attr = C, NA
+time = 1
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [1, 2]
+trigger1 = var(35) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 2
+stateno = 3015
+attr = SC, NA
+time = 1
+;------------------------------------
+;地上必殺技（飛び道具除く）を下ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) < 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(35) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 3
+stateno = 3015
+attr = C, SA, HA
+time = 1
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = var(16) >= 4
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+triggerall = EnemyNear,var(4) = [1, 2]
+trigger1 = var(35) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 3
+stateno = 3015
+attr = SC, SA, HA
+time = 1
+;------------------------------------
+;空中基本技を前ブロ
+[State -2, Blocking-3]
+type = HitOverrIDe
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 3]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 4
+stateno = 3005
+attr = A, NA
+time = 1
+;------------------------------------
+;空中必殺技（飛び道具除く）を前ブロ
+[State -2, Blocking-3]
+type = HitOverrIDe
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 5
+stateno = 3005
+attr = A, SA, HA
+time = 1
+;------------------------------------
+;空中・上段飛び道具を前ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(33) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 6
+stateno = 3005
+attr = SA, AP
+time = 1
+;------------------------------------
+;下段飛び道具を下ブロ
+[State -2, Blocking]
+type = HitOverrIDe
+triggerall = (StateNo = [150, 153]) || (StateNo = [160, 163])
+trigger1 = var(35) = [1, 2]
+trigger2 = var(59) = 1 && Random < 10 * var(49)
+trigger3 = var(17) = 5
+slot = 7
+stateno = 3015
+attr = C, AP
+time = 1
+;-----------------------------------------------------------------------
+[State 1202, 2]
+type = PlayerPush
+trigger1 = StateNo = [25000, 25799]
+value = 0
+[State 25000]
+type = AssertSpecial
+trigger1 = StateNo = [25000, 25799]
+flag = RoundNotOver
+flag2 = NoBarDisplay
+[State 25000]
+type = AssertSpecial
+trigger1 = StateNo = [25000, 25799]
+flag = NoBG
+flag2 = NoFG
+[State 25000]
+type = ScreenBound
+trigger1 = StateNo = [25000, 25799]
+[State 25000]
+type = AssertSpecial
+trigger1 = StateNo = 25000 && time >= 60
+trigger2 = StateNo = [25001, 25099]
+trigger3 = StateNo = 25200 && time >= 60
+trigger4 = StateNo = [25201, 25299]
+trigger5 = StateNo = 25400 && time >= 60
+trigger6 = StateNo = [25401, 25499]
+trigger7 = StateNo = 25600 && time >= 60
+trigger8 = StateNo = [25601, 25699]
+flag = NoMusic
+;-----------------------------------------------------------------------
+[State 191, 2]
+type = PlayerPush
+trigger1 = StateNo = [26000, 26999]
+value = 0
+[State 191, 2]
+type = AssertSpecial
+trigger1 = StateNo = [26000, 26999]
+flag = Intro
+flag2 = NoMusic
+[State 191, 2]
+type = ScreenBound
+trigger1 = StateNo = [26020, 26099]
+[State 191, 2]
+type = VarSet
+trigger1 = StateNo = 26000
+trigger1 = time = 1
+var(38) = 1
+[State 191, 2];21st Century
+type = PlaySnd
+trigger1 = StateNo = 26000
+trigger1 = time = 1
+value = 26000, 0
+channel = 11
+[State 191, 2]
+type = StopSnd
+trigger1 = NumHelper(26010)
+trigger1 = Helper(26010),StateNo = 26014
+trigger1 = Helper(26010),time = 1
+channel = 11
+[State 191, 2];Highway Star
+type = PlaySnd
+trigger1 = NumHelper(26010)
+trigger1 = Helper(26010),StateNo = 26014
+trigger1 = Helper(26010),time = 1
+value = 26014, 0
+channel = 11
+lowpriority = 0
+[State 25000]
+type = StopSnd
+trigger1 = StateNo = 0
+trigger1 = var(38) = 1
+channel = 11
+[State 191, 2]
+type = VarSet
+trigger1 = StateNo = 0
+trigger1 = var(38) = 1
+var(38) = 2
+;--------------------------つばぜりあい（背景）--------------------------
+[State -3]
+type = AssertSpecial
+trigger1 = StateNo = [22300, 22301]
+flag = noFG
+flag2 = noBG
+[State -3]
+type = ModifyExplod
+trigger1 = 1 = 1
+trigger1 = NumExplod(22340)
+ID = 22340
+Pos = Ceil(-1 * Facing * ((160 + facing * Pos X) * 1 + (160 - facing * Pos X))), Ceil(1 * (4 * ((GameTime - var(13)*0)%256) - 768))
+PosType = Front
+Scale = 1, 1
+SprPriority = -5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+[State -3]
+type = ModifyExplod
+trigger1 = NumExplod(22341)
+ID = 22341
+Pos = Ceil(-1 * Facing * ((160 + facing * Pos X) * 1 + (160 - facing * Pos X))), Ceil(1 * (8 * ((GameTime - var(13)*0)%128) - 768))
+PosType = Front
+Scale = 1, 1
+SprPriority = -5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+[State -3]
+type = ModifyExplod
+trigger1 = NumExplod(22342)
+ID = 22342
+Pos = Ceil(-1 * Facing * ((160 + facing * Pos X) * 1 + (160 - facing * Pos X))), Ceil(1 * (16 * ((GameTime - var(13)*0)%64) - 768))
+PosType = Front
+Scale = 1, 1
+SprPriority = -5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+[State -3]
+type = ModifyExplod
+trigger1 = NumExplod(22343)
+ID = 22343
+Pos = Ceil(-1 * Facing * ((160 + facing * Pos X) * 1 + (160 - facing * Pos X))), Ceil(1 * (32 * ((GameTime - var(13)*0)%32) - 768))
+PosType = Front
+Scale = 1, 1
+SprPriority = -5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+[State -3]
+type = ModifyExplod
+trigger1 = NumExplod(22345)
+ID = 22345
+Pos = Ceil(-1 * Facing * ((160 + facing * Pos X) * 1 + (160 - facing * Pos X))), Ceil(1 * (4 * ((128 + GameTime - var(13)*0)%256) - 768))
+PosType = Front
+Scale = 1, 1
+SprPriority = -5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+[State -3]
+type = ModifyExplod
+trigger1 = NumExplod(22346)
+ID = 22346
+Pos = Ceil(-1 * Facing * ((160 + facing * Pos X) * 1 + (160 - facing * Pos X))), Ceil(1 * (8 * ((64 + GameTime - var(13)*0)%128) - 768))
+PosType = Front
+Scale = 1, 1
+SprPriority = -5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+[State -3]
+type = ModifyExplod
+trigger1 = NumExplod(22347)
+ID = 22347
+Pos = Ceil(-1 * Facing * ((160 + facing * Pos X) * 1 + (160 - facing * Pos X))), Ceil(1 * (16 * ((32 + GameTime - var(13)*0)%64) - 768))
+PosType = Front
+Scale = 1, 1
+SprPriority = -5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999
+[State -3]
+type = ModifyExplod
+trigger1 = NumExplod(22348)
+ID = 22348
+Pos = Ceil(-1 * Facing * ((160 + facing * Pos X) * 1 + (160 - facing * Pos X))), Ceil(1 * (32 * ((16 + GameTime - var(13)*0)%32) - 768))
+PosType = Front
+Scale = 1, 1
+SprPriority = -5
+supermovetime = 9999999999999999
+pausemovetime = 9999999999999999

@@ -1,0 +1,44 @@
+;Player information
+[Info]
+name = "Remy"
+displayname = "Remy"
+versiondate = 04,14,2001
+mugenversion = 04,14,2001
+author = "Umihei"
+pal.defaults = 1, 2, 3, 4, 5, 6
+
+[Files]
+StCommon = RemySystemCns.txt
+Cmd = CODE/RemyCmd.txt
+Anim = CODE/Remy.Air
+Cns = CODE/RemyCns.txt
+St = CODE/RemyCns.txt
+St1 = CODE/Remy(EX)Cns.txt
+St2 = CODE/Remy-2Cns.txt
+St3 = CODE/Remy-3Cns.txt
+St4 = CODE/Remy4000Cns.txt
+St5 = CODE/Remy5000Cns.txt
+St6 = CODE/Remy6000Cns.txt
+St7 = CODE/Remy7000Cns.txt
+St8 = CODE/Remy8000Cns.txt
+
+sprite = Remy.sff   ;Sprite
+sound = Remy.snd   ;Sound
+
+pal1 = Act/LK.act
+pal2 = Act/MK.act
+pal3 = Act/HK.act
+pal4 = Act/LP.act
+pal5 = Act/MP.act
+pal6 = Act/HP.act
+pal7 = Act/SLK.act
+pal8 = Act/SMK.act
+pal9 = Act/SHK.act
+pal10 = Act/SLP.act
+pal11 = Act/SMP.act
+pal12 = Act/SHP.act
+
+;Arcade mode
+[Arcade]
+;intro.storyboard = intro.def
+;ending.storyboard = ending.def

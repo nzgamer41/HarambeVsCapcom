@@ -1,0 +1,68 @@
+;---------------------------------------------------------------------------
+; Initialize (at the start of the round)
+[Statedef 5900]
+type = S
+velset = 0, 0
+
+[State 5900, 1];SAゲージ選択
+type = VarSet
+trigger1 = time = 0
+trigger1 = TeamMode = Single || TeamMode = Turns
+var(0) = 0
+;-1 = 表示は番号のみ
+;0 = SA全使用可能（ゲージの表示無し、タッグ時は常にこのモード）
+;1 = 表示は原作仕様
+
+;------------------------------モード判別------------------------------
+[State -2]
+type = Null;VarSet
+trigger1 = RoundState = 0
+trigger1 = var(15) = 1
+trigger1 = PalNo <= 6
+var(15) = 0
+
+[State -2]
+type = Null;VarSet
+trigger1 = RoundState = 0
+trigger1 = var(15) = 0
+trigger1 = PalNo > 6
+var(15) = 1
+
+;--------------------------------------
+[State 5900, 1];AI Level
+type = VarSet
+trigger1 = 1
+var(26) = 5
+
+Easy
+0
+1
+2
+3
+4
+5
+Hard
+
+;------------------------------SAゲージY座標------------------------------
+[State 5900, 1];番号だけ(var(0) = -1)のとき
+type = VarSet
+trigger1 = 1
+fvar(30) = 200
+
+[State 5900, 1];原作仕様(var(0) = 1)のとき
+type = VarSet
+trigger1 = 1
+fvar(31) = 234
+
+;--------------------------------------
+
+[State 5900, 1]
+type = VarSet
+trigger1 = 1
+var(50) = 0
+
+[State 5900, 3]
+type = ChangeState
+trigger1 = RoundsExisted <= 0
+value = 190
+

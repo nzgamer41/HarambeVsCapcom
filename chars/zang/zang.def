@@ -1,0 +1,29 @@
+; Definition file for Zangief
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name = "Zangief"        ;Name of character
+displayname = "Zangief" ;Name of character to display
+versiondate = 09,25,2008    ;Version date of character
+mugenversion = 04,14,2001   ;Version of M.U.G.E.N character works on
+author = "Manobaru"         ;Character author name
+pal.defaults = 1,2,3,4,5      ;Default palettes in order of preference
+
+; Files for the player
+[Files]
+cmd     = zangcmd.cns   ;Command set
+cns     = zang.cns   ;Constants
+st      = zang.cns   ;States
+stcommon = common1.cns ;Common states
+sprite  = zang.sff   ;Sprite
+anim    = zang.air   ;Animation
+sound   = zang.snd   ;Sound
+pal1    = 1.act
+pal2 	= 2.act
+pal3    = 3.act
+pal4	= 4.act
+pal5	= 5.act
+
+; Arcade mode
+[Arcade]
